@@ -4,14 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/providers/dependency_providers.dart';
-import 'package:money_mate/core/services/premium_service.dart';
-import 'package:money_mate/core/storage/local_storage_service.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/glass_settings.dart';
+import 'package:money/core/providers/dependency_providers.dart';
+import 'package:money/core/services/premium_service.dart';
+import 'package:money/core/storage/local_storage_service.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
 
 /// Saved items page - shows saved loans and savings
 class SavedPage extends ConsumerStatefulWidget {
@@ -228,7 +228,8 @@ class _SavedPageState extends ConsumerState<SavedPage>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          loan.name ?? 'Khoản vay ${loan.id.substring(loan.id.length - 4)}',
+                          loan.name ??
+                              'Khoản vay ${loan.id.substring(loan.id.length - 4)}',
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w600,

@@ -5,14 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/constants/app_constants.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/glass_slider_input.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/result_card.dart';
-import 'package:money_mate/presentation/calculators/simple_interest/simple_interest_provider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/glass_settings.dart';
+import 'package:money/core/constants/app_constants.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/presentation/calculators/common/widgets/glass_slider_input.dart';
+import 'package:money/presentation/calculators/common/widgets/result_card.dart';
+import 'package:money/presentation/calculators/simple_interest/simple_interest_provider.dart';
 
 /// Simple Interest Calculator Page with real-time calculations
 class SimpleInterestPage extends ConsumerWidget {

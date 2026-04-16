@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
-import 'package:money_mate/core/providers/dependency_providers.dart';
-import 'package:money_mate/core/services/premium_service.dart';
+import 'package:money/core/providers/dependency_providers.dart';
+import 'package:money/core/services/premium_service.dart';
 
 /// Premium service provider
 final premiumServiceProvider = Provider<PremiumService>((ref) {
@@ -11,12 +11,14 @@ final premiumServiceProvider = Provider<PremiumService>((ref) {
 });
 
 /// Premium status provider (reactive)
-final premiumStatusProvider = StateNotifierProvider<PremiumStatusNotifier, PremiumStatus>(
+final premiumStatusProvider =
+    StateNotifierProvider<PremiumStatusNotifier, PremiumStatus>(
   (ref) => PremiumStatusNotifier(ref.watch(premiumServiceProvider)),
 );
 
 /// Premium products provider
-final premiumProductsProvider = FutureProvider<List<ProductDetails>>((ref) async {
+final premiumProductsProvider =
+    FutureProvider<List<ProductDetails>>((ref) async {
   final service = ref.watch(premiumServiceProvider);
   await service.initialize();
   return service.products;

@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
 
 /// Widget that gates premium features
 /// Shows a lock overlay for non-premium users
@@ -107,7 +107,8 @@ class _PremiumLockOverlay extends StatelessWidget {
               GestureDetector(
                 onTap: () => _showUpgradeDialog(context),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [

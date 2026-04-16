@@ -1,4 +1,4 @@
-# money_mate
+# money
 
 A new Flutter project.
 

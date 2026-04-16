@@ -2,8 +2,8 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
 
 /// PDF Export Service for generating financial reports
 class PdfExportService {
@@ -67,7 +67,7 @@ class PdfExportService {
           mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
           children: [
             pw.Text(
-              'MoneyMate',
+              'Money Nest',
               style: pw.TextStyle(
                 fontSize: 24,
                 fontWeight: pw.FontWeight.bold,
@@ -179,9 +179,11 @@ class PdfExportService {
         ),
         _buildTableRow('Số tiền vay', CurrencyFormatter.format(loan.principal)),
         _buildTableRow('Lãi suất', '${loan.rate}%/năm'),
-        _buildTableRow('Kỳ hạn', '${loan.termMonths} tháng (${loan.termYears} năm)'),
+        _buildTableRow(
+            'Kỳ hạn', '${loan.termMonths} tháng (${loan.termYears} năm)'),
         _buildTableRow('Phương thức', loan.type.displayNameVi),
-        _buildTableRow('Tỷ lệ lãi/gốc', '${loan.interestPercentage.toStringAsFixed(1)}%'),
+        _buildTableRow(
+            'Tỷ lệ lãi/gốc', '${loan.interestPercentage.toStringAsFixed(1)}%'),
       ],
     );
   }
@@ -219,13 +221,15 @@ class PdfExportService {
               ],
             ),
             ...yearlyData.map((y) => pw.TableRow(
-              children: [
-                _buildTableCell('Năm ${y.year}'),
-                _buildTableCell(CurrencyFormatter.formatShort(y.principalPaid)),
-                _buildTableCell(CurrencyFormatter.formatShort(y.interestPaid)),
-                _buildTableCell(CurrencyFormatter.formatShort(y.total)),
-              ],
-            )),
+                  children: [
+                    _buildTableCell('Năm ${y.year}'),
+                    _buildTableCell(
+                        CurrencyFormatter.formatShort(y.principalPaid)),
+                    _buildTableCell(
+                        CurrencyFormatter.formatShort(y.interestPaid)),
+                    _buildTableCell(CurrencyFormatter.formatShort(y.total)),
+                  ],
+                )),
           ],
         ),
       ],
@@ -290,12 +294,16 @@ class PdfExportService {
             _buildTableHeader('Giá trị'),
           ],
         ),
-        _buildTableRow('Gửi ban đầu', CurrencyFormatter.format(savings.initialDeposit)),
-        _buildTableRow('Gửi hàng tháng', CurrencyFormatter.format(savings.monthlyDeposit)),
+        _buildTableRow(
+            'Gửi ban đầu', CurrencyFormatter.format(savings.initialDeposit)),
+        _buildTableRow(
+            'Gửi hàng tháng', CurrencyFormatter.format(savings.monthlyDeposit)),
         _buildTableRow('Lãi suất', '${savings.rate}%/năm'),
-        _buildTableRow('Kỳ hạn', '${savings.termMonths} tháng (${savings.termYears} năm)'),
+        _buildTableRow(
+            'Kỳ hạn', '${savings.termMonths} tháng (${savings.termYears} năm)'),
         _buildTableRow('Loại tiết kiệm', savings.type.displayNameVi),
-        _buildTableRow('Lợi nhuận', '${savings.returnPercentage.toStringAsFixed(1)}%'),
+        _buildTableRow(
+            'Lợi nhuận', '${savings.returnPercentage.toStringAsFixed(1)}%'),
       ],
     );
   }
@@ -342,13 +350,13 @@ class PdfExportService {
               ],
             ),
             ...yearlyPoints.map((p) => pw.TableRow(
-              children: [
-                _buildTableCell('${p.month}'),
-                _buildTableCell(CurrencyFormatter.formatShort(p.balance)),
-                _buildTableCell(CurrencyFormatter.formatShort(p.principal)),
-                _buildTableCell(CurrencyFormatter.formatShort(p.interest)),
-              ],
-            )),
+                  children: [
+                    _buildTableCell('${p.month}'),
+                    _buildTableCell(CurrencyFormatter.formatShort(p.balance)),
+                    _buildTableCell(CurrencyFormatter.formatShort(p.principal)),
+                    _buildTableCell(CurrencyFormatter.formatShort(p.interest)),
+                  ],
+                )),
           ],
         ),
       ],

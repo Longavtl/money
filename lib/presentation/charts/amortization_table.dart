@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
 
 /// A scrollable table showing detailed amortization schedule
 class AmortizationTable extends StatelessWidget {
@@ -138,9 +138,8 @@ class AmortizationTable extends StatelessWidget {
       color: isDark ? Colors.white : AppColors.lightTextPrimary,
     );
 
-    final highlightMonth = entry.month == 1 ||
-        entry.month == 12 ||
-        entry.month == schedule.length;
+    final highlightMonth =
+        entry.month == 1 || entry.month == 12 || entry.month == schedule.length;
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10.h),

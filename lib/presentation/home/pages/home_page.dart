@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/routes/app_routes.dart';
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
-import 'package:money_mate/presentation/premium/widgets/premium_gate.dart';
+import 'package:money/core/constants/glass_settings.dart';
+import 'package:money/core/routes/app_routes.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
+import 'package:money/presentation/premium/widgets/premium_gate.dart';
 
 /// Home page with calculator type selection
 class HomePage extends ConsumerWidget {
@@ -37,7 +37,7 @@ class HomePage extends ConsumerWidget {
                   children: [
                     const SizedBox(height: 20),
                     Text(
-                      'MoneyMate',
+                      'Money Nest',
                       style: TextStyle(
                         fontSize: 36.sp,
                         fontWeight: FontWeight.bold,

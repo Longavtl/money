@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/services/premium_service.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/services/premium_service.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
 
 /// Premium upgrade page
 class PremiumPage extends ConsumerWidget {
@@ -49,7 +49,8 @@ class PremiumPage extends ConsumerWidget {
               children: [
                 // App Bar
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                   child: Row(
                     children: [
                       GlassButton(
@@ -160,7 +161,8 @@ class PremiumPage extends ConsumerWidget {
                         ],
 
                         // Premium info for premium users
-                        if (status.isPremium && status.purchaseDate != null) ...[
+                        if (status.isPremium &&
+                            status.purchaseDate != null) ...[
                           SizedBox(height: 24.h),
                           _buildPremiumInfo(status, isDark),
                         ],

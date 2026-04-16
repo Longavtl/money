@@ -5,12 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
-import 'package:money_mate/presentation/comparison/comparison_provider.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/glass_slider_input.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/presentation/comparison/comparison_provider.dart';
+import 'package:money/presentation/calculators/common/widgets/glass_slider_input.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
 
 /// Comparison page for comparing loan scenarios
 class ComparisonPage extends ConsumerWidget {
@@ -448,7 +448,6 @@ class ComparisonPage extends ConsumerWidget {
               ),
             ),
             SizedBox(height: 16.h),
-
             _buildCompactStat(
               'Trả hàng tháng',
               CurrencyFormatter.formatShort(loan.monthlyPayment),

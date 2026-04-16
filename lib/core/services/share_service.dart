@@ -1,7 +1,7 @@
 import 'package:share_plus/share_plus.dart';
 
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
 
 /// Share service for sharing calculation results
 class ShareService {
@@ -10,7 +10,7 @@ class ShareService {
     final text = _buildLoanText(loan);
     await SharePlus.instance.share(ShareParams(
       text: text,
-      subject: 'MoneyMate - Kết quả tính khoản vay',
+      subject: 'Money Nest - Kết quả tính khoản vay',
     ));
   }
 
@@ -19,7 +19,7 @@ class ShareService {
     final text = _buildSavingsText(savings);
     await SharePlus.instance.share(ShareParams(
       text: text,
-      subject: 'MoneyMate - Kết quả tính tiết kiệm',
+      subject: 'Money Nest - Kết quả tính tiết kiệm',
     ));
   }
 
@@ -29,7 +29,7 @@ class ShareService {
     final text = _buildSimpleInterestText(result);
     await SharePlus.instance.share(ShareParams(
       text: text,
-      subject: 'MoneyMate - Kết quả tính lãi đơn',
+      subject: 'Money Nest - Kết quả tính lãi đơn',
     ));
   }
 
@@ -39,7 +39,7 @@ class ShareService {
     final text = _buildCompoundInterestText(result);
     await SharePlus.instance.share(ShareParams(
       text: text,
-      subject: 'MoneyMate - Kết quả tính lãi kép',
+      subject: 'Money Nest - Kết quả tính lãi kép',
     ));
   }
 
@@ -48,19 +48,25 @@ class ShareService {
     buffer.writeln('📊 KẾT QUẢ TÍNH KHOẢN VAY');
     buffer.writeln('━━━━━━━━━━━━━━━━━━━━━━━');
     buffer.writeln();
-    buffer.writeln('💰 Số tiền vay: ${CurrencyFormatter.format(loan.principal)}');
+    buffer
+        .writeln('💰 Số tiền vay: ${CurrencyFormatter.format(loan.principal)}');
     buffer.writeln('📈 Lãi suất: ${loan.rate}%/năm');
-    buffer.writeln('📅 Kỳ hạn: ${loan.termMonths} tháng (${loan.termYears} năm)');
+    buffer
+        .writeln('📅 Kỳ hạn: ${loan.termMonths} tháng (${loan.termYears} năm)');
     buffer.writeln('📋 Phương thức: ${loan.type.displayNameVi}');
     buffer.writeln();
     buffer.writeln('━━━━━━━━━━━━━━━━━━━━━━━');
-    buffer.writeln('💵 Trả hàng tháng: ${CurrencyFormatter.format(loan.monthlyPayment)}');
-    buffer.writeln('💳 Tổng trả: ${CurrencyFormatter.format(loan.totalPayment)}');
-    buffer.writeln('📊 Tổng lãi: ${CurrencyFormatter.format(loan.totalInterest)}');
-    buffer.writeln('📉 Tỷ lệ lãi/gốc: ${loan.interestPercentage.toStringAsFixed(1)}%');
+    buffer.writeln(
+        '💵 Trả hàng tháng: ${CurrencyFormatter.format(loan.monthlyPayment)}');
+    buffer
+        .writeln('💳 Tổng trả: ${CurrencyFormatter.format(loan.totalPayment)}');
+    buffer.writeln(
+        '📊 Tổng lãi: ${CurrencyFormatter.format(loan.totalInterest)}');
+    buffer.writeln(
+        '📉 Tỷ lệ lãi/gốc: ${loan.interestPercentage.toStringAsFixed(1)}%');
     buffer.writeln();
     buffer.writeln('---');
-    buffer.writeln('Tính toán bởi MoneyMate 🧮');
+    buffer.writeln('Tính toán bởi Money Nest 🧮');
     return buffer.toString();
   }
 
@@ -69,20 +75,27 @@ class ShareService {
     buffer.writeln('📊 KẾT QUẢ TÍNH TIẾT KIỆM');
     buffer.writeln('━━━━━━━━━━━━━━━━━━━━━━━');
     buffer.writeln();
-    buffer.writeln('💰 Gửi ban đầu: ${CurrencyFormatter.format(savings.initialDeposit)}');
-    buffer.writeln('💵 Gửi hàng tháng: ${CurrencyFormatter.format(savings.monthlyDeposit)}');
+    buffer.writeln(
+        '💰 Gửi ban đầu: ${CurrencyFormatter.format(savings.initialDeposit)}');
+    buffer.writeln(
+        '💵 Gửi hàng tháng: ${CurrencyFormatter.format(savings.monthlyDeposit)}');
     buffer.writeln('📈 Lãi suất: ${savings.rate}%/năm');
-    buffer.writeln('📅 Kỳ hạn: ${savings.termMonths} tháng (${savings.termYears} năm)');
+    buffer.writeln(
+        '📅 Kỳ hạn: ${savings.termMonths} tháng (${savings.termYears} năm)');
     buffer.writeln('📋 Loại: ${savings.type.displayNameVi}');
     buffer.writeln();
     buffer.writeln('━━━━━━━━━━━━━━━━━━━━━━━');
-    buffer.writeln('🏆 Giá trị cuối kỳ: ${CurrencyFormatter.format(savings.finalValue)}');
-    buffer.writeln('💳 Tổng gửi: ${CurrencyFormatter.format(savings.totalDeposited)}');
-    buffer.writeln('📊 Tổng lãi: ${CurrencyFormatter.format(savings.totalInterest)}');
-    buffer.writeln('📈 Lợi nhuận: ${savings.returnPercentage.toStringAsFixed(1)}%');
+    buffer.writeln(
+        '🏆 Giá trị cuối kỳ: ${CurrencyFormatter.format(savings.finalValue)}');
+    buffer.writeln(
+        '💳 Tổng gửi: ${CurrencyFormatter.format(savings.totalDeposited)}');
+    buffer.writeln(
+        '📊 Tổng lãi: ${CurrencyFormatter.format(savings.totalInterest)}');
+    buffer.writeln(
+        '📈 Lợi nhuận: ${savings.returnPercentage.toStringAsFixed(1)}%');
     buffer.writeln();
     buffer.writeln('---');
-    buffer.writeln('Tính toán bởi MoneyMate 🧮');
+    buffer.writeln('Tính toán bởi Money Nest 🧮');
     return buffer.toString();
   }
 
@@ -97,10 +110,11 @@ class ShareService {
     buffer.writeln();
     buffer.writeln('━━━━━━━━━━━━━━━━━━━━━━━');
     buffer.writeln('💵 Tiền lãi: ${CurrencyFormatter.format(result.interest)}');
-    buffer.writeln('🏆 Tổng tiền: ${CurrencyFormatter.format(result.totalAmount)}');
+    buffer.writeln(
+        '🏆 Tổng tiền: ${CurrencyFormatter.format(result.totalAmount)}');
     buffer.writeln();
     buffer.writeln('---');
-    buffer.writeln('Tính toán bởi MoneyMate 🧮');
+    buffer.writeln('Tính toán bởi Money Nest 🧮');
     return buffer.toString();
   }
 
@@ -116,11 +130,13 @@ class ShareService {
     buffer.writeln();
     buffer.writeln('━━━━━━━━━━━━━━━━━━━━━━━');
     buffer.writeln('💵 Tiền lãi: ${CurrencyFormatter.format(result.interest)}');
-    buffer.writeln('🏆 Tổng tiền: ${CurrencyFormatter.format(result.totalAmount)}');
-    buffer.writeln('📊 Lãi suất thực: ${result.effectiveAnnualRate.toStringAsFixed(2)}%');
+    buffer.writeln(
+        '🏆 Tổng tiền: ${CurrencyFormatter.format(result.totalAmount)}');
+    buffer.writeln(
+        '📊 Lãi suất thực: ${result.effectiveAnnualRate.toStringAsFixed(2)}%');
     buffer.writeln();
     buffer.writeln('---');
-    buffer.writeln('Tính toán bởi MoneyMate 🧮');
+    buffer.writeln('Tính toán bởi Money Nest 🧮');
     return buffer.toString();
   }
 }

@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:money_mate/domain/entities/calculation_results.dart';
+import 'package:money/domain/entities/calculation_results.dart';
 
 /// Core financial calculation engine
 /// All methods are static and pure - no side effects
@@ -450,8 +450,7 @@ class FinancialCalculator {
     required LoanResult scenarioB,
   }) {
     return {
-      'monthlyPaymentDiff':
-          scenarioB.monthlyPayment - scenarioA.monthlyPayment,
+      'monthlyPaymentDiff': scenarioB.monthlyPayment - scenarioA.monthlyPayment,
       'totalPaymentDiff': scenarioB.totalPayment - scenarioA.totalPayment,
       'totalInterestDiff': scenarioB.totalInterest - scenarioA.totalInterest,
       'interestSavings': scenarioA.totalInterest - scenarioB.totalInterest,

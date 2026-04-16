@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:money_mate/domain/entities/calculation_results.dart';
+import 'package:money/domain/entities/calculation_results.dart';
 
 /// Local storage service using SharedPreferences
 /// Simple JSON-based storage for saved calculations
@@ -212,7 +212,8 @@ class SavedLoan {
       );
 
   /// Create from LoanResult
-  factory SavedLoan.fromResult(LoanResult result, {String? name, String? notes}) {
+  factory SavedLoan.fromResult(LoanResult result,
+      {String? name, String? notes}) {
     return SavedLoan(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       name: name,

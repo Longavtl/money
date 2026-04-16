@@ -5,20 +5,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/constants/app_constants.dart';
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/providers/dependency_providers.dart';
-import 'package:money_mate/core/services/pdf_export_service.dart';
-import 'package:money_mate/core/services/premium_service.dart';
-import 'package:money_mate/core/services/share_service.dart';
-import 'package:money_mate/core/storage/local_storage_service.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/glass_slider_input.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/result_card.dart';
-import 'package:money_mate/presentation/calculators/savings/savings_provider.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/app_constants.dart';
+import 'package:money/core/constants/glass_settings.dart';
+import 'package:money/core/providers/dependency_providers.dart';
+import 'package:money/core/services/pdf_export_service.dart';
+import 'package:money/core/services/premium_service.dart';
+import 'package:money/core/services/share_service.dart';
+import 'package:money/core/storage/local_storage_service.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/presentation/calculators/common/widgets/glass_slider_input.dart';
+import 'package:money/presentation/calculators/common/widgets/result_card.dart';
+import 'package:money/presentation/calculators/savings/savings_provider.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
 
 /// Savings Calculator Page with real-time calculations
 class SavingsCalculatorPage extends ConsumerWidget {
@@ -90,7 +90,8 @@ class SavingsCalculatorPage extends ConsumerWidget {
                       SizedBox(height: 16.h),
                       _buildBreakdownCard(context, state.result!),
                       SizedBox(height: 16.h),
-                      _buildActionButtons(context, state.result!, premiumStatus.isPremium),
+                      _buildActionButtons(
+                          context, state.result!, premiumStatus.isPremium),
                     ],
                   ],
                 ),
@@ -122,10 +123,13 @@ class SavingsCalculatorPage extends ConsumerWidget {
           SizedBox(height: 8.h),
           GlassSegmentedControl(
             segments: const ['Tái đầu tư', 'Lĩnh lãi'],
-            selectedIndex: state.inputs.type == SavingsType.withReinvestment ? 0 : 1,
+            selectedIndex:
+                state.inputs.type == SavingsType.withReinvestment ? 0 : 1,
             onSegmentSelected: (index) {
               notifier.updateType(
-                index == 0 ? SavingsType.withReinvestment : SavingsType.withoutReinvestment,
+                index == 0
+                    ? SavingsType.withReinvestment
+                    : SavingsType.withoutReinvestment,
               );
             },
           ),
@@ -181,7 +185,9 @@ class SavingsCalculatorPage extends ConsumerWidget {
   Widget _buildResultsCard(BuildContext context, SavingsResult result) {
     final items = <ResultItem>[
       ResultItem(
-        label: result.type == SavingsType.withReinvestment ? 'Số dư cuối kỳ' : 'Tổng tiền gửi',
+        label: result.type == SavingsType.withReinvestment
+            ? 'Số dư cuối kỳ'
+            : 'Tổng tiền gửi',
         value: CurrencyFormatter.format(result.finalValue),
         isHighlighted: true,
         valueColor: AppColors.success,
@@ -202,9 +208,11 @@ class SavingsCalculatorPage extends ConsumerWidget {
       ),
     ];
 
-    if (result.type == SavingsType.withoutReinvestment && result.monthlyInterestPayouts.isNotEmpty) {
-      final avgMonthlyPayout = result.monthlyInterestPayouts.reduce((a, b) => a + b) /
-          result.monthlyInterestPayouts.length;
+    if (result.type == SavingsType.withoutReinvestment &&
+        result.monthlyInterestPayouts.isNotEmpty) {
+      final avgMonthlyPayout =
+          result.monthlyInterestPayouts.reduce((a, b) => a + b) /
+              result.monthlyInterestPayouts.length;
       items.add(
         ResultItem(
           label: 'Lãi bình quân/tháng',
@@ -252,7 +260,10 @@ class SavingsCalculatorPage extends ConsumerWidget {
                       child: depositedPercent > 15
                           ? Text(
                               '${depositedPercent.toStringAsFixed(0)}%',
-                              style: TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w600, color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 11.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
                             )
                           : null,
                     ),
@@ -265,7 +276,10 @@ class SavingsCalculatorPage extends ConsumerWidget {
                       child: interestPercent > 15
                           ? Text(
                               '${interestPercent.toStringAsFixed(0)}%',
-                              style: TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w600, color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 11.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
                             )
                           : null,
                     ),
@@ -275,9 +289,11 @@ class SavingsCalculatorPage extends ConsumerWidget {
             ),
           ),
           SizedBox(height: 16.h),
-          _buildLegendItem('Tiền gửi vào', result.totalDeposited, depositedPercent, AppColors.chartPrincipal),
+          _buildLegendItem('Tiền gửi vào', result.totalDeposited,
+              depositedPercent, AppColors.chartPrincipal),
           SizedBox(height: 8.h),
-          _buildLegendItem('Tiền lãi', result.totalInterest, interestPercent, AppColors.chartInterest),
+          _buildLegendItem('Tiền lãi', result.totalInterest, interestPercent,
+              AppColors.chartInterest),
           SizedBox(height: 16.h),
           Container(
             padding: EdgeInsets.all(12.w),
@@ -314,7 +330,8 @@ class SavingsCalculatorPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildActionButtons(BuildContext context, SavingsResult result, bool isPremium) {
+  Widget _buildActionButtons(
+      BuildContext context, SavingsResult result, bool isPremium) {
     return Row(
       children: [
         Expanded(
@@ -327,7 +344,8 @@ class SavingsCalculatorPage extends ConsumerWidget {
                 children: [
                   Icon(CupertinoIcons.share, size: 20.sp, color: Colors.white),
                   SizedBox(width: 8.w),
-                  Text('Chia sẻ', style: TextStyle(fontSize: 14.sp, color: Colors.white)),
+                  Text('Chia sẻ',
+                      style: TextStyle(fontSize: 14.sp, color: Colors.white)),
                 ],
               ),
             ),
@@ -354,10 +372,12 @@ class SavingsCalculatorPage extends ConsumerWidget {
                     color: isPremium ? Colors.white : AppColors.warning,
                   ),
                   SizedBox(width: 8.w),
-                  Text('Xuất PDF', style: TextStyle(fontSize: 14.sp, color: Colors.white)),
+                  Text('Xuất PDF',
+                      style: TextStyle(fontSize: 14.sp, color: Colors.white)),
                   if (!isPremium) ...[
                     SizedBox(width: 4.w),
-                    Icon(CupertinoIcons.lock_fill, size: 14.sp, color: AppColors.warning),
+                    Icon(CupertinoIcons.lock_fill,
+                        size: 14.sp, color: AppColors.warning),
                   ],
                 ],
               ),
@@ -368,7 +388,8 @@ class SavingsCalculatorPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildLegendItem(String label, double value, double percent, Color color) {
+  Widget _buildLegendItem(
+      String label, double value, double percent, Color color) {
     return Row(
       children: [
         Container(
@@ -414,21 +435,27 @@ class SavingsCalculatorPage extends ConsumerWidget {
     LocalStorageService storage,
   ) {
     final currentCount = storage.getSavingsCount();
-    final canSave = premiumStatus.isPremium || currentCount < PremiumLimits.maxSavedSavings;
+    final canSave =
+        premiumStatus.isPremium || currentCount < PremiumLimits.maxSavedSavings;
 
     if (!canSave) {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
           backgroundColor: const Color(0xFF1a1a2e),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           title: Row(
             children: [
-              Icon(CupertinoIcons.lock_fill, color: AppColors.warning, size: 24.sp),
+              Icon(CupertinoIcons.lock_fill,
+                  color: AppColors.warning, size: 24.sp),
               SizedBox(width: 8.w),
               Text(
                 'Giới hạn lưu trữ',
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             ],
           ),
@@ -448,9 +475,11 @@ class SavingsCalculatorPage extends ConsumerWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.warning,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.r)),
               ),
-              child: const Text('Nâng cấp', style: TextStyle(color: Colors.white)),
+              child:
+                  const Text('Nâng cấp', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
@@ -463,10 +492,14 @@ class SavingsCalculatorPage extends ConsumerWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: const Color(0xFF1a1a2e),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
         title: Text(
           'Lưu khoản tiết kiệm',
-          style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -494,11 +527,14 @@ class SavingsCalculatorPage extends ConsumerWidget {
               ),
               child: Column(
                 children: [
-                  _buildSummaryRow('Tiền gửi ban đầu', CurrencyFormatter.formatShort(result.initialDeposit)),
+                  _buildSummaryRow('Tiền gửi ban đầu',
+                      CurrencyFormatter.formatShort(result.initialDeposit)),
                   SizedBox(height: 4.h),
-                  _buildSummaryRow('Gửi thêm/tháng', CurrencyFormatter.formatShort(result.monthlyDeposit)),
+                  _buildSummaryRow('Gửi thêm/tháng',
+                      CurrencyFormatter.formatShort(result.monthlyDeposit)),
                   SizedBox(height: 4.h),
-                  _buildSummaryRow('Lãi suất', '${result.rate.toStringAsFixed(1)}%/năm'),
+                  _buildSummaryRow(
+                      'Lãi suất', '${result.rate.toStringAsFixed(1)}%/năm'),
                   SizedBox(height: 4.h),
                   _buildSummaryRow('Kỳ hạn', '${result.termMonths} tháng'),
                 ],
@@ -515,7 +551,8 @@ class SavingsCalculatorPage extends ConsumerWidget {
             onPressed: () async {
               final savedSavings = SavedSavings.fromResult(
                 result,
-                name: nameController.text.isNotEmpty ? nameController.text : null,
+                name:
+                    nameController.text.isNotEmpty ? nameController.text : null,
               );
               await storage.saveSavings(savedSavings);
               ref.invalidate(savedSavingsProvider);
@@ -526,14 +563,16 @@ class SavingsCalculatorPage extends ConsumerWidget {
                     content: const Text('Đã lưu khoản tiết kiệm'),
                     backgroundColor: AppColors.success,
                     behavior: SnackBarBehavior.floating,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.r)),
                   ),
                 );
               }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.info,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.r)),
             ),
             child: const Text('Lưu', style: TextStyle(color: Colors.white)),
           ),
@@ -547,7 +586,11 @@ class SavingsCalculatorPage extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(label, style: TextStyle(fontSize: 12.sp, color: Colors.white60)),
-        Text(value, style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w500, color: Colors.white)),
+        Text(value,
+            style: TextStyle(
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.white)),
       ],
     );
   }

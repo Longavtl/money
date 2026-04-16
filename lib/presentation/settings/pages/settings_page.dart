@@ -5,9 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
-import 'package:money_mate/presentation/premium/widgets/premium_gate.dart';
+import 'package:money/core/constants/glass_settings.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
+import 'package:money/presentation/premium/widgets/premium_gate.dart';
 
 /// Settings page
 class SettingsPage extends ConsumerWidget {
@@ -72,7 +72,7 @@ class SettingsPage extends ConsumerWidget {
                       _SettingsItem(
                         icon: CupertinoIcons.star_fill,
                         iconColor: Colors.amber,
-                        title: 'MoneyMate Premium',
+                        title: 'Money Nest Premium',
                         subtitle: premiumStatus.isPremium
                             ? 'Đã kích hoạt'
                             : 'Mở khóa tất cả tính năng',

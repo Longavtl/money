@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/presentation/home/pages/home_page.dart';
-import 'package:money_mate/presentation/simulation/pages/simulation_page.dart';
-import 'package:money_mate/presentation/saved/pages/saved_page.dart';
-import 'package:money_mate/presentation/settings/pages/settings_page.dart';
+import 'package:money/core/constants/glass_settings.dart';
+import 'package:money/presentation/home/pages/home_page.dart';
+import 'package:money/presentation/simulation/pages/simulation_page.dart';
+import 'package:money/presentation/saved/pages/saved_page.dart';
+import 'package:money/presentation/settings/pages/settings_page.dart';
 
 /// Main app shell with bottom navigation and liquid glass background
 class AppShell extends StatefulWidget {

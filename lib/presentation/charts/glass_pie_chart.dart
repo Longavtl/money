@@ -2,8 +2,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/utils/currency_formatter.dart';
 
 /// A pie/donut chart widget for displaying principal vs interest breakdown
 class GlassPieChart extends StatefulWidget {

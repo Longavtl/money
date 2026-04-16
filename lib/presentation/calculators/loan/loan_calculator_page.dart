@@ -5,20 +5,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/constants/app_constants.dart';
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/providers/dependency_providers.dart';
-import 'package:money_mate/core/services/pdf_export_service.dart';
-import 'package:money_mate/core/services/premium_service.dart';
-import 'package:money_mate/core/services/share_service.dart';
-import 'package:money_mate/core/storage/local_storage_service.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/glass_slider_input.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/result_card.dart';
-import 'package:money_mate/presentation/calculators/loan/loan_provider.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/app_constants.dart';
+import 'package:money/core/constants/glass_settings.dart';
+import 'package:money/core/providers/dependency_providers.dart';
+import 'package:money/core/services/pdf_export_service.dart';
+import 'package:money/core/services/premium_service.dart';
+import 'package:money/core/services/share_service.dart';
+import 'package:money/core/storage/local_storage_service.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/presentation/calculators/common/widgets/glass_slider_input.dart';
+import 'package:money/presentation/calculators/common/widgets/result_card.dart';
+import 'package:money/presentation/calculators/loan/loan_provider.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
 
 /// Loan Calculator Page with real-time calculations
 class LoanCalculatorPage extends ConsumerWidget {
@@ -90,7 +90,8 @@ class LoanCalculatorPage extends ConsumerWidget {
                       SizedBox(height: 16.h),
                       _buildPieChartCard(context, state.result!),
                       SizedBox(height: 16.h),
-                      _buildActionButtons(context, state.result!, premiumStatus.isPremium),
+                      _buildActionButtons(
+                          context, state.result!, premiumStatus.isPremium),
                     ],
                   ],
                 ),
@@ -170,7 +171,9 @@ class LoanCalculatorPage extends ConsumerWidget {
   Widget _buildResultsCard(BuildContext context, LoanResult result) {
     final items = <ResultItem>[
       ResultItem(
-        label: result.type == LoanType.fixedPayment ? 'Trả hàng tháng' : 'Trả tháng đầu',
+        label: result.type == LoanType.fixedPayment
+            ? 'Trả hàng tháng'
+            : 'Trả tháng đầu',
         value: CurrencyFormatter.format(result.monthlyPayment),
         isHighlighted: true,
         valueColor: AppColors.warning,
@@ -262,7 +265,8 @@ class LoanCalculatorPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildActionButtons(BuildContext context, LoanResult result, bool isPremium) {
+  Widget _buildActionButtons(
+      BuildContext context, LoanResult result, bool isPremium) {
     return Row(
       children: [
         Expanded(
@@ -275,7 +279,8 @@ class LoanCalculatorPage extends ConsumerWidget {
                 children: [
                   Icon(CupertinoIcons.share, size: 20.sp, color: Colors.white),
                   SizedBox(width: 8.w),
-                  Text('Chia sẻ', style: TextStyle(fontSize: 14.sp, color: Colors.white)),
+                  Text('Chia sẻ',
+                      style: TextStyle(fontSize: 14.sp, color: Colors.white)),
                 ],
               ),
             ),
@@ -302,10 +307,12 @@ class LoanCalculatorPage extends ConsumerWidget {
                     color: isPremium ? Colors.white : AppColors.warning,
                   ),
                   SizedBox(width: 8.w),
-                  Text('Xuất PDF', style: TextStyle(fontSize: 14.sp, color: Colors.white)),
+                  Text('Xuất PDF',
+                      style: TextStyle(fontSize: 14.sp, color: Colors.white)),
                   if (!isPremium) ...[
                     SizedBox(width: 4.w),
-                    Icon(CupertinoIcons.lock_fill, size: 14.sp, color: AppColors.warning),
+                    Icon(CupertinoIcons.lock_fill,
+                        size: 14.sp, color: AppColors.warning),
                   ],
                 ],
               ),
@@ -316,7 +323,8 @@ class LoanCalculatorPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildLegendItem(String label, String value, String percent, Color color) {
+  Widget _buildLegendItem(
+      String label, String value, String percent, Color color) {
     return Row(
       children: [
         Container(
@@ -362,21 +370,27 @@ class LoanCalculatorPage extends ConsumerWidget {
     LocalStorageService storage,
   ) {
     final currentCount = storage.getLoanCount();
-    final canSave = premiumStatus.isPremium || currentCount < PremiumLimits.maxSavedLoans;
+    final canSave =
+        premiumStatus.isPremium || currentCount < PremiumLimits.maxSavedLoans;
 
     if (!canSave) {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
           backgroundColor: const Color(0xFF1a1a2e),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           title: Row(
             children: [
-              Icon(CupertinoIcons.lock_fill, color: AppColors.warning, size: 24.sp),
+              Icon(CupertinoIcons.lock_fill,
+                  color: AppColors.warning, size: 24.sp),
               SizedBox(width: 8.w),
               Text(
                 'Giới hạn lưu trữ',
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             ],
           ),
@@ -396,9 +410,11 @@ class LoanCalculatorPage extends ConsumerWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.warning,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.r)),
               ),
-              child: const Text('Nâng cấp', style: TextStyle(color: Colors.white)),
+              child:
+                  const Text('Nâng cấp', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
@@ -411,10 +427,14 @@ class LoanCalculatorPage extends ConsumerWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: const Color(0xFF1a1a2e),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
         title: Text(
           'Lưu khoản vay',
-          style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(
+              fontSize: 18.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -442,9 +462,11 @@ class LoanCalculatorPage extends ConsumerWidget {
               ),
               child: Column(
                 children: [
-                  _buildSummaryRow('Số tiền vay', CurrencyFormatter.formatShort(result.principal)),
+                  _buildSummaryRow('Số tiền vay',
+                      CurrencyFormatter.formatShort(result.principal)),
                   SizedBox(height: 4.h),
-                  _buildSummaryRow('Lãi suất', '${result.rate.toStringAsFixed(1)}%/năm'),
+                  _buildSummaryRow(
+                      'Lãi suất', '${result.rate.toStringAsFixed(1)}%/năm'),
                   SizedBox(height: 4.h),
                   _buildSummaryRow('Kỳ hạn', '${result.termMonths} tháng'),
                 ],
@@ -461,7 +483,8 @@ class LoanCalculatorPage extends ConsumerWidget {
             onPressed: () async {
               final savedLoan = SavedLoan.fromResult(
                 result,
-                name: nameController.text.isNotEmpty ? nameController.text : null,
+                name:
+                    nameController.text.isNotEmpty ? nameController.text : null,
               );
               await storage.saveLoan(savedLoan);
               ref.invalidate(savedLoansProvider);
@@ -472,14 +495,16 @@ class LoanCalculatorPage extends ConsumerWidget {
                     content: const Text('Đã lưu khoản vay'),
                     backgroundColor: AppColors.success,
                     behavior: SnackBarBehavior.floating,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.r)),
                   ),
                 );
               }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.warning,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.r)),
             ),
             child: const Text('Lưu', style: TextStyle(color: Colors.white)),
           ),
@@ -493,7 +518,11 @@ class LoanCalculatorPage extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(label, style: TextStyle(fontSize: 12.sp, color: Colors.white60)),
-        Text(value, style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w500, color: Colors.white)),
+        Text(value,
+            style: TextStyle(
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.white)),
       ],
     );
   }
@@ -503,7 +532,8 @@ class _SimplePieChartPainter extends CustomPainter {
   final double principalPercent;
   final double interestPercent;
 
-  _SimplePieChartPainter({required this.principalPercent, required this.interestPercent});
+  _SimplePieChartPainter(
+      {required this.principalPercent, required this.interestPercent});
 
   @override
   void paint(Canvas canvas, Size size) {

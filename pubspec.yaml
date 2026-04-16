@@ -1,4 +1,4 @@
-name: money_mate
+name: money
 description: "MoneyMate - Financial Calculator with Liquid Glass UI"
 publish_to: 'none'
 
@@ -80,6 +80,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/vectors/
+    - shorebird.yaml
 
 flutter_gen:
   output: lib/generated/

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
 
 /// Result card showing key calculation results
 class ResultCard extends StatelessWidget {
@@ -82,7 +82,8 @@ class ResultCard extends StatelessWidget {
             item.value,
             style: TextStyle(
               fontSize: item.isHighlighted ? 20.sp : 16.sp,
-              fontWeight: item.isHighlighted ? FontWeight.bold : FontWeight.w500,
+              fontWeight:
+                  item.isHighlighted ? FontWeight.bold : FontWeight.w500,
               color: item.valueColor ??
                   (isDark ? Colors.white : AppColors.lightTextPrimary),
             ),

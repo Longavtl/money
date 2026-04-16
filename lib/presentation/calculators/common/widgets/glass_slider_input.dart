@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
 
 /// Reusable glass slider input with label and value display
 class GlassSliderInput extends StatelessWidget {
@@ -51,7 +51,8 @@ class GlassSliderInput extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                 decoration: BoxDecoration(
-                  color: (activeColor ?? AppColors.primary).withValues(alpha: 0.15),
+                  color: (activeColor ?? AppColors.primary)
+                      .withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Text(

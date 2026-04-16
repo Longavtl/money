@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/constants/glass_settings.dart';
+import 'package:money/core/constants/glass_settings.dart';
 
 /// A scaffold wrapper that provides the correct LiquidGlassScope.stack setup
 /// with wallpaper background for the glass effect to work properly.

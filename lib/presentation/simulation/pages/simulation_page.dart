@@ -4,10 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/presentation/simulation/simulation_provider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/glass_settings.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/presentation/simulation/simulation_provider.dart';
 
 class SimulationPage extends ConsumerWidget {
   const SimulationPage({super.key});
@@ -98,14 +98,16 @@ class SimulationPage extends ConsumerWidget {
                   label: 'Thêm khoản vay',
                   icon: CupertinoIcons.building_2_fill,
                   color: AppColors.warning,
-                  onTap: () => _showAddScenario(context, notifier, ScenarioType.loan),
+                  onTap: () =>
+                      _showAddScenario(context, notifier, ScenarioType.loan),
                 ),
                 SizedBox(width: 12.w),
                 _AddButton(
                   label: 'Thêm tiết kiệm',
                   icon: CupertinoIcons.money_dollar_circle_fill,
                   color: AppColors.success,
-                  onTap: () => _showAddScenario(context, notifier, ScenarioType.savings),
+                  onTap: () =>
+                      _showAddScenario(context, notifier, ScenarioType.savings),
                 ),
               ],
             ),
@@ -137,13 +139,15 @@ class SimulationPage extends ConsumerWidget {
           // Scenarios list
           _buildSectionHeader('Khoản vay', state.loans.length),
           SizedBox(height: 8.h),
-          ...state.loans.map((s) => _buildScenarioCard(context, s, state, notifier)),
+          ...state.loans
+              .map((s) => _buildScenarioCard(context, s, state, notifier)),
 
           if (state.savings.isNotEmpty) ...[
             SizedBox(height: 16.h),
             _buildSectionHeader('Tiết kiệm', state.savings.length),
             SizedBox(height: 8.h),
-            ...state.savings.map((s) => _buildScenarioCard(context, s, state, notifier)),
+            ...state.savings
+                .map((s) => _buildScenarioCard(context, s, state, notifier)),
           ],
 
           SizedBox(height: 16.h),
@@ -156,7 +160,8 @@ class SimulationPage extends ConsumerWidget {
                   label: 'Thêm khoản vay',
                   icon: CupertinoIcons.plus,
                   color: AppColors.warning,
-                  onTap: () => _showAddScenario(context, notifier, ScenarioType.loan),
+                  onTap: () =>
+                      _showAddScenario(context, notifier, ScenarioType.loan),
                 ),
               ),
               SizedBox(width: 12.w),
@@ -165,7 +170,8 @@ class SimulationPage extends ConsumerWidget {
                   label: 'Thêm tiết kiệm',
                   icon: CupertinoIcons.plus,
                   color: AppColors.success,
-                  onTap: () => _showAddScenario(context, notifier, ScenarioType.savings),
+                  onTap: () =>
+                      _showAddScenario(context, notifier, ScenarioType.savings),
                 ),
               ),
             ],
@@ -505,7 +511,8 @@ class SimulationPage extends ConsumerWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: const Color(0xFF1a1a2e),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
         title: Text(
           'Xóa tất cả?',
           style: TextStyle(color: Colors.white, fontSize: 18.sp),
@@ -720,7 +727,9 @@ class _AddScenarioSheetState extends State<_AddScenarioSheet> {
             controller: _nameController,
             style: const TextStyle(color: Colors.white),
             decoration: InputDecoration(
-              hintText: isLoan ? 'Tên khoản vay (VD: Mua nhà)' : 'Tên (VD: Tiết kiệm hưu trí)',
+              hintText: isLoan
+                  ? 'Tên khoản vay (VD: Mua nhà)'
+                  : 'Tên (VD: Tiết kiệm hưu trí)',
               hintStyle: TextStyle(color: Colors.white38),
               filled: true,
               fillColor: Colors.white.withValues(alpha: 0.1),
