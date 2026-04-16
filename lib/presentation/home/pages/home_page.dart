@@ -1,19 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import 'package:money_mate/core/routes/app_routes.dart';
 import 'package:money_mate/core/configs/theme/app_colors.dart';
+import 'package:money_mate/presentation/premium/premium_provider.dart';
+import 'package:money_mate/presentation/premium/widgets/premium_gate.dart';
 
 /// Home page with calculator type selection
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final premiumStatus = ref.watch(premiumStatusProvider);
 
     return Scaffold(
       body: Container(
@@ -75,7 +79,7 @@ class HomePage extends StatelessWidget {
                     crossAxisCount: 2,
                     mainAxisSpacing: 16.h,
                     crossAxisSpacing: 16.w,
-                    childAspectRatio: 0.9,
+                    childAspectRatio: 0.95,
                   ),
                   delegate: SliverChildListDelegate([
                     _CalculatorCard(
@@ -111,7 +115,22 @@ class HomePage extends StatelessWidget {
               ),
 
               SliverToBoxAdapter(
-                child: SizedBox(height: 24.h),
+                child: SizedBox(height: 16.h),
+              ),
+
+              // Compare feature card (Premium)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: _CompareCard(
+                    isPremium: premiumStatus.isPremium,
+                    onTap: () => context.push(AppRoutes.comparison),
+                  ),
+                ),
+              ),
+
+              SliverToBoxAdapter(
+                child: SizedBox(height: 16.h),
               ),
 
               // Quick tips card
@@ -191,40 +210,123 @@ class _CalculatorCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: onTap,
+      behavior: HitTestBehavior.opaque,
       child: GlassCard(
         child: Padding(
-          padding: EdgeInsets.all(16.w),
+          padding: EdgeInsets.all(14.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: EdgeInsets.all(12.w),
+                padding: EdgeInsets.all(10.w),
                 decoration: BoxDecoration(
                   color: color.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(12.r),
+                  borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Icon(
                   icon,
                   color: color,
-                  size: 28.sp,
+                  size: 24.sp,
                 ),
               ),
               const Spacer(),
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 18.sp,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
                   color: isDark ? Colors.white : AppColors.lightTextPrimary,
                 ),
               ),
-              SizedBox(height: 4.h),
+              SizedBox(height: 2.h),
               Text(
                 subtitle,
                 style: TextStyle(
-                  fontSize: 12.sp,
+                  fontSize: 11.sp,
                   color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
                 ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _CompareCard extends StatelessWidget {
+  final bool isPremium;
+  final VoidCallback onTap;
+
+  const _CompareCard({
+    required this.isPremium,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return GestureDetector(
+      onTap: onTap,
+      child: GlassCard(
+        child: Padding(
+          padding: EdgeInsets.all(16.w),
+          child: Row(
+            children: [
+              Container(
+                padding: EdgeInsets.all(12.w),
+                decoration: BoxDecoration(
+                  color: AppColors.warning.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: Icon(
+                  CupertinoIcons.arrow_right_arrow_left,
+                  color: AppColors.warning,
+                  size: 24.sp,
+                ),
+              ),
+              SizedBox(width: 14.w),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'So sánh kịch bản',
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600,
+                            color: isDark ? Colors.white : AppColors.lightTextPrimary,
+                          ),
+                        ),
+                        if (!isPremium) ...[
+                          SizedBox(width: 8.w),
+                          const PremiumBadge(size: 16),
+                        ],
+                      ],
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      'So sánh nhiều phương án vay song song',
+                      style: TextStyle(
+                        fontSize: 13.sp,
+                        color: isDark
+                            ? Colors.white60
+                            : AppColors.lightTextSecondary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(
+                CupertinoIcons.chevron_right,
+                color: isDark
+                    ? Colors.white.withValues(alpha: 0.4)
+                    : AppColors.lightTextSecondary.withValues(alpha: 0.6),
+                size: 20.sp,
               ),
             ],
           ),

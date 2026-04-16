@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import 'package:money_mate/core/configs/theme/app_colors.dart';
 import 'package:money_mate/core/constants/app_constants.dart';
@@ -24,6 +23,35 @@ class SimpleInterestPage extends ConsumerWidget {
     final notifier = ref.read(simpleInterestCalculatorProvider.notifier);
 
     return Scaffold(
+      backgroundColor: isDark ? const Color(0xFF1a1a2e) : const Color(0xFFe8f4f8),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            CupertinoIcons.back,
+            color: isDark ? Colors.white : AppColors.lightTextPrimary,
+          ),
+          onPressed: () => context.pop(),
+        ),
+        title: Text(
+          'Lãi đơn',
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w600,
+            color: isDark ? Colors.white : AppColors.lightTextPrimary,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              CupertinoIcons.arrow_counterclockwise,
+              color: isDark ? Colors.white : AppColors.lightTextPrimary,
+            ),
+            onPressed: () => notifier.reset(),
+          ),
+        ],
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -42,53 +70,21 @@ class SimpleInterestPage extends ConsumerWidget {
                   ],
           ),
         ),
-        child: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
           child: Column(
             children: [
-              // App bar
-              GlassAppBar(
-                leading: GlassIconButton(
-                  icon: const Icon(CupertinoIcons.back),
-                  onPressed: () => context.pop(),
-                ),
-                title: Text(
-                  'Lãi đơn',
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.w600,
-                    color: isDark ? Colors.white : AppColors.lightTextPrimary,
-                  ),
-                ),
-                actions: [
-                  GlassIconButton(
-                    icon: const Icon(CupertinoIcons.arrow_counterclockwise),
-                    onPressed: () => notifier.reset(),
-                  ),
-                ],
-              ),
+              // Input card
+              _buildInputCard(context, state, notifier, isDark),
 
-              // Content
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: EdgeInsets.all(16.w),
-                  child: Column(
-                    children: [
-                      // Input card
-                      _buildInputCard(context, state, notifier, isDark),
+              SizedBox(height: 16.h),
 
-                      SizedBox(height: 16.h),
-
-                      // Results
-                      if (state.hasResult) ...[
-                        _buildResultsCard(context, state.result!, isDark),
-                        SizedBox(height: 16.h),
-                        _buildGrowthVisualization(
-                            context, state.result!, isDark),
-                      ],
-                    ],
-                  ),
-                ),
-              ),
+              // Results
+              if (state.hasResult) ...[
+                _buildResultsCard(context, state.result!, isDark),
+                SizedBox(height: 16.h),
+                _buildGrowthVisualization(context, state.result!, isDark),
+              ],
             ],
           ),
         ),
@@ -102,7 +98,18 @@ class SimpleInterestPage extends ConsumerWidget {
     SimpleInterestCalculatorNotifier notifier,
     bool isDark,
   ) {
-    return GlassCard(
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark
+            ? Colors.white.withValues(alpha: 0.1)
+            : Colors.white.withValues(alpha: 0.7),
+        borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(
+          color: isDark
+              ? Colors.white.withValues(alpha: 0.2)
+              : Colors.grey.withValues(alpha: 0.3),
+        ),
+      ),
       child: Padding(
         padding: EdgeInsets.all(16.w),
         child: Column(
@@ -158,31 +165,25 @@ class SimpleInterestPage extends ConsumerWidget {
     SimpleInterestResult result,
     bool isDark,
   ) {
-    final items = <ResultItem>[
-      ResultItem(
-        label: 'Tiền lãi',
-        value: CurrencyFormatter.format(result.interest),
-        isHighlighted: true,
-        valueColor: AppColors.success,
-      ),
-      ResultItem(
-        label: 'Tổng nhận được',
-        value: CurrencyFormatter.format(result.totalAmount),
-        color: AppColors.primary,
-      ),
-      ResultItem(
-        label: 'Lãi suất tháng',
-        value: CurrencyFormatter.formatPercent(result.rate / 12),
-      ),
-      ResultItem(
-        label: 'Lãi mỗi tháng',
-        value: CurrencyFormatter.format(result.interest / result.termMonths),
-      ),
-    ];
-
     return ResultCard(
       title: 'Kết quả tính toán',
-      items: items,
+      items: [
+        ResultItem(
+          label: 'Tiền lãi',
+          value: CurrencyFormatter.format(result.interest),
+          isHighlighted: true,
+          valueColor: AppColors.success,
+        ),
+        ResultItem(
+          label: 'Tổng tiền nhận',
+          value: CurrencyFormatter.format(result.totalAmount),
+          color: AppColors.primary,
+        ),
+        ResultItem(
+          label: 'Lãi trung bình/tháng',
+          value: CurrencyFormatter.format(result.monthlyInterest),
+        ),
+      ],
     );
   }
 
@@ -194,14 +195,25 @@ class SimpleInterestPage extends ConsumerWidget {
     final principalPercent = (result.principal / result.totalAmount * 100);
     final interestPercent = (result.interest / result.totalAmount * 100);
 
-    return GlassCard(
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark
+            ? Colors.white.withValues(alpha: 0.1)
+            : Colors.white.withValues(alpha: 0.7),
+        borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(
+          color: isDark
+              ? Colors.white.withValues(alpha: 0.2)
+              : Colors.grey.withValues(alpha: 0.3),
+        ),
+      ),
       child: Padding(
         padding: EdgeInsets.all(16.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Cơ cấu số tiền',
+              'Cơ cấu tổng tiền',
               style: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
@@ -211,55 +223,70 @@ class SimpleInterestPage extends ConsumerWidget {
             SizedBox(height: 16.h),
 
             // Progress bar visualization
-            _buildProgressBar(
-              context,
-              'Tiền gốc',
-              result.principal,
-              principalPercent,
-              AppColors.chartPrincipal,
-              isDark,
-            ),
-            SizedBox(height: 12.h),
-            _buildProgressBar(
-              context,
-              'Tiền lãi',
-              result.interest,
-              interestPercent,
-              AppColors.chartInterest,
-              isDark,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: SizedBox(
+                height: 24.h,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: principalPercent.round(),
+                      child: Container(
+                        color: AppColors.chartPrincipal,
+                        alignment: Alignment.center,
+                        child: principalPercent > 20
+                            ? Text(
+                                '${principalPercent.toStringAsFixed(0)}%',
+                                style: TextStyle(
+                                  fontSize: 11.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : null,
+                      ),
+                    ),
+                    Expanded(
+                      flex: interestPercent.round().clamp(1, 100),
+                      child: Container(
+                        color: AppColors.chartInterest,
+                        alignment: Alignment.center,
+                        child: interestPercent > 20
+                            ? Text(
+                                '${interestPercent.toStringAsFixed(0)}%',
+                                style: TextStyle(
+                                  fontSize: 11.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : null,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
 
             SizedBox(height: 16.h),
 
-            // Summary
-            Container(
-              padding: EdgeInsets.all(12.w),
-              decoration: BoxDecoration(
-                color: AppColors.success.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Tỷ lệ sinh lời',
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      color: isDark
-                          ? Colors.white.withValues(alpha: 0.7)
-                          : AppColors.lightTextSecondary,
-                    ),
-                  ),
-                  Text(
-                    '${interestPercent.toStringAsFixed(1)}%',
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.success,
-                    ),
-                  ),
-                ],
-              ),
+            // Legend
+            Row(
+              children: [
+                _buildLegendItem(
+                  'Tiền gốc',
+                  CurrencyFormatter.formatShort(result.principal),
+                  AppColors.chartPrincipal,
+                  isDark,
+                ),
+                SizedBox(width: 16.w),
+                _buildLegendItem(
+                  'Tiền lãi',
+                  CurrencyFormatter.formatShort(result.interest),
+                  AppColors.chartInterest,
+                  isDark,
+                ),
+              ],
             ),
           ],
         ),
@@ -267,63 +294,48 @@ class SimpleInterestPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildProgressBar(
-    BuildContext context,
+  Widget _buildLegendItem(
     String label,
-    double value,
-    double percent,
+    String value,
     Color color,
     bool isDark,
   ) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
+    return Expanded(
+      child: Row(
+        children: [
+          Container(
+            width: 12.w,
+            height: 12.w,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(3.r),
+            ),
+          ),
+          SizedBox(width: 8.w),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 12.w,
-                  height: 12.w,
-                  decoration: BoxDecoration(
-                    color: color,
-                    borderRadius: BorderRadius.circular(3.r),
-                  ),
-                ),
-                SizedBox(width: 8.w),
                 Text(
                   label,
                   style: TextStyle(
+                    fontSize: 11.sp,
+                    color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
+                  ),
+                ),
+                Text(
+                  value,
+                  style: TextStyle(
                     fontSize: 13.sp,
-                    color: isDark
-                        ? Colors.white.withValues(alpha: 0.7)
-                        : AppColors.lightTextSecondary,
+                    fontWeight: FontWeight.w600,
+                    color: isDark ? Colors.white : AppColors.lightTextPrimary,
                   ),
                 ),
               ],
             ),
-            Text(
-              CurrencyFormatter.formatShort(value),
-              style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
-                color: isDark ? Colors.white : AppColors.lightTextPrimary,
-              ),
-            ),
-          ],
-        ),
-        SizedBox(height: 6.h),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(4.r),
-          child: LinearProgressIndicator(
-            value: percent / 100,
-            backgroundColor: color.withValues(alpha: 0.2),
-            valueColor: AlwaysStoppedAnimation<Color>(color),
-            minHeight: 8.h,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
