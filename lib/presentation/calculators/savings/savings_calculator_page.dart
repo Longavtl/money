@@ -35,7 +35,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
       background: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/wallpaper_dark.jpg'),
+            image: AssetImage('assets/images/wallpaper2.jpeg'),
             fit: BoxFit.cover,
           ),
         ),

@@ -27,7 +27,7 @@ class GlassScaffold extends StatelessWidget {
       background: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/wallpaper_dark.jpg'),
+            image: AssetImage('assets/images/wallpaper2.jpeg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -67,7 +67,7 @@ class GlassPage extends StatelessWidget {
       background: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/wallpaper_dark.jpg'),
+            image: AssetImage('assets/images/wallpaper2.jpeg'),
             fit: BoxFit.cover,
           ),
         ),

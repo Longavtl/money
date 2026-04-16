@@ -49,13 +49,6 @@ class SettingsPage extends ConsumerWidget {
                   child: Column(
                     children: [
                       _SettingsItem(
-                        icon: CupertinoIcons.moon_fill,
-                        title: 'Giao diện',
-                        subtitle: 'Tối',
-                        onTap: () {},
-                      ),
-                      const Divider(height: 1, color: Colors.white24),
-                      _SettingsItem(
                         icon: CupertinoIcons.globe,
                         title: 'Ngôn ngữ',
                         subtitle: 'Tiếng Việt',

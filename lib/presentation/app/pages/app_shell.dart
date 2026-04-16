@@ -4,7 +4,7 @@ import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import 'package:money_mate/core/constants/glass_settings.dart';
 import 'package:money_mate/presentation/home/pages/home_page.dart';
-import 'package:money_mate/presentation/tools/pages/tools_page.dart';
+import 'package:money_mate/presentation/simulation/pages/simulation_page.dart';
 import 'package:money_mate/presentation/saved/pages/saved_page.dart';
 import 'package:money_mate/presentation/settings/pages/settings_page.dart';
 
@@ -21,7 +21,7 @@ class _AppShellState extends State<AppShell> {
 
   final List<Widget> _pages = const [
     HomePage(),
-    ToolsPage(),
+    SimulationPage(),
     SavedPage(),
     SettingsPage(),
   ];
@@ -32,7 +32,7 @@ class _AppShellState extends State<AppShell> {
       background: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/wallpaper_dark.jpg'),
+            image: AssetImage('assets/images/wallpaper2.jpeg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -56,9 +56,9 @@ class _AppShellState extends State<AppShell> {
                 activeIcon: const Icon(CupertinoIcons.house_fill),
               ),
               GlassBottomBarTab(
-                label: 'Công cụ',
-                icon: const Icon(CupertinoIcons.square_grid_2x2),
-                activeIcon: const Icon(CupertinoIcons.square_grid_2x2_fill),
+                label: 'Mô phỏng',
+                icon: const Icon(CupertinoIcons.chart_bar),
+                activeIcon: const Icon(CupertinoIcons.chart_bar_fill),
               ),
               GlassBottomBarTab(
                 label: 'Đã lưu',
