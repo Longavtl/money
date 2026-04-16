@@ -148,7 +148,7 @@ class PremiumBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 3.h),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -156,21 +156,21 @@ class PremiumBadge extends StatelessWidget {
             AppColors.warning.withValues(alpha: 0.8),
           ],
         ),
-        borderRadius: BorderRadius.circular(12.r),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             CupertinoIcons.star_fill,
-            size: size.sp * 0.7,
+            size: size * 0.7,
             color: Colors.white,
           ),
-          SizedBox(width: 4.w),
+          SizedBox(width: 3.w),
           Text(
             'PRO',
             style: TextStyle(
-              fontSize: size.sp * 0.6,
+              fontSize: size * 0.6,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),

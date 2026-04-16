@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
 import 'package:money_mate/core/configs/theme/app_colors.dart';
+import 'package:money_mate/core/constants/glass_settings.dart';
 import 'package:money_mate/core/providers/dependency_providers.dart';
 import 'package:money_mate/core/services/premium_service.dart';
 import 'package:money_mate/core/storage/local_storage_service.dart';
@@ -39,7 +40,6 @@ class _SavedPageState extends ConsumerState<SavedPage>
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     final loansAsync = ref.watch(savedLoansProvider);
     final savingsAsync = ref.watch(savedSavingsProvider);
     final premiumStatus = ref.watch(premiumStatusProvider);
@@ -48,90 +48,70 @@ class _SavedPageState extends ConsumerState<SavedPage>
     final loans = loansAsync.valueOrNull ?? [];
     final savings = savingsAsync.valueOrNull ?? [];
 
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: isDark
-                ? [
-                    const Color(0xFF1a1a2e),
-                    const Color(0xFF16213e),
-                    const Color(0xFF0f3460),
-                  ]
-                : [
-                    const Color(0xFFe8f4f8),
-                    const Color(0xFFd4e5f7),
-                    const Color(0xFFc9dff7),
-                  ],
-          ),
-        ),
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Header
-              Padding(
-                padding: EdgeInsets.all(20.w),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        'Đã lưu',
-                        style: TextStyle(
-                          fontSize: 32.sp,
-                          fontWeight: FontWeight.bold,
-                          color:
-                              isDark ? Colors.white : AppColors.lightTextPrimary,
-                        ),
+    // AppShell provides LiquidGlassScope.stack and GlassBottomBar
+    return AdaptiveLiquidGlassLayer(
+      settings: RecommendedGlassSettings.standard,
+      quality: GlassQuality.standard,
+      child: SafeArea(
+        bottom: false,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header
+            Padding(
+              padding: EdgeInsets.all(20.w),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Đã lưu',
+                      style: TextStyle(
+                        fontSize: 32.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
-                    if (!premiumStatus.isPremium)
-                      _buildLimitIndicator(
-                        loans.length,
-                        savings.length,
-                        isDark,
-                      ),
-                  ],
-                ),
+                  ),
+                  if (!premiumStatus.isPremium)
+                    _buildLimitIndicator(loans.length, savings.length),
+                ],
               ),
+            ),
 
-              // Tab bar
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: GlassSegmentedControl(
-                  segments: [
-                    'Khoản vay (${loans.length})',
-                    'Tiết kiệm (${savings.length})',
-                  ],
-                  selectedIndex: _tabController.index,
-                  onSegmentSelected: (index) {
-                    _tabController.animateTo(index);
-                  },
-                ),
+            // Tab bar
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: GlassSegmentedControl(
+                segments: [
+                  'Khoản vay (${loans.length})',
+                  'Tiết kiệm (${savings.length})',
+                ],
+                selectedIndex: _tabController.index,
+                onSegmentSelected: (index) {
+                  _tabController.animateTo(index);
+                },
               ),
+            ),
 
-              SizedBox(height: 16.h),
+            SizedBox(height: 16.h),
 
-              // Content
-              Expanded(
-                child: TabBarView(
-                  controller: _tabController,
-                  children: [
-                    _buildLoansList(loansAsync, isDark),
-                    _buildSavingsList(savingsAsync, isDark),
-                  ],
-                ),
+            // Content
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  _buildLoansList(loansAsync),
+                  _buildSavingsList(savingsAsync),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildLimitIndicator(int loans, int savings, bool isDark) {
+  Widget _buildLimitIndicator(int loans, int savings) {
     const maxLoans = PremiumLimits.maxSavedLoans;
     const maxSavings = PremiumLimits.maxSavedSavings;
 
@@ -166,13 +146,13 @@ class _SavedPageState extends ConsumerState<SavedPage>
     );
   }
 
-  Widget _buildLoansList(AsyncValue<List<SavedLoan>> loansAsync, bool isDark) {
+  Widget _buildLoansList(AsyncValue<List<SavedLoan>> loansAsync) {
     return loansAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (error, _) => Center(
         child: Text(
           'Error: $error',
-          style: TextStyle(color: isDark ? Colors.white60 : Colors.black45),
+          style: const TextStyle(color: Colors.white60),
         ),
       ),
       data: (loans) {
@@ -181,7 +161,6 @@ class _SavedPageState extends ConsumerState<SavedPage>
             icon: CupertinoIcons.building_2_fill,
             title: 'Chưa có khoản vay nào',
             subtitle: 'Tính toán và lưu khoản vay để xem lại sau',
-            isDark: isDark,
           );
         }
 
@@ -191,14 +170,14 @@ class _SavedPageState extends ConsumerState<SavedPage>
           separatorBuilder: (_, __) => SizedBox(height: 12.h),
           itemBuilder: (context, index) {
             final loan = loans[index];
-            return _buildLoanCard(loan, isDark);
+            return _buildLoanCard(loan);
           },
         );
       },
     );
   }
 
-  Widget _buildLoanCard(SavedLoan loan, bool isDark) {
+  Widget _buildLoanCard(SavedLoan loan) {
     final typeLabel =
         loan.type == LoanType.fixedPayment ? 'Trả góp đều' : 'Dư nợ giảm dần';
     final dateStr =
@@ -253,7 +232,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w600,
-                            color: isDark ? Colors.white : Colors.black,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(height: 2.h),
@@ -261,7 +240,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
                           '$typeLabel • $dateStr',
                           style: TextStyle(
                             fontSize: 12.sp,
-                            color: isDark ? Colors.white60 : Colors.black45,
+                            color: Colors.white60,
                           ),
                         ),
                       ],
@@ -275,17 +254,14 @@ class _SavedPageState extends ConsumerState<SavedPage>
                   _buildLoanStat(
                     'Số tiền vay',
                     CurrencyFormatter.formatShort(loan.principal),
-                    isDark,
                   ),
                   _buildLoanStat(
                     'Lãi suất',
                     '${loan.annualRate.toStringAsFixed(1)}%/năm',
-                    isDark,
                   ),
                   _buildLoanStat(
                     'Kỳ hạn',
                     '${loan.termMonths} tháng',
-                    isDark,
                   ),
                 ],
               ),
@@ -306,7 +282,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
                           'Trả hàng tháng',
                           style: TextStyle(
                             fontSize: 11.sp,
-                            color: isDark ? Colors.white60 : Colors.black45,
+                            color: Colors.white60,
                           ),
                         ),
                         Text(
@@ -326,7 +302,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
                           'Tổng lãi',
                           style: TextStyle(
                             fontSize: 11.sp,
-                            color: isDark ? Colors.white60 : Colors.black45,
+                            color: Colors.white60,
                           ),
                         ),
                         Text(
@@ -349,7 +325,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
     );
   }
 
-  Widget _buildLoanStat(String label, String value, bool isDark) {
+  Widget _buildLoanStat(String label, String value) {
     return Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -358,7 +334,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
             label,
             style: TextStyle(
               fontSize: 11.sp,
-              color: isDark ? Colors.white60 : Colors.black45,
+              color: Colors.white60,
             ),
           ),
           SizedBox(height: 2.h),
@@ -367,7 +343,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
             style: TextStyle(
               fontSize: 13.sp,
               fontWeight: FontWeight.w500,
-              color: isDark ? Colors.white : Colors.black,
+              color: Colors.white,
             ),
           ),
         ],
@@ -375,13 +351,13 @@ class _SavedPageState extends ConsumerState<SavedPage>
     );
   }
 
-  Widget _buildSavingsList(AsyncValue<List<SavedSavings>> savingsAsync, bool isDark) {
+  Widget _buildSavingsList(AsyncValue<List<SavedSavings>> savingsAsync) {
     return savingsAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, _) => Center(
+      error: (error, _) => const Center(
         child: Text(
-          'Error: $error',
-          style: TextStyle(color: isDark ? Colors.white60 : Colors.black45),
+          'Error loading savings',
+          style: TextStyle(color: Colors.white60),
         ),
       ),
       data: (savings) {
@@ -390,7 +366,6 @@ class _SavedPageState extends ConsumerState<SavedPage>
             icon: CupertinoIcons.money_dollar_circle_fill,
             title: 'Chưa có khoản tiết kiệm nào',
             subtitle: 'Tính toán và lưu khoản tiết kiệm để xem lại sau',
-            isDark: isDark,
           );
         }
 
@@ -400,14 +375,14 @@ class _SavedPageState extends ConsumerState<SavedPage>
           separatorBuilder: (_, __) => SizedBox(height: 12.h),
           itemBuilder: (context, index) {
             final item = savings[index];
-            return _buildSavingsCard(item, isDark);
+            return _buildSavingsCard(item);
           },
         );
       },
     );
   }
 
-  Widget _buildSavingsCard(SavedSavings savings, bool isDark) {
+  Widget _buildSavingsCard(SavedSavings savings) {
     final typeLabel = savings.type == SavingsType.withReinvestment
         ? 'Lãi nhập gốc'
         : 'Lãi rút về';
@@ -464,7 +439,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
                           style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w600,
-                            color: isDark ? Colors.white : Colors.black,
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(height: 2.h),
@@ -472,7 +447,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
                           '$typeLabel • $dateStr',
                           style: TextStyle(
                             fontSize: 12.sp,
-                            color: isDark ? Colors.white60 : Colors.black45,
+                            color: Colors.white60,
                           ),
                         ),
                       ],
@@ -486,17 +461,14 @@ class _SavedPageState extends ConsumerState<SavedPage>
                   _buildLoanStat(
                     'Gửi ban đầu',
                     CurrencyFormatter.formatShort(savings.initialDeposit),
-                    isDark,
                   ),
                   _buildLoanStat(
                     'Gửi thêm/tháng',
                     CurrencyFormatter.formatShort(savings.monthlyDeposit),
-                    isDark,
                   ),
                   _buildLoanStat(
                     'Kỳ hạn',
                     '${savings.termMonths} tháng',
-                    isDark,
                   ),
                 ],
               ),
@@ -517,7 +489,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
                           'Số tiền cuối kỳ',
                           style: TextStyle(
                             fontSize: 11.sp,
-                            color: isDark ? Colors.white60 : Colors.black45,
+                            color: Colors.white60,
                           ),
                         ),
                         Text(
@@ -537,7 +509,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
                           'Tiền lãi',
                           style: TextStyle(
                             fontSize: 11.sp,
-                            color: isDark ? Colors.white60 : Colors.black45,
+                            color: Colors.white60,
                           ),
                         ),
                         Text(
@@ -564,7 +536,6 @@ class _SavedPageState extends ConsumerState<SavedPage>
     required IconData icon,
     required String title,
     required String subtitle,
-    required bool isDark,
   }) {
     return Center(
       child: Column(
@@ -573,18 +544,14 @@ class _SavedPageState extends ConsumerState<SavedPage>
           Icon(
             icon,
             size: 64.sp,
-            color: isDark
-                ? Colors.white.withValues(alpha: 0.3)
-                : AppColors.lightTextSecondary.withValues(alpha: 0.5),
+            color: Colors.white.withValues(alpha: 0.3),
           ),
           SizedBox(height: 16.h),
           Text(
             title,
             style: TextStyle(
               fontSize: 16.sp,
-              color: isDark
-                  ? Colors.white.withValues(alpha: 0.6)
-                  : AppColors.lightTextSecondary,
+              color: Colors.white.withValues(alpha: 0.6),
             ),
           ),
           SizedBox(height: 8.h),
@@ -592,9 +559,7 @@ class _SavedPageState extends ConsumerState<SavedPage>
             subtitle,
             style: TextStyle(
               fontSize: 14.sp,
-              color: isDark
-                  ? Colors.white.withValues(alpha: 0.4)
-                  : AppColors.lightTextSecondary.withValues(alpha: 0.7),
+              color: Colors.white.withValues(alpha: 0.4),
             ),
           ),
         ],

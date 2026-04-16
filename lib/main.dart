@@ -38,106 +38,30 @@ class MoneyMateApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return GlassTheme(
-          data: _buildGlassTheme(),
-          child: MaterialApp.router(
-            title: 'MoneyMate',
-            debugShowCheckedModeBanner: false,
-            theme: _buildLightTheme(),
-            darkTheme: _buildDarkTheme(),
-            themeMode: ThemeMode.system,
-            routerConfig: appRouter,
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [
-              Locale('vi', 'VN'),
-              Locale('en', 'US'),
-            ],
+        // Use dark theme like the example project for best liquid glass effect
+        return MaterialApp.router(
+          title: 'MoneyMate',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            brightness: Brightness.dark,
+            useMaterial3: true,
+            colorScheme: ColorScheme.dark(
+              primary: AppColors.primary,
+              surface: Colors.black,
+            ),
           ),
+          routerConfig: appRouter,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('vi', 'VN'),
+            Locale('en', 'US'),
+          ],
         );
       },
-    );
-  }
-
-  ThemeData _buildLightTheme() {
-    return ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.light,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.primary,
-        brightness: Brightness.light,
-      ),
-      scaffoldBackgroundColor: AppColors.lightBackground,
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-      ),
-    );
-  }
-
-  ThemeData _buildDarkTheme() {
-    return ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.dark,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: AppColors.primary,
-        brightness: Brightness.dark,
-      ),
-      scaffoldBackgroundColor: AppColors.darkBackground,
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-      ),
-    );
-  }
-
-  GlassThemeData _buildGlassTheme() {
-    return const GlassThemeData(
-      light: GlassThemeVariant(
-        settings: LiquidGlassSettings(
-          thickness: 30.0,
-          blur: 3.0,
-          glassColor: AppColors.glassLight,
-          chromaticAberration: 0.5,
-          refractiveIndex: 1.65,
-          lightIntensity: 1.2,
-          ambientStrength: 0.6,
-          saturation: 1.2,
-        ),
-        quality: GlassQuality.standard,
-        glowColors: GlassGlowColors(
-          primary: AppColors.primary,
-          secondary: Color(0xFF5856D6),
-          success: AppColors.success,
-          warning: AppColors.warning,
-          danger: AppColors.danger,
-          info: AppColors.info,
-        ),
-      ),
-      dark: GlassThemeVariant(
-        settings: LiquidGlassSettings(
-          thickness: 40.0,
-          blur: 5.0,
-          glassColor: AppColors.glassDark,
-          lightIntensity: 1.5,
-          refractiveIndex: 1.2,
-          saturation: 1.1,
-        ),
-        quality: GlassQuality.standard,
-        glowColors: GlassGlowColors(
-          primary: AppColors.primary,
-          secondary: Color(0xFF5856D6),
-          success: AppColors.success,
-          warning: AppColors.warning,
-          danger: AppColors.danger,
-          info: AppColors.info,
-        ),
-      ),
     );
   }
 }
