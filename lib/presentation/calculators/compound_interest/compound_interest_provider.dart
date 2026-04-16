@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:money_mate/core/constants/app_constants.dart';
-import 'package:money_mate/core/services/financial_calculator.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
+import 'package:money/core/constants/app_constants.dart';
+import 'package:money/core/services/financial_calculator.dart';
+import 'package:money/domain/entities/calculation_results.dart';
 
 /// Compound Interest calculator input state
 class CompoundInterestInputState extends Equatable {
@@ -145,7 +145,6 @@ final compoundInterestCalculatorProvider = NotifierProvider<
 );
 
 /// Convenience providers
-final compoundInterestResultProvider =
-    Provider<CompoundInterestResult?>((ref) {
+final compoundInterestResultProvider = Provider<CompoundInterestResult?>((ref) {
   return ref.watch(compoundInterestCalculatorProvider).result;
 });

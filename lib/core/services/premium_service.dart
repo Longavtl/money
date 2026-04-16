@@ -167,6 +167,17 @@ class PremiumService {
     await _iap.restorePurchases();
   }
 
+  /// Fake purchase for testing
+  Future<void> fakePurchase() async {
+    await _deliverPremium();
+  }
+
+  /// Clear premium for testing
+  Future<void> clearPremium() async {
+    await _prefs.remove(_premiumKey);
+    await _prefs.remove(_purchaseDateKey);
+  }
+
   /// Check feature access
   bool canSaveLoan(int currentCount) {
     return isPremium || currentCount < PremiumLimits.maxSavedLoans;

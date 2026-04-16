@@ -2,9 +2,9 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
 
 /// A line chart widget for displaying growth data over time
 class GlassLineChart extends StatelessWidget {
@@ -128,9 +128,8 @@ class GlassLineChart extends StatelessWidget {
     if (showBalance) {
       lines.add(
         LineChartBarData(
-          spots: data
-              .map((d) => FlSpot(d.month.toDouble(), d.balance))
-              .toList(),
+          spots:
+              data.map((d) => FlSpot(d.month.toDouble(), d.balance)).toList(),
           isCurved: true,
           curveSmoothness: 0.3,
           color: AppColors.primary,
@@ -148,9 +147,8 @@ class GlassLineChart extends StatelessWidget {
     if (showPrincipal) {
       lines.add(
         LineChartBarData(
-          spots: data
-              .map((d) => FlSpot(d.month.toDouble(), d.principal))
-              .toList(),
+          spots:
+              data.map((d) => FlSpot(d.month.toDouble(), d.principal)).toList(),
           isCurved: true,
           curveSmoothness: 0.3,
           color: AppColors.chartPrincipal,
@@ -165,9 +163,8 @@ class GlassLineChart extends StatelessWidget {
     if (showInterest) {
       lines.add(
         LineChartBarData(
-          spots: data
-              .map((d) => FlSpot(d.month.toDouble(), d.interest))
-              .toList(),
+          spots:
+              data.map((d) => FlSpot(d.month.toDouble(), d.interest)).toList(),
           isCurved: true,
           curveSmoothness: 0.3,
           color: AppColors.chartInterest,

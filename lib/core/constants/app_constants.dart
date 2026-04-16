@@ -3,7 +3,7 @@ class AppConstants {
   AppConstants._();
 
   // App info
-  static const String appName = 'MoneyMate';
+  static const String appName = 'Money Nest';
   static const String appTagline = 'Calculate Your Future';
 
   // Premium

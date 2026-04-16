@@ -3,219 +3,380 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/routes/app_routes.dart';
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
-import 'package:money_mate/presentation/premium/widgets/premium_gate.dart';
+import 'package:money/core/routes/app_routes.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
 
-/// Home page with calculator type selection
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final premiumStatus = ref.watch(premiumStatusProvider);
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
-    // AppShell provides LiquidGlassScope.stack and GlassBottomBar
-    // HomePage only needs to provide content with AdaptiveLiquidGlassLayer
-    return AdaptiveLiquidGlassLayer(
-      settings: RecommendedGlassSettings.standard,
-      quality: GlassQuality.standard,
-      child: CustomScrollView(
-        slivers: [
-          // Header
-          SliverToBoxAdapter(
-            child: SafeArea(
-              bottom: false,
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 20),
-                    Text(
-                      'MoneyMate',
-                      style: TextStyle(
-                        fontSize: 36.sp,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Tính toán tương lai của bạn',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        color: Colors.white.withValues(alpha: 0.7),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+    return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 16.h),
 
-          // Welcome card
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: GlassCard(
-                padding: const EdgeInsets.all(24),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          CupertinoIcons.sparkles,
-                          color: Colors.white,
-                          size: 32.sp,
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Xin chào!',
-                                style: TextStyle(
-                                  fontSize: 22.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                'Chọn một công cụ tính toán bên dưới',
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  color: Colors.white.withValues(alpha: 0.7),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 24),
-          ),
-
-          // Calculator cards
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: 0.95,
-              ),
-              delegate: SliverChildListDelegate([
-                _CalculatorCard(
-                  title: 'Lãi đơn',
-                  subtitle: 'Simple Interest',
-                  icon: CupertinoIcons.percent,
-                  color: AppColors.primary,
-                  onTap: () => context.push(AppRoutes.simpleInterest),
-                ),
-                _CalculatorCard(
-                  title: 'Lãi kép',
-                  subtitle: 'Compound Interest',
-                  icon: CupertinoIcons.chart_bar_alt_fill,
-                  color: AppColors.success,
-                  onTap: () => context.push(AppRoutes.compoundInterest),
-                ),
-                _CalculatorCard(
-                  title: 'Vay ngân hàng',
-                  subtitle: 'Loan Calculator',
-                  icon: CupertinoIcons.building_2_fill,
-                  color: AppColors.warning,
-                  onTap: () => context.push(AppRoutes.loan),
-                ),
-                _CalculatorCard(
-                  title: 'Gửi tiết kiệm',
-                  subtitle: 'Savings Calculator',
-                  icon: CupertinoIcons.money_dollar_circle_fill,
-                  color: AppColors.info,
-                  onTap: () => context.push(AppRoutes.savings),
-                ),
-              ]),
-            ),
-          ),
-
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 16),
-          ),
-
-          // Compare feature card (Premium)
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: _CompareCard(
+              // Premium Banner
+              _PremiumBanner(
                 isPremium: premiumStatus.isPremium,
-                onTap: () => context.push(AppRoutes.comparison),
+                onTap: () => context.push(AppRoutes.premium),
+              ),
+
+              SizedBox(height: 24.h),
+
+              // Main Tools Section
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Main Tools',
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                      fontWeight: FontWeight.bold,
+                      color: textPrimary,
+                    ),
+                  ),
+                  Text(
+                    '4 CATEGORIES',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w500,
+                      color: textSecondary,
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 16.h),
+
+              // Calculator Cards Grid
+              Row(
+                children: [
+                  Expanded(
+                    child: _ToolCard(
+                      title: 'Loan Calc',
+                      subtitle: 'Monthly payments',
+                      icon: CupertinoIcons.square_grid_2x2_fill,
+                      iconColor: AppColors.warning,
+                      onTap: () => context.push(AppRoutes.loan),
+                    ),
+                  ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: _ToolCard(
+                      title: 'Interest',
+                      subtitle: 'Simple & compound',
+                      icon: CupertinoIcons.graph_square,
+                      iconColor: textPrimary,
+                      onTap: () => context.push(AppRoutes.compoundInterest),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 12.h),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: _ToolCard(
+                      title: 'Vault',
+                      subtitle: 'Plan your future',
+                      icon: CupertinoIcons.square_on_square,
+                      iconColor: AppColors.warning,
+                      onTap: () => context.push(AppRoutes.savings),
+                    ),
+                  ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: _ToolCard(
+                      title: 'History',
+                      subtitle: 'Past calculations',
+                      icon: CupertinoIcons.clock,
+                      iconColor: textPrimary,
+                      onTap: () {},  // History page handled by bottom nav
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 24.h),
+
+              // Current Rates Section
+              _CurrentRatesCard(),
+
+              SizedBox(height: 100.h),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _PremiumBanner extends StatelessWidget {
+  final bool isPremium;
+  final VoidCallback onTap;
+
+  const _PremiumBanner({
+    required this.isPremium,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (isPremium) return const SizedBox.shrink();
+
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(20.w),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF5B9EF4),
+              Color(0xFF3D7DD8),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(20.r),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+              decoration: BoxDecoration(
+                color: AppColors.warning,
+                borderRadius: BorderRadius.circular(6.r),
+              ),
+              child: Text(
+                'PRO ACCESS',
+                style: TextStyle(
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 16),
-          ),
-
-          // Quick tips card
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: GlassCard(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          CupertinoIcons.lightbulb_fill,
-                          color: AppColors.warning,
-                          size: 24.sp,
+            SizedBox(height: 12.h),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Upgrade to Premium',
+                        style: TextStyle(
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
-                        const SizedBox(width: 12),
-                        Text(
-                          'Mẹo nhanh',
-                          style: TextStyle(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Kéo slider để điều chỉnh số tiền và lãi suất. Kết quả sẽ được tính toán ngay lập tức!',
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        color: Colors.white.withValues(alpha: 0.7),
-                        height: 1.5,
                       ),
+                      SizedBox(height: 4.h),
+                      Text(
+                        'Unlock advanced charts\nand ad-free experience.',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: Colors.white.withOpacity(0.85),
+                          height: 1.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 48.w,
+                  height: 48.w,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: Icon(
+                    CupertinoIcons.rosette,
+                    color: Colors.white,
+                    size: 28.sp,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ToolCard extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final Color iconColor;
+  final VoidCallback onTap;
+
+  const _ToolCard({
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.iconColor,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final cardColor = isDark ? AppColors.darkSurface : AppColors.lightSurface;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: cardColor,
+          borderRadius: BorderRadius.circular(16.r),
+          boxShadow: isDark
+              ? null
+              : [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.04),
+                    blurRadius: 10,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 44.w,
+              height: 44.w,
+              decoration: BoxDecoration(
+                color: iconColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: Icon(
+                icon,
+                color: iconColor,
+                size: 22.sp,
+              ),
+            ),
+            SizedBox(height: 16.h),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                color: textPrimary,
+              ),
+            ),
+            SizedBox(height: 2.h),
+            Text(
+              subtitle,
+              style: TextStyle(
+                fontSize: 12.sp,
+                color: textSecondary,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _CurrentRatesCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final cardColor = isDark ? const Color(0xFF1A2A3A) : const Color(0xFFE8F4FC);
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final chartBgColor = isDark ? Colors.white.withOpacity(0.1) : Colors.white.withOpacity(0.5);
+
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(20.w),
+      decoration: BoxDecoration(
+        color: cardColor,
+        borderRadius: BorderRadius.circular(20.r),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'MARKET PULSE',
+            style: TextStyle(
+              fontSize: 11.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColors.primary,
+              letterSpacing: 1,
+            ),
+          ),
+          SizedBox(height: 8.h),
+          Text(
+            'Current Rates',
+            style: TextStyle(
+              fontSize: 24.sp,
+              fontWeight: FontWeight.bold,
+              color: textPrimary,
+            ),
+          ),
+          SizedBox(height: 16.h),
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  children: [
+                    _RateItem(
+                      label: 'Home Loan',
+                      rate: '3.25%',
+                      color: AppColors.primary,
+                    ),
+                    SizedBox(height: 12.h),
+                    _RateItem(
+                      label: 'Savings APY',
+                      rate: '4.10%',
+                      color: AppColors.warning,
                     ),
                   ],
                 ),
               ),
-            ),
-          ),
-
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 120),
+              SizedBox(width: 20.w),
+              Container(
+                width: 100.w,
+                height: 80.h,
+                decoration: BoxDecoration(
+                  color: chartBgColor,
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12.r),
+                  child: CustomPaint(
+                    painter: _ChartPainter(),
+                    size: Size(100.w, 80.h),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -223,142 +384,76 @@ class HomePage extends ConsumerWidget {
   }
 }
 
-class _CalculatorCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final IconData icon;
+class _RateItem extends StatelessWidget {
+  final String label;
+  final String rate;
   final Color color;
-  final VoidCallback onTap;
 
-  const _CalculatorCard({
-    required this.title,
-    required this.subtitle,
-    required this.icon,
+  const _RateItem({
+    required this.label,
+    required this.rate,
     required this.color,
-    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      behavior: HitTestBehavior.opaque,
-      child: GlassCard(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 48,
-              height: 48,
-              decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.4),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Icon(
-                icon,
-                color: color,
-                size: 24,
-              ),
-            ),
-            const Spacer(),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              subtitle,
-              style: TextStyle(
-                fontSize: 13,
-                color: Colors.white.withValues(alpha: 0.7),
-              ),
-            ),
-          ],
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+
+    return Row(
+      children: [
+        Container(
+          width: 10.w,
+          height: 10.w,
+          decoration: BoxDecoration(
+            color: color,
+            shape: BoxShape.circle,
+          ),
         ),
-      ),
+        SizedBox(width: 10.w),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14.sp,
+            color: textSecondary,
+          ),
+        ),
+        const Spacer(),
+        Text(
+          rate,
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
+            color: textPrimary,
+          ),
+        ),
+      ],
     );
   }
 }
 
-class _CompareCard extends StatelessWidget {
-  final bool isPremium;
-  final VoidCallback onTap;
+class _ChartPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = AppColors.lightTextSecondary.withOpacity(0.3)
+      ..strokeWidth = 1
+      ..style = PaintingStyle.stroke;
 
-  const _CompareCard({
-    required this.isPremium,
-    required this.onTap,
-  });
+    // Draw simple bar chart lines
+    for (int i = 0; i < 8; i++) {
+      final x = (size.width / 8) * i + 8;
+      final height = 20 + (i % 3) * 15 + (i * 5).toDouble();
+      canvas.drawLine(
+        Offset(x, size.height - 10),
+        Offset(x, size.height - 10 - height.clamp(0, size.height - 20)),
+        paint..strokeWidth = 6,
+      );
+    }
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: GlassCard(
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          children: [
-            Container(
-              width: 56,
-              height: 56,
-              decoration: BoxDecoration(
-                color: AppColors.warning.withValues(alpha: 0.4),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: const Icon(
-                CupertinoIcons.arrow_right_arrow_left,
-                color: AppColors.warning,
-                size: 24,
-              ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Flexible(
-                        child: Text(
-                          'So sánh kịch bản',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                      if (!isPremium) ...[
-                        const SizedBox(width: 8),
-                        const PremiumBadge(size: 14),
-                      ],
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'So sánh nhiều phương án vay song song',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white.withValues(alpha: 0.7),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Icon(
-              CupertinoIcons.chevron_right,
-              color: Colors.white.withValues(alpha: 0.4),
-              size: 20,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

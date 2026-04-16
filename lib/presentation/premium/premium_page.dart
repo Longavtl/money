@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/services/premium_service.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
+import 'package:money/common/widgets/app_card.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/services/premium_service.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
 
 /// Premium upgrade page
 class PremiumPage extends ConsumerWidget {
@@ -21,6 +21,7 @@ class PremiumPage extends ConsumerWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
+      backgroundColor: AppColors.lightBackground,
       body: Stack(
         children: [
           // Gradient background
@@ -36,9 +37,9 @@ class PremiumPage extends ConsumerWidget {
                         Colors.black,
                       ]
                     : [
-                        Colors.white,
+                        AppColors.lightBackground,
                         AppColors.warning.withValues(alpha: 0.15),
-                        Colors.white,
+                        AppColors.lightBackground,
                       ],
               ),
             ),
@@ -49,17 +50,17 @@ class PremiumPage extends ConsumerWidget {
               children: [
                 // App Bar
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                   child: Row(
                     children: [
-                      GlassButton(
+                      IconButton(
                         icon: Icon(
                           CupertinoIcons.back,
                           size: 20.sp,
+                          color: isDark ? Colors.white : AppColors.lightTextPrimary,
                         ),
-                        onTap: () => context.pop(),
-                        width: 44.w,
-                        height: 44.w,
+                        onPressed: () => context.pop(),
                       ),
                       const Spacer(),
                     ],
@@ -160,9 +161,25 @@ class PremiumPage extends ConsumerWidget {
                         ],
 
                         // Premium info for premium users
-                        if (status.isPremium && status.purchaseDate != null) ...[
+                        if (status.isPremium &&
+                            status.purchaseDate != null) ...[
                           SizedBox(height: 24.h),
                           _buildPremiumInfo(status, isDark),
+                        ],
+
+                        // Test mode: reset button
+                        if (kTestPremiumMode && status.isPremium) ...[
+                          SizedBox(height: 16.h),
+                          TextButton(
+                            onPressed: () => notifier.clearPremium(),
+                            child: Text(
+                              '[TEST] Reset Premium',
+                              style: TextStyle(
+                                fontSize: 13.sp,
+                                color: AppColors.danger,
+                              ),
+                            ),
+                          ),
                         ],
 
                         SizedBox(height: 40.h),
@@ -237,7 +254,7 @@ class PremiumPage extends ConsumerWidget {
       ),
     ];
 
-    return GlassCard(
+    return AppCard(
       child: Padding(
         padding: EdgeInsets.all(20.w),
         child: Column(
@@ -248,7 +265,7 @@ class PremiumPage extends ConsumerWidget {
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
-                color: isDark ? Colors.white : Colors.black,
+                color: isDark ? Colors.white : AppColors.lightTextPrimary,
               ),
             ),
             SizedBox(height: 16.h),
@@ -286,7 +303,7 @@ class PremiumPage extends ConsumerWidget {
                   style: TextStyle(
                     fontSize: 15.sp,
                     fontWeight: FontWeight.w600,
-                    color: isDark ? Colors.white : Colors.black,
+                    color: isDark ? Colors.white : AppColors.lightTextPrimary,
                   ),
                 ),
                 SizedBox(height: 2.h),
@@ -294,7 +311,7 @@ class PremiumPage extends ConsumerWidget {
                   feature.description,
                   style: TextStyle(
                     fontSize: 13.sp,
-                    color: isDark ? Colors.white60 : Colors.black54,
+                    color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
                   ),
                 ),
               ],
@@ -311,7 +328,7 @@ class PremiumPage extends ConsumerWidget {
   }
 
   Widget _buildPriceCard(PremiumService service, bool isDark) {
-    return GlassCard(
+    return AppCard(
       child: Padding(
         padding: EdgeInsets.all(20.w),
         child: Column(
@@ -337,7 +354,7 @@ class PremiumPage extends ConsumerWidget {
               style: TextStyle(
                 fontSize: 36.sp,
                 fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : Colors.black,
+                color: isDark ? Colors.white : AppColors.lightTextPrimary,
               ),
             ),
             SizedBox(height: 4.h),
@@ -345,7 +362,7 @@ class PremiumPage extends ConsumerWidget {
               'Thanh toán một lần, sử dụng mãi mãi',
               style: TextStyle(
                 fontSize: 14.sp,
-                color: isDark ? Colors.white60 : Colors.black54,
+                color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
               ),
             ),
           ],
@@ -436,7 +453,7 @@ class PremiumPage extends ConsumerWidget {
         ? '${status.purchaseDate!.day}/${status.purchaseDate!.month}/${status.purchaseDate!.year}'
         : '';
 
-    return GlassCard(
+    return AppCard(
       child: Padding(
         padding: EdgeInsets.all(20.w),
         child: Column(
@@ -452,7 +469,7 @@ class PremiumPage extends ConsumerWidget {
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
-                color: isDark ? Colors.white : Colors.black,
+                color: isDark ? Colors.white : AppColors.lightTextPrimary,
               ),
             ),
             SizedBox(height: 8.h),
@@ -460,7 +477,7 @@ class PremiumPage extends ConsumerWidget {
               'Ngày mua: $dateStr',
               style: TextStyle(
                 fontSize: 14.sp,
-                color: isDark ? Colors.white60 : Colors.black54,
+                color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
               ),
             ),
           ],

@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/constants/app_constants.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/glass_slider_input.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/result_card.dart';
-import 'package:money_mate/presentation/calculators/compound_interest/compound_interest_provider.dart';
+import 'package:money/common/widgets/app_card.dart';
+import 'package:money/common/widgets/app_slider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/app_constants.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/presentation/calculators/compound_interest/compound_interest_provider.dart';
 
 /// Compound Interest Calculator Page with real-time calculations
 class CompoundInterestPage extends ConsumerWidget {
@@ -23,62 +21,47 @@ class CompoundInterestPage extends ConsumerWidget {
     final state = ref.watch(compoundInterestCalculatorProvider);
     final notifier = ref.read(compoundInterestCalculatorProvider.notifier);
 
-    return LiquidGlassScope.stack(
-      background: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/wallpaper2.jpeg'),
-            fit: BoxFit.cover,
+    return Scaffold(
+      backgroundColor: AppColors.lightBackground,
+      appBar: AppBar(
+        backgroundColor: AppColors.lightBackground,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(CupertinoIcons.back),
+          onPressed: () => context.pop(),
+        ),
+        title: Text(
+          'Lãi kép',
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w600,
+            color: AppColors.lightTextPrimary,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(CupertinoIcons.arrow_counterclockwise),
+            onPressed: () => notifier.reset(),
+          ),
+        ],
       ),
-      content: Positioned.fill(
-        child: AdaptiveLiquidGlassLayer(
-          settings: RecommendedGlassSettings.standard,
-          quality: GlassQuality.standard,
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            extendBodyBehindAppBar: true,
-            appBar: GlassAppBar(
-              leading: GlassIconButton(
-                icon: const Icon(CupertinoIcons.back),
-                onPressed: () => context.pop(),
-              ),
-              title: Text(
-                'Lãi kép',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-              actions: [
-                GlassIconButton(
-                  icon: const Icon(CupertinoIcons.arrow_counterclockwise),
-                  onPressed: () => notifier.reset(),
-                ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            children: [
+              // Input card
+              _buildInputCard(context, state, notifier),
+
+              SizedBox(height: 16.h),
+
+              // Results
+              if (state.hasResult) ...[
+                _buildResultsCard(context, state.result!),
+                SizedBox(height: 16.h),
+                _buildComparisonCard(context, state),
               ],
-            ),
-            body: SafeArea(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.all(16.w),
-                child: Column(
-                  children: [
-                    // Input card
-                    _buildInputCard(context, state, notifier),
-
-                    SizedBox(height: 16.h),
-
-                    // Results
-                    if (state.hasResult) ...[
-                      _buildResultsCard(context, state.result!),
-                      SizedBox(height: 16.h),
-                      _buildComparisonCard(context, state),
-                    ],
-                  ],
-                ),
-              ),
-            ),
+            ],
           ),
         ),
       ),
@@ -90,7 +73,7 @@ class CompoundInterestPage extends ConsumerWidget {
     CompoundInterestCalculatorState state,
     CompoundInterestCalculatorNotifier notifier,
   ) {
-    return GlassCard(
+    return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,11 +83,11 @@ class CompoundInterestPage extends ConsumerWidget {
             'Chu kỳ ghép lãi',
             style: TextStyle(
               fontSize: 14.sp,
-              color: Colors.white.withValues(alpha: 0.7),
+              color: AppColors.lightTextSecondary,
             ),
           ),
           SizedBox(height: 8.h),
-          GlassSegmentedControl(
+          AppSegmentedControl(
             segments: const ['Ngày', 'Tháng', 'Quý', 'Năm'],
             selectedIndex: _frequencyToIndex(state.inputs.frequency),
             onSegmentSelected: (index) =>
@@ -114,7 +97,7 @@ class CompoundInterestPage extends ConsumerWidget {
           SizedBox(height: 20.h),
 
           // Principal slider
-          GlassSliderInput(
+          AppSliderInput(
             label: 'Số tiền gốc',
             value: state.inputs.principal,
             min: AppConstants.minPrincipal,
@@ -128,7 +111,7 @@ class CompoundInterestPage extends ConsumerWidget {
           SizedBox(height: 8.h),
 
           // Rate slider
-          GlassSliderInput(
+          AppSliderInput(
             label: 'Lãi suất năm',
             value: state.inputs.annualRate,
             min: AppConstants.minRate,
@@ -142,7 +125,7 @@ class CompoundInterestPage extends ConsumerWidget {
           SizedBox(height: 8.h),
 
           // Term slider
-          GlassSliderInput(
+          AppSliderInput(
             label: 'Thời hạn',
             value: state.inputs.termMonths.toDouble(),
             min: AppConstants.minTermMonths.toDouble(),
@@ -191,29 +174,62 @@ class CompoundInterestPage extends ConsumerWidget {
     BuildContext context,
     CompoundInterestResult result,
   ) {
-    return ResultCard(
-      title: 'Kết quả tính toán',
-      items: [
-        ResultItem(
-          label: 'Tổng tiền nhận',
-          value: CurrencyFormatter.format(result.totalAmount),
-          isHighlighted: true,
-          valueColor: AppColors.success,
-        ),
-        ResultItem(
-          label: 'Tiền lãi',
-          value: CurrencyFormatter.format(result.interest),
-          color: AppColors.chartInterest,
-        ),
-        ResultItem(
-          label: 'Lãi suất thực/năm',
-          value: '${result.effectiveAnnualRate.toStringAsFixed(2)}%',
-        ),
-        ResultItem(
-          label: 'Số lần ghép lãi',
-          value: '${(result.frequency.periodsPerYear * result.termMonths / 12).round()}',
-        ),
-      ],
+    return AppCard(
+      padding: EdgeInsets.all(16.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Kết quả tính toán',
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColors.lightTextPrimary,
+            ),
+          ),
+          SizedBox(height: 16.h),
+          _buildResultRow('Tổng tiền nhận', CurrencyFormatter.format(result.totalAmount), AppColors.success, true),
+          SizedBox(height: 12.h),
+          _buildResultRow('Tiền lãi', CurrencyFormatter.format(result.interest), AppColors.chartInterest, false),
+          SizedBox(height: 12.h),
+          _buildResultRow('Lãi suất thực/năm', '${result.effectiveAnnualRate.toStringAsFixed(2)}%', null, false),
+          SizedBox(height: 12.h),
+          _buildResultRow('Số lần ghép lãi', '${(result.frequency.periodsPerYear * result.termMonths / 12).round()}', null, false),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildResultRow(String label, String value, Color? valueColor, bool isHighlighted) {
+    return Container(
+      padding: EdgeInsets.all(12.w),
+      decoration: BoxDecoration(
+        color: isHighlighted
+            ? (valueColor ?? AppColors.success).withOpacity(0.1)
+            : AppColors.lightBackground,
+        borderRadius: BorderRadius.circular(10.r),
+        border: isHighlighted ? Border.all(color: (valueColor ?? AppColors.success).withOpacity(0.3)) : null,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 13.sp,
+              color: AppColors.lightTextSecondary,
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w600,
+              color: valueColor ?? AppColors.lightTextPrimary,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -229,7 +245,7 @@ class CompoundInterestPage extends ConsumerWidget {
     final compoundTotal = state.result?.totalAmount ?? 0;
     final difference = compoundTotal - simpleTotal;
 
-    return GlassCard(
+    return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -239,7 +255,7 @@ class CompoundInterestPage extends ConsumerWidget {
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
-              color: Colors.white,
+              color: AppColors.lightTextPrimary,
             ),
           ),
           SizedBox(height: 16.h),
@@ -310,7 +326,7 @@ class CompoundInterestPage extends ConsumerWidget {
               label,
               style: TextStyle(
                 fontSize: 14.sp,
-                color: Colors.white.withValues(alpha: 0.7),
+                color: AppColors.lightTextSecondary,
               ),
             ),
           ],
@@ -320,7 +336,7 @@ class CompoundInterestPage extends ConsumerWidget {
           style: TextStyle(
             fontSize: 15.sp,
             fontWeight: FontWeight.w600,
-            color: Colors.white,
+            color: AppColors.lightTextPrimary,
           ),
         ),
       ],

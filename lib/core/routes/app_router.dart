@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:money_mate/core/routes/app_routes.dart';
-import 'package:money_mate/presentation/calculators/simple_interest/simple_interest_page.dart';
-import 'package:money_mate/presentation/calculators/compound_interest/compound_interest_page.dart';
-import 'package:money_mate/presentation/calculators/loan/loan_calculator_page.dart';
-import 'package:money_mate/presentation/calculators/savings/savings_calculator_page.dart';
-import 'package:money_mate/presentation/premium/premium_page.dart';
-import 'package:money_mate/presentation/comparison/comparison_page.dart';
-import 'package:money_mate/presentation/app/pages/app_shell.dart';
+import 'package:money/core/routes/app_routes.dart';
+import 'package:money/presentation/calculators/simple_interest/simple_interest_page.dart';
+import 'package:money/presentation/calculators/compound_interest/compound_interest_page.dart';
+import 'package:money/presentation/calculators/loan/loan_calculator_page.dart';
+import 'package:money/presentation/calculators/savings/savings_calculator_page.dart';
+import 'package:money/presentation/premium/premium_page.dart';
+import 'package:money/presentation/comparison/comparison_page.dart';
+import 'package:money/presentation/app/pages/app_shell.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 

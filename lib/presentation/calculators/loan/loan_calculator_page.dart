@@ -3,24 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/constants/app_constants.dart';
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/providers/dependency_providers.dart';
-import 'package:money_mate/core/services/pdf_export_service.dart';
-import 'package:money_mate/core/services/premium_service.dart';
-import 'package:money_mate/core/services/share_service.dart';
-import 'package:money_mate/core/storage/local_storage_service.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/glass_slider_input.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/result_card.dart';
-import 'package:money_mate/presentation/calculators/loan/loan_provider.dart';
-import 'package:money_mate/presentation/premium/premium_provider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/app_constants.dart';
+import 'package:money/core/providers/dependency_providers.dart';
+import 'package:money/core/services/pdf_export_service.dart';
+import 'package:money/core/services/premium_service.dart';
+import 'package:money/core/services/share_service.dart';
+import 'package:money/core/storage/local_storage_service.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/presentation/calculators/loan/loan_provider.dart';
+import 'package:money/presentation/premium/premium_provider.dart';
+import 'package:money/common/widgets/app_card.dart';
+import 'package:money/common/widgets/app_slider.dart';
 
-/// Loan Calculator Page with real-time calculations
 class LoanCalculatorPage extends ConsumerWidget {
   const LoanCalculatorPage({super.key});
 
@@ -30,108 +27,89 @@ class LoanCalculatorPage extends ConsumerWidget {
     final notifier = ref.read(loanCalculatorProvider.notifier);
     final premiumStatus = ref.watch(premiumStatusProvider);
     final storage = ref.watch(localStorageProvider);
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
-    return LiquidGlassScope.stack(
-      background: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/wallpaper2.jpeg'),
-            fit: BoxFit.cover,
+    return Scaffold(
+      backgroundColor: theme.scaffoldBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: theme.scaffoldBackgroundColor,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(CupertinoIcons.back, color: textPrimary),
+          onPressed: () => context.pop(),
+        ),
+        title: Text(
+          'Loan Calculator',
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w600,
+            color: textPrimary,
           ),
         ),
+        actions: [
+          if (state.hasResult)
+            IconButton(
+              icon: Icon(CupertinoIcons.bookmark, color: textSecondary),
+              onPressed: () => _showSaveDialog(context, ref, state.result!, premiumStatus, storage),
+            ),
+          IconButton(
+            icon: Icon(CupertinoIcons.arrow_counterclockwise, color: textSecondary),
+            onPressed: () => notifier.reset(),
+          ),
+        ],
       ),
-      content: Positioned.fill(
-        child: AdaptiveLiquidGlassLayer(
-          settings: RecommendedGlassSettings.standard,
-          quality: GlassQuality.standard,
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            extendBodyBehindAppBar: true,
-            appBar: GlassAppBar(
-              leading: GlassIconButton(
-                icon: const Icon(CupertinoIcons.back),
-                onPressed: () => context.pop(),
-              ),
-              title: Text(
-                'Vay ngân hàng',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-              actions: [
-                if (state.hasResult)
-                  GlassIconButton(
-                    icon: const Icon(CupertinoIcons.bookmark),
-                    onPressed: () => _showSaveDialog(
-                      context,
-                      ref,
-                      state.result!,
-                      premiumStatus,
-                      storage,
-                    ),
-                  ),
-                GlassIconButton(
-                  icon: const Icon(CupertinoIcons.arrow_counterclockwise),
-                  onPressed: () => notifier.reset(),
-                ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            children: [
+              _buildInputCard(context, state, notifier),
+              SizedBox(height: 16.h),
+              if (state.hasResult) ...[
+                _buildResultsCard(context, state.result!),
+                SizedBox(height: 16.h),
+                _buildPieChartCard(context, state.result!),
+                SizedBox(height: 16.h),
+                _buildActionButtons(context, state.result!, premiumStatus.isPremium),
               ],
-            ),
-            body: SafeArea(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.all(16.w),
-                child: Column(
-                  children: [
-                    _buildInputCard(context, state, notifier),
-                    SizedBox(height: 16.h),
-                    if (state.hasResult) ...[
-                      _buildResultsCard(context, state.result!),
-                      SizedBox(height: 16.h),
-                      _buildPieChartCard(context, state.result!),
-                      SizedBox(height: 16.h),
-                      _buildActionButtons(context, state.result!, premiumStatus.isPremium),
-                    ],
-                  ],
-                ),
-              ),
-            ),
+              SizedBox(height: 32.h),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget _buildInputCard(
-    BuildContext context,
-    LoanCalculatorState state,
-    LoanCalculatorNotifier notifier,
-  ) {
-    return GlassCard(
-      padding: EdgeInsets.all(16.w),
+  Widget _buildInputCard(BuildContext context, LoanCalculatorState state, LoanCalculatorNotifier notifier) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+
+    return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Phương thức trả nợ',
+            'Payment Method',
             style: TextStyle(
               fontSize: 14.sp,
-              color: Colors.white.withValues(alpha: 0.7),
+              color: textSecondary,
             ),
           ),
           SizedBox(height: 8.h),
-          GlassSegmentedControl(
-            segments: const ['Trả góp đều', 'Dư nợ giảm dần'],
+          AppSegmentedControl(
+            segments: const ['Fixed EMI', 'Reducing Balance'],
             selectedIndex: state.inputs.type == LoanType.fixedPayment ? 0 : 1,
             onSegmentSelected: (index) {
-              notifier.updateType(
-                index == 0 ? LoanType.fixedPayment : LoanType.reducingBalance,
-              );
+              notifier.updateType(index == 0 ? LoanType.fixedPayment : LoanType.reducingBalance);
             },
           ),
           SizedBox(height: 20.h),
-          GlassSliderInput(
-            label: 'Số tiền vay',
+          AppSliderInput(
+            label: 'Loan Amount',
             value: state.inputs.principal,
             min: AppConstants.minPrincipal,
             max: 10000000000,
@@ -140,9 +118,9 @@ class LoanCalculatorPage extends ConsumerWidget {
             valueFormatter: (v) => CurrencyFormatter.formatShort(v),
             onChanged: notifier.updatePrincipal,
           ),
-          SizedBox(height: 8.h),
-          GlassSliderInput(
-            label: 'Lãi suất năm',
+          SizedBox(height: 16.h),
+          AppSliderInput(
+            label: 'Interest Rate (Annual)',
             value: state.inputs.annualRate,
             min: AppConstants.minRate,
             max: AppConstants.maxRate,
@@ -151,9 +129,9 @@ class LoanCalculatorPage extends ConsumerWidget {
             valueFormatter: (v) => CurrencyFormatter.formatPercent(v),
             onChanged: notifier.updateRate,
           ),
-          SizedBox(height: 8.h),
-          GlassSliderInput(
-            label: 'Kỳ hạn vay',
+          SizedBox(height: 16.h),
+          AppSliderInput(
+            label: 'Loan Term',
             value: state.inputs.termMonths.toDouble(),
             min: AppConstants.minTermMonths.toDouble(),
             max: 360,
@@ -168,57 +146,70 @@ class LoanCalculatorPage extends ConsumerWidget {
   }
 
   Widget _buildResultsCard(BuildContext context, LoanResult result) {
-    final items = <ResultItem>[
-      ResultItem(
-        label: result.type == LoanType.fixedPayment ? 'Trả hàng tháng' : 'Trả tháng đầu',
-        value: CurrencyFormatter.format(result.monthlyPayment),
-        isHighlighted: true,
-        valueColor: AppColors.warning,
-      ),
-      ResultItem(
-        label: 'Tổng tiền lãi',
-        value: CurrencyFormatter.format(result.totalInterest),
-        color: AppColors.chartInterest,
-      ),
-      ResultItem(
-        label: 'Tổng thanh toán',
-        value: CurrencyFormatter.format(result.totalPayment),
-      ),
-      ResultItem(
-        label: 'Tỷ lệ lãi/gốc',
-        value: '${result.interestPercentage.toStringAsFixed(1)}%',
-      ),
-    ];
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
 
-    if (result.type == LoanType.reducingBalance) {
-      items.insert(
-        1,
-        ResultItem(
-          label: 'Trả tháng cuối',
-          value: CurrencyFormatter.format(result.lastPayment),
-        ),
-      );
-    }
-
-    return ResultCard(title: 'Kết quả tính toán', items: items);
-  }
-
-  Widget _buildPieChartCard(BuildContext context, LoanResult result) {
-    final total = result.totalPayment;
-    final principalPercent = (result.principal / total * 100);
-    final interestPercent = (result.totalInterest / total * 100);
-
-    return GlassCard(
-      padding: EdgeInsets.all(16.w),
+    return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Cơ cấu thanh toán',
+            'Results',
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
-              color: Colors.white,
+              color: textPrimary,
+            ),
+          ),
+          SizedBox(height: 16.h),
+          _ResultRow(
+            label: result.type == LoanType.fixedPayment ? 'Monthly Payment' : 'First Month Payment',
+            value: CurrencyFormatter.format(result.monthlyPayment),
+            valueColor: AppColors.warning,
+            isHighlighted: true,
+          ),
+          if (result.type == LoanType.reducingBalance)
+            _ResultRow(
+              label: 'Last Month Payment',
+              value: CurrencyFormatter.format(result.lastPayment),
+            ),
+          _ResultRow(
+            label: 'Total Interest',
+            value: CurrencyFormatter.format(result.totalInterest),
+            valueColor: AppColors.chartInterest,
+          ),
+          _ResultRow(
+            label: 'Total Payment',
+            value: CurrencyFormatter.format(result.totalPayment),
+          ),
+          _ResultRow(
+            label: 'Interest/Principal Ratio',
+            value: '${result.interestPercentage.toStringAsFixed(1)}%',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPieChartCard(BuildContext context, LoanResult result) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final total = result.totalPayment;
+    final principalPercent = (result.principal / total * 100);
+    final interestPercent = (result.totalInterest / total * 100);
+
+    return AppCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Payment Structure',
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: textPrimary,
             ),
           ),
           SizedBox(height: 16.h),
@@ -231,6 +222,7 @@ class LoanCalculatorPage extends ConsumerWidget {
                   painter: _SimplePieChartPainter(
                     principalPercent: principalPercent,
                     interestPercent: interestPercent,
+                    isDark: isDark,
                   ),
                 ),
               ),
@@ -239,18 +231,18 @@ class LoanCalculatorPage extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildLegendItem(
-                      'Tiền gốc',
-                      CurrencyFormatter.formatShort(result.principal),
-                      '${principalPercent.toStringAsFixed(1)}%',
-                      AppColors.chartPrincipal,
+                    _LegendItem(
+                      label: 'Principal',
+                      value: CurrencyFormatter.formatShort(result.principal),
+                      percent: '${principalPercent.toStringAsFixed(1)}%',
+                      color: AppColors.chartPrincipal,
                     ),
                     SizedBox(height: 12.h),
-                    _buildLegendItem(
-                      'Tiền lãi',
-                      CurrencyFormatter.formatShort(result.totalInterest),
-                      '${interestPercent.toStringAsFixed(1)}%',
-                      AppColors.chartInterest,
+                    _LegendItem(
+                      label: 'Interest',
+                      value: CurrencyFormatter.formatShort(result.totalInterest),
+                      percent: '${interestPercent.toStringAsFixed(1)}%',
+                      color: AppColors.chartInterest,
                     ),
                   ],
                 ),
@@ -263,19 +255,23 @@ class LoanCalculatorPage extends ConsumerWidget {
   }
 
   Widget _buildActionButtons(BuildContext context, LoanResult result, bool isPremium) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+
     return Row(
       children: [
         Expanded(
           child: GestureDetector(
             onTap: () => ShareService.shareLoanResult(result),
-            child: GlassCard(
+            child: AppCard(
               padding: EdgeInsets.symmetric(vertical: 14.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(CupertinoIcons.share, size: 20.sp, color: Colors.white),
+                  Icon(CupertinoIcons.share, size: 20.sp, color: textPrimary),
                   SizedBox(width: 8.w),
-                  Text('Chia sẻ', style: TextStyle(fontSize: 14.sp, color: Colors.white)),
+                  Text('Share', style: TextStyle(fontSize: 14.sp, color: textPrimary)),
                 ],
               ),
             ),
@@ -291,18 +287,19 @@ class LoanCalculatorPage extends ConsumerWidget {
                 context.push('/premium');
               }
             },
-            child: GlassCard(
+            child: AppCard(
               padding: EdgeInsets.symmetric(vertical: 14.h),
+              color: isPremium ? null : AppColors.warning.withOpacity(0.1),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
                     CupertinoIcons.doc_text_fill,
                     size: 20.sp,
-                    color: isPremium ? Colors.white : AppColors.warning,
+                    color: isPremium ? textPrimary : AppColors.warning,
                   ),
                   SizedBox(width: 8.w),
-                  Text('Xuất PDF', style: TextStyle(fontSize: 14.sp, color: Colors.white)),
+                  Text('Export PDF', style: TextStyle(fontSize: 14.sp, color: isPremium ? textPrimary : AppColors.warning)),
                   if (!isPremium) ...[
                     SizedBox(width: 4.w),
                     Icon(CupertinoIcons.lock_fill, size: 14.sp, color: AppColors.warning),
@@ -310,44 +307,6 @@ class LoanCalculatorPage extends ConsumerWidget {
                 ],
               ),
             ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildLegendItem(String label, String value, String percent, Color color) {
-    return Row(
-      children: [
-        Container(
-          width: 14.w,
-          height: 14.w,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(4.r),
-          ),
-        ),
-        SizedBox(width: 10.w),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 13.sp,
-                  color: Colors.white.withValues(alpha: 0.7),
-                ),
-              ),
-              Text(
-                '$value ($percent)',
-                style: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-            ],
           ),
         ),
       ],
@@ -368,37 +327,29 @@ class LoanCalculatorPage extends ConsumerWidget {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-          backgroundColor: const Color(0xFF1a1a2e),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
           title: Row(
             children: [
               Icon(CupertinoIcons.lock_fill, color: AppColors.warning, size: 24.sp),
               SizedBox(width: 8.w),
-              Text(
-                'Giới hạn lưu trữ',
-                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.white),
-              ),
+              const Text('Storage Limit'),
             ],
           ),
           content: Text(
-            'Bạn đã lưu tối đa ${PremiumLimits.maxSavedLoans} khoản vay. Nâng cấp Premium để lưu không giới hạn!',
-            style: TextStyle(fontSize: 14.sp, color: Colors.white70),
+            'You have saved the maximum of ${PremiumLimits.maxSavedLoans} loans. Upgrade to Premium for unlimited saves!',
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx),
-              child: Text('Đóng', style: TextStyle(color: Colors.white60)),
+              child: const Text('Close'),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(ctx);
                 context.push('/premium');
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.warning,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-              ),
-              child: const Text('Nâng cấp', style: TextStyle(color: Colors.white)),
+              style: ElevatedButton.styleFrom(backgroundColor: AppColors.warning),
+              child: const Text('Upgrade', style: TextStyle(color: Colors.white)),
             ),
           ],
         ),
@@ -410,52 +361,48 @@ class LoanCalculatorPage extends ConsumerWidget {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: const Color(0xFF1a1a2e),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        title: Text(
-          'Lưu khoản vay',
-          style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
+        title: const Text('Save Loan'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: nameController,
               decoration: InputDecoration(
-                hintText: 'Tên khoản vay (tùy chọn)',
-                hintStyle: TextStyle(color: Colors.white38),
-                filled: true,
-                fillColor: Colors.white.withValues(alpha: 0.1),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.r),
-                  borderSide: BorderSide.none,
-                ),
+                hintText: 'Loan name (optional)',
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r)),
               ),
-              style: const TextStyle(color: Colors.white),
             ),
             SizedBox(height: 12.h),
-            Container(
-              padding: EdgeInsets.all(12.w),
-              decoration: BoxDecoration(
-                color: AppColors.warning.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Column(
-                children: [
-                  _buildSummaryRow('Số tiền vay', CurrencyFormatter.formatShort(result.principal)),
-                  SizedBox(height: 4.h),
-                  _buildSummaryRow('Lãi suất', '${result.rate.toStringAsFixed(1)}%/năm'),
-                  SizedBox(height: 4.h),
-                  _buildSummaryRow('Kỳ hạn', '${result.termMonths} tháng'),
-                ],
-              ),
+            Builder(
+              builder: (dialogContext) {
+                final dialogTheme = Theme.of(dialogContext);
+                final dialogIsDark = dialogTheme.brightness == Brightness.dark;
+                final dialogBgColor = dialogIsDark ? AppColors.darkBackground : AppColors.lightBackground;
+                return Container(
+                  padding: EdgeInsets.all(12.w),
+                  decoration: BoxDecoration(
+                    color: dialogBgColor,
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: Column(
+                    children: [
+                      _buildSummaryRow(dialogContext, 'Amount', CurrencyFormatter.formatShort(result.principal)),
+                      SizedBox(height: 4.h),
+                      _buildSummaryRow(dialogContext, 'Rate', '${result.rate.toStringAsFixed(1)}%/year'),
+                      SizedBox(height: 4.h),
+                      _buildSummaryRow(dialogContext, 'Term', '${result.termMonths} months'),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Hủy', style: TextStyle(color: Colors.white60)),
+            child: const Text('Cancel'),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -469,7 +416,7 @@ class LoanCalculatorPage extends ConsumerWidget {
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: const Text('Đã lưu khoản vay'),
+                    content: const Text('Loan saved'),
                     backgroundColor: AppColors.success,
                     behavior: SnackBarBehavior.floating,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
@@ -477,23 +424,129 @@ class LoanCalculatorPage extends ConsumerWidget {
                 );
               }
             },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.warning,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
-            ),
-            child: const Text('Lưu', style: TextStyle(color: Colors.white)),
+            style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
+            child: const Text('Save', style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSummaryRow(String label, String value) {
+  Widget _buildSummaryRow(BuildContext context, String label, String value) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: TextStyle(fontSize: 12.sp, color: Colors.white60)),
-        Text(value, style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w500, color: Colors.white)),
+        Text(label, style: TextStyle(fontSize: 12.sp, color: textSecondary)),
+        Text(value, style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w500, color: textPrimary)),
+      ],
+    );
+  }
+}
+
+class _ResultRow extends StatelessWidget {
+  final String label;
+  final String value;
+  final Color? valueColor;
+  final bool isHighlighted;
+
+  const _ResultRow({
+    required this.label,
+    required this.value,
+    this.valueColor,
+    this.isHighlighted = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 14.sp,
+              color: textSecondary,
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: isHighlighted ? 18.sp : 15.sp,
+              fontWeight: isHighlighted ? FontWeight.bold : FontWeight.w600,
+              color: valueColor ?? textPrimary,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _LegendItem extends StatelessWidget {
+  final String label;
+  final String value;
+  final String percent;
+  final Color color;
+
+  const _LegendItem({
+    required this.label,
+    required this.value,
+    required this.percent,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+
+    return Row(
+      children: [
+        Container(
+          width: 14.w,
+          height: 14.w,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(4.r),
+          ),
+        ),
+        SizedBox(width: 10.w),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: TextStyle(
+                  fontSize: 13.sp,
+                  color: textSecondary,
+                ),
+              ),
+              Text(
+                '$value ($percent)',
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w600,
+                  color: textPrimary,
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -502,8 +555,13 @@ class LoanCalculatorPage extends ConsumerWidget {
 class _SimplePieChartPainter extends CustomPainter {
   final double principalPercent;
   final double interestPercent;
+  final bool isDark;
 
-  _SimplePieChartPainter({required this.principalPercent, required this.interestPercent});
+  _SimplePieChartPainter({
+    required this.principalPercent,
+    required this.interestPercent,
+    this.isDark = false,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -536,7 +594,7 @@ class _SimplePieChartPainter extends CustomPainter {
     );
 
     final centerPaint = Paint()
-      ..color = Colors.black.withValues(alpha: 0.3)
+      ..color = isDark ? AppColors.darkSurface : Colors.white
       ..style = PaintingStyle.fill;
     canvas.drawCircle(center, radius * 0.5, centerPaint);
   }

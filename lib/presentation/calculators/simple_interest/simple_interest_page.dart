@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 
-import 'package:money_mate/core/configs/theme/app_colors.dart';
-import 'package:money_mate/core/constants/glass_settings.dart';
-import 'package:money_mate/core/constants/app_constants.dart';
-import 'package:money_mate/core/utils/currency_formatter.dart';
-import 'package:money_mate/domain/entities/calculation_results.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/glass_slider_input.dart';
-import 'package:money_mate/presentation/calculators/common/widgets/result_card.dart';
-import 'package:money_mate/presentation/calculators/simple_interest/simple_interest_provider.dart';
+import 'package:money/common/widgets/app_card.dart';
+import 'package:money/common/widgets/app_slider.dart';
+import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/app_constants.dart';
+import 'package:money/core/utils/currency_formatter.dart';
+import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/presentation/calculators/simple_interest/simple_interest_provider.dart';
 
 /// Simple Interest Calculator Page with real-time calculations
 class SimpleInterestPage extends ConsumerWidget {
@@ -23,62 +21,47 @@ class SimpleInterestPage extends ConsumerWidget {
     final state = ref.watch(simpleInterestCalculatorProvider);
     final notifier = ref.read(simpleInterestCalculatorProvider.notifier);
 
-    return LiquidGlassScope.stack(
-      background: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/wallpaper2.jpeg'),
-            fit: BoxFit.cover,
+    return Scaffold(
+      backgroundColor: AppColors.lightBackground,
+      appBar: AppBar(
+        backgroundColor: AppColors.lightBackground,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(CupertinoIcons.back),
+          onPressed: () => context.pop(),
+        ),
+        title: Text(
+          'Lãi đơn',
+          style: TextStyle(
+            fontSize: 18.sp,
+            fontWeight: FontWeight.w600,
+            color: AppColors.lightTextPrimary,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(CupertinoIcons.arrow_counterclockwise),
+            onPressed: () => notifier.reset(),
+          ),
+        ],
       ),
-      content: Positioned.fill(
-        child: AdaptiveLiquidGlassLayer(
-          settings: RecommendedGlassSettings.standard,
-          quality: GlassQuality.standard,
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            extendBodyBehindAppBar: true,
-            appBar: GlassAppBar(
-              leading: GlassIconButton(
-                icon: const Icon(CupertinoIcons.back),
-                onPressed: () => context.pop(),
-              ),
-              title: Text(
-                'Lãi đơn',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-              actions: [
-                GlassIconButton(
-                  icon: const Icon(CupertinoIcons.arrow_counterclockwise),
-                  onPressed: () => notifier.reset(),
-                ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(16.w),
+          child: Column(
+            children: [
+              // Input card
+              _buildInputCard(context, state, notifier),
+
+              SizedBox(height: 16.h),
+
+              // Results
+              if (state.hasResult) ...[
+                _buildResultsCard(context, state.result!),
+                SizedBox(height: 16.h),
+                _buildGrowthVisualization(context, state.result!),
               ],
-            ),
-            body: SafeArea(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.all(16.w),
-                child: Column(
-                  children: [
-                    // Input card
-                    _buildInputCard(context, state, notifier),
-
-                    SizedBox(height: 16.h),
-
-                    // Results
-                    if (state.hasResult) ...[
-                      _buildResultsCard(context, state.result!),
-                      SizedBox(height: 16.h),
-                      _buildGrowthVisualization(context, state.result!),
-                    ],
-                  ],
-                ),
-              ),
-            ),
+            ],
           ),
         ),
       ),
@@ -90,13 +73,13 @@ class SimpleInterestPage extends ConsumerWidget {
     SimpleInterestCalculatorState state,
     SimpleInterestCalculatorNotifier notifier,
   ) {
-    return GlassCard(
+    return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Principal slider
-          GlassSliderInput(
+          AppSliderInput(
             label: 'Số tiền gốc',
             value: state.inputs.principal,
             min: AppConstants.minPrincipal,
@@ -110,7 +93,7 @@ class SimpleInterestPage extends ConsumerWidget {
           SizedBox(height: 8.h),
 
           // Rate slider
-          GlassSliderInput(
+          AppSliderInput(
             label: 'Lãi suất năm',
             value: state.inputs.annualRate,
             min: AppConstants.minRate,
@@ -124,7 +107,7 @@ class SimpleInterestPage extends ConsumerWidget {
           SizedBox(height: 8.h),
 
           // Term slider
-          GlassSliderInput(
+          AppSliderInput(
             label: 'Thời hạn',
             value: state.inputs.termMonths.toDouble(),
             min: AppConstants.minTermMonths.toDouble(),
@@ -143,25 +126,60 @@ class SimpleInterestPage extends ConsumerWidget {
     BuildContext context,
     SimpleInterestResult result,
   ) {
-    return ResultCard(
-      title: 'Kết quả tính toán',
-      items: [
-        ResultItem(
-          label: 'Tiền lãi',
-          value: CurrencyFormatter.format(result.interest),
-          isHighlighted: true,
-          valueColor: AppColors.success,
-        ),
-        ResultItem(
-          label: 'Tổng tiền nhận',
-          value: CurrencyFormatter.format(result.totalAmount),
-          color: AppColors.primary,
-        ),
-        ResultItem(
-          label: 'Lãi trung bình/tháng',
-          value: CurrencyFormatter.format(result.monthlyInterest),
-        ),
-      ],
+    return AppCard(
+      padding: EdgeInsets.all(16.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Kết quả tính toán',
+            style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: AppColors.lightTextPrimary,
+            ),
+          ),
+          SizedBox(height: 16.h),
+          _buildResultRow('Tiền lãi', CurrencyFormatter.format(result.interest), AppColors.success, true),
+          SizedBox(height: 12.h),
+          _buildResultRow('Tổng tiền nhận', CurrencyFormatter.format(result.totalAmount), AppColors.primary, false),
+          SizedBox(height: 12.h),
+          _buildResultRow('Lãi trung bình/tháng', CurrencyFormatter.format(result.monthlyInterest), null, false),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildResultRow(String label, String value, Color? valueColor, bool isHighlighted) {
+    return Container(
+      padding: EdgeInsets.all(12.w),
+      decoration: BoxDecoration(
+        color: isHighlighted
+            ? (valueColor ?? AppColors.success).withOpacity(0.1)
+            : AppColors.lightBackground,
+        borderRadius: BorderRadius.circular(10.r),
+        border: isHighlighted ? Border.all(color: (valueColor ?? AppColors.success).withOpacity(0.3)) : null,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 13.sp,
+              color: AppColors.lightTextSecondary,
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 15.sp,
+              fontWeight: FontWeight.w600,
+              color: valueColor ?? AppColors.lightTextPrimary,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -172,7 +190,7 @@ class SimpleInterestPage extends ConsumerWidget {
     final principalPercent = (result.principal / result.totalAmount * 100);
     final interestPercent = (result.interest / result.totalAmount * 100);
 
-    return GlassCard(
+    return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +200,7 @@ class SimpleInterestPage extends ConsumerWidget {
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
-              color: Colors.white,
+              color: AppColors.lightTextPrimary,
             ),
           ),
           SizedBox(height: 16.h),
@@ -281,7 +299,7 @@ class SimpleInterestPage extends ConsumerWidget {
                   label,
                   style: TextStyle(
                     fontSize: 11.sp,
-                    color: Colors.white.withValues(alpha: 0.6),
+                    color: AppColors.lightTextSecondary,
                   ),
                 ),
                 Text(
@@ -289,7 +307,7 @@ class SimpleInterestPage extends ConsumerWidget {
                   style: TextStyle(
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                    color: AppColors.lightTextPrimary,
                   ),
                 ),
               ],
