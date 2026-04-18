@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:money/l10n/app_localizations.dart';
 import 'package:money/core/configs/theme/app_colors.dart';
 import 'package:money/core/constants/app_constants.dart';
 import 'package:money/core/providers/dependency_providers.dart';
@@ -23,6 +24,7 @@ class LoanCalculatorPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(loanCalculatorProvider);
     final notifier = ref.read(loanCalculatorProvider.notifier);
     final premiumStatus = ref.watch(premiumStatusProvider);
@@ -42,7 +44,7 @@ class LoanCalculatorPage extends ConsumerWidget {
           onPressed: () => context.pop(),
         ),
         title: Text(
-          'Loan Calculator',
+          l10n.calculatorLoan,
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
@@ -84,6 +86,7 @@ class LoanCalculatorPage extends ConsumerWidget {
   }
 
   Widget _buildInputCard(BuildContext context, LoanCalculatorState state, LoanCalculatorNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
@@ -93,7 +96,7 @@ class LoanCalculatorPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Payment Method',
+            l10n.paymentMethod,
             style: TextStyle(
               fontSize: 14.sp,
               color: textSecondary,
@@ -101,7 +104,7 @@ class LoanCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 8.h),
           AppSegmentedControl(
-            segments: const ['Fixed EMI', 'Reducing Balance'],
+            segments: [l10n.loanTypeFixed, l10n.loanTypeReducing],
             selectedIndex: state.inputs.type == LoanType.fixedPayment ? 0 : 1,
             onSegmentSelected: (index) {
               notifier.updateType(index == 0 ? LoanType.fixedPayment : LoanType.reducingBalance);
@@ -109,10 +112,10 @@ class LoanCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 20.h),
           AppSliderInput(
-            label: 'Loan Amount',
-            value: state.inputs.principal,
-            min: AppConstants.minPrincipal,
-            max: 10000000000,
+            label: l10n.loanAmount,
+            value: state.inputs.principal.clamp(0, CurrencyFormatter.defaultLoanMax),
+            min: 0,
+            max: CurrencyFormatter.defaultLoanMax,
             divisions: 1000,
             activeColor: AppColors.warning,
             valueFormatter: (v) => CurrencyFormatter.formatShort(v),
@@ -120,7 +123,7 @@ class LoanCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 16.h),
           AppSliderInput(
-            label: 'Interest Rate (Annual)',
+            label: l10n.annualInterestRate,
             value: state.inputs.annualRate,
             min: AppConstants.minRate,
             max: AppConstants.maxRate,
@@ -131,7 +134,7 @@ class LoanCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 16.h),
           AppSliderInput(
-            label: 'Loan Term',
+            label: l10n.term,
             value: state.inputs.termMonths.toDouble(),
             min: AppConstants.minTermMonths.toDouble(),
             max: 360,
@@ -146,6 +149,7 @@ class LoanCalculatorPage extends ConsumerWidget {
   }
 
   Widget _buildResultsCard(BuildContext context, LoanResult result) {
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
@@ -155,7 +159,7 @@ class LoanCalculatorPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Results',
+            l10n.results,
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
@@ -164,27 +168,27 @@ class LoanCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 16.h),
           _ResultRow(
-            label: result.type == LoanType.fixedPayment ? 'Monthly Payment' : 'First Month Payment',
+            label: result.type == LoanType.fixedPayment ? l10n.monthlyPayment : l10n.firstMonthPayment,
             value: CurrencyFormatter.format(result.monthlyPayment),
             valueColor: AppColors.warning,
             isHighlighted: true,
           ),
           if (result.type == LoanType.reducingBalance)
             _ResultRow(
-              label: 'Last Month Payment',
+              label: l10n.lastMonthPayment,
               value: CurrencyFormatter.format(result.lastPayment),
             ),
           _ResultRow(
-            label: 'Total Interest',
+            label: l10n.totalInterest,
             value: CurrencyFormatter.format(result.totalInterest),
             valueColor: AppColors.chartInterest,
           ),
           _ResultRow(
-            label: 'Total Payment',
+            label: l10n.totalPayment,
             value: CurrencyFormatter.format(result.totalPayment),
           ),
           _ResultRow(
-            label: 'Interest/Principal Ratio',
+            label: l10n.interestPrincipalRatio,
             value: '${result.interestPercentage.toStringAsFixed(1)}%',
           ),
         ],
@@ -193,6 +197,7 @@ class LoanCalculatorPage extends ConsumerWidget {
   }
 
   Widget _buildPieChartCard(BuildContext context, LoanResult result) {
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
@@ -205,7 +210,7 @@ class LoanCalculatorPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Payment Structure',
+            l10n.paymentStructure,
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
@@ -232,14 +237,14 @@ class LoanCalculatorPage extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _LegendItem(
-                      label: 'Principal',
+                      label: l10n.principal,
                       value: CurrencyFormatter.formatShort(result.principal),
                       percent: '${principalPercent.toStringAsFixed(1)}%',
                       color: AppColors.chartPrincipal,
                     ),
                     SizedBox(height: 12.h),
                     _LegendItem(
-                      label: 'Interest',
+                      label: l10n.interest,
                       value: CurrencyFormatter.formatShort(result.totalInterest),
                       percent: '${interestPercent.toStringAsFixed(1)}%',
                       color: AppColors.chartInterest,
@@ -255,6 +260,7 @@ class LoanCalculatorPage extends ConsumerWidget {
   }
 
   Widget _buildActionButtons(BuildContext context, LoanResult result, bool isPremium) {
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
@@ -271,7 +277,7 @@ class LoanCalculatorPage extends ConsumerWidget {
                 children: [
                   Icon(CupertinoIcons.share, size: 20.sp, color: textPrimary),
                   SizedBox(width: 8.w),
-                  Text('Share', style: TextStyle(fontSize: 14.sp, color: textPrimary)),
+                  Text(l10n.share, style: TextStyle(fontSize: 14.sp, color: textPrimary)),
                 ],
               ),
             ),
@@ -299,7 +305,7 @@ class LoanCalculatorPage extends ConsumerWidget {
                     color: isPremium ? textPrimary : AppColors.warning,
                   ),
                   SizedBox(width: 8.w),
-                  Text('Export PDF', style: TextStyle(fontSize: 14.sp, color: isPremium ? textPrimary : AppColors.warning)),
+                  Text(l10n.exportPdf, style: TextStyle(fontSize: 14.sp, color: isPremium ? textPrimary : AppColors.warning)),
                   if (!isPremium) ...[
                     SizedBox(width: 4.w),
                     Icon(CupertinoIcons.lock_fill, size: 14.sp, color: AppColors.warning),
@@ -320,6 +326,7 @@ class LoanCalculatorPage extends ConsumerWidget {
     PremiumStatus premiumStatus,
     LocalStorageService storage,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     final currentCount = storage.getLoanCount();
     final canSave = premiumStatus.isPremium || currentCount < PremiumLimits.maxSavedLoans;
 
@@ -332,16 +339,16 @@ class LoanCalculatorPage extends ConsumerWidget {
             children: [
               Icon(CupertinoIcons.lock_fill, color: AppColors.warning, size: 24.sp),
               SizedBox(width: 8.w),
-              const Text('Storage Limit'),
+              Text(l10n.storageLimitTitle),
             ],
           ),
           content: Text(
-            'You have saved the maximum of ${PremiumLimits.maxSavedLoans} loans. Upgrade to Premium for unlimited saves!',
+            l10n.storageLimitLoans(PremiumLimits.maxSavedLoans),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx),
-              child: const Text('Close'),
+              child: Text(l10n.close),
             ),
             ElevatedButton(
               onPressed: () {
@@ -349,7 +356,7 @@ class LoanCalculatorPage extends ConsumerWidget {
                 context.push('/premium');
               },
               style: ElevatedButton.styleFrom(backgroundColor: AppColors.warning),
-              child: const Text('Upgrade', style: TextStyle(color: Colors.white)),
+              child: Text(l10n.upgrade, style: const TextStyle(color: Colors.white)),
             ),
           ],
         ),
@@ -362,20 +369,21 @@ class LoanCalculatorPage extends ConsumerWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        title: const Text('Save Loan'),
+        title: Text(l10n.saveLoan),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
               controller: nameController,
               decoration: InputDecoration(
-                hintText: 'Loan name (optional)',
+                hintText: l10n.loanNameHint,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r)),
               ),
             ),
             SizedBox(height: 12.h),
             Builder(
               builder: (dialogContext) {
+                final dialogL10n = AppLocalizations.of(dialogContext)!;
                 final dialogTheme = Theme.of(dialogContext);
                 final dialogIsDark = dialogTheme.brightness == Brightness.dark;
                 final dialogBgColor = dialogIsDark ? AppColors.darkBackground : AppColors.lightBackground;
@@ -387,11 +395,11 @@ class LoanCalculatorPage extends ConsumerWidget {
                   ),
                   child: Column(
                     children: [
-                      _buildSummaryRow(dialogContext, 'Amount', CurrencyFormatter.formatShort(result.principal)),
+                      _buildSummaryRow(dialogContext, dialogL10n.amount, CurrencyFormatter.formatShort(result.principal)),
                       SizedBox(height: 4.h),
-                      _buildSummaryRow(dialogContext, 'Rate', '${result.rate.toStringAsFixed(1)}%/year'),
+                      _buildSummaryRow(dialogContext, dialogL10n.rate, '${result.rate.toStringAsFixed(1)}%/year'),
                       SizedBox(height: 4.h),
-                      _buildSummaryRow(dialogContext, 'Term', '${result.termMonths} months'),
+                      _buildSummaryRow(dialogContext, dialogL10n.term, '${result.termMonths} months'),
                     ],
                   ),
                 );
@@ -402,7 +410,7 @@ class LoanCalculatorPage extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text('Cancel'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -416,7 +424,7 @@ class LoanCalculatorPage extends ConsumerWidget {
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: const Text('Loan saved'),
+                    content: Text(l10n.loanSaved),
                     backgroundColor: AppColors.success,
                     behavior: SnackBarBehavior.floating,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
@@ -425,7 +433,7 @@ class LoanCalculatorPage extends ConsumerWidget {
               }
             },
             style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary),
-            child: const Text('Save', style: TextStyle(color: Colors.white)),
+            child: Text(l10n.save, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),

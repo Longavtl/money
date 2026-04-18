@@ -8,6 +8,31 @@
   "history": "History",
   "settings": "Settings",
   "compare": "Compare",
+  "simulate": "Simulate",
+
+  "mainTools": "Main Tools",
+  "categories": "{count} CATEGORIES",
+  "@categories": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "loanCalc": "Loan Calc",
+  "loanCalcSubtitle": "Monthly payments",
+  "interestCalc": "Interest",
+  "interestCalcSubtitle": "Simple & compound",
+  "vault": "Vault",
+  "vaultSubtitle": "Plan your future",
+  "historySubtitle": "Past calculations",
+
+  "proAccess": "PRO ACCESS",
+  "upgradeToPremium": "Upgrade to Premium",
+  "premiumBannerDesc": "Unlock advanced charts\nand ad-free experience.",
+  "marketPulse": "MARKET PULSE",
+  "currentRates": "Current Rates",
+  "homeLoan": "Home Loan",
+  "savingsApy": "Savings APY",
 
   "calculatorSimpleInterest": "Simple Interest",
   "calculatorCompoundInterest": "Compound Interest",
@@ -16,23 +41,33 @@
 
   "principal": "Principal",
   "interestRate": "Interest Rate",
+  "annualInterestRate": "Interest Rate (Annual)",
   "term": "Term",
   "termMonths": "Term (months)",
   "termYears": "Term (years)",
   "monthlyPayment": "Monthly Payment",
+  "firstMonthPayment": "First Month Payment",
+  "lastMonthPayment": "Last Month Payment",
   "totalInterest": "Total Interest",
   "totalPayment": "Total Payment",
   "interest": "Interest",
   "totalAmount": "Total Amount",
+  "interestPrincipalRatio": "Interest/Principal Ratio",
+  "loanAmount": "Loan Amount",
 
+  "paymentMethod": "Payment Method",
   "loanTypeFixed": "Fixed EMI",
   "loanTypeReducing": "Reducing Balance",
-  "savingsTypeReinvest": "Reinvest Interest",
-  "savingsTypeNoReinvest": "No Reinvestment",
+  "savingsTypeReinvest": "Reinvest",
+  "savingsTypeWithdraw": "Withdraw",
+
+  "results": "Results",
+  "paymentStructure": "Payment Structure",
 
   "amortizationSchedule": "Amortization Schedule",
   "month": "Month",
   "year": "Year",
+  "years": "years",
   "payment": "Payment",
   "principalPaid": "Principal",
   "interestPaid": "Interest",
@@ -44,19 +79,130 @@
   "exportPdf": "Export PDF",
   "calculate": "Calculate",
   "reset": "Reset",
+  "close": "Close",
+  "add": "Add",
+
+  "storageLimitTitle": "Storage Limit",
+  "storageLimitLoans": "You have saved the maximum of {count} loans. Upgrade to Premium for unlimited saves!",
+  "@storageLimitLoans": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "storageLimitSavings": "You have saved the maximum of {count} savings. Upgrade to Premium for unlimited saves!",
+  "@storageLimitSavings": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "saveLoan": "Save Loan",
+  "loanNameHint": "Loan name (optional)",
+  "amount": "Amount",
+  "rate": "Rate",
+  "loanSaved": "Loan saved",
+
+  "saveSavings": "Save Savings",
+  "savingsNameHint": "Savings name (optional)",
+  "savingsSaved": "Savings saved",
 
   "savedLoans": "Saved Loans",
   "savedSavings": "Saved Savings",
+  "loansCount": "Loans ({count})",
+  "@loansCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "savingsCount": "Savings ({count})",
+  "@savingsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "noSavedItems": "No saved items yet",
+  "noSavedLoans": "No saved loans",
+  "noSavedLoansSubtitle": "Calculate and save loans to view later",
+  "noSavedSavings": "No saved savings",
+  "noSavedSavingsSubtitle": "Calculate and save savings to view later",
+  "errorLoading": "Error: {error}",
+  "@errorLoading": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+
+  "compoundingFrequency": "Compounding Frequency",
+  "daily": "Daily",
+  "monthly": "Monthly",
+  "quarterly": "Quarterly",
+  "yearly": "Yearly",
+  "calculationResults": "Calculation Results",
+  "totalReceived": "Total Received",
+  "interestEarned": "Interest Earned",
+  "effectiveAnnualRate": "Effective Annual Rate",
+  "compoundingPeriods": "Compounding Periods",
+  "compareWithSimple": "Compare with Simple Interest",
+  "simpleInterest": "Simple Interest",
+  "compoundInterest": "Compound Interest",
+  "compoundBenefit": "Compound interest earns you {amount} more",
+  "@compoundBenefit": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+
+  "savingsType": "Savings Type",
+  "initialDeposit": "Initial Deposit",
+  "monthlyDeposit": "Monthly Deposit",
+  "annualRate": "Annual Rate",
+  "finalBalance": "Final Balance",
+  "totalDeposited": "Total Deposited",
+  "returnRate": "Return Rate",
+  "avgMonthlyInterest": "Avg Monthly Interest",
+  "detailedAnalysis": "Detailed Analysis",
+  "deposits": "Deposits",
+  "reinvestInfo": "Interest is compounded monthly",
+  "withdrawInfo": "Interest is paid out monthly, not compounded",
+
+  "averageMonthlyInterest": "Avg Interest/Month",
+  "totalStructure": "Total Structure",
 
   "premium": "Upgrade to Premium",
+  "premiumActivated": "You are Premium!",
+  "premiumThanks": "Thank you for your support!",
   "premiumDescription": "Unlock all features",
   "premiumFeature1": "Unlimited saves",
+  "premiumFeature1Desc": "Store all your loans and savings",
   "premiumFeature2": "Full chart suite",
+  "premiumFeature2Desc": "View details with all chart types",
   "premiumFeature3": "Scenario comparison",
+  "premiumFeature3Desc": "Compare multiple options side by side",
   "premiumFeature4": "PDF export",
+  "premiumFeature4Desc": "Create detailed reports to print or share",
+  "premiumFeature5": "Support development",
+  "premiumFeature5Desc": "Help us improve the app",
+  "premiumFeatures": "Premium Features",
+  "lifetime": "Lifetime",
+  "oneTimePurchase": "Pay once, use forever",
+  "upgradeNow": "Upgrade Now",
   "restorePurchase": "Restore Purchase",
-  "upgrade": "Upgrade",
+  "purchaseDate": "Purchase date: {date}",
+  "@purchaseDate": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+  "premiumRequired": "Premium Required",
+  "upgradeTo": "Upgrade to {feature}",
+  "@upgradeTo": {
+    "placeholders": {
+      "feature": {"type": "String"}
+    }
+  },
+  "pro": "PRO",
+  "activated": "Activated",
+  "unlockAllFeatures": "Unlock all features",
 
   "theme": "Theme",
   "themeLight": "Light",
@@ -64,12 +210,228 @@
   "themeSystem": "System",
   "language": "Language",
   "about": "About",
-  "version": "Version",
+  "version": "Version {version}",
+  "@version": {
+    "placeholders": {
+      "version": {"type": "String"}
+    }
+  },
+  "termsOfService": "Terms of Service",
+  "privacyPolicy": "Privacy Policy",
 
   "error": "Error",
   "errorGeneric": "Something went wrong",
   "tryAgain": "Try Again",
   "cancel": "Cancel",
   "confirm": "Confirm",
-  "ok": "OK"
+  "ok": "OK",
+  "upgrade": "Upgrade",
+
+  "compareScenarios": "Compare Scenarios",
+  "upgradeToCompare": "Upgrade to compare scenarios",
+  "loanSettings": "Loan Settings",
+  "scenarioA": "Scenario A",
+  "scenarioB": "Scenario B",
+  "comparison": "Comparison",
+  "scenarioSaves": "Scenario {scenario} saves {amount}",
+  "@scenarioSaves": {
+    "placeholders": {
+      "scenario": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+
+  "simulation": "Simulation",
+  "noScenariosYet": "No scenarios yet",
+  "addScenariosSubtitle": "Add loans or savings to simulate\nyour finances over time",
+  "addLoan": "Add Loan",
+  "addSavings": "Add Savings",
+  "loans": "Loans",
+  "savings": "Savings",
+  "timeline": "Timeline",
+  "monthNumber": "Month {number}",
+  "@monthNumber": {
+    "placeholders": {
+      "number": {"type": "int"}
+    }
+  },
+  "netWorth": "Net Worth",
+  "positive": "Positive",
+  "negativeDebt": "Negative (debt)",
+  "now": "Now",
+  "yearsCount": "{count} years",
+  "@yearsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "debt": "Debt",
+  "remaining": "Remaining",
+  "clearAll": "Clear All?",
+  "allScenariosDeleted": "All scenarios will be deleted.",
+  "loanNameHintExample": "Loan name (e.g., Home Loan)",
+  "savingsNameHintExample": "Name (e.g., Retirement)",
+  "deposit": "Deposit",
+  "loan": "Loan",
+
+  "selectThemeDescription": "Choose a theme for your app",
+  "selectLanguageDescription": "Choose your preferred language",
+  "apply": "Apply",
+
+  "financialTools": "Financial Tools",
+  "reminders": "Reminders",
+  "paymentRemindersSubtitle": "Track due dates",
+  "savingsGoalsSubtitle": "Reach your goals",
+  "calendar": "Calendar",
+  "calendarSubtitle": "View all events",
+  "achievementsSubtitle": "Your progress",
+  "reportsSubtitle": "View statistics",
+  "rateAlertsSubtitle": "Monitor rates",
+
+  "paymentReminders": "Payment Reminders",
+  "noRemindersYet": "No reminders yet",
+  "addRemindersSubtitle": "Add payment reminders to stay on track",
+  "addReminder": "Add Reminder",
+  "editReminder": "Edit Reminder",
+  "reminderNameHint": "Reminder name (e.g., Credit Card)",
+  "dueDate": "Due Date",
+  "remindBefore": "Remind Before",
+  "days": "days",
+  "recurring": "Recurring",
+  "totalDue": "Total Due",
+  "overdue": "Overdue",
+  "upcoming": "Upcoming",
+  "completed": "Completed",
+  "markAsPaid": "Mark as Paid",
+  "markAsPaidConfirm": "Are you sure you want to mark this as paid?",
+  "pending": "Pending",
+  "paid": "Paid",
+  "skipped": "Skipped",
+  "markPaid": "Mark Paid",
+  "weekly": "Weekly",
+  "biWeekly": "Bi-weekly",
+  "monthly": "Monthly",
+  "dueToday": "Due today",
+  "dueTomorrow": "Due tomorrow",
+  "dueInDays": "Due in {days} days",
+  "@dueInDays": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "pleaseEnterName": "Please enter a name",
+
+  "savingsGoals": "Savings Goals",
+  "noGoalsYet": "No goals yet",
+  "addGoalsSubtitle": "Set savings goals and track your progress",
+  "addGoal": "Add Goal",
+  "editGoal": "Edit Goal",
+  "goalNameHint": "Goal name (e.g., Vacation)",
+  "targetAmount": "Target Amount",
+  "initialAmount": "Initial Amount",
+  "deadline": "Deadline",
+  "suggestedMonthly": "Suggested Monthly",
+  "activeGoals": "Active Goals",
+  "completedGoals": "Completed Goals",
+  "totalSaved": "Total Saved",
+  "totalTarget": "Total Target",
+  "ofTotalTarget": "of total target",
+  "saved": "Saved",
+  "milestones": "Milestones",
+  "addMoney": "Add Money",
+  "withdraw": "Withdraw",
+  "addContribution": "Add Contribution",
+  "notesOptional": "Notes (optional)",
+  "withdrawReason": "Reason for withdrawal",
+  "noContributionsYet": "No contributions yet",
+  "pauseGoal": "Pause Goal",
+  "deleteGoal": "Delete Goal",
+  "deleteGoalConfirm": "Are you sure you want to delete this goal?",
+  "target": "Target",
+  "goals": "Goals",
+  "savePerMonth": "Save {amount}/month to reach goal",
+  "@savePerMonth": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "pleaseEnterGoalName": "Please enter a goal name",
+  "withdrawal": "Withdrawal",
+  "start": "Start",
+  "goalReached": "Goal!",
+  "progress": "Progress",
+
+  "achievements": "Achievements",
+  "financialHealthScore": "Financial Health Score",
+  "financialHealth": "Financial Health",
+  "points": "points",
+  "healthExcellent": "Excellent! Keep up the great work!",
+  "healthGood": "Good progress! You're on the right track.",
+  "healthFair": "Fair. There's room for improvement.",
+  "healthNeedsWork": "Needs attention. Let's improve together!",
+  "paymentStreak": "Payment Streak",
+  "dayStreak": "day streak",
+  "keepItUp": "Keep it up!",
+  "longest": "Longest",
+  "unlocked": "Unlocked",
+  "locked": "Locked",
+
+  "financialCalendar": "Financial Calendar",
+  "monthView": "Month View",
+  "weekView": "Week View",
+  "today": "Today",
+  "noEventsForDay": "No events for this day",
+  "goalDeadline": "Goal Deadline",
+  "contribution": "Contribution",
+
+  "reports": "Reports",
+  "week": "Week",
+  "quarter": "Quarter",
+  "allTime": "All Time",
+  "totalPaid": "Total Paid",
+  "totalDebt": "Total Debt",
+  "debtVsPaid": "Debt vs Paid",
+  "outstanding": "Outstanding",
+  "noDataYet": "No data yet",
+  "monthlyOverview": "Monthly Overview",
+  "due": "Due",
+  "paymentPerformance": "Payment Performance",
+  "onTime": "On Time",
+  "late": "Late",
+  "onTimeRate": "On Time Rate",
+
+  "rateAlerts": "Rate Alerts",
+  "currentMarketRates": "Current Market Rates",
+  "edit": "Edit",
+  "triggeredAlerts": "Triggered Alerts",
+  "activeAlerts": "Active Alerts",
+  "inactiveAlerts": "Inactive Alerts",
+  "noAlertsYet": "No alerts yet",
+  "addAlertsSubtitle": "Add alerts to track interest rate changes",
+  "addAlert": "Add Alert",
+  "alertNameHint": "Alert name (e.g., Home Loan Rate)",
+  "loanType": "Loan Type",
+  "alertWhen": "Alert When",
+  "rateDrops": "Rate Drops",
+  "rateRises": "Rate Rises",
+  "targetRate": "Target Rate",
+  "when": "When",
+  "current": "Current",
+  "triggered": "Triggered",
+  "editMarketRates": "Edit Market Rates",
+  "personalLoan": "Personal Loan",
+  "carLoan": "Car Loan",
+  "savingsRate": "Savings Rate",
+  "homeShort": "Home",
+  "personalShort": "Personal",
+  "carShort": "Car",
+  "savingsShort": "Savings",
+  "rateDropAlert": "Rate Drop Alert!",
+  "rateIncreaseAlert": "Rate Increase Alert!",
+  "updated": "Updated",
+
+  "newUpdateAvailable": "Update Available",
+  "updateAppMessage": "A new version of the app is available. Please update to get the latest features and improvements.",
+  "updateNow": "Update Now",
+  "later": "Later"
 }

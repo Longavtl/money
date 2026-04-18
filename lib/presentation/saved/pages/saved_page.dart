@@ -9,6 +9,7 @@ import 'package:money/core/services/premium_service.dart';
 import 'package:money/core/storage/local_storage_service.dart';
 import 'package:money/core/utils/currency_formatter.dart';
 import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/l10n/app_localizations.dart';
 import 'package:money/presentation/premium/premium_provider.dart';
 import 'package:money/common/widgets/app_card.dart';
 import 'package:money/common/widgets/app_slider.dart';
@@ -44,6 +45,7 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final l10n = AppLocalizations.of(context)!;
 
     final loans = loansAsync.valueOrNull ?? [];
     final savings = savingsAsync.valueOrNull ?? [];
@@ -60,7 +62,7 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
                 children: [
                   Expanded(
                     child: Text(
-                      'Saved',
+                      l10n.saved,
                       style: TextStyle(
                         fontSize: 28.sp,
                         fontWeight: FontWeight.bold,
@@ -75,7 +77,7 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: AppTabSegmentedControl(
-                segments: ['Loans (${loans.length})', 'Savings (${savings.length})'],
+                segments: [l10n.loansCount(loans.length), l10n.savingsCount(savings.length)],
                 tabController: _tabController,
               ),
             ),
@@ -84,8 +86,8 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  _buildLoansList(loansAsync),
-                  _buildSavingsList(savingsAsync),
+                  _buildLoansList(loansAsync, l10n),
+                  _buildSavingsList(savingsAsync, l10n),
                 ],
               ),
             ),
@@ -116,35 +118,35 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
     );
   }
 
-  Widget _buildLoansList(AsyncValue<List<SavedLoan>> loansAsync) {
+  Widget _buildLoansList(AsyncValue<List<SavedLoan>> loansAsync, AppLocalizations l10n) {
     return loansAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, _) => Center(child: Text('Error: $error')),
+      error: (error, _) => Center(child: Text(l10n.errorLoading(error.toString()))),
       data: (loans) {
         if (loans.isEmpty) {
           return _buildEmptyState(
             icon: CupertinoIcons.building_2_fill,
-            title: 'No saved loans',
-            subtitle: 'Calculate and save loans to view later',
+            title: l10n.noSavedLoans,
+            subtitle: l10n.noSavedLoansSubtitle,
           );
         }
         return ListView.separated(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
           itemCount: loans.length,
           separatorBuilder: (_, __) => SizedBox(height: 12.h),
-          itemBuilder: (context, index) => _buildLoanCard(loans[index]),
+          itemBuilder: (context, index) => _buildLoanCard(loans[index], l10n),
         );
       },
     );
   }
 
-  Widget _buildLoanCard(SavedLoan loan) {
+  Widget _buildLoanCard(SavedLoan loan, AppLocalizations l10n) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
     final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
     final bgColor = isDark ? AppColors.darkBackground : AppColors.lightBackground;
-    final typeLabel = loan.type == LoanType.fixedPayment ? 'Fixed EMI' : 'Reducing Balance';
+    final typeLabel = loan.type == LoanType.fixedPayment ? l10n.loanTypeFixed : l10n.loanTypeReducing;
     final dateStr = '${loan.createdAt.day}/${loan.createdAt.month}/${loan.createdAt.year}';
 
     return Dismissible(
@@ -202,7 +204,7 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Monthly Payment', style: TextStyle(fontSize: 11.sp, color: textSecondary)),
+                      Text(l10n.monthlyPayment, style: TextStyle(fontSize: 11.sp, color: textSecondary)),
                       Text(CurrencyFormatter.format(loan.monthlyPayment),
                           style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: AppColors.primary)),
                     ],
@@ -210,7 +212,7 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text('Total Interest', style: TextStyle(fontSize: 11.sp, color: textSecondary)),
+                      Text(l10n.totalInterest, style: TextStyle(fontSize: 11.sp, color: textSecondary)),
                       Text(CurrencyFormatter.formatShort(loan.totalInterest),
                           style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: AppColors.danger)),
                     ],
@@ -224,35 +226,35 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
     );
   }
 
-  Widget _buildSavingsList(AsyncValue<List<SavedSavings>> savingsAsync) {
+  Widget _buildSavingsList(AsyncValue<List<SavedSavings>> savingsAsync, AppLocalizations l10n) {
     return savingsAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, _) => const Center(child: Text('Error loading savings')),
+      error: (error, _) => Center(child: Text(l10n.errorLoading(error.toString()))),
       data: (savings) {
         if (savings.isEmpty) {
           return _buildEmptyState(
             icon: CupertinoIcons.money_dollar_circle_fill,
-            title: 'No saved savings',
-            subtitle: 'Calculate and save savings to view later',
+            title: l10n.noSavedSavings,
+            subtitle: l10n.noSavedSavingsSubtitle,
           );
         }
         return ListView.separated(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
           itemCount: savings.length,
           separatorBuilder: (_, __) => SizedBox(height: 12.h),
-          itemBuilder: (context, index) => _buildSavingsCard(savings[index]),
+          itemBuilder: (context, index) => _buildSavingsCard(savings[index], l10n),
         );
       },
     );
   }
 
-  Widget _buildSavingsCard(SavedSavings savings) {
+  Widget _buildSavingsCard(SavedSavings savings, AppLocalizations l10n) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
     final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
     final bgColor = isDark ? AppColors.darkBackground : AppColors.lightBackground;
-    final typeLabel = savings.type == SavingsType.withReinvestment ? 'Reinvest' : 'Withdraw';
+    final typeLabel = savings.type == SavingsType.withReinvestment ? l10n.savingsTypeReinvest : l10n.savingsTypeWithdraw;
     final dateStr = '${savings.createdAt.day}/${savings.createdAt.month}/${savings.createdAt.year}';
 
     return Dismissible(
@@ -310,7 +312,7 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Final Value', style: TextStyle(fontSize: 11.sp, color: textSecondary)),
+                      Text(l10n.finalBalance, style: TextStyle(fontSize: 11.sp, color: textSecondary)),
                       Text(CurrencyFormatter.formatShort(savings.finalValue),
                           style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: AppColors.success)),
                     ],
@@ -318,7 +320,7 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text('Interest Earned', style: TextStyle(fontSize: 11.sp, color: textSecondary)),
+                      Text(l10n.interestEarned, style: TextStyle(fontSize: 11.sp, color: textSecondary)),
                       Text('+${CurrencyFormatter.formatShort(savings.totalInterest)}',
                           style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: AppColors.success)),
                     ],

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:money/l10n/app_localizations.dart';
 
 import 'package:money/core/routes/app_routes.dart';
 import 'package:money/core/configs/theme/app_colors.dart';
@@ -13,6 +14,7 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final premiumStatus = ref.watch(premiumStatusProvider);
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
@@ -42,7 +44,7 @@ class HomePage extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Main Tools',
+                    l10n.mainTools,
                     style: TextStyle(
                       fontSize: 22.sp,
                       fontWeight: FontWeight.bold,
@@ -50,7 +52,7 @@ class HomePage extends ConsumerWidget {
                     ),
                   ),
                   Text(
-                    '4 CATEGORIES',
+                    l10n.categories(4),
                     style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w500,
@@ -67,8 +69,8 @@ class HomePage extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: _ToolCard(
-                      title: 'Loan Calc',
-                      subtitle: 'Monthly payments',
+                      title: l10n.loanCalc,
+                      subtitle: l10n.loanCalcSubtitle,
                       icon: CupertinoIcons.square_grid_2x2_fill,
                       iconColor: AppColors.warning,
                       onTap: () => context.push(AppRoutes.loan),
@@ -77,8 +79,8 @@ class HomePage extends ConsumerWidget {
                   SizedBox(width: 12.w),
                   Expanded(
                     child: _ToolCard(
-                      title: 'Interest',
-                      subtitle: 'Simple & compound',
+                      title: l10n.interestCalc,
+                      subtitle: l10n.interestCalcSubtitle,
                       icon: CupertinoIcons.graph_square,
                       iconColor: textPrimary,
                       onTap: () => context.push(AppRoutes.compoundInterest),
@@ -93,8 +95,8 @@ class HomePage extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: _ToolCard(
-                      title: 'Vault',
-                      subtitle: 'Plan your future',
+                      title: l10n.vault,
+                      subtitle: l10n.vaultSubtitle,
                       icon: CupertinoIcons.square_on_square,
                       iconColor: AppColors.warning,
                       onTap: () => context.push(AppRoutes.savings),
@@ -103,11 +105,81 @@ class HomePage extends ConsumerWidget {
                   SizedBox(width: 12.w),
                   Expanded(
                     child: _ToolCard(
-                      title: 'History',
-                      subtitle: 'Past calculations',
+                      title: l10n.history,
+                      subtitle: l10n.historySubtitle,
                       icon: CupertinoIcons.clock,
                       iconColor: textPrimary,
                       onTap: () {},  // History page handled by bottom nav
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 24.h),
+
+              // Financial Tools Section
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    l10n.financialTools,
+                    style: TextStyle(
+                      fontSize: 22.sp,
+                      fontWeight: FontWeight.bold,
+                      color: textPrimary,
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 16.h),
+
+              // Financial Tools Grid
+              Row(
+                children: [
+                  Expanded(
+                    child: _ToolCard(
+                      title: l10n.reminders,
+                      subtitle: l10n.paymentRemindersSubtitle,
+                      icon: CupertinoIcons.bell_fill,
+                      iconColor: AppColors.info,
+                      onTap: () => context.push(AppRoutes.reminders),
+                    ),
+                  ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: _ToolCard(
+                      title: l10n.savingsGoals,
+                      subtitle: l10n.savingsGoalsSubtitle,
+                      icon: CupertinoIcons.flag_fill,
+                      iconColor: AppColors.success,
+                      onTap: () => context.push(AppRoutes.goals),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 12.h),
+
+              Row(
+                children: [
+                  Expanded(
+                    child: _ToolCard(
+                      title: l10n.calendar,
+                      subtitle: l10n.calendarSubtitle,
+                      icon: CupertinoIcons.calendar,
+                      iconColor: AppColors.primary,
+                      onTap: () => context.push(AppRoutes.calendar),
+                    ),
+                  ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: _ToolCard(
+                      title: l10n.achievements,
+                      subtitle: l10n.achievementsSubtitle,
+                      icon: CupertinoIcons.rosette,
+                      iconColor: AppColors.warning,
+                      onTap: () => context.push(AppRoutes.achievements),
                     ),
                   ),
                 ],
@@ -139,6 +211,7 @@ class _PremiumBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isPremium) return const SizedBox.shrink();
+    final l10n = AppLocalizations.of(context)!;
 
     return GestureDetector(
       onTap: onTap,
@@ -166,7 +239,7 @@ class _PremiumBanner extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6.r),
               ),
               child: Text(
-                'PRO ACCESS',
+                l10n.proAccess,
                 style: TextStyle(
                   fontSize: 10.sp,
                   fontWeight: FontWeight.bold,
@@ -182,7 +255,7 @@ class _PremiumBanner extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Upgrade to Premium',
+                        l10n.upgradeToPremium,
                         style: TextStyle(
                           fontSize: 22.sp,
                           fontWeight: FontWeight.bold,
@@ -191,7 +264,7 @@ class _PremiumBanner extends StatelessWidget {
                       ),
                       SizedBox(height: 4.h),
                       Text(
-                        'Unlock advanced charts\nand ad-free experience.',
+                        l10n.premiumBannerDesc,
                         style: TextStyle(
                           fontSize: 14.sp,
                           color: Colors.white.withOpacity(0.85),
@@ -306,6 +379,7 @@ class _ToolCard extends StatelessWidget {
 class _CurrentRatesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final cardColor = isDark ? const Color(0xFF1A2A3A) : const Color(0xFFE8F4FC);
@@ -323,7 +397,7 @@ class _CurrentRatesCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'MARKET PULSE',
+            l10n.marketPulse,
             style: TextStyle(
               fontSize: 11.sp,
               fontWeight: FontWeight.w600,
@@ -333,7 +407,7 @@ class _CurrentRatesCard extends StatelessWidget {
           ),
           SizedBox(height: 8.h),
           Text(
-            'Current Rates',
+            l10n.currentRates,
             style: TextStyle(
               fontSize: 24.sp,
               fontWeight: FontWeight.bold,
@@ -347,13 +421,13 @@ class _CurrentRatesCard extends StatelessWidget {
                 child: Column(
                   children: [
                     _RateItem(
-                      label: 'Home Loan',
+                      label: l10n.homeLoan,
                       rate: '3.25%',
                       color: AppColors.primary,
                     ),
                     SizedBox(height: 12.h),
                     _RateItem(
-                      label: 'Savings APY',
+                      label: l10n.savingsApy,
                       rate: '4.10%',
                       color: AppColors.warning,
                     ),

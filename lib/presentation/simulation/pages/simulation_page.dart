@@ -7,6 +7,8 @@ import 'package:money/core/configs/theme/app_colors.dart';
 import 'package:money/core/utils/currency_formatter.dart';
 import 'package:money/presentation/simulation/simulation_provider.dart';
 import 'package:money/common/widgets/app_card.dart';
+import 'package:money/common/widgets/app_slider.dart';
+import 'package:money/l10n/app_localizations.dart';
 
 class SimulationPage extends ConsumerWidget {
   const SimulationPage({super.key});
@@ -19,6 +21,7 @@ class SimulationPage extends ConsumerWidget {
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
     final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -31,7 +34,7 @@ class SimulationPage extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      'Simulation',
+                      l10n.simulation,
                       style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.bold, color: textPrimary),
                     ),
                   ),
@@ -58,6 +61,7 @@ class SimulationPage extends ConsumerWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final l10n = AppLocalizations.of(context)!;
 
     return Center(
       child: Padding(
@@ -67,16 +71,16 @@ class SimulationPage extends ConsumerWidget {
           children: [
             Icon(CupertinoIcons.chart_bar_alt_fill, size: 64.sp, color: textSecondary.withOpacity(0.3)),
             SizedBox(height: 16.h),
-            Text('No scenarios yet', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: textSecondary)),
+            Text(l10n.noScenariosYet, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: textSecondary)),
             SizedBox(height: 8.h),
-            Text('Add loans or savings to simulate\nyour finances over time', textAlign: TextAlign.center, style: TextStyle(fontSize: 14.sp, color: textSecondary.withOpacity(0.6))),
+            Text(l10n.addScenariosSubtitle, textAlign: TextAlign.center, style: TextStyle(fontSize: 14.sp, color: textSecondary.withOpacity(0.6))),
             SizedBox(height: 32.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _AddButton(label: 'Add Loan', icon: CupertinoIcons.building_2_fill, color: AppColors.warning, onTap: () => _showAddScenario(context, notifier, ScenarioType.loan)),
+                _AddButton(label: l10n.addLoan, icon: CupertinoIcons.building_2_fill, color: AppColors.warning, onTap: () => _showAddScenario(context, notifier, ScenarioType.loan)),
                 SizedBox(width: 12.w),
-                _AddButton(label: 'Add Savings', icon: CupertinoIcons.money_dollar_circle_fill, color: AppColors.success, onTap: () => _showAddScenario(context, notifier, ScenarioType.savings)),
+                _AddButton(label: l10n.addSavings, icon: CupertinoIcons.money_dollar_circle_fill, color: AppColors.success, onTap: () => _showAddScenario(context, notifier, ScenarioType.savings)),
               ],
             ),
           ],
@@ -89,6 +93,7 @@ class SimulationPage extends ConsumerWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final l10n = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -99,21 +104,21 @@ class SimulationPage extends ConsumerWidget {
           SizedBox(height: 16.h),
           _buildSummaryCard(context, state),
           SizedBox(height: 16.h),
-          Text('Loans', style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: textPrimary)),
+          Text(l10n.loans, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: textPrimary)),
           SizedBox(height: 8.h),
           ...state.loans.map((s) => _buildScenarioCard(context, s, state, notifier)),
           if (state.savings.isNotEmpty) ...[
             SizedBox(height: 16.h),
-            Text('Savings', style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: textPrimary)),
+            Text(l10n.savings, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: textPrimary)),
             SizedBox(height: 8.h),
             ...state.savings.map((s) => _buildScenarioCard(context, s, state, notifier)),
           ],
           SizedBox(height: 16.h),
           Row(
             children: [
-              Expanded(child: _AddScenarioButton(label: 'Add Loan', color: AppColors.warning, onTap: () => _showAddScenario(context, notifier, ScenarioType.loan))),
+              Expanded(child: _AddScenarioButton(label: l10n.addLoan, color: AppColors.warning, onTap: () => _showAddScenario(context, notifier, ScenarioType.loan))),
               SizedBox(width: 12.w),
-              Expanded(child: _AddScenarioButton(label: 'Add Savings', color: AppColors.success, onTap: () => _showAddScenario(context, notifier, ScenarioType.savings))),
+              Expanded(child: _AddScenarioButton(label: l10n.addSavings, color: AppColors.success, onTap: () => _showAddScenario(context, notifier, ScenarioType.savings))),
             ],
           ),
           SizedBox(height: 100.h),
@@ -127,6 +132,7 @@ class SimulationPage extends ConsumerWidget {
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
     final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final l10n = AppLocalizations.of(context)!;
     final currentMonth = state.currentMonth;
     final netWorth = state.getNetWorthAtMonth(currentMonth);
     final isPositive = netWorth >= 0;
@@ -138,11 +144,11 @@ class SimulationPage extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Timeline', style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: textPrimary)),
+              Text(l10n.timeline, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: textPrimary)),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                 decoration: BoxDecoration(color: AppColors.info.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)),
-                child: Text('Month $currentMonth', style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600, color: AppColors.info)),
+                child: Text(l10n.monthNumber(currentMonth), style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600, color: AppColors.info)),
               ),
             ],
           ),
@@ -150,21 +156,27 @@ class SimulationPage extends ConsumerWidget {
           Center(
             child: Column(
               children: [
-                Text('Net Worth', style: TextStyle(fontSize: 13.sp, color: textSecondary)),
+                Text(l10n.netWorth, style: TextStyle(fontSize: 13.sp, color: textSecondary)),
                 SizedBox(height: 4.h),
                 Text(CurrencyFormatter.format(netWorth.abs()), style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.bold, color: isPositive ? AppColors.success : AppColors.danger)),
-                Text(isPositive ? 'Positive' : 'Negative (debt)', style: TextStyle(fontSize: 12.sp, color: isPositive ? AppColors.success : AppColors.danger)),
+                Text(isPositive ? l10n.positive : l10n.negativeDebt, style: TextStyle(fontSize: 12.sp, color: isPositive ? AppColors.success : AppColors.danger)),
               ],
             ),
           ),
-          SizedBox(height: 20.h),
-          SliderTheme(
-            data: SliderThemeData(activeTrackColor: AppColors.info, inactiveTrackColor: AppColors.info.withOpacity(0.2), thumbColor: AppColors.info, trackHeight: 4.h),
-            child: Slider(value: currentMonth.toDouble(), min: 0, max: state.viewMonths.toDouble(), divisions: state.viewMonths, onChanged: (v) => notifier.setCurrentMonth(v.toInt())),
+          SizedBox(height: 12.h),
+          AppSliderInput(
+            label: '',
+            value: currentMonth.toDouble(),
+            min: 0,
+            max: state.viewMonths.toDouble(),
+            divisions: state.viewMonths,
+            activeColor: AppColors.info,
+            valueFormatter: (_) => '',
+            onChanged: (v) => notifier.setCurrentMonth(v.toInt()),
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text('Now', style: TextStyle(fontSize: 11.sp, color: textSecondary)),
-            Text('${state.viewMonths ~/ 12} years', style: TextStyle(fontSize: 11.sp, color: textSecondary)),
+            Text(l10n.now, style: TextStyle(fontSize: 11.sp, color: textSecondary)),
+            Text(l10n.yearsCount(state.viewMonths ~/ 12), style: TextStyle(fontSize: 11.sp, color: textSecondary)),
           ]),
         ],
       ),
@@ -175,6 +187,7 @@ class SimulationPage extends ConsumerWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final borderColor = isDark ? AppColors.darkBorder : AppColors.lightBorder;
+    final l10n = AppLocalizations.of(context)!;
     double totalLoanBalance = 0;
     double totalSavingsBalance = 0;
     for (final scenario in state.scenarios) {
@@ -186,9 +199,9 @@ class SimulationPage extends ConsumerWidget {
     return AppCard(
       child: Row(
         children: [
-          Expanded(child: _SummaryItem(label: 'Debt', value: CurrencyFormatter.formatShort(totalLoanBalance), color: AppColors.danger, icon: CupertinoIcons.arrow_down_circle_fill)),
+          Expanded(child: _SummaryItem(label: l10n.debt, value: CurrencyFormatter.formatShort(totalLoanBalance), color: AppColors.danger, icon: CupertinoIcons.arrow_down_circle_fill)),
           Container(width: 1, height: 50.h, color: borderColor),
-          Expanded(child: _SummaryItem(label: 'Savings', value: CurrencyFormatter.formatShort(totalSavingsBalance), color: AppColors.success, icon: CupertinoIcons.arrow_up_circle_fill)),
+          Expanded(child: _SummaryItem(label: l10n.savings, value: CurrencyFormatter.formatShort(totalSavingsBalance), color: AppColors.success, icon: CupertinoIcons.arrow_up_circle_fill)),
         ],
       ),
     );
@@ -199,6 +212,7 @@ class SimulationPage extends ConsumerWidget {
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
     final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final l10n = AppLocalizations.of(context)!;
     final isLoan = scenario.type == ScenarioType.loan;
     final color = isLoan ? AppColors.warning : AppColors.success;
     final balanceAtMonth = scenario.getBalanceAtMonth(state.currentMonth);
@@ -246,7 +260,7 @@ class SimulationPage extends ConsumerWidget {
               ),
               SizedBox(height: 8.h),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Text(isLoan ? 'Remaining' : 'Balance', style: TextStyle(fontSize: 12.sp, color: textSecondary)),
+                Text(isLoan ? l10n.remaining : l10n.balance, style: TextStyle(fontSize: 12.sp, color: textSecondary)),
                 Text(CurrencyFormatter.formatShort(balanceAtMonth), style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: color)),
               ]),
             ],
@@ -266,15 +280,16 @@ class SimulationPage extends ConsumerWidget {
   }
 
   void _showClearConfirm(BuildContext context, SimulationNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        title: const Text('Clear All?'),
-        content: const Text('All scenarios will be deleted.'),
+        title: Text(l10n.clearAll),
+        content: Text(l10n.allScenariosDeleted),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
-          TextButton(onPressed: () { notifier.clear(); Navigator.pop(ctx); }, child: Text('Delete', style: TextStyle(color: AppColors.danger))),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text(l10n.cancel)),
+          TextButton(onPressed: () { notifier.clear(); Navigator.pop(ctx); }, child: Text(l10n.delete, style: TextStyle(color: AppColors.danger))),
         ],
       ),
     );
@@ -365,32 +380,35 @@ class _AddScenarioButton extends StatelessWidget {
   }
 }
 
-class _AddScenarioSheet extends StatefulWidget {
+class _AddScenarioSheet extends ConsumerStatefulWidget {
   final ScenarioType type;
   final Function(Scenario) onAdd;
 
   const _AddScenarioSheet({required this.type, required this.onAdd});
 
   @override
-  State<_AddScenarioSheet> createState() => _AddScenarioSheetState();
+  ConsumerState<_AddScenarioSheet> createState() => _AddScenarioSheetState();
 }
 
-class _AddScenarioSheetState extends State<_AddScenarioSheet> {
+class _AddScenarioSheetState extends ConsumerState<_AddScenarioSheet> {
   final _nameController = TextEditingController();
-  double _principal = 100000000;
-  double _rate = 10;
-  int _termMonths = 12;
 
   @override
-  void dispose() { _nameController.dispose(); super.dispose(); }
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final formState = ref.watch(addScenarioFormProvider);
+    final formNotifier = ref.read(addScenarioFormProvider.notifier);
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final surfaceColor = isDark ? AppColors.darkSurface : AppColors.lightSurface;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
     final borderColor = isDark ? AppColors.darkBorder : AppColors.lightBorder;
+    final l10n = AppLocalizations.of(context)!;
     final isLoan = widget.type == ScenarioType.loan;
     final color = isLoan ? AppColors.warning : AppColors.success;
 
@@ -403,56 +421,35 @@ class _AddScenarioSheetState extends State<_AddScenarioSheet> {
         children: [
           Center(child: Container(width: 40.w, height: 4.h, decoration: BoxDecoration(color: borderColor, borderRadius: BorderRadius.circular(2.r)))),
           SizedBox(height: 20.h),
-          Text(isLoan ? 'Add Loan' : 'Add Savings', style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: textPrimary)),
+          Text(isLoan ? l10n.addLoan : l10n.addSavings, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: textPrimary)),
           SizedBox(height: 20.h),
           TextField(
             controller: _nameController,
             decoration: InputDecoration(
-              hintText: isLoan ? 'Loan name (e.g., Home Loan)' : 'Name (e.g., Retirement)',
+              hintText: isLoan ? l10n.loanNameHintExample : l10n.savingsNameHintExample,
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.r)),
             ),
           ),
           SizedBox(height: 16.h),
-          _buildSlider(context, label: isLoan ? 'Amount' : 'Deposit', value: _principal, min: 1000000, max: 10000000000, divisions: 1000, color: color, formatter: (v) => CurrencyFormatter.formatShort(v), onChanged: (v) => setState(() => _principal = v)),
+          AppSliderInput(label: isLoan ? l10n.amount : l10n.deposit, value: formState.principal, min: 1000000, max: 10000000000, divisions: 1000, activeColor: color, valueFormatter: (v) => CurrencyFormatter.formatShort(v), onChanged: formNotifier.setPrincipal),
           SizedBox(height: 12.h),
-          _buildSlider(context, label: 'Annual Rate', value: _rate, min: 0.1, max: 50, divisions: 499, color: AppColors.info, formatter: (v) => '${v.toStringAsFixed(1)}%', onChanged: (v) => setState(() => _rate = v)),
+          AppSliderInput(label: l10n.annualRate, value: formState.rate, min: 0.1, max: 50, divisions: 499, activeColor: AppColors.info, valueFormatter: (v) => '${v.toStringAsFixed(1)}%', onChanged: formNotifier.setRate),
           SizedBox(height: 12.h),
-          _buildSlider(context, label: 'Term', value: _termMonths.toDouble(), min: 1, max: 360, divisions: 359, color: AppColors.primary, formatter: (v) => CurrencyFormatter.formatTerm(v.toInt()), onChanged: (v) => setState(() => _termMonths = v.toInt())),
+          AppSliderInput(label: l10n.term, value: formState.termMonths.toDouble(), min: 1, max: 360, divisions: 359, activeColor: AppColors.primary, valueFormatter: (v) => CurrencyFormatter.formatTerm(v.toInt()), onChanged: (v) => formNotifier.setTermMonths(v.toInt())),
           SizedBox(height: 24.h),
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                widget.onAdd(Scenario(name: _nameController.text.isNotEmpty ? _nameController.text : (isLoan ? 'Loan' : 'Savings'), type: widget.type, principal: _principal, annualRate: _rate, termMonths: _termMonths));
+                widget.onAdd(Scenario(name: _nameController.text.isNotEmpty ? _nameController.text : (isLoan ? l10n.loan : l10n.savings), type: widget.type, principal: formState.principal, annualRate: formState.rate, termMonths: formState.termMonths));
               },
               style: ElevatedButton.styleFrom(backgroundColor: color, padding: EdgeInsets.symmetric(vertical: 14.h), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r))),
-              child: Text('Add', style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.white)),
+              child: Text(l10n.add, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.white)),
             ),
           ),
           SizedBox(height: MediaQuery.of(context).viewInsets.bottom + 20.h),
         ],
       ),
-    );
-  }
-
-  Widget _buildSlider(BuildContext context, {required String label, required double value, required double min, required double max, required int divisions, required Color color, required String Function(double) formatter, required ValueChanged<double> onChanged}) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text(label, style: TextStyle(fontSize: 13.sp, color: textSecondary)),
-          Text(formatter(value), style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: textPrimary)),
-        ]),
-        SliderTheme(
-          data: SliderThemeData(activeTrackColor: color, inactiveTrackColor: color.withOpacity(0.2), thumbColor: color, trackHeight: 4.h),
-          child: Slider(value: value, min: min, max: max, divisions: divisions, onChanged: onChanged),
-        ),
-      ],
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:money/l10n/app_localizations.dart';
 import 'package:money/common/widgets/app_card.dart';
 import 'package:money/common/widgets/app_slider.dart';
 import 'package:money/core/configs/theme/app_colors.dart';
@@ -24,6 +25,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(savingsCalculatorProvider);
     final notifier = ref.read(savingsCalculatorProvider.notifier);
     final premiumStatus = ref.watch(premiumStatusProvider);
@@ -39,7 +41,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
           onPressed: () => context.pop(),
         ),
         title: Text(
-          'Gửi tiết kiệm',
+          l10n.calculatorSavings,
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
@@ -91,13 +93,14 @@ class SavingsCalculatorPage extends ConsumerWidget {
     SavingsCalculatorState state,
     SavingsCalculatorNotifier notifier,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Hình thức tiết kiệm',
+            l10n.savingsType,
             style: TextStyle(
               fontSize: 14.sp,
               color: AppColors.lightTextSecondary,
@@ -105,7 +108,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 8.h),
           AppSegmentedControl(
-            segments: const ['Tái đầu tư', 'Lĩnh lãi'],
+            segments: [l10n.savingsTypeReinvest, l10n.savingsTypeWithdraw],
             selectedIndex:
                 state.inputs.type == SavingsType.withReinvestment ? 0 : 1,
             onSegmentSelected: (index) {
@@ -118,10 +121,10 @@ class SavingsCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 20.h),
           AppSliderInput(
-            label: 'Tiền gửi ban đầu',
-            value: state.inputs.initialDeposit,
+            label: l10n.initialDeposit,
+            value: state.inputs.initialDeposit.clamp(0, CurrencyFormatter.defaultLoanMax),
             min: 0,
-            max: 10000000000,
+            max: CurrencyFormatter.defaultLoanMax,
             divisions: 1000,
             activeColor: AppColors.warning,
             valueFormatter: (v) => CurrencyFormatter.formatShort(v),
@@ -129,10 +132,10 @@ class SavingsCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 8.h),
           AppSliderInput(
-            label: 'Gửi thêm hàng tháng',
-            value: state.inputs.monthlyDeposit,
+            label: l10n.monthlyDeposit,
+            value: state.inputs.monthlyDeposit.clamp(0, CurrencyFormatter.defaultSavings * 10),
             min: 0,
-            max: 500000000,
+            max: CurrencyFormatter.defaultSavings * 10,
             divisions: 500,
             activeColor: AppColors.primary,
             valueFormatter: (v) => CurrencyFormatter.formatShort(v),
@@ -140,7 +143,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 8.h),
           AppSliderInput(
-            label: 'Lãi suất năm',
+            label: l10n.annualRate,
             value: state.inputs.annualRate,
             min: AppConstants.minRate,
             max: AppConstants.maxRate,
@@ -151,7 +154,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 8.h),
           AppSliderInput(
-            label: 'Thời hạn',
+            label: l10n.term,
             value: state.inputs.termMonths.toDouble(),
             min: AppConstants.minTermMonths.toDouble(),
             max: 360,
@@ -166,13 +169,14 @@ class SavingsCalculatorPage extends ConsumerWidget {
   }
 
   Widget _buildResultsCard(BuildContext context, SavingsResult result) {
+    final l10n = AppLocalizations.of(context)!;
     return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Kết quả tính toán',
+            l10n.calculationResults,
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
@@ -181,22 +185,22 @@ class SavingsCalculatorPage extends ConsumerWidget {
           ),
           SizedBox(height: 16.h),
           _buildResultRow(
-            result.type == SavingsType.withReinvestment ? 'Số dư cuối kỳ' : 'Tổng tiền gửi',
+            result.type == SavingsType.withReinvestment ? l10n.finalBalance : l10n.totalDeposited,
             CurrencyFormatter.format(result.finalValue),
             AppColors.success,
             true,
           ),
           SizedBox(height: 12.h),
-          _buildResultRow('Tiền lãi nhận được', CurrencyFormatter.format(result.totalInterest), AppColors.chartInterest, false),
+          _buildResultRow(l10n.interestEarned, CurrencyFormatter.format(result.totalInterest), AppColors.chartInterest, false),
           SizedBox(height: 12.h),
-          _buildResultRow('Tổng đã gửi', CurrencyFormatter.format(result.totalDeposited), AppColors.chartPrincipal, false),
+          _buildResultRow(l10n.totalDeposited, CurrencyFormatter.format(result.totalDeposited), AppColors.chartPrincipal, false),
           SizedBox(height: 12.h),
-          _buildResultRow('Tỷ suất sinh lời', '${result.returnPercentage.toStringAsFixed(1)}%', null, false),
+          _buildResultRow(l10n.returnRate, '${result.returnPercentage.toStringAsFixed(1)}%', null, false),
           if (result.type == SavingsType.withoutReinvestment &&
               result.monthlyInterestPayouts.isNotEmpty) ...[
             SizedBox(height: 12.h),
             _buildResultRow(
-              'Lãi bình quân/tháng',
+              l10n.avgMonthlyInterest,
               CurrencyFormatter.format(result.monthlyInterestPayouts.reduce((a, b) => a + b) / result.monthlyInterestPayouts.length),
               null,
               false,
@@ -241,6 +245,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
   }
 
   Widget _buildBreakdownCard(BuildContext context, SavingsResult result) {
+    final l10n = AppLocalizations.of(context)!;
     final totalValue = result.type == SavingsType.withReinvestment
         ? result.finalValue
         : result.totalDeposited + result.totalInterest;
@@ -254,7 +259,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Phân tích chi tiết',
+            l10n.detailedAnalysis,
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
@@ -305,10 +310,10 @@ class SavingsCalculatorPage extends ConsumerWidget {
             ),
           ),
           SizedBox(height: 16.h),
-          _buildLegendItem('Tiền gửi vào', result.totalDeposited,
+          _buildLegendItem(l10n.deposits, result.totalDeposited,
               depositedPercent, AppColors.chartPrincipal),
           SizedBox(height: 8.h),
-          _buildLegendItem('Tiền lãi', result.totalInterest, interestPercent,
+          _buildLegendItem(l10n.interest, result.totalInterest, interestPercent,
               AppColors.chartInterest),
           SizedBox(height: 16.h),
           Container(
@@ -330,8 +335,8 @@ class SavingsCalculatorPage extends ConsumerWidget {
                 Expanded(
                   child: Text(
                     result.type == SavingsType.withReinvestment
-                        ? 'Lãi được cộng dồn vào gốc mỗi tháng'
-                        : 'Lãi được trả ra mỗi tháng, không cộng vào gốc',
+                        ? l10n.reinvestInfo
+                        : l10n.withdrawInfo,
                     style: TextStyle(
                       fontSize: 13.sp,
                       color: AppColors.lightTextSecondary,
@@ -348,6 +353,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
 
   Widget _buildActionButtons(
       BuildContext context, SavingsResult result, bool isPremium) {
+    final l10n = AppLocalizations.of(context)!;
     return Row(
       children: [
         Expanded(
@@ -360,7 +366,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
                 children: [
                   Icon(CupertinoIcons.share, size: 20.sp, color: AppColors.lightTextPrimary),
                   SizedBox(width: 8.w),
-                  Text('Chia sẻ',
+                  Text(l10n.share,
                       style: TextStyle(fontSize: 14.sp, color: AppColors.lightTextPrimary)),
                 ],
               ),
@@ -388,7 +394,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
                     color: isPremium ? AppColors.lightTextPrimary : AppColors.warning,
                   ),
                   SizedBox(width: 8.w),
-                  Text('Xuất PDF',
+                  Text(l10n.exportPdf,
                       style: TextStyle(fontSize: 14.sp, color: AppColors.lightTextPrimary)),
                   if (!isPremium) ...[
                     SizedBox(width: 4.w),
@@ -450,6 +456,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
     PremiumStatus premiumStatus,
     LocalStorageService storage,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     final currentCount = storage.getSavingsCount();
     final canSave =
         premiumStatus.isPremium || currentCount < PremiumLimits.maxSavedSavings;
@@ -467,7 +474,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
                   color: AppColors.warning, size: 24.sp),
               SizedBox(width: 8.w),
               Text(
-                'Giới hạn lưu trữ',
+                l10n.storageLimitTitle,
                 style: TextStyle(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
@@ -476,13 +483,13 @@ class SavingsCalculatorPage extends ConsumerWidget {
             ],
           ),
           content: Text(
-            'Bạn đã lưu tối đa ${PremiumLimits.maxSavedSavings} khoản tiết kiệm. Nâng cấp Premium để lưu không giới hạn!',
+            l10n.storageLimitSavings(PremiumLimits.maxSavedSavings),
             style: TextStyle(fontSize: 14.sp, color: Colors.white70),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(ctx),
-              child: Text('Đóng', style: TextStyle(color: Colors.white60)),
+              child: Text(l10n.close, style: TextStyle(color: Colors.white60)),
             ),
             ElevatedButton(
               onPressed: () {
@@ -495,7 +502,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
                     borderRadius: BorderRadius.circular(8.r)),
               ),
               child:
-                  const Text('Nâng cấp', style: TextStyle(color: Colors.white)),
+                  Text(l10n.upgrade, style: const TextStyle(color: Colors.white)),
             ),
           ],
         ),
@@ -511,7 +518,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
         title: Text(
-          'Lưu khoản tiết kiệm',
+          l10n.saveSavings,
           style: TextStyle(
               fontSize: 18.sp,
               fontWeight: FontWeight.bold,
@@ -523,7 +530,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
             TextField(
               controller: nameController,
               decoration: InputDecoration(
-                hintText: 'Tên khoản tiết kiệm (tùy chọn)',
+                hintText: l10n.savingsNameHint,
                 hintStyle: TextStyle(color: Colors.white38),
                 filled: true,
                 fillColor: Colors.white.withValues(alpha: 0.1),
@@ -543,16 +550,16 @@ class SavingsCalculatorPage extends ConsumerWidget {
               ),
               child: Column(
                 children: [
-                  _buildSummaryRow('Tiền gửi ban đầu',
+                  _buildSummaryRow(l10n.initialDeposit,
                       CurrencyFormatter.formatShort(result.initialDeposit)),
                   SizedBox(height: 4.h),
-                  _buildSummaryRow('Gửi thêm/tháng',
+                  _buildSummaryRow(l10n.monthlyDeposit,
                       CurrencyFormatter.formatShort(result.monthlyDeposit)),
                   SizedBox(height: 4.h),
                   _buildSummaryRow(
-                      'Lãi suất', '${result.rate.toStringAsFixed(1)}%/năm'),
+                      l10n.rate, '${result.rate.toStringAsFixed(1)}%'),
                   SizedBox(height: 4.h),
-                  _buildSummaryRow('Kỳ hạn', '${result.termMonths} tháng'),
+                  _buildSummaryRow(l10n.term, '${result.termMonths}'),
                 ],
               ),
             ),
@@ -561,7 +568,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Hủy', style: TextStyle(color: Colors.white60)),
+            child: Text(l10n.cancel, style: TextStyle(color: Colors.white60)),
           ),
           ElevatedButton(
             onPressed: () async {
@@ -576,7 +583,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
               if (context.mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: const Text('Đã lưu khoản tiết kiệm'),
+                    content: Text(l10n.savingsSaved),
                     backgroundColor: AppColors.success,
                     behavior: SnackBarBehavior.floating,
                     shape: RoundedRectangleBorder(
@@ -590,7 +597,7 @@ class SavingsCalculatorPage extends ConsumerWidget {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.r)),
             ),
-            child: const Text('Lưu', style: TextStyle(color: Colors.white)),
+            child: Text(l10n.save, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),

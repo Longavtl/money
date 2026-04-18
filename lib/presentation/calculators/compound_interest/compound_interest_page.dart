@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:money/l10n/app_localizations.dart';
 import 'package:money/common/widgets/app_card.dart';
 import 'package:money/common/widgets/app_slider.dart';
 import 'package:money/core/configs/theme/app_colors.dart';
@@ -18,6 +19,7 @@ class CompoundInterestPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(compoundInterestCalculatorProvider);
     final notifier = ref.read(compoundInterestCalculatorProvider.notifier);
 
@@ -31,7 +33,7 @@ class CompoundInterestPage extends ConsumerWidget {
           onPressed: () => context.pop(),
         ),
         title: Text(
-          'Lãi kép',
+          l10n.calculatorCompoundInterest,
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
@@ -73,6 +75,7 @@ class CompoundInterestPage extends ConsumerWidget {
     CompoundInterestCalculatorState state,
     CompoundInterestCalculatorNotifier notifier,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
@@ -80,7 +83,7 @@ class CompoundInterestPage extends ConsumerWidget {
         children: [
           // Frequency selector
           Text(
-            'Chu kỳ ghép lãi',
+            l10n.compoundingFrequency,
             style: TextStyle(
               fontSize: 14.sp,
               color: AppColors.lightTextSecondary,
@@ -88,7 +91,7 @@ class CompoundInterestPage extends ConsumerWidget {
           ),
           SizedBox(height: 8.h),
           AppSegmentedControl(
-            segments: const ['Ngày', 'Tháng', 'Quý', 'Năm'],
+            segments: [l10n.daily, l10n.monthly, l10n.quarterly, l10n.yearly],
             selectedIndex: _frequencyToIndex(state.inputs.frequency),
             onSegmentSelected: (index) =>
                 notifier.updateFrequency(_indexToFrequency(index)),
@@ -98,10 +101,10 @@ class CompoundInterestPage extends ConsumerWidget {
 
           // Principal slider
           AppSliderInput(
-            label: 'Số tiền gốc',
-            value: state.inputs.principal,
-            min: AppConstants.minPrincipal,
-            max: 10000000000, // 10 billion
+            label: l10n.principal,
+            value: state.inputs.principal.clamp(0, CurrencyFormatter.defaultLoanMax),
+            min: 0,
+            max: CurrencyFormatter.defaultLoanMax,
             divisions: 1000,
             activeColor: AppColors.warning,
             valueFormatter: (v) => CurrencyFormatter.formatShort(v),
@@ -112,7 +115,7 @@ class CompoundInterestPage extends ConsumerWidget {
 
           // Rate slider
           AppSliderInput(
-            label: 'Lãi suất năm',
+            label: l10n.annualRate,
             value: state.inputs.annualRate,
             min: AppConstants.minRate,
             max: AppConstants.maxRate,
@@ -126,7 +129,7 @@ class CompoundInterestPage extends ConsumerWidget {
 
           // Term slider
           AppSliderInput(
-            label: 'Thời hạn',
+            label: l10n.term,
             value: state.inputs.termMonths.toDouble(),
             min: AppConstants.minTermMonths.toDouble(),
             max: 360, // 30 years
@@ -174,13 +177,14 @@ class CompoundInterestPage extends ConsumerWidget {
     BuildContext context,
     CompoundInterestResult result,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Kết quả tính toán',
+            l10n.calculationResults,
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
@@ -188,13 +192,13 @@ class CompoundInterestPage extends ConsumerWidget {
             ),
           ),
           SizedBox(height: 16.h),
-          _buildResultRow('Tổng tiền nhận', CurrencyFormatter.format(result.totalAmount), AppColors.success, true),
+          _buildResultRow(l10n.totalReceived, CurrencyFormatter.format(result.totalAmount), AppColors.success, true),
           SizedBox(height: 12.h),
-          _buildResultRow('Tiền lãi', CurrencyFormatter.format(result.interest), AppColors.chartInterest, false),
+          _buildResultRow(l10n.interestEarned, CurrencyFormatter.format(result.interest), AppColors.chartInterest, false),
           SizedBox(height: 12.h),
-          _buildResultRow('Lãi suất thực/năm', '${result.effectiveAnnualRate.toStringAsFixed(2)}%', null, false),
+          _buildResultRow(l10n.effectiveAnnualRate, '${result.effectiveAnnualRate.toStringAsFixed(2)}%', null, false),
           SizedBox(height: 12.h),
-          _buildResultRow('Số lần ghép lãi', '${(result.frequency.periodsPerYear * result.termMonths / 12).round()}', null, false),
+          _buildResultRow(l10n.compoundingPeriods, '${(result.frequency.periodsPerYear * result.termMonths / 12).round()}', null, false),
         ],
       ),
     );
@@ -237,6 +241,7 @@ class CompoundInterestPage extends ConsumerWidget {
     BuildContext context,
     CompoundInterestCalculatorState state,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     // Compare with simple interest
     final simpleInterest = state.inputs.principal *
         (state.inputs.annualRate / 100) *
@@ -251,7 +256,7 @@ class CompoundInterestPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'So sánh với Lãi đơn',
+            l10n.compareWithSimple,
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
@@ -260,13 +265,13 @@ class CompoundInterestPage extends ConsumerWidget {
           ),
           SizedBox(height: 16.h),
           _buildComparisonRow(
-            'Lãi đơn',
+            l10n.simpleInterest,
             CurrencyFormatter.formatShort(simpleTotal),
             AppColors.info,
           ),
           SizedBox(height: 8.h),
           _buildComparisonRow(
-            'Lãi kép',
+            l10n.compoundInterest,
             CurrencyFormatter.formatShort(compoundTotal),
             AppColors.success,
           ),
@@ -287,7 +292,7 @@ class CompoundInterestPage extends ConsumerWidget {
                 SizedBox(width: 8.w),
                 Expanded(
                   child: Text(
-                    'Lãi kép giúp bạn nhận thêm ${CurrencyFormatter.formatShort(difference)}',
+                    l10n.compoundBenefit(CurrencyFormatter.formatShort(difference)),
                     style: TextStyle(
                       fontSize: 13.sp,
                       fontWeight: FontWeight.w500,

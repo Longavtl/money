@@ -230,3 +230,54 @@ final simulationProvider =
     AutoDisposeNotifierProvider<SimulationNotifier, SimulationState>(
   SimulationNotifier.new,
 );
+
+// Add Scenario Form State
+class AddScenarioFormState {
+  final double principal;
+  final double rate;
+  final int termMonths;
+
+  const AddScenarioFormState({
+    this.principal = 100000000,
+    this.rate = 10,
+    this.termMonths = 12,
+  });
+
+  AddScenarioFormState copyWith({
+    double? principal,
+    double? rate,
+    int? termMonths,
+  }) {
+    return AddScenarioFormState(
+      principal: principal ?? this.principal,
+      rate: rate ?? this.rate,
+      termMonths: termMonths ?? this.termMonths,
+    );
+  }
+}
+
+class AddScenarioFormNotifier extends AutoDisposeNotifier<AddScenarioFormState> {
+  @override
+  AddScenarioFormState build() => const AddScenarioFormState();
+
+  void setPrincipal(double value) {
+    state = state.copyWith(principal: value);
+  }
+
+  void setRate(double value) {
+    state = state.copyWith(rate: value);
+  }
+
+  void setTermMonths(int value) {
+    state = state.copyWith(termMonths: value);
+  }
+
+  void reset() {
+    state = const AddScenarioFormState();
+  }
+}
+
+final addScenarioFormProvider =
+    AutoDisposeNotifierProvider<AddScenarioFormNotifier, AddScenarioFormState>(
+  AddScenarioFormNotifier.new,
+);

@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:money/common/widgets/app_card.dart';
 import 'package:money/core/configs/theme/app_colors.dart';
 import 'package:money/core/services/premium_service.dart';
+import 'package:money/l10n/app_localizations.dart';
 import 'package:money/presentation/premium/premium_provider.dart';
 
 /// Premium upgrade page
@@ -19,6 +20,7 @@ class PremiumPage extends ConsumerWidget {
     final notifier = ref.read(premiumStatusProvider.notifier);
     final service = ref.watch(premiumServiceProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: AppColors.lightBackground,
@@ -82,8 +84,8 @@ class PremiumPage extends ConsumerWidget {
                         // Title
                         Text(
                           status.isPremium
-                              ? 'Bạn đã là Premium!'
-                              : 'Nâng cấp Premium',
+                              ? l10n.premiumActivated
+                              : l10n.premium,
                           style: TextStyle(
                             fontSize: 28.sp,
                             fontWeight: FontWeight.bold,
@@ -95,8 +97,8 @@ class PremiumPage extends ConsumerWidget {
 
                         Text(
                           status.isPremium
-                              ? 'Cảm ơn bạn đã ủng hộ!'
-                              : 'Mở khóa tất cả tính năng',
+                              ? l10n.premiumThanks
+                              : l10n.premiumDescription,
                           style: TextStyle(
                             fontSize: 16.sp,
                             color: isDark ? Colors.white60 : Colors.black54,
@@ -106,25 +108,25 @@ class PremiumPage extends ConsumerWidget {
                         SizedBox(height: 32.h),
 
                         // Features list
-                        _buildFeaturesList(isDark),
+                        _buildFeaturesList(isDark, l10n),
 
                         SizedBox(height: 32.h),
 
                         // Price card
                         if (!status.isPremium) ...[
-                          _buildPriceCard(service, isDark),
+                          _buildPriceCard(service, isDark, l10n),
                           SizedBox(height: 24.h),
                         ],
 
                         // Purchase button
                         if (!status.isPremium)
-                          _buildPurchaseButton(notifier, status, isDark),
+                          _buildPurchaseButton(notifier, status, isDark, l10n),
 
                         SizedBox(height: 16.h),
 
                         // Restore button
                         if (!status.isPremium)
-                          _buildRestoreButton(notifier, status, isDark),
+                          _buildRestoreButton(notifier, status, isDark, l10n),
 
                         // Error message
                         if (status.error != null) ...[
@@ -164,7 +166,7 @@ class PremiumPage extends ConsumerWidget {
                         if (status.isPremium &&
                             status.purchaseDate != null) ...[
                           SizedBox(height: 24.h),
-                          _buildPremiumInfo(status, isDark),
+                          _buildPremiumInfo(status, isDark, l10n),
                         ],
 
                         // Test mode: reset button
@@ -225,32 +227,32 @@ class PremiumPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildFeaturesList(bool isDark) {
-    const features = [
+  Widget _buildFeaturesList(bool isDark, AppLocalizations l10n) {
+    final features = [
       _FeatureItem(
         icon: CupertinoIcons.infinite,
-        title: 'Lưu không giới hạn',
-        description: 'Lưu trữ tất cả các khoản vay và tiết kiệm',
+        title: l10n.premiumFeature1,
+        description: l10n.premiumFeature1Desc,
       ),
       _FeatureItem(
         icon: CupertinoIcons.chart_bar_alt_fill,
-        title: 'Biểu đồ đầy đủ',
-        description: 'Xem chi tiết với tất cả loại biểu đồ',
+        title: l10n.premiumFeature2,
+        description: l10n.premiumFeature2Desc,
       ),
       _FeatureItem(
         icon: CupertinoIcons.arrow_right_arrow_left,
-        title: 'So sánh kịch bản',
-        description: 'So sánh nhiều phương án song song',
+        title: l10n.premiumFeature3,
+        description: l10n.premiumFeature3Desc,
       ),
       _FeatureItem(
         icon: CupertinoIcons.doc_text_fill,
-        title: 'Xuất PDF',
-        description: 'Tạo báo cáo chi tiết để in hoặc chia sẻ',
+        title: l10n.premiumFeature4,
+        description: l10n.premiumFeature4Desc,
       ),
       _FeatureItem(
         icon: CupertinoIcons.heart_fill,
-        title: 'Hỗ trợ phát triển',
-        description: 'Giúp chúng tôi cải thiện ứng dụng',
+        title: l10n.premiumFeature5,
+        description: l10n.premiumFeature5Desc,
       ),
     ];
 
@@ -261,7 +263,7 @@ class PremiumPage extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Tính năng Premium',
+              l10n.premiumFeatures,
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
@@ -327,7 +329,7 @@ class PremiumPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildPriceCard(PremiumService service, bool isDark) {
+  Widget _buildPriceCard(PremiumService service, bool isDark, AppLocalizations l10n) {
     return AppCard(
       child: Padding(
         padding: EdgeInsets.all(20.w),
@@ -340,7 +342,7 @@ class PremiumPage extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(20.r),
               ),
               child: Text(
-                'Trọn đời',
+                l10n.lifetime,
                 style: TextStyle(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w600,
@@ -359,7 +361,7 @@ class PremiumPage extends ConsumerWidget {
             ),
             SizedBox(height: 4.h),
             Text(
-              'Thanh toán một lần, sử dụng mãi mãi',
+              l10n.oneTimePurchase,
               style: TextStyle(
                 fontSize: 14.sp,
                 color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
@@ -375,6 +377,7 @@ class PremiumPage extends ConsumerWidget {
     PremiumStatusNotifier notifier,
     PremiumStatus status,
     bool isDark,
+    AppLocalizations l10n,
   ) {
     return GestureDetector(
       onTap: status.isLoading ? null : () => notifier.purchasePremium(),
@@ -417,7 +420,7 @@ class PremiumPage extends ConsumerWidget {
                     ),
                     SizedBox(width: 8.w),
                     Text(
-                      'Nâng cấp ngay',
+                      l10n.upgradeNow,
                       style: TextStyle(
                         fontSize: 17.sp,
                         fontWeight: FontWeight.w600,
@@ -435,11 +438,12 @@ class PremiumPage extends ConsumerWidget {
     PremiumStatusNotifier notifier,
     PremiumStatus status,
     bool isDark,
+    AppLocalizations l10n,
   ) {
     return TextButton(
       onPressed: status.isLoading ? null : () => notifier.restorePurchases(),
       child: Text(
-        'Khôi phục giao dịch',
+        l10n.restorePurchase,
         style: TextStyle(
           fontSize: 15.sp,
           color: AppColors.primary,
@@ -448,7 +452,7 @@ class PremiumPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildPremiumInfo(PremiumStatus status, bool isDark) {
+  Widget _buildPremiumInfo(PremiumStatus status, bool isDark, AppLocalizations l10n) {
     final dateStr = status.purchaseDate != null
         ? '${status.purchaseDate!.day}/${status.purchaseDate!.month}/${status.purchaseDate!.year}'
         : '';
@@ -465,7 +469,7 @@ class PremiumPage extends ConsumerWidget {
             ),
             SizedBox(height: 12.h),
             Text(
-              'Premium đã kích hoạt',
+              l10n.premiumActivated,
               style: TextStyle(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
@@ -474,7 +478,7 @@ class PremiumPage extends ConsumerWidget {
             ),
             SizedBox(height: 8.h),
             Text(
-              'Ngày mua: $dateStr',
+              l10n.purchaseDate(dateStr),
               style: TextStyle(
                 fontSize: 14.sp,
                 color: isDark ? Colors.white60 : AppColors.lightTextSecondary,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:money/core/utils/currency_formatter.dart';
+
 enum AppThemeMode { light, dark, system }
 
 class AppSettings {
@@ -50,6 +52,9 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
     final themeIndex = prefs.getInt(_themeKey) ?? 2; // default: system
     final languageCode = prefs.getString(_languageKey) ?? 'en';
 
+    // Update currency formatter locale
+    CurrencyFormatter.setLocale(languageCode);
+
     state = AppSettings(
       themeMode: AppThemeMode.values[themeIndex],
       languageCode: languageCode,
@@ -63,6 +68,9 @@ class SettingsNotifier extends StateNotifier<AppSettings> {
   }
 
   Future<void> setLanguage(String languageCode) async {
+    // Update currency formatter locale
+    CurrencyFormatter.setLocale(languageCode);
+
     state = state.copyWith(languageCode: languageCode);
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_languageKey, languageCode);
@@ -78,25 +86,27 @@ class SupportedLanguage {
   final String code;
   final String name;
   final String nativeName;
+  final String flag;
 
   const SupportedLanguage({
     required this.code,
     required this.name,
     required this.nativeName,
+    required this.flag,
   });
 }
 
 const supportedLanguages = [
-  SupportedLanguage(code: 'en', name: 'English', nativeName: 'English'),
-  SupportedLanguage(code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt'),
-  SupportedLanguage(code: 'zh', name: 'Chinese', nativeName: '中文'),
-  SupportedLanguage(code: 'ja', name: 'Japanese', nativeName: '日本語'),
-  SupportedLanguage(code: 'ko', name: 'Korean', nativeName: '한국어'),
-  SupportedLanguage(code: 'es', name: 'Spanish', nativeName: 'Español'),
-  SupportedLanguage(code: 'fr', name: 'French', nativeName: 'Français'),
-  SupportedLanguage(code: 'de', name: 'German', nativeName: 'Deutsch'),
-  SupportedLanguage(code: 'pt', name: 'Portuguese', nativeName: 'Português'),
-  SupportedLanguage(code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia'),
-  SupportedLanguage(code: 'th', name: 'Thai', nativeName: 'ไทย'),
-  SupportedLanguage(code: 'hi', name: 'Hindi', nativeName: 'हिन्दी'),
+  SupportedLanguage(code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸'),
+  SupportedLanguage(code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt', flag: '🇻🇳'),
+  SupportedLanguage(code: 'zh', name: 'Chinese', nativeName: '中文', flag: '🇨🇳'),
+  SupportedLanguage(code: 'ja', name: 'Japanese', nativeName: '日本語', flag: '🇯🇵'),
+  SupportedLanguage(code: 'ko', name: 'Korean', nativeName: '한국어', flag: '🇰🇷'),
+  SupportedLanguage(code: 'es', name: 'Spanish', nativeName: 'Español', flag: '🇪🇸'),
+  SupportedLanguage(code: 'fr', name: 'French', nativeName: 'Français', flag: '🇫🇷'),
+  SupportedLanguage(code: 'de', name: 'German', nativeName: 'Deutsch', flag: '🇩🇪'),
+  SupportedLanguage(code: 'pt', name: 'Portuguese', nativeName: 'Português', flag: '🇧🇷'),
+  SupportedLanguage(code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia', flag: '🇮🇩'),
+  SupportedLanguage(code: 'th', name: 'Thai', nativeName: 'ไทย', flag: '🇹🇭'),
+  SupportedLanguage(code: 'hi', name: 'Hindi', nativeName: 'हिन्दी', flag: '🇮🇳'),
 ];

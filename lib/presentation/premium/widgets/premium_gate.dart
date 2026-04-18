@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/l10n/app_localizations.dart';
 import 'package:money/presentation/premium/premium_provider.dart';
 
 /// Widget that gates premium features
@@ -62,6 +63,8 @@ class _PremiumLockOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return GestureDetector(
       onTap: () => _showUpgradeDialog(context),
       child: Container(
@@ -87,7 +90,7 @@ class _PremiumLockOverlay extends StatelessWidget {
               ),
               SizedBox(height: 12.h),
               Text(
-                'Tính năng Premium',
+                l10n.premiumFeatures,
                 style: TextStyle(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
@@ -96,7 +99,7 @@ class _PremiumLockOverlay extends StatelessWidget {
               ),
               SizedBox(height: 4.h),
               Text(
-                'Nâng cấp để mở khóa $feature',
+                l10n.upgradeTo(feature),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 13.sp,
@@ -119,7 +122,7 @@ class _PremiumLockOverlay extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Text(
-                    'Nâng cấp ngay',
+                    l10n.upgradeNow,
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w600,
@@ -148,6 +151,8 @@ class PremiumBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 3.h),
       decoration: BoxDecoration(
@@ -169,7 +174,7 @@ class PremiumBadge extends StatelessWidget {
           ),
           SizedBox(width: 3.w),
           Text(
-            'PRO',
+            l10n.pro,
             style: TextStyle(
               fontSize: size * 0.6,
               fontWeight: FontWeight.bold,

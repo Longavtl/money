@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:money/l10n/app_localizations.dart';
 import 'package:money/common/widgets/app_card.dart';
 import 'package:money/common/widgets/app_slider.dart';
 import 'package:money/core/configs/theme/app_colors.dart';
@@ -18,6 +19,7 @@ class SimpleInterestPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(simpleInterestCalculatorProvider);
     final notifier = ref.read(simpleInterestCalculatorProvider.notifier);
 
@@ -31,7 +33,7 @@ class SimpleInterestPage extends ConsumerWidget {
           onPressed: () => context.pop(),
         ),
         title: Text(
-          'Lãi đơn',
+          l10n.calculatorSimpleInterest,
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.w600,
@@ -73,6 +75,7 @@ class SimpleInterestPage extends ConsumerWidget {
     SimpleInterestCalculatorState state,
     SimpleInterestCalculatorNotifier notifier,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
@@ -80,10 +83,10 @@ class SimpleInterestPage extends ConsumerWidget {
         children: [
           // Principal slider
           AppSliderInput(
-            label: 'Số tiền gốc',
-            value: state.inputs.principal,
-            min: AppConstants.minPrincipal,
-            max: 10000000000, // 10 billion
+            label: l10n.principal,
+            value: state.inputs.principal.clamp(0, CurrencyFormatter.defaultLoanMax),
+            min: 0,
+            max: CurrencyFormatter.defaultLoanMax,
             divisions: 1000,
             activeColor: AppColors.warning,
             valueFormatter: (v) => CurrencyFormatter.formatShort(v),
@@ -94,7 +97,7 @@ class SimpleInterestPage extends ConsumerWidget {
 
           // Rate slider
           AppSliderInput(
-            label: 'Lãi suất năm',
+            label: l10n.annualRate,
             value: state.inputs.annualRate,
             min: AppConstants.minRate,
             max: AppConstants.maxRate,
@@ -108,7 +111,7 @@ class SimpleInterestPage extends ConsumerWidget {
 
           // Term slider
           AppSliderInput(
-            label: 'Thời hạn',
+            label: l10n.term,
             value: state.inputs.termMonths.toDouble(),
             min: AppConstants.minTermMonths.toDouble(),
             max: 360, // 30 years
@@ -126,13 +129,14 @@ class SimpleInterestPage extends ConsumerWidget {
     BuildContext context,
     SimpleInterestResult result,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     return AppCard(
       padding: EdgeInsets.all(16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Kết quả tính toán',
+            l10n.calculationResults,
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
@@ -140,11 +144,11 @@ class SimpleInterestPage extends ConsumerWidget {
             ),
           ),
           SizedBox(height: 16.h),
-          _buildResultRow('Tiền lãi', CurrencyFormatter.format(result.interest), AppColors.success, true),
+          _buildResultRow(l10n.interestEarned, CurrencyFormatter.format(result.interest), AppColors.success, true),
           SizedBox(height: 12.h),
-          _buildResultRow('Tổng tiền nhận', CurrencyFormatter.format(result.totalAmount), AppColors.primary, false),
+          _buildResultRow(l10n.totalReceived, CurrencyFormatter.format(result.totalAmount), AppColors.primary, false),
           SizedBox(height: 12.h),
-          _buildResultRow('Lãi trung bình/tháng', CurrencyFormatter.format(result.monthlyInterest), null, false),
+          _buildResultRow(l10n.averageMonthlyInterest, CurrencyFormatter.format(result.monthlyInterest), null, false),
         ],
       ),
     );
@@ -187,6 +191,7 @@ class SimpleInterestPage extends ConsumerWidget {
     BuildContext context,
     SimpleInterestResult result,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     final principalPercent = (result.principal / result.totalAmount * 100);
     final interestPercent = (result.interest / result.totalAmount * 100);
 
@@ -196,7 +201,7 @@ class SimpleInterestPage extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Cơ cấu tổng tiền',
+            l10n.totalStructure,
             style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
@@ -257,13 +262,13 @@ class SimpleInterestPage extends ConsumerWidget {
           Row(
             children: [
               _buildLegendItem(
-                'Tiền gốc',
+                l10n.principal,
                 CurrencyFormatter.formatShort(result.principal),
                 AppColors.chartPrincipal,
               ),
               SizedBox(width: 16.w),
               _buildLegendItem(
-                'Tiền lãi',
+                l10n.interest,
                 CurrencyFormatter.formatShort(result.interest),
                 AppColors.chartInterest,
               ),

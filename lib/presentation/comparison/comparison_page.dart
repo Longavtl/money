@@ -11,6 +11,7 @@ import 'package:money/presentation/comparison/comparison_provider.dart';
 import 'package:money/presentation/premium/premium_provider.dart';
 import 'package:money/common/widgets/app_card.dart';
 import 'package:money/common/widgets/app_slider.dart';
+import 'package:money/l10n/app_localizations.dart';
 
 class ComparisonPage extends ConsumerWidget {
   const ComparisonPage({super.key});
@@ -20,6 +21,7 @@ class ComparisonPage extends ConsumerWidget {
     final premiumStatus = ref.watch(premiumStatusProvider);
     final state = ref.watch(comparisonProvider);
     final notifier = ref.read(comparisonProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: AppColors.lightBackground,
@@ -30,7 +32,7 @@ class ComparisonPage extends ConsumerWidget {
           icon: const Icon(CupertinoIcons.back, color: AppColors.lightTextPrimary),
           onPressed: () => context.pop(),
         ),
-        title: Text('Compare Scenarios', style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: AppColors.lightTextPrimary)),
+        title: Text(l10n.compareScenarios, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: AppColors.lightTextPrimary)),
       ),
       body: SafeArea(
         child: premiumStatus.isPremium ? _buildContent(context, state, notifier) : _buildPremiumRequired(context),
@@ -39,6 +41,7 @@ class ComparisonPage extends ConsumerWidget {
   }
 
   Widget _buildPremiumRequired(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Center(
       child: Padding(
         padding: EdgeInsets.all(32.w),
@@ -48,14 +51,14 @@ class ComparisonPage extends ConsumerWidget {
             children: [
               Icon(CupertinoIcons.lock_fill, size: 48.sp, color: AppColors.warning),
               SizedBox(height: 16.h),
-              Text('Premium Required', style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: AppColors.lightTextPrimary)),
+              Text(l10n.premiumRequired, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: AppColors.lightTextPrimary)),
               SizedBox(height: 8.h),
-              Text('Upgrade to compare scenarios', textAlign: TextAlign.center, style: TextStyle(fontSize: 14.sp, color: AppColors.lightTextSecondary)),
+              Text(l10n.upgradeToCompare, textAlign: TextAlign.center, style: TextStyle(fontSize: 14.sp, color: AppColors.lightTextSecondary)),
               SizedBox(height: 24.h),
               ElevatedButton(
                 onPressed: () => context.push('/premium'),
                 style: ElevatedButton.styleFrom(backgroundColor: AppColors.warning),
-                child: const Text('Upgrade', style: TextStyle(color: Colors.white)),
+                child: Text(l10n.upgrade, style: TextStyle(color: Colors.white)),
               ),
             ],
           ),
@@ -79,21 +82,22 @@ class ComparisonPage extends ConsumerWidget {
 
   Widget _buildInputCard(BuildContext context, ComparisonState state, ComparisonNotifier notifier) {
     final inputs = state.loanInputs;
+    final l10n = AppLocalizations.of(context)!;
 
     return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Loan Settings', style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: AppColors.lightTextPrimary)),
+          Text(l10n.loanSettings, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: AppColors.lightTextPrimary)),
           SizedBox(height: 16.h),
           AppSegmentedControl(
-            segments: const ['Fixed EMI', 'Reducing'],
+            segments: [l10n.loanTypeFixed, l10n.loanTypeReducing],
             selectedIndex: inputs.type == LoanType.fixedPayment ? 0 : 1,
             onSegmentSelected: (i) => notifier.updateLoanType(i == 0 ? LoanType.fixedPayment : LoanType.reducingBalance),
           ),
           SizedBox(height: 16.h),
           AppSliderInput(
-            label: 'Amount',
+            label: l10n.amount,
             value: inputs.principal,
             min: 1000000,
             max: 10000000000,
@@ -104,7 +108,7 @@ class ComparisonPage extends ConsumerWidget {
           ),
           SizedBox(height: 16.h),
           AppSliderInput(
-            label: 'Term',
+            label: l10n.term,
             value: inputs.termMonths.toDouble(),
             min: 1,
             max: 360,
@@ -120,10 +124,10 @@ class ComparisonPage extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Scenario A', style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: AppColors.primary)),
+                    Text(l10n.scenarioA, style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: AppColors.primary)),
                     SizedBox(height: 8.h),
                     AppSliderInput(
-                      label: 'Interest Rate',
+                      label: l10n.interestRate,
                       value: inputs.rateA,
                       min: 0.1,
                       max: 50,
@@ -140,10 +144,10 @@ class ComparisonPage extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Scenario B', style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: AppColors.info)),
+                    Text(l10n.scenarioB, style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: AppColors.info)),
                     SizedBox(height: 8.h),
                     AppSliderInput(
-                      label: 'Interest Rate',
+                      label: l10n.interestRate,
                       value: inputs.rateB,
                       min: 0.1,
                       max: 50,
@@ -165,16 +169,17 @@ class ComparisonPage extends ConsumerWidget {
   Widget _buildComparisonResults(BuildContext context, ComparisonState state) {
     final loanA = state.result.loanA!;
     final loanB = state.result.loanB!;
+    final l10n = AppLocalizations.of(context)!;
 
     return AppCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Comparison', style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: AppColors.lightTextPrimary)),
+          Text(l10n.comparison, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: AppColors.lightTextPrimary)),
           SizedBox(height: 16.h),
-          _buildComparisonRow('Monthly Payment', CurrencyFormatter.format(loanA.monthlyPayment), CurrencyFormatter.format(loanB.monthlyPayment), loanA.monthlyPayment < loanB.monthlyPayment),
-          _buildComparisonRow('Total Interest', CurrencyFormatter.formatShort(loanA.totalInterest), CurrencyFormatter.formatShort(loanB.totalInterest), loanA.totalInterest < loanB.totalInterest),
-          _buildComparisonRow('Total Payment', CurrencyFormatter.formatShort(loanA.totalPayment), CurrencyFormatter.formatShort(loanB.totalPayment), loanA.totalPayment < loanB.totalPayment),
+          _buildComparisonRow(l10n.monthlyPayment, CurrencyFormatter.format(loanA.monthlyPayment), CurrencyFormatter.format(loanB.monthlyPayment), loanA.monthlyPayment < loanB.monthlyPayment),
+          _buildComparisonRow(l10n.totalInterest, CurrencyFormatter.formatShort(loanA.totalInterest), CurrencyFormatter.formatShort(loanB.totalInterest), loanA.totalInterest < loanB.totalInterest),
+          _buildComparisonRow(l10n.totalPayment, CurrencyFormatter.formatShort(loanA.totalPayment), CurrencyFormatter.formatShort(loanB.totalPayment), loanA.totalPayment < loanB.totalPayment),
           SizedBox(height: 16.h),
           Container(
             padding: EdgeInsets.all(12.w),
@@ -185,7 +190,7 @@ class ComparisonPage extends ConsumerWidget {
                 SizedBox(width: 8.w),
                 Expanded(
                   child: Text(
-                    'Scenario ${state.result.betterLoanScenario} saves ${CurrencyFormatter.formatShort(state.result.loanPaymentDifference.abs())}',
+                    l10n.scenarioSaves(state.result.betterLoanScenario, CurrencyFormatter.formatShort(state.result.loanPaymentDifference.abs())),
                     style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: AppColors.success),
                   ),
                 ),

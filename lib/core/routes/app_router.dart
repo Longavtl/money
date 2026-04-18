@@ -9,6 +9,13 @@ import 'package:money/presentation/calculators/savings/savings_calculator_page.d
 import 'package:money/presentation/premium/premium_page.dart';
 import 'package:money/presentation/comparison/comparison_page.dart';
 import 'package:money/presentation/app/pages/app_shell.dart';
+import 'package:money/presentation/reminders/pages/reminders_page.dart';
+import 'package:money/presentation/goals/pages/goals_page.dart';
+import 'package:money/presentation/goals/pages/goal_detail_page.dart';
+import 'package:money/presentation/calendar/pages/calendar_page.dart';
+import 'package:money/presentation/reports/pages/reports_page.dart';
+import 'package:money/presentation/achievements/pages/achievements_page.dart';
+import 'package:money/presentation/alerts/pages/rate_alerts_page.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -58,6 +65,46 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutes.comparison,
       name: 'comparison',
       builder: (context, state) => const ComparisonPage(),
+    ),
+
+    // Financial Features
+    GoRoute(
+      path: AppRoutes.reminders,
+      name: 'reminders',
+      builder: (context, state) => const RemindersPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.goals,
+      name: 'goals',
+      builder: (context, state) => const GoalsPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.goalDetail,
+      name: 'goal-detail',
+      builder: (context, state) {
+        final goalId = state.pathParameters['id']!;
+        return GoalDetailPage(goalId: goalId);
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.calendar,
+      name: 'calendar',
+      builder: (context, state) => const CalendarPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.reports,
+      name: 'reports',
+      builder: (context, state) => const ReportsPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.achievements,
+      name: 'achievements',
+      builder: (context, state) => const AchievementsPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.rateAlerts,
+      name: 'rate-alerts',
+      builder: (context, state) => const RateAlertsPage(),
     ),
   ],
 );

@@ -3,6 +3,10 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:money/domain/entities/calculation_results.dart';
+import 'package:money/domain/entities/payment_reminder.dart';
+import 'package:money/domain/entities/savings_goal.dart';
+import 'package:money/domain/entities/gamification.dart';
+import 'package:money/domain/entities/rate_alert.dart';
 
 /// Local storage service using SharedPreferences
 /// Simple JSON-based storage for saved calculations
@@ -14,6 +18,13 @@ class LocalStorageService {
   static const _savedLoansKey = 'saved_loans';
   static const _savedSavingsKey = 'saved_savings';
   static const _premiumStatusKey = 'premium_status';
+  static const _paymentRemindersKey = 'payment_reminders';
+  static const _paymentHistoryKey = 'payment_history';
+  static const _savingsGoalsKey = 'savings_goals';
+  static const _userStreakKey = 'user_streak';
+  static const _achievementsKey = 'achievements';
+  static const _rateAlertsKey = 'rate_alerts';
+  static const _marketRatesKey = 'market_rates';
 
   // ============================================================================
   // LOAN OPERATIONS
@@ -113,6 +124,248 @@ class LocalStorageService {
 
   Future<bool> setPremiumStatus(bool isPremium) {
     return _prefs.setBool(_premiumStatusKey, isPremium);
+  }
+
+  // ============================================================================
+  // PAYMENT REMINDERS OPERATIONS
+  // ============================================================================
+
+  List<PaymentReminder> getAllReminders() {
+    final jsonString = _prefs.getString(_paymentRemindersKey);
+    if (jsonString == null) return [];
+
+    try {
+      final List<dynamic> jsonList = json.decode(jsonString);
+      return jsonList.map((e) => PaymentReminder.fromJson(e)).toList()
+        ..sort((a, b) => a.dueDate.compareTo(b.dueDate));
+    } catch (e) {
+      return [];
+    }
+  }
+
+  List<PaymentReminder> getUpcomingReminders({int days = 7}) {
+    final now = DateTime.now();
+    final upcoming = now.add(Duration(days: days));
+    return getAllReminders()
+        .where((r) =>
+            r.status == PaymentStatus.pending &&
+            r.dueDate.isAfter(now) &&
+            r.dueDate.isBefore(upcoming))
+        .toList();
+  }
+
+  Future<bool> saveReminder(PaymentReminder reminder) async {
+    final reminders = getAllReminders();
+    final existingIndex = reminders.indexWhere((r) => r.id == reminder.id);
+    if (existingIndex >= 0) {
+      reminders[existingIndex] = reminder;
+    } else {
+      reminders.add(reminder);
+    }
+    return _saveReminders(reminders);
+  }
+
+  Future<bool> deleteReminder(String id) async {
+    final reminders = getAllReminders();
+    reminders.removeWhere((r) => r.id == id);
+    return _saveReminders(reminders);
+  }
+
+  Future<bool> _saveReminders(List<PaymentReminder> reminders) {
+    final jsonList = reminders.map((r) => r.toJson()).toList();
+    return _prefs.setString(_paymentRemindersKey, json.encode(jsonList));
+  }
+
+  int getReminderCount() => getAllReminders().length;
+
+  // Payment History
+  List<PaymentHistory> getPaymentHistory() {
+    final jsonString = _prefs.getString(_paymentHistoryKey);
+    if (jsonString == null) return [];
+
+    try {
+      final List<dynamic> jsonList = json.decode(jsonString);
+      return jsonList.map((e) => PaymentHistory.fromJson(e)).toList()
+        ..sort((a, b) => b.paidDate.compareTo(a.paidDate));
+    } catch (e) {
+      return [];
+    }
+  }
+
+  Future<bool> addPaymentHistory(PaymentHistory history) async {
+    final allHistory = getPaymentHistory();
+    allHistory.add(history);
+    final jsonList = allHistory.map((h) => h.toJson()).toList();
+    return _prefs.setString(_paymentHistoryKey, json.encode(jsonList));
+  }
+
+  // ============================================================================
+  // SAVINGS GOALS OPERATIONS
+  // ============================================================================
+
+  List<SavingsGoal> getAllGoals() {
+    final jsonString = _prefs.getString(_savingsGoalsKey);
+    if (jsonString == null) return [];
+
+    try {
+      final List<dynamic> jsonList = json.decode(jsonString);
+      return jsonList.map((e) => SavingsGoal.fromJson(e)).toList()
+        ..sort((a, b) => a.deadline.compareTo(b.deadline));
+    } catch (e) {
+      return [];
+    }
+  }
+
+  Future<bool> saveGoal(SavingsGoal goal) async {
+    final goals = getAllGoals();
+    final existingIndex = goals.indexWhere((g) => g.id == goal.id);
+    if (existingIndex >= 0) {
+      goals[existingIndex] = goal;
+    } else {
+      goals.add(goal);
+    }
+    return _saveGoals(goals);
+  }
+
+  Future<bool> deleteGoal(String id) async {
+    final goals = getAllGoals();
+    goals.removeWhere((g) => g.id == id);
+    return _saveGoals(goals);
+  }
+
+  Future<bool> _saveGoals(List<SavingsGoal> goals) {
+    final jsonList = goals.map((g) => g.toJson()).toList();
+    return _prefs.setString(_savingsGoalsKey, json.encode(jsonList));
+  }
+
+  int getGoalCount() => getAllGoals().length;
+  int getCompletedGoalCount() => getAllGoals().where((g) => g.isCompleted).length;
+
+  // ============================================================================
+  // GAMIFICATION OPERATIONS
+  // ============================================================================
+
+  UserStreak getUserStreak() {
+    final jsonString = _prefs.getString(_userStreakKey);
+    if (jsonString == null) return const UserStreak();
+
+    try {
+      return UserStreak.fromJson(json.decode(jsonString));
+    } catch (e) {
+      return const UserStreak();
+    }
+  }
+
+  Future<bool> saveUserStreak(UserStreak streak) {
+    return _prefs.setString(_userStreakKey, json.encode(streak.toJson()));
+  }
+
+  List<Achievement> getAchievements() {
+    final jsonString = _prefs.getString(_achievementsKey);
+    if (jsonString == null) {
+      // Return default achievements if none saved
+      return List.from(defaultAchievements);
+    }
+
+    try {
+      final List<dynamic> jsonList = json.decode(jsonString);
+      return jsonList.map((e) => Achievement.fromJson(e)).toList();
+    } catch (e) {
+      return List.from(defaultAchievements);
+    }
+  }
+
+  Future<bool> saveAchievements(List<Achievement> achievements) {
+    final jsonList = achievements.map((a) => a.toJson()).toList();
+    return _prefs.setString(_achievementsKey, json.encode(jsonList));
+  }
+
+  Future<bool> unlockAchievement(String achievementId) async {
+    final achievements = getAchievements();
+    final index = achievements.indexWhere((a) => a.id == achievementId);
+    if (index >= 0 && !achievements[index].isUnlocked) {
+      achievements[index] = achievements[index].unlock();
+      return saveAchievements(achievements);
+    }
+    return false;
+  }
+
+  Future<bool> saveAchievement(Achievement achievement) async {
+    final achievements = getAchievements();
+    final existingIndex = achievements.indexWhere((a) => a.id == achievement.id);
+    if (existingIndex >= 0) {
+      achievements[existingIndex] = achievement;
+    } else {
+      achievements.add(achievement);
+    }
+    return saveAchievements(achievements);
+  }
+
+  // ============================================================================
+  // RATE ALERTS OPERATIONS
+  // ============================================================================
+
+  List<RateAlert> getAllRateAlerts() {
+    final jsonString = _prefs.getString(_rateAlertsKey);
+    if (jsonString == null) return [];
+
+    try {
+      final List<dynamic> jsonList = json.decode(jsonString);
+      return jsonList.map((e) => RateAlert.fromJson(e)).toList()
+        ..sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    } catch (e) {
+      return [];
+    }
+  }
+
+  Future<bool> saveRateAlert(RateAlert alert) async {
+    final alerts = getAllRateAlerts();
+    final existingIndex = alerts.indexWhere((a) => a.id == alert.id);
+    if (existingIndex >= 0) {
+      alerts[existingIndex] = alert;
+    } else {
+      alerts.add(alert);
+    }
+    return _saveRateAlerts(alerts);
+  }
+
+  Future<bool> deleteRateAlert(String id) async {
+    final alerts = getAllRateAlerts();
+    alerts.removeWhere((a) => a.id == id);
+    return _saveRateAlerts(alerts);
+  }
+
+  Future<bool> _saveRateAlerts(List<RateAlert> alerts) {
+    final jsonList = alerts.map((a) => a.toJson()).toList();
+    return _prefs.setString(_rateAlertsKey, json.encode(jsonList));
+  }
+
+  List<MarketRate> getMarketRates() {
+    final jsonString = _prefs.getString(_marketRatesKey);
+    if (jsonString == null) return List.from(defaultMarketRates);
+
+    try {
+      final List<dynamic> jsonList = json.decode(jsonString);
+      return jsonList.map((e) => MarketRate.fromJson(e)).toList();
+    } catch (e) {
+      return List.from(defaultMarketRates);
+    }
+  }
+
+  Future<bool> saveMarketRates(List<MarketRate> rates) {
+    final jsonList = rates.map((r) => r.toJson()).toList();
+    return _prefs.setString(_marketRatesKey, json.encode(jsonList));
+  }
+
+  Future<bool> saveMarketRate(MarketRate rate) async {
+    final rates = getMarketRates();
+    final existingIndex = rates.indexWhere((r) => r.type == rate.type);
+    if (existingIndex >= 0) {
+      rates[existingIndex] = rate;
+    } else {
+      rates.add(rate);
+    }
+    return saveMarketRates(rates);
   }
 }
 
