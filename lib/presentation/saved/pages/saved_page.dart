@@ -5,12 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:money/core/configs/theme/app_colors.dart';
 import 'package:money/core/providers/dependency_providers.dart';
-import 'package:money/core/services/premium_service.dart';
 import 'package:money/core/storage/local_storage_service.dart';
 import 'package:money/core/utils/currency_formatter.dart';
 import 'package:money/domain/entities/calculation_results.dart';
 import 'package:money/l10n/app_localizations.dart';
-import 'package:money/presentation/premium/premium_provider.dart';
 import 'package:money/common/widgets/app_card.dart';
 import 'package:money/common/widgets/app_slider.dart';
 
@@ -41,7 +39,6 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
   Widget build(BuildContext context) {
     final loansAsync = ref.watch(savedLoansProvider);
     final savingsAsync = ref.watch(savedSavingsProvider);
-    final premiumStatus = ref.watch(premiumStatusProvider);
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
@@ -70,7 +67,6 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
                       ),
                     ),
                   ),
-                  if (!premiumStatus.isPremium) _buildLimitIndicator(loans.length, savings.length),
                 ],
               ),
             ),
@@ -93,27 +89,6 @@ class _SavedPageState extends ConsumerState<SavedPage> with SingleTickerProvider
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildLimitIndicator(int loans, int savings) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-      decoration: BoxDecoration(
-        color: AppColors.warning.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(CupertinoIcons.lock_fill, size: 14.sp, color: AppColors.warning),
-          SizedBox(width: 6.w),
-          Text(
-            '$loans/${PremiumLimits.maxSavedLoans} | $savings/${PremiumLimits.maxSavedSavings}',
-            style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500, color: AppColors.warning),
-          ),
-        ],
       ),
     );
   }

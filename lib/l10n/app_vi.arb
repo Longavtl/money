@@ -12,6 +12,11 @@
 
   "mainTools": "Công cụ chính",
   "categories": "{count} DANH MỤC",
+  "@categories": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
 
   "loanCalc": "Vay ngân hàng",
   "loanCalcSubtitle": "Thanh toán hàng tháng",
@@ -79,7 +84,17 @@
 
   "storageLimitTitle": "Giới hạn lưu trữ",
   "storageLimitLoans": "Bạn đã lưu tối đa {count} khoản vay. Nâng cấp Premium để lưu không giới hạn!",
+  "@storageLimitLoans": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "storageLimitSavings": "Bạn đã lưu tối đa {count} khoản tiết kiệm. Nâng cấp Premium để lưu không giới hạn!",
+  "@storageLimitSavings": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
 
   "saveLoan": "Lưu khoản vay",
   "loanNameHint": "Tên khoản vay (tùy chọn)",
@@ -94,13 +109,28 @@
   "savedLoans": "Khoản vay đã lưu",
   "savedSavings": "Tiết kiệm đã lưu",
   "loansCount": "Khoản vay ({count})",
+  "@loansCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "savingsCount": "Tiết kiệm ({count})",
+  "@savingsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "noSavedItems": "Chưa có mục nào được lưu",
   "noSavedLoans": "Chưa có khoản vay nào",
   "noSavedLoansSubtitle": "Tính toán và lưu khoản vay để xem sau",
   "noSavedSavings": "Chưa có khoản tiết kiệm nào",
   "noSavedSavingsSubtitle": "Tính toán và lưu tiết kiệm để xem sau",
   "errorLoading": "Lỗi: {error}",
+  "@errorLoading": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
 
   "compoundingFrequency": "Chu kỳ ghép lãi",
   "daily": "Ngày",
@@ -116,6 +146,11 @@
   "simpleInterest": "Lãi đơn",
   "compoundInterest": "Lãi kép",
   "compoundBenefit": "Lãi kép giúp bạn nhận thêm {amount}",
+  "@compoundBenefit": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
 
   "savingsType": "Hình thức tiết kiệm",
   "initialDeposit": "Tiền gửi ban đầu",
@@ -135,6 +170,7 @@
 
   "premium": "Nâng cấp Premium",
   "premiumActivated": "Bạn đã là Premium!",
+  "premiumMember": "Thành viên Premium",
   "premiumThanks": "Cảm ơn bạn đã ủng hộ!",
   "premiumDescription": "Mở khóa tất cả tính năng",
   "premiumFeature1": "Lưu không giới hạn",
@@ -153,8 +189,18 @@
   "upgradeNow": "Nâng cấp ngay",
   "restorePurchase": "Khôi phục giao dịch",
   "purchaseDate": "Ngày mua: {date}",
+  "@purchaseDate": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
   "premiumRequired": "Yêu cầu Premium",
   "upgradeTo": "Nâng cấp để mở khóa {feature}",
+  "@upgradeTo": {
+    "placeholders": {
+      "feature": {"type": "String"}
+    }
+  },
   "pro": "PRO",
   "activated": "Đã kích hoạt",
   "unlockAllFeatures": "Mở khóa tất cả tính năng",
@@ -166,6 +212,11 @@
   "language": "Ngôn ngữ",
   "about": "Về ứng dụng",
   "version": "Phiên bản {version}",
+  "@version": {
+    "placeholders": {
+      "version": {"type": "String"}
+    }
+  },
   "termsOfService": "Điều khoản dịch vụ",
   "privacyPolicy": "Chính sách bảo mật",
 
@@ -184,6 +235,12 @@
   "scenarioB": "Phương án B",
   "comparison": "So sánh",
   "scenarioSaves": "Phương án {scenario} tiết kiệm {amount}",
+  "@scenarioSaves": {
+    "placeholders": {
+      "scenario": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
 
   "simulation": "Mô phỏng",
   "noScenariosYet": "Chưa có kịch bản nào",
@@ -194,11 +251,21 @@
   "savings": "Tiết kiệm",
   "timeline": "Dòng thời gian",
   "monthNumber": "Tháng {number}",
+  "@monthNumber": {
+    "placeholders": {
+      "number": {"type": "int"}
+    }
+  },
   "netWorth": "Giá trị ròng",
   "positive": "Dương",
   "negativeDebt": "Âm (nợ)",
   "now": "Hiện tại",
   "yearsCount": "{count} năm",
+  "@yearsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "debt": "Nợ",
   "remaining": "Còn lại",
   "clearAll": "Xóa tất cả?",
@@ -356,16 +423,88 @@
   "personalLoan": "Vay cá nhân",
   "carLoan": "Vay mua xe",
   "savingsRate": "Lãi tiết kiệm",
-  "updated": "Cập nhật",
   "homeShort": "Nhà",
   "personalShort": "Cá nhân",
   "carShort": "Xe",
   "savingsShort": "Tiết kiệm",
-  "rateDropAlert": "Lãi suất giảm!",
-  "rateIncreaseAlert": "Lãi suất tăng!",
+  "rateDropAlert": "Cảnh báo giảm lãi suất!",
+  "rateIncreaseAlert": "Cảnh báo tăng lãi suất!",
+  "updated": "Đã cập nhật",
 
   "newUpdateAvailable": "Có bản cập nhật mới",
   "updateAppMessage": "Phiên bản mới của ứng dụng đã có sẵn. Vui lòng cập nhật để nhận các tính năng và cải tiến mới nhất.",
   "updateNow": "Cập nhật ngay",
-  "later": "Để sau"
+  "later": "Để sau",
+
+  "qrTools": "Công cụ QR",
+  "createQRCode": "Tạo mã QR",
+  "createQRSubtitle": "Tạo mã QR",
+  "scanQRCode": "Quét mã QR",
+  "scanQRSubtitle": "Quét bất kỳ mã QR nào",
+  "selectQRType": "Chọn loại QR",
+  "qrLink": "Liên kết",
+  "qrText": "Văn bản",
+  "qrWifi": "WiFi",
+  "qrContact": "Danh bạ",
+  "qrCode": "Mã QR",
+  "websiteAddress": "Địa chỉ trang web",
+  "textContent": "Nội dung văn bản",
+  "enterContent": "Nhập nội dung của bạn tại đây",
+  "networkNameSSID": "Tên mạng (SSID)",
+  "wifiPasswordLabel": "Mật khẩu",
+  "encryptionType": "Loại mã hóa",
+  "noEncryption": "Không mã hóa",
+  "contactName": "Tên danh bạ",
+  "contactNameHint": "Nguyễn Văn A",
+  "phoneNumber": "Số điện thoại",
+  "generateQRButton": "Tạo mã QR",
+  "qrGeneratedOnDevice": "Mã QR được tạo trên thiết bị của bạn",
+  "qrLinkInfo": "Nhập URL trang web để tạo mã QR mở liên kết khi quét.",
+  "qrWifiInfo": "Tạo mã QR cho phép người khác kết nối nhanh với mạng WiFi của bạn.",
+  "pleaseEnterWebsite": "Vui lòng nhập địa chỉ trang web",
+  "pleaseEnterTextContent": "Vui lòng nhập nội dung văn bản",
+  "pleaseEnterWifiName": "Vui lòng nhập tên mạng WiFi",
+  "pleaseEnterContactName": "Vui lòng nhập tên danh bạ",
+  "copy": "Sao chép",
+  "copyData": "Sao chép dữ liệu",
+  "dataCopied": "Đã sao chép dữ liệu vào clipboard",
+  "saveToGallery": "Lưu vào thư viện",
+  "qrPrivacyNote": "Mã QR này được tạo cục bộ trên thiết bị của bạn và không được gửi đến bất kỳ máy chủ nào.",
+  "wifiNetwork": "WiFi: {name}",
+  "@wifiNetwork": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "contactInfo": "Danh bạ: {name}",
+  "@contactInfo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "cannotCreateQRImage": "Không thể tạo hình ảnh QR",
+  "cannotSaveQR": "Không thể lưu mã QR",
+  "qrSavedToGallerySuccess": "Đã lưu mã QR vào thư viện",
+  "errorWithMessage": "Lỗi: {message}",
+  "@errorWithMessage": {
+    "placeholders": {
+      "message": {"type": "String"}
+    }
+  },
+  "scanAgain": "Quét lại",
+  "openLink": "Mở liên kết",
+  "copyPassword": "Sao chép mật khẩu",
+  "passwordCopied": "Đã sao chép mật khẩu vào clipboard",
+  "noQRCodeFound": "Không tìm thấy mã QR trong hình ảnh",
+  "pointCameraAtQR": "Hướng camera vào mã QR",
+  "scanFromGallery": "Quét từ thư viện",
+  "websiteLink": "Liên kết trang web",
+  "wifiNetworkLabel": "Mạng WiFi",
+  "openInBrowser": "Mở trong trình duyệt",
+  "wifiCredentials": "Thông tin WiFi",
+  "contactInformation": "Thông tin danh bạ",
+  "plainTextContent": "Nội dung văn bản thuần",
+
+  "reportIssue": "Báo lỗi",
+  "reportIssueSubtitle": "Gửi phản hồi cho chúng tôi"
 }

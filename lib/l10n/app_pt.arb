@@ -1,13 +1,38 @@
 {
   "@@locale": "pt",
   "appName": "Money Nest",
-  "appTagline": "Calcule seu futuro",
+  "appTagline": "Calcule Seu Futuro",
 
   "home": "Início",
   "saved": "Salvos",
   "history": "Histórico",
   "settings": "Configurações",
   "compare": "Comparar",
+  "simulate": "Simular",
+
+  "mainTools": "Ferramentas Principais",
+  "categories": "{count} CATEGORIAS",
+  "@categories": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "loanCalc": "Calc Empréstimo",
+  "loanCalcSubtitle": "Parcelas mensais",
+  "interestCalc": "Juros",
+  "interestCalcSubtitle": "Simples e compostos",
+  "vault": "Cofre",
+  "vaultSubtitle": "Planeje seu futuro",
+  "historySubtitle": "Cálculos anteriores",
+
+  "proAccess": "ACESSO PRO",
+  "upgradeToPremium": "Atualizar para Premium",
+  "premiumBannerDesc": "Desbloqueie gráficos avançados\ne experiência sem anúncios.",
+  "marketPulse": "PULSO DO MERCADO",
+  "currentRates": "Taxas Atuais",
+  "homeLoan": "Financiamento",
+  "savingsApy": "Rendimento",
 
   "calculatorSimpleInterest": "Juros Simples",
   "calculatorCompoundInterest": "Juros Compostos",
@@ -16,23 +41,33 @@
 
   "principal": "Capital",
   "interestRate": "Taxa de Juros",
+  "annualInterestRate": "Taxa de Juros (Anual)",
   "term": "Prazo",
   "termMonths": "Prazo (meses)",
   "termYears": "Prazo (anos)",
   "monthlyPayment": "Parcela Mensal",
+  "firstMonthPayment": "Primeira Parcela",
+  "lastMonthPayment": "Última Parcela",
   "totalInterest": "Juros Totais",
   "totalPayment": "Pagamento Total",
   "interest": "Juros",
   "totalAmount": "Valor Total",
+  "interestPrincipalRatio": "Proporção Juros/Capital",
+  "loanAmount": "Valor do Empréstimo",
 
+  "paymentMethod": "Método de Pagamento",
   "loanTypeFixed": "Parcela Fixa",
   "loanTypeReducing": "Saldo Devedor",
-  "savingsTypeReinvest": "Reinvestir Juros",
-  "savingsTypeNoReinvest": "Sem Reinvestimento",
+  "savingsTypeReinvest": "Reinvestir",
+  "savingsTypeWithdraw": "Sacar",
+
+  "results": "Resultados",
+  "paymentStructure": "Estrutura de Pagamento",
 
   "amortizationSchedule": "Tabela de Amortização",
   "month": "Mês",
   "year": "Ano",
+  "years": "anos",
   "payment": "Pagamento",
   "principalPaid": "Capital",
   "interestPaid": "Juros",
@@ -44,19 +79,131 @@
   "exportPdf": "Exportar PDF",
   "calculate": "Calcular",
   "reset": "Reiniciar",
+  "close": "Fechar",
+  "add": "Adicionar",
+
+  "storageLimitTitle": "Limite de Armazenamento",
+  "storageLimitLoans": "Você salvou o máximo de {count} empréstimos. Atualize para Premium para salvamentos ilimitados!",
+  "@storageLimitLoans": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "storageLimitSavings": "Você salvou o máximo de {count} poupanças. Atualize para Premium para salvamentos ilimitados!",
+  "@storageLimitSavings": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "saveLoan": "Salvar Empréstimo",
+  "loanNameHint": "Nome do empréstimo (opcional)",
+  "amount": "Valor",
+  "rate": "Taxa",
+  "loanSaved": "Empréstimo salvo",
+
+  "saveSavings": "Salvar Poupança",
+  "savingsNameHint": "Nome da poupança (opcional)",
+  "savingsSaved": "Poupança salva",
 
   "savedLoans": "Empréstimos Salvos",
   "savedSavings": "Poupanças Salvas",
-  "noSavedItems": "Nenhum item salvo",
+  "loansCount": "Empréstimos ({count})",
+  "@loansCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "savingsCount": "Poupanças ({count})",
+  "@savingsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "noSavedItems": "Nenhum item salvo ainda",
+  "noSavedLoans": "Nenhum empréstimo salvo",
+  "noSavedLoansSubtitle": "Calcule e salve empréstimos para ver depois",
+  "noSavedSavings": "Nenhuma poupança salva",
+  "noSavedSavingsSubtitle": "Calcule e salve poupanças para ver depois",
+  "errorLoading": "Erro: {error}",
+  "@errorLoading": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+
+  "compoundingFrequency": "Frequência de Capitalização",
+  "daily": "Diário",
+  "monthly": "Mensal",
+  "quarterly": "Trimestral",
+  "yearly": "Anual",
+  "calculationResults": "Resultados do Cálculo",
+  "totalReceived": "Total Recebido",
+  "interestEarned": "Juros Ganhos",
+  "effectiveAnnualRate": "Taxa Anual Efetiva",
+  "compoundingPeriods": "Períodos de Capitalização",
+  "compareWithSimple": "Comparar com Juros Simples",
+  "simpleInterest": "Juros Simples",
+  "compoundInterest": "Juros Compostos",
+  "compoundBenefit": "Os juros compostos rendem {amount} a mais",
+  "@compoundBenefit": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+
+  "savingsType": "Tipo de Poupança",
+  "initialDeposit": "Depósito Inicial",
+  "monthlyDeposit": "Depósito Mensal",
+  "annualRate": "Taxa Anual",
+  "finalBalance": "Saldo Final",
+  "totalDeposited": "Total Depositado",
+  "returnRate": "Taxa de Retorno",
+  "avgMonthlyInterest": "Média de Juros Mensais",
+  "detailedAnalysis": "Análise Detalhada",
+  "deposits": "Depósitos",
+  "reinvestInfo": "Os juros são capitalizados mensalmente",
+  "withdrawInfo": "Os juros são pagos mensalmente, sem capitalização",
+
+  "averageMonthlyInterest": "Juros Médios/Mês",
+  "totalStructure": "Estrutura Total",
 
   "premium": "Atualizar para Premium",
+  "premiumActivated": "Você é Premium!",
+  "premiumMember": "Membro Premium",
+  "premiumThanks": "Obrigado pelo seu apoio!",
   "premiumDescription": "Desbloqueie todos os recursos",
   "premiumFeature1": "Salvamentos ilimitados",
-  "premiumFeature2": "Gráficos completos",
+  "premiumFeature1Desc": "Armazene todos os seus empréstimos e poupanças",
+  "premiumFeature2": "Suite completa de gráficos",
+  "premiumFeature2Desc": "Veja detalhes com todos os tipos de gráficos",
   "premiumFeature3": "Comparação de cenários",
+  "premiumFeature3Desc": "Compare várias opções lado a lado",
   "premiumFeature4": "Exportar PDF",
+  "premiumFeature4Desc": "Crie relatórios detalhados para imprimir ou compartilhar",
+  "premiumFeature5": "Apoie o desenvolvimento",
+  "premiumFeature5Desc": "Ajude-nos a melhorar o aplicativo",
+  "premiumFeatures": "Recursos Premium",
+  "lifetime": "Vitalício",
+  "oneTimePurchase": "Pague uma vez, use para sempre",
+  "upgradeNow": "Atualizar Agora",
   "restorePurchase": "Restaurar Compra",
-  "upgrade": "Atualizar",
+  "purchaseDate": "Data da compra: {date}",
+  "@purchaseDate": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+  "premiumRequired": "Premium Necessário",
+  "upgradeTo": "Atualizar para {feature}",
+  "@upgradeTo": {
+    "placeholders": {
+      "feature": {"type": "String"}
+    }
+  },
+  "pro": "PRO",
+  "activated": "Ativado",
+  "unlockAllFeatures": "Desbloqueie todos os recursos",
 
   "theme": "Tema",
   "themeLight": "Claro",
@@ -64,12 +211,298 @@
   "themeSystem": "Sistema",
   "language": "Idioma",
   "about": "Sobre",
-  "version": "Versão",
+  "version": "Versão {version}",
+  "@version": {
+    "placeholders": {
+      "version": {"type": "String"}
+    }
+  },
+  "termsOfService": "Termos de Serviço",
+  "privacyPolicy": "Política de Privacidade",
 
   "error": "Erro",
   "errorGeneric": "Algo deu errado",
   "tryAgain": "Tentar Novamente",
   "cancel": "Cancelar",
   "confirm": "Confirmar",
-  "ok": "OK"
+  "ok": "OK",
+  "upgrade": "Atualizar",
+
+  "compareScenarios": "Comparar Cenários",
+  "upgradeToCompare": "Atualize para comparar cenários",
+  "loanSettings": "Configurações do Empréstimo",
+  "scenarioA": "Cenário A",
+  "scenarioB": "Cenário B",
+  "comparison": "Comparação",
+  "scenarioSaves": "Cenário {scenario} economiza {amount}",
+  "@scenarioSaves": {
+    "placeholders": {
+      "scenario": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+
+  "simulation": "Simulação",
+  "noScenariosYet": "Nenhum cenário ainda",
+  "addScenariosSubtitle": "Adicione empréstimos ou poupanças para simular\nsuas finanças ao longo do tempo",
+  "addLoan": "Adicionar Empréstimo",
+  "addSavings": "Adicionar Poupança",
+  "loans": "Empréstimos",
+  "savings": "Poupanças",
+  "timeline": "Linha do Tempo",
+  "monthNumber": "Mês {number}",
+  "@monthNumber": {
+    "placeholders": {
+      "number": {"type": "int"}
+    }
+  },
+  "netWorth": "Patrimônio Líquido",
+  "positive": "Positivo",
+  "negativeDebt": "Negativo (dívida)",
+  "now": "Agora",
+  "yearsCount": "{count} anos",
+  "@yearsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "debt": "Dívida",
+  "remaining": "Restante",
+  "clearAll": "Limpar Tudo?",
+  "allScenariosDeleted": "Todos os cenários serão excluídos.",
+  "loanNameHintExample": "Nome do empréstimo (ex: Financiamento)",
+  "savingsNameHintExample": "Nome (ex: Aposentadoria)",
+  "deposit": "Depósito",
+  "loan": "Empréstimo",
+
+  "selectThemeDescription": "Escolha um tema para o aplicativo",
+  "selectLanguageDescription": "Escolha seu idioma preferido",
+  "apply": "Aplicar",
+
+  "financialTools": "Ferramentas Financeiras",
+  "reminders": "Lembretes",
+  "paymentRemindersSubtitle": "Acompanhe as datas de vencimento",
+  "savingsGoalsSubtitle": "Alcance suas metas",
+  "calendar": "Calendário",
+  "calendarSubtitle": "Veja todos os eventos",
+  "achievementsSubtitle": "Seu progresso",
+  "reportsSubtitle": "Veja as estatísticas",
+  "rateAlertsSubtitle": "Monitore as taxas",
+
+  "paymentReminders": "Lembretes de Pagamento",
+  "noRemindersYet": "Nenhum lembrete ainda",
+  "addRemindersSubtitle": "Adicione lembretes de pagamento para se manter organizado",
+  "addReminder": "Adicionar Lembrete",
+  "editReminder": "Editar Lembrete",
+  "reminderNameHint": "Nome do lembrete (ex: Cartão de Crédito)",
+  "dueDate": "Data de Vencimento",
+  "remindBefore": "Lembrar Antes",
+  "days": "dias",
+  "recurring": "Recorrente",
+  "totalDue": "Total a Pagar",
+  "overdue": "Vencido",
+  "upcoming": "Próximo",
+  "completed": "Concluído",
+  "markAsPaid": "Marcar como Pago",
+  "markAsPaidConfirm": "Tem certeza de que deseja marcar como pago?",
+  "pending": "Pendente",
+  "paid": "Pago",
+  "skipped": "Ignorado",
+  "markPaid": "Marcar Pago",
+  "weekly": "Semanal",
+  "biWeekly": "Quinzenal",
+  "dueToday": "Vence hoje",
+  "dueTomorrow": "Vence amanhã",
+  "dueInDays": "Vence em {days} dias",
+  "@dueInDays": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "pleaseEnterName": "Por favor, insira um nome",
+
+  "savingsGoals": "Metas de Poupança",
+  "noGoalsYet": "Nenhuma meta ainda",
+  "addGoalsSubtitle": "Defina metas de poupança e acompanhe seu progresso",
+  "addGoal": "Adicionar Meta",
+  "editGoal": "Editar Meta",
+  "goalNameHint": "Nome da meta (ex: Viagem)",
+  "targetAmount": "Valor Alvo",
+  "initialAmount": "Valor Inicial",
+  "deadline": "Prazo",
+  "suggestedMonthly": "Sugestão Mensal",
+  "activeGoals": "Metas Ativas",
+  "completedGoals": "Metas Concluídas",
+  "totalSaved": "Total Economizado",
+  "totalTarget": "Meta Total",
+  "ofTotalTarget": "da meta total",
+  "milestones": "Marcos",
+  "addMoney": "Adicionar Dinheiro",
+  "withdraw": "Sacar",
+  "addContribution": "Adicionar Contribuição",
+  "notesOptional": "Observações (opcional)",
+  "withdrawReason": "Motivo do saque",
+  "noContributionsYet": "Nenhuma contribuição ainda",
+  "pauseGoal": "Pausar Meta",
+  "deleteGoal": "Excluir Meta",
+  "deleteGoalConfirm": "Tem certeza de que deseja excluir esta meta?",
+  "target": "Meta",
+  "goals": "Metas",
+  "savePerMonth": "Economize {amount}/mês para atingir a meta",
+  "@savePerMonth": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "pleaseEnterGoalName": "Por favor, insira um nome para a meta",
+  "withdrawal": "Saque",
+  "start": "Início",
+  "goalReached": "Meta!",
+  "progress": "Progresso",
+
+  "achievements": "Conquistas",
+  "financialHealthScore": "Índice de Saúde Financeira",
+  "financialHealth": "Saúde Financeira",
+  "points": "pontos",
+  "healthExcellent": "Excelente! Continue com o ótimo trabalho!",
+  "healthGood": "Bom progresso! Você está no caminho certo.",
+  "healthFair": "Razoável. Há espaço para melhorias.",
+  "healthNeedsWork": "Precisa de atenção. Vamos melhorar juntos!",
+  "paymentStreak": "Sequência de Pagamentos",
+  "dayStreak": "dias seguidos",
+  "keepItUp": "Continue assim!",
+  "longest": "Mais Longo",
+  "unlocked": "Desbloqueado",
+  "locked": "Bloqueado",
+
+  "financialCalendar": "Calendário Financeiro",
+  "monthView": "Visão Mensal",
+  "weekView": "Visão Semanal",
+  "today": "Hoje",
+  "noEventsForDay": "Nenhum evento para este dia",
+  "goalDeadline": "Prazo da Meta",
+  "contribution": "Contribuição",
+
+  "reports": "Relatórios",
+  "week": "Semana",
+  "quarter": "Trimestre",
+  "allTime": "Todos os Tempos",
+  "totalPaid": "Total Pago",
+  "totalDebt": "Dívida Total",
+  "debtVsPaid": "Dívida vs Pago",
+  "outstanding": "Pendente",
+  "noDataYet": "Nenhum dado ainda",
+  "monthlyOverview": "Visão Geral Mensal",
+  "due": "Vencimento",
+  "paymentPerformance": "Desempenho de Pagamentos",
+  "onTime": "No Prazo",
+  "late": "Atrasado",
+  "onTimeRate": "Taxa de Pontualidade",
+
+  "rateAlerts": "Alertas de Taxa",
+  "currentMarketRates": "Taxas de Mercado Atuais",
+  "edit": "Editar",
+  "triggeredAlerts": "Alertas Acionados",
+  "activeAlerts": "Alertas Ativos",
+  "inactiveAlerts": "Alertas Inativos",
+  "noAlertsYet": "Nenhum alerta ainda",
+  "addAlertsSubtitle": "Adicione alertas para acompanhar mudanças nas taxas de juros",
+  "addAlert": "Adicionar Alerta",
+  "alertNameHint": "Nome do alerta (ex: Taxa de Financiamento)",
+  "loanType": "Tipo de Empréstimo",
+  "alertWhen": "Alertar Quando",
+  "rateDrops": "Taxa Cair",
+  "rateRises": "Taxa Subir",
+  "targetRate": "Taxa Alvo",
+  "when": "Quando",
+  "current": "Atual",
+  "triggered": "Acionado",
+  "editMarketRates": "Editar Taxas de Mercado",
+  "personalLoan": "Empréstimo Pessoal",
+  "carLoan": "Financiamento de Veículo",
+  "savingsRate": "Taxa de Poupança",
+  "homeShort": "Casa",
+  "personalShort": "Pessoal",
+  "carShort": "Carro",
+  "savingsShort": "Poupança",
+  "rateDropAlert": "Alerta de Queda de Taxa!",
+  "rateIncreaseAlert": "Alerta de Aumento de Taxa!",
+  "updated": "Atualizado",
+
+  "newUpdateAvailable": "Atualização Disponível",
+  "updateAppMessage": "Uma nova versão do aplicativo está disponível. Por favor, atualize para obter os recursos e melhorias mais recentes.",
+  "updateNow": "Atualizar Agora",
+  "later": "Mais Tarde",
+
+  "qrTools": "Ferramentas QR",
+  "createQRCode": "Criar Código QR",
+  "createQRSubtitle": "Gerar códigos QR",
+  "scanQRCode": "Escanear Código QR",
+  "scanQRSubtitle": "Escanear qualquer código QR",
+  "selectQRType": "Selecione o Tipo de QR",
+  "qrLink": "Link",
+  "qrText": "Texto",
+  "qrWifi": "WiFi",
+  "qrContact": "Contato",
+  "qrCode": "Código QR",
+  "websiteAddress": "Endereço do Site",
+  "textContent": "Conteúdo de Texto",
+  "enterContent": "Digite seu conteúdo aqui",
+  "networkNameSSID": "Nome da Rede (SSID)",
+  "wifiPasswordLabel": "Senha",
+  "encryptionType": "Tipo de Criptografia",
+  "noEncryption": "Sem Criptografia",
+  "contactName": "Nome do Contato",
+  "contactNameHint": "João Silva",
+  "phoneNumber": "Número de Telefone",
+  "generateQRButton": "Gerar Código QR",
+  "qrGeneratedOnDevice": "O código QR é gerado no seu dispositivo",
+  "qrLinkInfo": "Digite uma URL de site para criar um código QR que abre o link quando escaneado.",
+  "qrWifiInfo": "Crie um código QR que permite que outras pessoas se conectem rapidamente à sua rede WiFi.",
+  "pleaseEnterWebsite": "Por favor, insira um endereço de site",
+  "pleaseEnterTextContent": "Por favor, insira o conteúdo de texto",
+  "pleaseEnterWifiName": "Por favor, insira o nome da rede WiFi",
+  "pleaseEnterContactName": "Por favor, insira o nome do contato",
+  "copy": "Copiar",
+  "copyData": "Copiar Dados",
+  "dataCopied": "Dados copiados para a área de transferência",
+  "saveToGallery": "Salvar na Galeria",
+  "qrPrivacyNote": "Este código QR é gerado localmente no seu dispositivo e não é enviado para nenhum servidor.",
+  "wifiNetwork": "WiFi: {name}",
+  "@wifiNetwork": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "contactInfo": "Contato: {name}",
+  "@contactInfo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "cannotCreateQRImage": "Não é possível criar imagem QR",
+  "cannotSaveQR": "Não é possível salvar o código QR",
+  "qrSavedToGallerySuccess": "Código QR salvo na galeria",
+  "errorWithMessage": "Erro: {message}",
+  "@errorWithMessage": {
+    "placeholders": {
+      "message": {"type": "String"}
+    }
+  },
+  "scanAgain": "Escanear Novamente",
+  "openLink": "Abrir Link",
+  "copyPassword": "Copiar Senha",
+  "passwordCopied": "Senha copiada para a área de transferência",
+  "noQRCodeFound": "Nenhum código QR encontrado na imagem",
+  "pointCameraAtQR": "Aponte a câmera para o código QR",
+  "scanFromGallery": "Escanear da galeria",
+  "websiteLink": "Link do Site",
+  "wifiNetworkLabel": "Rede WiFi",
+  "openInBrowser": "Abrir no navegador",
+  "wifiCredentials": "Credenciais WiFi",
+  "contactInformation": "Informações de contato",
+  "plainTextContent": "Conteúdo de texto simples",
+
+  "reportIssue": "Relatar Problema",
+  "reportIssueSubtitle": "Envie-nos seu feedback"
 }

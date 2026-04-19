@@ -30,58 +30,58 @@ class AppLocalizationsDe extends AppLocalizations {
   String get compare => 'Vergleichen';
 
   @override
-  String get simulate => 'Simulate';
+  String get simulate => 'Simulieren';
 
   @override
-  String get mainTools => 'Main Tools';
+  String get mainTools => 'Hauptfunktionen';
 
   @override
   String categories(int count) {
-    return '$count CATEGORIES';
+    return '$count KATEGORIEN';
   }
 
   @override
-  String get loanCalc => 'Loan Calc';
+  String get loanCalc => 'Kredit';
 
   @override
-  String get loanCalcSubtitle => 'Monthly payments';
+  String get loanCalcSubtitle => 'Monatliche Raten';
 
   @override
-  String get interestCalc => 'Interest';
+  String get interestCalc => 'Zinsen';
 
   @override
-  String get interestCalcSubtitle => 'Simple & compound';
+  String get interestCalcSubtitle => 'Einfach & Zinseszins';
 
   @override
-  String get vault => 'Vault';
+  String get vault => 'Tresor';
 
   @override
-  String get vaultSubtitle => 'Plan your future';
+  String get vaultSubtitle => 'Planen Sie Ihre Zukunft';
 
   @override
-  String get historySubtitle => 'Past calculations';
+  String get historySubtitle => 'Frühere Berechnungen';
 
   @override
-  String get proAccess => 'PRO ACCESS';
+  String get proAccess => 'PRO ZUGANG';
 
   @override
-  String get upgradeToPremium => 'Upgrade to Premium';
+  String get upgradeToPremium => 'Premium Upgrade';
 
   @override
   String get premiumBannerDesc =>
-      'Unlock advanced charts\nand ad-free experience.';
+      'Erweiterte Diagramme und\nwerbefreies Erlebnis freischalten.';
 
   @override
-  String get marketPulse => 'MARKET PULSE';
+  String get marketPulse => 'MARKTÜBERSICHT';
 
   @override
-  String get currentRates => 'Current Rates';
+  String get currentRates => 'Aktuelle Zinssätze';
 
   @override
-  String get homeLoan => 'Home Loan';
+  String get homeLoan => 'Immobilienkredit';
 
   @override
-  String get savingsApy => 'Savings APY';
+  String get savingsApy => 'Sparzins APY';
 
   @override
   String get calculatorSimpleInterest => 'Einfacher Zins';
@@ -102,7 +102,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get interestRate => 'Zinssatz';
 
   @override
-  String get annualInterestRate => 'Interest Rate (Annual)';
+  String get annualInterestRate => 'Zinssatz (Jährlich)';
 
   @override
   String get term => 'Laufzeit';
@@ -117,10 +117,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get monthlyPayment => 'Monatliche Rate';
 
   @override
-  String get firstMonthPayment => 'First Month Payment';
+  String get firstMonthPayment => 'Erste Monatsrate';
 
   @override
-  String get lastMonthPayment => 'Last Month Payment';
+  String get lastMonthPayment => 'Letzte Monatsrate';
 
   @override
   String get totalInterest => 'Gesamtzinsen';
@@ -135,13 +135,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get totalAmount => 'Gesamtbetrag';
 
   @override
-  String get interestPrincipalRatio => 'Interest/Principal Ratio';
+  String get interestPrincipalRatio => 'Zins/Kapital-Verhältnis';
 
   @override
-  String get loanAmount => 'Loan Amount';
+  String get loanAmount => 'Kreditbetrag';
 
   @override
-  String get paymentMethod => 'Payment Method';
+  String get paymentMethod => 'Zahlungsmethode';
 
   @override
   String get loanTypeFixed => 'Annuitätendarlehen';
@@ -150,16 +150,16 @@ class AppLocalizationsDe extends AppLocalizations {
   String get loanTypeReducing => 'Tilgungsdarlehen';
 
   @override
-  String get savingsTypeReinvest => 'Zinsen Reinvestieren';
+  String get savingsTypeReinvest => 'Reinvestieren';
 
   @override
-  String get savingsTypeWithdraw => 'Withdraw';
+  String get savingsTypeWithdraw => 'Auszahlen';
 
   @override
-  String get results => 'Results';
+  String get results => 'Ergebnisse';
 
   @override
-  String get paymentStructure => 'Payment Structure';
+  String get paymentStructure => 'Zahlungsstruktur';
 
   @override
   String get amortizationSchedule => 'Tilgungsplan';
@@ -171,7 +171,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get year => 'Jahr';
 
   @override
-  String get years => 'years';
+  String get years => 'Jahre';
 
   @override
   String get payment => 'Zahlung';
@@ -204,47 +204,47 @@ class AppLocalizationsDe extends AppLocalizations {
   String get reset => 'Zurücksetzen';
 
   @override
-  String get close => 'Close';
+  String get close => 'Schließen';
 
   @override
-  String get add => 'Add';
+  String get add => 'Hinzufügen';
 
   @override
-  String get storageLimitTitle => 'Storage Limit';
+  String get storageLimitTitle => 'Speicherlimit';
 
   @override
   String storageLimitLoans(int count) {
-    return 'You have saved the maximum of $count loans. Upgrade to Premium for unlimited saves!';
+    return 'Sie haben maximal $count Kredite gespeichert. Upgraden Sie auf Premium für unbegrenzte Speicherung!';
   }
 
   @override
   String storageLimitSavings(int count) {
-    return 'You have saved the maximum of $count savings. Upgrade to Premium for unlimited saves!';
+    return 'Sie haben maximal $count Sparpläne gespeichert. Upgraden Sie auf Premium für unbegrenzte Speicherung!';
   }
 
   @override
-  String get saveLoan => 'Save Loan';
+  String get saveLoan => 'Kredit speichern';
 
   @override
-  String get loanNameHint => 'Loan name (optional)';
+  String get loanNameHint => 'Kreditname (optional)';
 
   @override
-  String get amount => 'Amount';
+  String get amount => 'Betrag';
 
   @override
-  String get rate => 'Rate';
+  String get rate => 'Zinssatz';
 
   @override
-  String get loanSaved => 'Loan saved';
+  String get loanSaved => 'Kredit gespeichert';
 
   @override
-  String get saveSavings => 'Save Savings';
+  String get saveSavings => 'Sparplan speichern';
 
   @override
-  String get savingsNameHint => 'Savings name (optional)';
+  String get savingsNameHint => 'Sparplanname (optional)';
 
   @override
-  String get savingsSaved => 'Savings saved';
+  String get savingsSaved => 'Sparplan gespeichert';
 
   @override
   String get savedLoans => 'Gespeicherte Kredite';
@@ -254,129 +254,134 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String loansCount(int count) {
-    return 'Loans ($count)';
+    return 'Kredite ($count)';
   }
 
   @override
   String savingsCount(int count) {
-    return 'Savings ($count)';
+    return 'Sparpläne ($count)';
   }
 
   @override
   String get noSavedItems => 'Keine gespeicherten Einträge';
 
   @override
-  String get noSavedLoans => 'No saved loans';
+  String get noSavedLoans => 'Keine gespeicherten Kredite';
 
   @override
-  String get noSavedLoansSubtitle => 'Calculate and save loans to view later';
+  String get noSavedLoansSubtitle =>
+      'Berechnen und speichern Sie Kredite zur späteren Ansicht';
 
   @override
-  String get noSavedSavings => 'No saved savings';
+  String get noSavedSavings => 'Keine gespeicherten Sparpläne';
 
   @override
   String get noSavedSavingsSubtitle =>
-      'Calculate and save savings to view later';
+      'Berechnen und speichern Sie Sparpläne zur späteren Ansicht';
 
   @override
   String errorLoading(String error) {
-    return 'Error: $error';
+    return 'Fehler: $error';
   }
 
   @override
-  String get compoundingFrequency => 'Compounding Frequency';
+  String get compoundingFrequency => 'Zinseszinshäufigkeit';
 
   @override
-  String get daily => 'Daily';
+  String get daily => 'Täglich';
 
   @override
-  String get monthly => 'Monthly';
+  String get monthly => 'Monatlich';
 
   @override
-  String get quarterly => 'Quarterly';
+  String get quarterly => 'Vierteljährlich';
 
   @override
-  String get yearly => 'Yearly';
+  String get yearly => 'Jährlich';
 
   @override
-  String get calculationResults => 'Calculation Results';
+  String get calculationResults => 'Berechnungsergebnisse';
 
   @override
-  String get totalReceived => 'Total Received';
+  String get totalReceived => 'Gesamterhalt';
 
   @override
-  String get interestEarned => 'Interest Earned';
+  String get interestEarned => 'Verdiente Zinsen';
 
   @override
-  String get effectiveAnnualRate => 'Effective Annual Rate';
+  String get effectiveAnnualRate => 'Effektiver Jahreszins';
 
   @override
-  String get compoundingPeriods => 'Compounding Periods';
+  String get compoundingPeriods => 'Zinseszinsperioden';
 
   @override
-  String get compareWithSimple => 'Compare with Simple Interest';
+  String get compareWithSimple => 'Mit einfachem Zins vergleichen';
 
   @override
-  String get simpleInterest => 'Simple Interest';
+  String get simpleInterest => 'Einfacher Zins';
 
   @override
-  String get compoundInterest => 'Compound Interest';
+  String get compoundInterest => 'Zinseszins';
 
   @override
   String compoundBenefit(String amount) {
-    return 'Compound interest earns you $amount more';
+    return 'Zinseszins bringt Ihnen $amount mehr';
   }
 
   @override
-  String get savingsType => 'Savings Type';
+  String get savingsType => 'Sparart';
 
   @override
-  String get initialDeposit => 'Initial Deposit';
+  String get initialDeposit => 'Ersteinlage';
 
   @override
-  String get monthlyDeposit => 'Monthly Deposit';
+  String get monthlyDeposit => 'Monatliche Einlage';
 
   @override
-  String get annualRate => 'Annual Rate';
+  String get annualRate => 'Jahreszins';
 
   @override
-  String get finalBalance => 'Final Balance';
+  String get finalBalance => 'Endguthaben';
 
   @override
-  String get totalDeposited => 'Total Deposited';
+  String get totalDeposited => 'Gesamteinzahlung';
 
   @override
-  String get returnRate => 'Return Rate';
+  String get returnRate => 'Rendite';
 
   @override
-  String get avgMonthlyInterest => 'Avg Monthly Interest';
+  String get avgMonthlyInterest => 'Durchschn. Monatszins';
 
   @override
-  String get detailedAnalysis => 'Detailed Analysis';
+  String get detailedAnalysis => 'Detaillierte Analyse';
 
   @override
-  String get deposits => 'Deposits';
+  String get deposits => 'Einlagen';
 
   @override
-  String get reinvestInfo => 'Interest is compounded monthly';
+  String get reinvestInfo => 'Zinsen werden monatlich verzinst';
 
   @override
-  String get withdrawInfo => 'Interest is paid out monthly, not compounded';
+  String get withdrawInfo =>
+      'Zinsen werden monatlich ausgezahlt, nicht verzinst';
 
   @override
-  String get averageMonthlyInterest => 'Avg Interest/Month';
+  String get averageMonthlyInterest => 'Durchschn. Zins/Monat';
 
   @override
-  String get totalStructure => 'Total Structure';
+  String get totalStructure => 'Gesamtstruktur';
 
   @override
   String get premium => 'Premium Upgrade';
 
   @override
-  String get premiumActivated => 'You are Premium!';
+  String get premiumActivated => 'Sie sind Premium!';
 
   @override
-  String get premiumThanks => 'Thank you for your support!';
+  String get premiumMember => 'Premium-Mitglied';
+
+  @override
+  String get premiumThanks => 'Vielen Dank für Ihre Unterstützung!';
 
   @override
   String get premiumDescription => 'Alle Funktionen freischalten';
@@ -385,68 +390,71 @@ class AppLocalizationsDe extends AppLocalizations {
   String get premiumFeature1 => 'Unbegrenzt speichern';
 
   @override
-  String get premiumFeature1Desc => 'Store all your loans and savings';
+  String get premiumFeature1Desc =>
+      'Speichern Sie alle Ihre Kredite und Sparpläne';
 
   @override
   String get premiumFeature2 => 'Vollständige Diagramme';
 
   @override
-  String get premiumFeature2Desc => 'View details with all chart types';
+  String get premiumFeature2Desc => 'Details mit allen Diagrammtypen anzeigen';
 
   @override
   String get premiumFeature3 => 'Szenariovergleich';
 
   @override
-  String get premiumFeature3Desc => 'Compare multiple options side by side';
+  String get premiumFeature3Desc =>
+      'Mehrere Optionen nebeneinander vergleichen';
 
   @override
   String get premiumFeature4 => 'PDF Export';
 
   @override
-  String get premiumFeature4Desc => 'Create detailed reports to print or share';
+  String get premiumFeature4Desc =>
+      'Detaillierte Berichte zum Drucken oder Teilen erstellen';
 
   @override
-  String get premiumFeature5 => 'Support development';
+  String get premiumFeature5 => 'Entwicklung unterstützen';
 
   @override
-  String get premiumFeature5Desc => 'Help us improve the app';
+  String get premiumFeature5Desc => 'Helfen Sie uns, die App zu verbessern';
 
   @override
-  String get premiumFeatures => 'Premium Features';
+  String get premiumFeatures => 'Premium-Funktionen';
 
   @override
-  String get lifetime => 'Lifetime';
+  String get lifetime => 'Lebenslang';
 
   @override
-  String get oneTimePurchase => 'Pay once, use forever';
+  String get oneTimePurchase => 'Einmal zahlen, für immer nutzen';
 
   @override
-  String get upgradeNow => 'Upgrade Now';
+  String get upgradeNow => 'Jetzt upgraden';
 
   @override
-  String get restorePurchase => 'Kauf Wiederherstellen';
+  String get restorePurchase => 'Kauf wiederherstellen';
 
   @override
   String purchaseDate(String date) {
-    return 'Purchase date: $date';
+    return 'Kaufdatum: $date';
   }
 
   @override
-  String get premiumRequired => 'Premium Required';
+  String get premiumRequired => 'Premium erforderlich';
 
   @override
   String upgradeTo(String feature) {
-    return 'Upgrade to $feature';
+    return 'Upgrade auf $feature';
   }
 
   @override
   String get pro => 'PRO';
 
   @override
-  String get activated => 'Activated';
+  String get activated => 'Aktiviert';
 
   @override
-  String get unlockAllFeatures => 'Unlock all features';
+  String get unlockAllFeatures => 'Alle Funktionen freischalten';
 
   @override
   String get theme => 'Design';
@@ -468,14 +476,14 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String version(String version) {
-    return 'Version';
+    return 'Version $version';
   }
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => 'Nutzungsbedingungen';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'Datenschutzrichtlinie';
 
   @override
   String get error => 'Fehler';
@@ -499,521 +507,700 @@ class AppLocalizationsDe extends AppLocalizations {
   String get upgrade => 'Upgrade';
 
   @override
-  String get compareScenarios => 'Compare Scenarios';
+  String get compareScenarios => 'Szenarien vergleichen';
 
   @override
-  String get upgradeToCompare => 'Upgrade to compare scenarios';
+  String get upgradeToCompare => 'Upgrade zum Vergleichen von Szenarien';
 
   @override
-  String get loanSettings => 'Loan Settings';
+  String get loanSettings => 'Krediteinstellungen';
 
   @override
-  String get scenarioA => 'Scenario A';
+  String get scenarioA => 'Szenario A';
 
   @override
-  String get scenarioB => 'Scenario B';
+  String get scenarioB => 'Szenario B';
 
   @override
-  String get comparison => 'Comparison';
+  String get comparison => 'Vergleich';
 
   @override
   String scenarioSaves(String scenario, String amount) {
-    return 'Scenario $scenario saves $amount';
+    return 'Szenario $scenario spart $amount';
   }
 
   @override
   String get simulation => 'Simulation';
 
   @override
-  String get noScenariosYet => 'No scenarios yet';
+  String get noScenariosYet => 'Noch keine Szenarien';
 
   @override
   String get addScenariosSubtitle =>
-      'Add loans or savings to simulate\nyour finances over time';
+      'Fügen Sie Kredite oder Sparpläne hinzu,\num Ihre Finanzen zu simulieren';
 
   @override
-  String get addLoan => 'Add Loan';
+  String get addLoan => 'Kredit hinzufügen';
 
   @override
-  String get addSavings => 'Add Savings';
+  String get addSavings => 'Sparplan hinzufügen';
 
   @override
-  String get loans => 'Loans';
+  String get loans => 'Kredite';
 
   @override
-  String get savings => 'Savings';
+  String get savings => 'Sparpläne';
 
   @override
-  String get timeline => 'Timeline';
+  String get timeline => 'Zeitachse';
 
   @override
   String monthNumber(int number) {
-    return 'Month $number';
+    return 'Monat $number';
   }
 
   @override
-  String get netWorth => 'Net Worth';
+  String get netWorth => 'Nettovermögen';
 
   @override
-  String get positive => 'Positive';
+  String get positive => 'Positiv';
 
   @override
-  String get negativeDebt => 'Negative (debt)';
+  String get negativeDebt => 'Negativ (Schulden)';
 
   @override
-  String get now => 'Now';
+  String get now => 'Jetzt';
 
   @override
   String yearsCount(int count) {
-    return '$count years';
+    return '$count Jahre';
   }
 
   @override
-  String get debt => 'Debt';
+  String get debt => 'Schulden';
 
   @override
-  String get remaining => 'Remaining';
+  String get remaining => 'Verbleibend';
 
   @override
-  String get clearAll => 'Clear All?';
+  String get clearAll => 'Alles löschen?';
 
   @override
-  String get allScenariosDeleted => 'All scenarios will be deleted.';
+  String get allScenariosDeleted => 'Alle Szenarien werden gelöscht.';
 
   @override
-  String get loanNameHintExample => 'Loan name (e.g., Home Loan)';
+  String get loanNameHintExample => 'Kreditname (z.B. Immobilienkredit)';
 
   @override
-  String get savingsNameHintExample => 'Name (e.g., Retirement)';
+  String get savingsNameHintExample => 'Name (z.B. Altersvorsorge)';
 
   @override
-  String get deposit => 'Deposit';
+  String get deposit => 'Einlage';
 
   @override
-  String get loan => 'Loan';
+  String get loan => 'Kredit';
 
   @override
-  String get selectThemeDescription => 'Choose a theme for your app';
+  String get selectThemeDescription => 'Wählen Sie ein Design für Ihre App';
 
   @override
-  String get selectLanguageDescription => 'Choose your preferred language';
+  String get selectLanguageDescription => 'Wählen Sie Ihre bevorzugte Sprache';
 
   @override
-  String get apply => 'Apply';
+  String get apply => 'Anwenden';
 
   @override
-  String get financialTools => 'Financial Tools';
+  String get financialTools => 'Finanztools';
 
   @override
-  String get reminders => 'Reminders';
+  String get reminders => 'Erinnerungen';
 
   @override
-  String get paymentRemindersSubtitle => 'Track due dates';
+  String get paymentRemindersSubtitle => 'Fälligkeiten verfolgen';
 
   @override
-  String get savingsGoalsSubtitle => 'Reach your goals';
+  String get savingsGoalsSubtitle => 'Ihre Ziele erreichen';
 
   @override
-  String get calendar => 'Calendar';
+  String get calendar => 'Kalender';
 
   @override
-  String get calendarSubtitle => 'View all events';
+  String get calendarSubtitle => 'Alle Ereignisse anzeigen';
 
   @override
-  String get achievementsSubtitle => 'Your progress';
+  String get achievementsSubtitle => 'Ihr Fortschritt';
 
   @override
-  String get reportsSubtitle => 'View statistics';
+  String get reportsSubtitle => 'Statistiken anzeigen';
 
   @override
-  String get rateAlertsSubtitle => 'Monitor rates';
+  String get rateAlertsSubtitle => 'Zinssätze überwachen';
 
   @override
-  String get paymentReminders => 'Payment Reminders';
+  String get paymentReminders => 'Zahlungserinnerungen';
 
   @override
-  String get noRemindersYet => 'No reminders yet';
+  String get noRemindersYet => 'Noch keine Erinnerungen';
 
   @override
-  String get addRemindersSubtitle => 'Add payment reminders to stay on track';
+  String get addRemindersSubtitle => 'Fügen Sie Zahlungserinnerungen hinzu';
 
   @override
-  String get addReminder => 'Add Reminder';
+  String get addReminder => 'Erinnerung hinzufügen';
 
   @override
-  String get editReminder => 'Edit Reminder';
+  String get editReminder => 'Erinnerung bearbeiten';
 
   @override
-  String get reminderNameHint => 'Reminder name (e.g., Credit Card)';
+  String get reminderNameHint => 'Erinnerungsname (z.B. Kreditkarte)';
 
   @override
-  String get dueDate => 'Due Date';
+  String get dueDate => 'Fälligkeitsdatum';
 
   @override
-  String get remindBefore => 'Remind Before';
+  String get remindBefore => 'Vorher erinnern';
 
   @override
-  String get days => 'days';
+  String get days => 'Tage';
 
   @override
-  String get recurring => 'Recurring';
+  String get recurring => 'Wiederkehrend';
 
   @override
-  String get totalDue => 'Total Due';
+  String get totalDue => 'Gesamtbetrag fällig';
 
   @override
-  String get overdue => 'Overdue';
+  String get overdue => 'Überfällig';
 
   @override
-  String get upcoming => 'Upcoming';
+  String get upcoming => 'Bevorstehend';
 
   @override
-  String get completed => 'Completed';
+  String get completed => 'Abgeschlossen';
 
   @override
-  String get markAsPaid => 'Mark as Paid';
+  String get markAsPaid => 'Als bezahlt markieren';
 
   @override
-  String get markAsPaidConfirm => 'Are you sure you want to mark this as paid?';
+  String get markAsPaidConfirm =>
+      'Möchten Sie dies wirklich als bezahlt markieren?';
 
   @override
-  String get pending => 'Pending';
+  String get pending => 'Ausstehend';
 
   @override
-  String get paid => 'Paid';
+  String get paid => 'Bezahlt';
 
   @override
-  String get skipped => 'Skipped';
+  String get skipped => 'Übersprungen';
 
   @override
-  String get markPaid => 'Mark Paid';
+  String get markPaid => 'Bezahlt markieren';
 
   @override
-  String get weekly => 'Weekly';
+  String get weekly => 'Wöchentlich';
 
   @override
-  String get biWeekly => 'Bi-weekly';
+  String get biWeekly => 'Alle zwei Wochen';
 
   @override
-  String get dueToday => 'Due today';
+  String get dueToday => 'Heute fällig';
 
   @override
-  String get dueTomorrow => 'Due tomorrow';
+  String get dueTomorrow => 'Morgen fällig';
 
   @override
   String dueInDays(int days) {
-    return 'Due in $days days';
+    return 'Fällig in $days Tagen';
   }
 
   @override
-  String get pleaseEnterName => 'Please enter a name';
+  String get pleaseEnterName => 'Bitte geben Sie einen Namen ein';
 
   @override
-  String get savingsGoals => 'Savings Goals';
+  String get savingsGoals => 'Sparziele';
 
   @override
-  String get noGoalsYet => 'No goals yet';
+  String get noGoalsYet => 'Noch keine Ziele';
 
   @override
-  String get addGoalsSubtitle => 'Set savings goals and track your progress';
+  String get addGoalsSubtitle =>
+      'Setzen Sie Sparziele und verfolgen Sie Ihren Fortschritt';
 
   @override
-  String get addGoal => 'Add Goal';
+  String get addGoal => 'Ziel hinzufügen';
 
   @override
-  String get editGoal => 'Edit Goal';
+  String get editGoal => 'Ziel bearbeiten';
 
   @override
-  String get goalNameHint => 'Goal name (e.g., Vacation)';
+  String get goalNameHint => 'Zielname (z.B. Urlaub)';
 
   @override
-  String get targetAmount => 'Target Amount';
+  String get targetAmount => 'Zielbetrag';
 
   @override
-  String get initialAmount => 'Initial Amount';
+  String get initialAmount => 'Anfangsbetrag';
 
   @override
-  String get deadline => 'Deadline';
+  String get deadline => 'Frist';
 
   @override
-  String get suggestedMonthly => 'Suggested Monthly';
+  String get suggestedMonthly => 'Empfohlener Monatsbetrag';
 
   @override
-  String get activeGoals => 'Active Goals';
+  String get activeGoals => 'Aktive Ziele';
 
   @override
-  String get completedGoals => 'Completed Goals';
+  String get completedGoals => 'Abgeschlossene Ziele';
 
   @override
-  String get totalSaved => 'Total Saved';
+  String get totalSaved => 'Gesamt gespart';
 
   @override
-  String get totalTarget => 'Total Target';
+  String get totalTarget => 'Gesamtziel';
 
   @override
-  String get ofTotalTarget => 'of total target';
+  String get ofTotalTarget => 'des Gesamtziels';
 
   @override
-  String get milestones => 'Milestones';
+  String get milestones => 'Meilensteine';
 
   @override
-  String get addMoney => 'Add Money';
+  String get addMoney => 'Geld hinzufügen';
 
   @override
-  String get withdraw => 'Withdraw';
+  String get withdraw => 'Abheben';
 
   @override
-  String get addContribution => 'Add Contribution';
+  String get addContribution => 'Beitrag hinzufügen';
 
   @override
-  String get notesOptional => 'Notes (optional)';
+  String get notesOptional => 'Notizen (optional)';
 
   @override
-  String get withdrawReason => 'Reason for withdrawal';
+  String get withdrawReason => 'Grund der Abhebung';
 
   @override
-  String get noContributionsYet => 'No contributions yet';
+  String get noContributionsYet => 'Noch keine Beiträge';
 
   @override
-  String get pauseGoal => 'Pause Goal';
+  String get pauseGoal => 'Ziel pausieren';
 
   @override
-  String get deleteGoal => 'Delete Goal';
+  String get deleteGoal => 'Ziel löschen';
 
   @override
-  String get deleteGoalConfirm => 'Are you sure you want to delete this goal?';
+  String get deleteGoalConfirm => 'Möchten Sie dieses Ziel wirklich löschen?';
 
   @override
-  String get target => 'Target';
+  String get target => 'Ziel';
 
   @override
-  String get goals => 'Goals';
+  String get goals => 'Ziele';
 
   @override
   String savePerMonth(String amount) {
-    return 'Save $amount/month to reach goal';
+    return 'Sparen Sie $amount/Monat, um das Ziel zu erreichen';
   }
 
   @override
-  String get pleaseEnterGoalName => 'Please enter a goal name';
+  String get pleaseEnterGoalName => 'Bitte geben Sie einen Zielnamen ein';
 
   @override
-  String get withdrawal => 'Withdrawal';
+  String get withdrawal => 'Abhebung';
 
   @override
   String get start => 'Start';
 
   @override
-  String get goalReached => 'Goal!';
+  String get goalReached => 'Ziel erreicht!';
 
   @override
-  String get progress => 'Progress';
+  String get progress => 'Fortschritt';
 
   @override
-  String get achievements => 'Achievements';
+  String get achievements => 'Erfolge';
 
   @override
-  String get financialHealthScore => 'Financial Health Score';
+  String get financialHealthScore => 'Finanzielle Gesundheitsbewertung';
 
   @override
-  String get financialHealth => 'Financial Health';
+  String get financialHealth => 'Finanzielle Gesundheit';
 
   @override
-  String get points => 'points';
+  String get points => 'Punkte';
 
   @override
-  String get healthExcellent => 'Excellent! Keep up the great work!';
+  String get healthExcellent => 'Ausgezeichnet! Weiter so!';
 
   @override
-  String get healthGood => 'Good progress! You\'re on the right track.';
+  String get healthGood => 'Guter Fortschritt! Sie sind auf dem richtigen Weg.';
 
   @override
-  String get healthFair => 'Fair. There\'s room for improvement.';
+  String get healthFair => 'Befriedigend. Es gibt Verbesserungspotenzial.';
 
   @override
-  String get healthNeedsWork => 'Needs attention. Let\'s improve together!';
+  String get healthNeedsWork =>
+      'Verbesserungsbedarf. Lassen Sie uns gemeinsam verbessern!';
 
   @override
-  String get paymentStreak => 'Payment Streak';
+  String get paymentStreak => 'Zahlungsserie';
 
   @override
-  String get dayStreak => 'day streak';
+  String get dayStreak => 'Tage-Serie';
 
   @override
-  String get keepItUp => 'Keep it up!';
+  String get keepItUp => 'Weiter so!';
 
   @override
-  String get longest => 'Longest';
+  String get longest => 'Längste';
 
   @override
-  String get unlocked => 'Unlocked';
+  String get unlocked => 'Freigeschaltet';
 
   @override
-  String get locked => 'Locked';
+  String get locked => 'Gesperrt';
 
   @override
-  String get financialCalendar => 'Financial Calendar';
+  String get financialCalendar => 'Finanzkalender';
 
   @override
-  String get monthView => 'Month View';
+  String get monthView => 'Monatsansicht';
 
   @override
-  String get weekView => 'Week View';
+  String get weekView => 'Wochenansicht';
 
   @override
-  String get today => 'Today';
+  String get today => 'Heute';
 
   @override
-  String get noEventsForDay => 'No events for this day';
+  String get noEventsForDay => 'Keine Ereignisse für diesen Tag';
 
   @override
-  String get goalDeadline => 'Goal Deadline';
+  String get goalDeadline => 'Zielfrist';
 
   @override
-  String get contribution => 'Contribution';
+  String get contribution => 'Beitrag';
 
   @override
-  String get reports => 'Reports';
+  String get reports => 'Berichte';
 
   @override
-  String get week => 'Week';
+  String get week => 'Woche';
 
   @override
-  String get quarter => 'Quarter';
+  String get quarter => 'Quartal';
 
   @override
-  String get allTime => 'All Time';
+  String get allTime => 'Gesamt';
 
   @override
-  String get totalPaid => 'Total Paid';
+  String get totalPaid => 'Gesamt bezahlt';
 
   @override
-  String get totalDebt => 'Total Debt';
+  String get totalDebt => 'Gesamtschulden';
 
   @override
-  String get debtVsPaid => 'Debt vs Paid';
+  String get debtVsPaid => 'Schulden vs. Bezahlt';
 
   @override
-  String get outstanding => 'Outstanding';
+  String get outstanding => 'Ausstehend';
 
   @override
-  String get noDataYet => 'No data yet';
+  String get noDataYet => 'Noch keine Daten';
 
   @override
-  String get monthlyOverview => 'Monthly Overview';
+  String get monthlyOverview => 'Monatsübersicht';
 
   @override
-  String get due => 'Due';
+  String get due => 'Fällig';
 
   @override
-  String get paymentPerformance => 'Payment Performance';
+  String get paymentPerformance => 'Zahlungsleistung';
 
   @override
-  String get onTime => 'On Time';
+  String get onTime => 'Pünktlich';
 
   @override
-  String get late => 'Late';
+  String get late => 'Verspätet';
 
   @override
-  String get onTimeRate => 'On Time Rate';
+  String get onTimeRate => 'Pünktlichkeitsrate';
 
   @override
-  String get rateAlerts => 'Rate Alerts';
+  String get rateAlerts => 'Zinsalarme';
 
   @override
-  String get currentMarketRates => 'Current Market Rates';
+  String get currentMarketRates => 'Aktuelle Marktzinsen';
 
   @override
-  String get edit => 'Edit';
+  String get edit => 'Bearbeiten';
 
   @override
-  String get triggeredAlerts => 'Triggered Alerts';
+  String get triggeredAlerts => 'Ausgelöste Alarme';
 
   @override
-  String get activeAlerts => 'Active Alerts';
+  String get activeAlerts => 'Aktive Alarme';
 
   @override
-  String get inactiveAlerts => 'Inactive Alerts';
+  String get inactiveAlerts => 'Inaktive Alarme';
 
   @override
-  String get noAlertsYet => 'No alerts yet';
+  String get noAlertsYet => 'Noch keine Alarme';
 
   @override
-  String get addAlertsSubtitle => 'Add alerts to track interest rate changes';
+  String get addAlertsSubtitle =>
+      'Alarme hinzufügen, um Zinsänderungen zu verfolgen';
 
   @override
-  String get addAlert => 'Add Alert';
+  String get addAlert => 'Alarm hinzufügen';
 
   @override
-  String get alertNameHint => 'Alert name (e.g., Home Loan Rate)';
+  String get alertNameHint => 'Alarmname (z.B. Immobilienkredit-Zins)';
 
   @override
-  String get loanType => 'Loan Type';
+  String get loanType => 'Kreditart';
 
   @override
-  String get alertWhen => 'Alert When';
+  String get alertWhen => 'Alarm wenn';
 
   @override
-  String get rateDrops => 'Rate Drops';
+  String get rateDrops => 'Zinssatz sinkt';
 
   @override
-  String get rateRises => 'Rate Rises';
+  String get rateRises => 'Zinssatz steigt';
 
   @override
-  String get targetRate => 'Target Rate';
+  String get targetRate => 'Zielzinssatz';
 
   @override
-  String get when => 'When';
+  String get when => 'Wann';
 
   @override
-  String get current => 'Current';
+  String get current => 'Aktuell';
 
   @override
-  String get triggered => 'Triggered';
+  String get triggered => 'Ausgelöst';
 
   @override
-  String get editMarketRates => 'Edit Market Rates';
+  String get editMarketRates => 'Marktzinsen bearbeiten';
 
   @override
-  String get personalLoan => 'Personal Loan';
+  String get personalLoan => 'Privatkredit';
 
   @override
-  String get carLoan => 'Car Loan';
+  String get carLoan => 'Autokredit';
 
   @override
-  String get savingsRate => 'Savings Rate';
+  String get savingsRate => 'Sparzins';
 
   @override
-  String get homeShort => 'Home';
+  String get homeShort => 'Immobilien';
 
   @override
-  String get personalShort => 'Personal';
+  String get personalShort => 'Privat';
 
   @override
-  String get carShort => 'Car';
+  String get carShort => 'Auto';
 
   @override
-  String get savingsShort => 'Savings';
+  String get savingsShort => 'Sparen';
 
   @override
-  String get rateDropAlert => 'Rate Drop Alert!';
+  String get rateDropAlert => 'Zinssenkungsalarm!';
 
   @override
-  String get rateIncreaseAlert => 'Rate Increase Alert!';
+  String get rateIncreaseAlert => 'Zinserhöhungsalarm!';
 
   @override
-  String get updated => 'Updated';
+  String get updated => 'Aktualisiert';
 
   @override
-  String get newUpdateAvailable => 'Update Available';
+  String get newUpdateAvailable => 'Update verfügbar';
 
   @override
   String get updateAppMessage =>
-      'A new version of the app is available. Please update to get the latest features and improvements.';
+      'Eine neue Version ist verfügbar. Aktualisieren Sie, um die neuesten Funktionen und Verbesserungen zu erhalten.';
 
   @override
-  String get updateNow => 'Update Now';
+  String get updateNow => 'Jetzt aktualisieren';
 
   @override
-  String get later => 'Later';
+  String get later => 'Später';
+
+  @override
+  String get qrTools => 'QR-Tools';
+
+  @override
+  String get createQRCode => 'QR-Code erstellen';
+
+  @override
+  String get createQRSubtitle => 'QR-Codes generieren';
+
+  @override
+  String get scanQRCode => 'QR-Code scannen';
+
+  @override
+  String get scanQRSubtitle => 'Jeden QR-Code scannen';
+
+  @override
+  String get selectQRType => 'QR-Typ auswählen';
+
+  @override
+  String get qrLink => 'Link';
+
+  @override
+  String get qrText => 'Text';
+
+  @override
+  String get qrWifi => 'WLAN';
+
+  @override
+  String get qrContact => 'Kontakt';
+
+  @override
+  String get qrCode => 'QR-Code';
+
+  @override
+  String get websiteAddress => 'Website-Adresse';
+
+  @override
+  String get textContent => 'Textinhalt';
+
+  @override
+  String get enterContent => 'Geben Sie Ihren Inhalt hier ein';
+
+  @override
+  String get networkNameSSID => 'Netzwerkname (SSID)';
+
+  @override
+  String get wifiPasswordLabel => 'Passwort';
+
+  @override
+  String get encryptionType => 'Verschlüsselungstyp';
+
+  @override
+  String get noEncryption => 'Keine Verschlüsselung';
+
+  @override
+  String get contactName => 'Kontaktname';
+
+  @override
+  String get contactNameHint => 'Max Mustermann';
+
+  @override
+  String get phoneNumber => 'Telefonnummer';
+
+  @override
+  String get generateQRButton => 'QR-Code generieren';
+
+  @override
+  String get qrGeneratedOnDevice => 'QR-Code wird auf Ihrem Gerät generiert';
+
+  @override
+  String get qrLinkInfo =>
+      'Geben Sie eine Website-URL ein, um einen QR-Code zu erstellen, der den Link beim Scannen öffnet.';
+
+  @override
+  String get qrWifiInfo =>
+      'Erstellen Sie einen QR-Code, mit dem andere schnell eine Verbindung zu Ihrem WLAN herstellen können.';
+
+  @override
+  String get pleaseEnterWebsite => 'Bitte geben Sie eine Website-Adresse ein';
+
+  @override
+  String get pleaseEnterTextContent => 'Bitte geben Sie Textinhalt ein';
+
+  @override
+  String get pleaseEnterWifiName =>
+      'Bitte geben Sie den WLAN-Netzwerknamen ein';
+
+  @override
+  String get pleaseEnterContactName => 'Bitte geben Sie den Kontaktnamen ein';
+
+  @override
+  String get copy => 'Kopieren';
+
+  @override
+  String get copyData => 'Daten kopieren';
+
+  @override
+  String get dataCopied => 'Daten in die Zwischenablage kopiert';
+
+  @override
+  String get saveToGallery => 'In Galerie speichern';
+
+  @override
+  String get qrPrivacyNote =>
+      'Dieser QR-Code wird lokal auf Ihrem Gerät generiert und nicht an einen Server gesendet.';
+
+  @override
+  String wifiNetwork(String name) {
+    return 'WLAN: $name';
+  }
+
+  @override
+  String contactInfo(String name) {
+    return 'Kontakt: $name';
+  }
+
+  @override
+  String get cannotCreateQRImage => 'QR-Bild kann nicht erstellt werden';
+
+  @override
+  String get cannotSaveQR => 'QR-Code kann nicht gespeichert werden';
+
+  @override
+  String get qrSavedToGallerySuccess => 'QR-Code in Galerie gespeichert';
+
+  @override
+  String errorWithMessage(String message) {
+    return 'Fehler: $message';
+  }
+
+  @override
+  String get scanAgain => 'Erneut scannen';
+
+  @override
+  String get openLink => 'Link öffnen';
+
+  @override
+  String get copyPassword => 'Passwort kopieren';
+
+  @override
+  String get passwordCopied => 'Passwort in die Zwischenablage kopiert';
+
+  @override
+  String get noQRCodeFound => 'Kein QR-Code im Bild gefunden';
+
+  @override
+  String get pointCameraAtQR => 'Kamera auf QR-Code richten';
+
+  @override
+  String get scanFromGallery => 'Aus Galerie scannen';
+
+  @override
+  String get websiteLink => 'Website-Link';
+
+  @override
+  String get wifiNetworkLabel => 'WLAN-Netzwerk';
+
+  @override
+  String get openInBrowser => 'Im Browser öffnen';
+
+  @override
+  String get wifiCredentials => 'WLAN-Anmeldedaten';
+
+  @override
+  String get contactInformation => 'Kontaktinformationen';
+
+  @override
+  String get plainTextContent => 'Einfacher Textinhalt';
+
+  @override
+  String get reportIssue => 'Problem melden';
+
+  @override
+  String get reportIssueSubtitle => 'Feedback senden';
 }

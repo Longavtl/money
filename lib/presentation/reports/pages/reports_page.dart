@@ -16,7 +16,8 @@ class ReportsPage extends ConsumerStatefulWidget {
   ConsumerState<ReportsPage> createState() => _ReportsPageState();
 }
 
-class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProviderStateMixin {
+class _ReportsPageState extends ConsumerState<ReportsPage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -53,8 +54,10 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -67,7 +70,8 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
         ),
         title: Text(
           l10n.reports,
-          style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: textPrimary),
+          style: TextStyle(
+              fontSize: 18.sp, fontWeight: FontWeight.bold, color: textPrimary),
         ),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(48.h),
@@ -84,7 +88,8 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
             SizedBox(height: 16.h),
 
             // Debt vs Paid Pie Chart
-            _buildDebtPaidChart(debtPaidRatio, l10n, textPrimary, textSecondary),
+            _buildDebtPaidChart(
+                debtPaidRatio, l10n, textPrimary, textSecondary),
             SizedBox(height: 16.h),
 
             // Monthly Bar Chart
@@ -102,7 +107,8 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
     );
   }
 
-  Widget _buildTabBar(AppLocalizations l10n, Color textPrimary, Color textSecondary) {
+  Widget _buildTabBar(
+      AppLocalizations l10n, Color textPrimary, Color textSecondary) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16.w),
       decoration: BoxDecoration(
@@ -122,7 +128,8 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
         labelColor: Colors.white,
         unselectedLabelColor: textSecondary,
         labelStyle: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600),
-        unselectedLabelStyle: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.normal),
+        unselectedLabelStyle:
+            TextStyle(fontSize: 13.sp, fontWeight: FontWeight.normal),
         labelPadding: EdgeInsets.symmetric(horizontal: 16.w),
         padding: EdgeInsets.all(4.w),
         tabs: ReportPeriod.values.map((period) {
@@ -170,7 +177,8 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
             Expanded(
               child: _SummaryCard(
                 label: l10n.totalSaved,
-                value: CurrencyFormatter.formatShort(summary['totalSaved'] ?? 0),
+                value:
+                    CurrencyFormatter.formatShort(summary['totalSaved'] ?? 0),
                 icon: CupertinoIcons.bitcoin_circle_fill,
                 color: AppColors.primary,
               ),
@@ -181,7 +189,9 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
                 label: l10n.netWorth,
                 value: CurrencyFormatter.formatShort(summary['netWorth'] ?? 0),
                 icon: CupertinoIcons.chart_bar_fill,
-                color: (summary['netWorth'] ?? 0) >= 0 ? AppColors.success : AppColors.danger,
+                color: (summary['netWorth'] ?? 0) >= 0
+                    ? AppColors.success
+                    : AppColors.danger,
               ),
             ),
           ],
@@ -208,9 +218,11 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
             padding: EdgeInsets.all(24.w),
             child: Column(
               children: [
-                Icon(CupertinoIcons.chart_pie, size: 48.sp, color: textSecondary.withValues(alpha: 0.3)),
+                Icon(CupertinoIcons.chart_pie,
+                    size: 48.sp, color: textSecondary.withValues(alpha: 0.3)),
                 SizedBox(height: 8.h),
-                Text(l10n.noDataYet, style: TextStyle(fontSize: 14.sp, color: textSecondary)),
+                Text(l10n.noDataYet,
+                    style: TextStyle(fontSize: 14.sp, color: textSecondary)),
               ],
             ),
           ),
@@ -224,7 +236,10 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
         children: [
           Text(
             l10n.debtVsPaid,
-            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: textPrimary),
+            style: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                color: textPrimary),
           ),
           SizedBox(height: 16.h),
           Row(
@@ -291,7 +306,10 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
         children: [
           Text(
             l10n.monthlyOverview,
-            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: textPrimary),
+            style: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                color: textPrimary),
           ),
           SizedBox(height: 8.h),
           Row(
@@ -359,7 +377,10 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
         children: [
           Text(
             l10n.paymentPerformance,
-            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: textPrimary),
+            style: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w600,
+                color: textPrimary),
           ),
           SizedBox(height: 16.h),
           Row(
@@ -369,9 +390,14 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
                   children: [
                     Text(
                       '$onTime',
-                      style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.bold, color: AppColors.success),
+                      style: TextStyle(
+                          fontSize: 28.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.success),
                     ),
-                    Text(l10n.onTime, style: TextStyle(fontSize: 12.sp, color: textSecondary)),
+                    Text(l10n.onTime,
+                        style:
+                            TextStyle(fontSize: 12.sp, color: textSecondary)),
                   ],
                 ),
               ),
@@ -385,9 +411,14 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
                   children: [
                     Text(
                       '$late',
-                      style: TextStyle(fontSize: 28.sp, fontWeight: FontWeight.bold, color: AppColors.danger),
+                      style: TextStyle(
+                          fontSize: 28.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.danger),
                     ),
-                    Text(l10n.late, style: TextStyle(fontSize: 12.sp, color: textSecondary)),
+                    Text(l10n.late,
+                        style:
+                            TextStyle(fontSize: 12.sp, color: textSecondary)),
                   ],
                 ),
               ),
@@ -404,10 +435,16 @@ class _ReportsPageState extends ConsumerState<ReportsPage> with SingleTickerProv
                       style: TextStyle(
                         fontSize: 28.sp,
                         fontWeight: FontWeight.bold,
-                        color: rate >= 80 ? AppColors.success : rate >= 50 ? AppColors.warning : AppColors.danger,
+                        color: rate >= 80
+                            ? AppColors.success
+                            : rate >= 50
+                                ? AppColors.warning
+                                : AppColors.danger,
                       ),
                     ),
-                    Text(l10n.onTimeRate, style: TextStyle(fontSize: 12.sp, color: textSecondary)),
+                    Text(l10n.onTimeRate,
+                        style:
+                            TextStyle(fontSize: 12.sp, color: textSecondary)),
                   ],
                 ),
               ),
@@ -451,8 +488,10 @@ class _SummaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return AppCard(
       child: Column(
@@ -467,7 +506,10 @@ class _SummaryCard extends StatelessWidget {
           SizedBox(height: 8.h),
           Text(
             value,
-            style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: textPrimary),
+            style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.bold,
+                color: textPrimary),
           ),
           SizedBox(height: 2.h),
           Text(
@@ -514,10 +556,14 @@ class _ChartLegendItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(label, style: TextStyle(fontSize: 12.sp, color: textSecondary)),
+              Text(label,
+                  style: TextStyle(fontSize: 12.sp, color: textSecondary)),
               Text(
                 '$value ($percent)',
-                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: textPrimary),
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    color: textPrimary),
               ),
             ],
           ),
@@ -595,7 +641,9 @@ class _PieChartPainter extends CustomPainter {
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width / 2 - 10;
 
-    final paint = Paint()..style = PaintingStyle.stroke..strokeWidth = 20;
+    final paint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 20;
 
     // Background
     paint.color = Colors.grey.withValues(alpha: 0.1);

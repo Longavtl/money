@@ -375,6 +375,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get premiumActivated => 'Bạn đã là Premium!';
 
   @override
+  String get premiumMember => 'Thành viên Premium';
+
+  @override
   String get premiumThanks => 'Cảm ơn bạn đã ủng hộ!';
 
   @override
@@ -996,13 +999,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get savingsShort => 'Tiết kiệm';
 
   @override
-  String get rateDropAlert => 'Lãi suất giảm!';
+  String get rateDropAlert => 'Cảnh báo giảm lãi suất!';
 
   @override
-  String get rateIncreaseAlert => 'Lãi suất tăng!';
+  String get rateIncreaseAlert => 'Cảnh báo tăng lãi suất!';
 
   @override
-  String get updated => 'Cập nhật';
+  String get updated => 'Đã cập nhật';
 
   @override
   String get newUpdateAvailable => 'Có bản cập nhật mới';
@@ -1016,4 +1019,178 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get later => 'Để sau';
+
+  @override
+  String get qrTools => 'Công cụ QR';
+
+  @override
+  String get createQRCode => 'Tạo mã QR';
+
+  @override
+  String get createQRSubtitle => 'Tạo mã QR';
+
+  @override
+  String get scanQRCode => 'Quét mã QR';
+
+  @override
+  String get scanQRSubtitle => 'Quét bất kỳ mã QR nào';
+
+  @override
+  String get selectQRType => 'Chọn loại QR';
+
+  @override
+  String get qrLink => 'Liên kết';
+
+  @override
+  String get qrText => 'Văn bản';
+
+  @override
+  String get qrWifi => 'WiFi';
+
+  @override
+  String get qrContact => 'Danh bạ';
+
+  @override
+  String get qrCode => 'Mã QR';
+
+  @override
+  String get websiteAddress => 'Địa chỉ trang web';
+
+  @override
+  String get textContent => 'Nội dung văn bản';
+
+  @override
+  String get enterContent => 'Nhập nội dung của bạn tại đây';
+
+  @override
+  String get networkNameSSID => 'Tên mạng (SSID)';
+
+  @override
+  String get wifiPasswordLabel => 'Mật khẩu';
+
+  @override
+  String get encryptionType => 'Loại mã hóa';
+
+  @override
+  String get noEncryption => 'Không mã hóa';
+
+  @override
+  String get contactName => 'Tên danh bạ';
+
+  @override
+  String get contactNameHint => 'Nguyễn Văn A';
+
+  @override
+  String get phoneNumber => 'Số điện thoại';
+
+  @override
+  String get generateQRButton => 'Tạo mã QR';
+
+  @override
+  String get qrGeneratedOnDevice => 'Mã QR được tạo trên thiết bị của bạn';
+
+  @override
+  String get qrLinkInfo =>
+      'Nhập URL trang web để tạo mã QR mở liên kết khi quét.';
+
+  @override
+  String get qrWifiInfo =>
+      'Tạo mã QR cho phép người khác kết nối nhanh với mạng WiFi của bạn.';
+
+  @override
+  String get pleaseEnterWebsite => 'Vui lòng nhập địa chỉ trang web';
+
+  @override
+  String get pleaseEnterTextContent => 'Vui lòng nhập nội dung văn bản';
+
+  @override
+  String get pleaseEnterWifiName => 'Vui lòng nhập tên mạng WiFi';
+
+  @override
+  String get pleaseEnterContactName => 'Vui lòng nhập tên danh bạ';
+
+  @override
+  String get copy => 'Sao chép';
+
+  @override
+  String get copyData => 'Sao chép dữ liệu';
+
+  @override
+  String get dataCopied => 'Đã sao chép dữ liệu vào clipboard';
+
+  @override
+  String get saveToGallery => 'Lưu vào thư viện';
+
+  @override
+  String get qrPrivacyNote =>
+      'Mã QR này được tạo cục bộ trên thiết bị của bạn và không được gửi đến bất kỳ máy chủ nào.';
+
+  @override
+  String wifiNetwork(String name) {
+    return 'WiFi: $name';
+  }
+
+  @override
+  String contactInfo(String name) {
+    return 'Danh bạ: $name';
+  }
+
+  @override
+  String get cannotCreateQRImage => 'Không thể tạo hình ảnh QR';
+
+  @override
+  String get cannotSaveQR => 'Không thể lưu mã QR';
+
+  @override
+  String get qrSavedToGallerySuccess => 'Đã lưu mã QR vào thư viện';
+
+  @override
+  String errorWithMessage(String message) {
+    return 'Lỗi: $message';
+  }
+
+  @override
+  String get scanAgain => 'Quét lại';
+
+  @override
+  String get openLink => 'Mở liên kết';
+
+  @override
+  String get copyPassword => 'Sao chép mật khẩu';
+
+  @override
+  String get passwordCopied => 'Đã sao chép mật khẩu vào clipboard';
+
+  @override
+  String get noQRCodeFound => 'Không tìm thấy mã QR trong hình ảnh';
+
+  @override
+  String get pointCameraAtQR => 'Hướng camera vào mã QR';
+
+  @override
+  String get scanFromGallery => 'Quét từ thư viện';
+
+  @override
+  String get websiteLink => 'Liên kết trang web';
+
+  @override
+  String get wifiNetworkLabel => 'Mạng WiFi';
+
+  @override
+  String get openInBrowser => 'Mở trong trình duyệt';
+
+  @override
+  String get wifiCredentials => 'Thông tin WiFi';
+
+  @override
+  String get contactInformation => 'Thông tin danh bạ';
+
+  @override
+  String get plainTextContent => 'Nội dung văn bản thuần';
+
+  @override
+  String get reportIssue => 'Báo lỗi';
+
+  @override
+  String get reportIssueSubtitle => 'Gửi phản hồi cho chúng tôi';
 }

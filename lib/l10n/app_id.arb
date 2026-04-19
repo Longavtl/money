@@ -8,6 +8,31 @@
   "history": "Riwayat",
   "settings": "Pengaturan",
   "compare": "Bandingkan",
+  "simulate": "Simulasi",
+
+  "mainTools": "Alat Utama",
+  "categories": "{count} KATEGORI",
+  "@categories": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "loanCalc": "Pinjaman",
+  "loanCalcSubtitle": "Cicilan bulanan",
+  "interestCalc": "Bunga",
+  "interestCalcSubtitle": "Sederhana & majemuk",
+  "vault": "Brankas",
+  "vaultSubtitle": "Rencanakan masa depan",
+  "historySubtitle": "Perhitungan sebelumnya",
+
+  "proAccess": "AKSES PRO",
+  "upgradeToPremium": "Upgrade ke Premium",
+  "premiumBannerDesc": "Buka grafik canggih dan\npengalaman bebas iklan.",
+  "marketPulse": "DENYUT PASAR",
+  "currentRates": "Suku bunga saat ini",
+  "homeLoan": "Kredit Rumah",
+  "savingsApy": "APY Tabungan",
 
   "calculatorSimpleInterest": "Bunga Sederhana",
   "calculatorCompoundInterest": "Bunga Majemuk",
@@ -16,23 +41,33 @@
 
   "principal": "Pokok",
   "interestRate": "Suku Bunga",
+  "annualInterestRate": "Suku Bunga (Tahunan)",
   "term": "Jangka Waktu",
   "termMonths": "Jangka Waktu (bulan)",
   "termYears": "Jangka Waktu (tahun)",
   "monthlyPayment": "Cicilan Bulanan",
+  "firstMonthPayment": "Cicilan Bulan Pertama",
+  "lastMonthPayment": "Cicilan Bulan Terakhir",
   "totalInterest": "Total Bunga",
   "totalPayment": "Total Pembayaran",
   "interest": "Bunga",
   "totalAmount": "Jumlah Total",
+  "interestPrincipalRatio": "Rasio Bunga/Pokok",
+  "loanAmount": "Jumlah Pinjaman",
 
+  "paymentMethod": "Metode Pembayaran",
   "loanTypeFixed": "Cicilan Tetap",
   "loanTypeReducing": "Saldo Menurun",
-  "savingsTypeReinvest": "Investasi Ulang Bunga",
-  "savingsTypeNoReinvest": "Tanpa Investasi Ulang",
+  "savingsTypeReinvest": "Investasi Ulang",
+  "savingsTypeWithdraw": "Tarik",
+
+  "results": "Hasil",
+  "paymentStructure": "Struktur Pembayaran",
 
   "amortizationSchedule": "Jadwal Amortisasi",
   "month": "Bulan",
   "year": "Tahun",
+  "years": "tahun",
   "payment": "Pembayaran",
   "principalPaid": "Pokok",
   "interestPaid": "Bunga",
@@ -44,19 +79,131 @@
   "exportPdf": "Ekspor PDF",
   "calculate": "Hitung",
   "reset": "Reset",
+  "close": "Tutup",
+  "add": "Tambah",
+
+  "storageLimitTitle": "Batas Penyimpanan",
+  "storageLimitLoans": "Anda telah menyimpan maksimal {count} pinjaman. Upgrade ke Premium untuk simpan tanpa batas!",
+  "@storageLimitLoans": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "storageLimitSavings": "Anda telah menyimpan maksimal {count} tabungan. Upgrade ke Premium untuk simpan tanpa batas!",
+  "@storageLimitSavings": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "saveLoan": "Simpan Pinjaman",
+  "loanNameHint": "Nama pinjaman (opsional)",
+  "amount": "Jumlah",
+  "rate": "Bunga",
+  "loanSaved": "Pinjaman disimpan",
+
+  "saveSavings": "Simpan Tabungan",
+  "savingsNameHint": "Nama tabungan (opsional)",
+  "savingsSaved": "Tabungan disimpan",
 
   "savedLoans": "Pinjaman Tersimpan",
   "savedSavings": "Tabungan Tersimpan",
+  "loansCount": "Pinjaman ({count})",
+  "@loansCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "savingsCount": "Tabungan ({count})",
+  "@savingsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "noSavedItems": "Belum ada item tersimpan",
+  "noSavedLoans": "Belum ada pinjaman tersimpan",
+  "noSavedLoansSubtitle": "Hitung dan simpan pinjaman untuk dilihat nanti",
+  "noSavedSavings": "Belum ada tabungan tersimpan",
+  "noSavedSavingsSubtitle": "Hitung dan simpan tabungan untuk dilihat nanti",
+  "errorLoading": "Kesalahan: {error}",
+  "@errorLoading": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+
+  "compoundingFrequency": "Frekuensi Bunga Majemuk",
+  "daily": "Harian",
+  "monthly": "Bulanan",
+  "quarterly": "Triwulan",
+  "yearly": "Tahunan",
+  "calculationResults": "Hasil Perhitungan",
+  "totalReceived": "Total Diterima",
+  "interestEarned": "Bunga Diperoleh",
+  "effectiveAnnualRate": "Suku Bunga Efektif Tahunan",
+  "compoundingPeriods": "Periode Bunga Majemuk",
+  "compareWithSimple": "Bandingkan dengan Bunga Sederhana",
+  "simpleInterest": "Bunga Sederhana",
+  "compoundInterest": "Bunga Majemuk",
+  "compoundBenefit": "Bunga majemuk menghasilkan {amount} lebih banyak",
+  "@compoundBenefit": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+
+  "savingsType": "Jenis Tabungan",
+  "initialDeposit": "Setoran Awal",
+  "monthlyDeposit": "Setoran Bulanan",
+  "annualRate": "Suku Bunga Tahunan",
+  "finalBalance": "Saldo Akhir",
+  "totalDeposited": "Total Disetor",
+  "returnRate": "Tingkat Pengembalian",
+  "avgMonthlyInterest": "Bunga Bulanan Rata-rata",
+  "detailedAnalysis": "Analisis Detail",
+  "deposits": "Setoran",
+  "reinvestInfo": "Bunga dimajemukkan setiap bulan",
+  "withdrawInfo": "Bunga dibayar bulanan, tidak dimajemukkan",
+
+  "averageMonthlyInterest": "Rata-rata Bunga/Bulan",
+  "totalStructure": "Struktur Total",
 
   "premium": "Upgrade ke Premium",
+  "premiumActivated": "Anda Premium!",
+  "premiumMember": "Anggota Premium",
+  "premiumThanks": "Terima kasih atas dukungannya!",
   "premiumDescription": "Buka semua fitur",
   "premiumFeature1": "Simpan tanpa batas",
+  "premiumFeature1Desc": "Simpan semua pinjaman dan tabungan Anda",
   "premiumFeature2": "Grafik lengkap",
+  "premiumFeature2Desc": "Lihat detail dengan semua jenis grafik",
   "premiumFeature3": "Perbandingan skenario",
+  "premiumFeature3Desc": "Bandingkan beberapa opsi berdampingan",
   "premiumFeature4": "Ekspor PDF",
+  "premiumFeature4Desc": "Buat laporan detail untuk cetak atau bagikan",
+  "premiumFeature5": "Dukung pengembangan",
+  "premiumFeature5Desc": "Bantu kami memperbaiki aplikasi",
+  "premiumFeatures": "Fitur Premium",
+  "lifetime": "Seumur hidup",
+  "oneTimePurchase": "Bayar sekali, gunakan selamanya",
+  "upgradeNow": "Upgrade Sekarang",
   "restorePurchase": "Pulihkan Pembelian",
-  "upgrade": "Upgrade",
+  "purchaseDate": "Tanggal pembelian: {date}",
+  "@purchaseDate": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+  "premiumRequired": "Diperlukan Premium",
+  "upgradeTo": "Upgrade ke {feature}",
+  "@upgradeTo": {
+    "placeholders": {
+      "feature": {"type": "String"}
+    }
+  },
+  "pro": "PRO",
+  "activated": "Aktif",
+  "unlockAllFeatures": "Buka semua fitur",
 
   "theme": "Tema",
   "themeLight": "Terang",
@@ -64,12 +211,299 @@
   "themeSystem": "Sistem",
   "language": "Bahasa",
   "about": "Tentang",
-  "version": "Versi",
+  "version": "Versi {version}",
+  "@version": {
+    "placeholders": {
+      "version": {"type": "String"}
+    }
+  },
+  "termsOfService": "Ketentuan Layanan",
+  "privacyPolicy": "Kebijakan Privasi",
 
   "error": "Kesalahan",
   "errorGeneric": "Terjadi kesalahan",
   "tryAgain": "Coba Lagi",
   "cancel": "Batal",
   "confirm": "Konfirmasi",
-  "ok": "OK"
+  "ok": "OK",
+  "upgrade": "Upgrade",
+
+  "compareScenarios": "Bandingkan Skenario",
+  "upgradeToCompare": "Upgrade untuk membandingkan",
+  "loanSettings": "Pengaturan Pinjaman",
+  "scenarioA": "Skenario A",
+  "scenarioB": "Skenario B",
+  "comparison": "Perbandingan",
+  "scenarioSaves": "Skenario {scenario} menghemat {amount}",
+  "@scenarioSaves": {
+    "placeholders": {
+      "scenario": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+
+  "simulation": "Simulasi",
+  "noScenariosYet": "Belum ada skenario",
+  "addScenariosSubtitle": "Tambahkan pinjaman atau tabungan\nuntuk simulasi keuangan Anda",
+  "addLoan": "Tambah Pinjaman",
+  "addSavings": "Tambah Tabungan",
+  "loans": "Pinjaman",
+  "savings": "Tabungan",
+  "timeline": "Timeline",
+  "monthNumber": "Bulan {number}",
+  "@monthNumber": {
+    "placeholders": {
+      "number": {"type": "int"}
+    }
+  },
+  "netWorth": "Kekayaan Bersih",
+  "positive": "Positif",
+  "negativeDebt": "Negatif (hutang)",
+  "now": "Sekarang",
+  "yearsCount": "{count} tahun",
+  "@yearsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "debt": "Hutang",
+  "remaining": "Tersisa",
+  "clearAll": "Hapus Semua?",
+  "allScenariosDeleted": "Semua skenario akan dihapus.",
+  "loanNameHintExample": "Nama pinjaman (cth. KPR)",
+  "savingsNameHintExample": "Nama (cth. Dana Pensiun)",
+  "deposit": "Setoran",
+  "loan": "Pinjaman",
+
+  "selectThemeDescription": "Pilih tema untuk aplikasi Anda",
+  "selectLanguageDescription": "Pilih bahasa pilihan Anda",
+  "apply": "Terapkan",
+
+  "financialTools": "Alat Keuangan",
+  "reminders": "Pengingat",
+  "paymentRemindersSubtitle": "Lacak jatuh tempo",
+  "savingsGoalsSubtitle": "Capai tujuan Anda",
+  "calendar": "Kalender",
+  "calendarSubtitle": "Lihat semua acara",
+  "achievementsSubtitle": "Kemajuan Anda",
+  "reportsSubtitle": "Lihat statistik",
+  "rateAlertsSubtitle": "Pantau suku bunga",
+
+  "paymentReminders": "Pengingat Pembayaran",
+  "noRemindersYet": "Belum ada pengingat",
+  "addRemindersSubtitle": "Tambahkan pengingat pembayaran",
+  "addReminder": "Tambah Pengingat",
+  "editReminder": "Edit Pengingat",
+  "reminderNameHint": "Nama pengingat (cth. Kartu Kredit)",
+  "dueDate": "Tanggal Jatuh Tempo",
+  "remindBefore": "Ingatkan Sebelum",
+  "days": "hari",
+  "recurring": "Berulang",
+  "totalDue": "Total Jatuh Tempo",
+  "overdue": "Terlambat",
+  "upcoming": "Akan Datang",
+  "completed": "Selesai",
+  "markAsPaid": "Tandai Lunas",
+  "markAsPaidConfirm": "Yakin tandai sebagai lunas?",
+  "pending": "Tertunda",
+  "paid": "Lunas",
+  "skipped": "Dilewati",
+  "markPaid": "Tandai Lunas",
+  "weekly": "Mingguan",
+  "biWeekly": "Dua Mingguan",
+  "dueToday": "Jatuh tempo hari ini",
+  "dueTomorrow": "Jatuh tempo besok",
+  "dueInDays": "Jatuh tempo dalam {days} hari",
+  "@dueInDays": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "pleaseEnterName": "Silakan masukkan nama",
+
+  "savingsGoals": "Target Tabungan",
+  "noGoalsYet": "Belum ada target",
+  "addGoalsSubtitle": "Tetapkan target tabungan dan lacak kemajuan",
+  "addGoal": "Tambah Target",
+  "editGoal": "Edit Target",
+  "goalNameHint": "Nama target (cth. Liburan)",
+  "targetAmount": "Jumlah Target",
+  "initialAmount": "Jumlah Awal",
+  "deadline": "Tenggat Waktu",
+  "suggestedMonthly": "Saran Bulanan",
+  "activeGoals": "Target Aktif",
+  "completedGoals": "Target Tercapai",
+  "totalSaved": "Total Tersimpan",
+  "totalTarget": "Total Target",
+  "ofTotalTarget": "dari total target",
+  "saved": "Tersimpan",
+  "milestones": "Pencapaian",
+  "addMoney": "Tambah Dana",
+  "withdraw": "Tarik",
+  "addContribution": "Tambah Kontribusi",
+  "notesOptional": "Catatan (opsional)",
+  "withdrawReason": "Alasan penarikan",
+  "noContributionsYet": "Belum ada kontribusi",
+  "pauseGoal": "Jeda Target",
+  "deleteGoal": "Hapus Target",
+  "deleteGoalConfirm": "Yakin hapus target ini?",
+  "target": "Target",
+  "goals": "Target",
+  "savePerMonth": "Simpan {amount}/bulan untuk mencapai target",
+  "@savePerMonth": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "pleaseEnterGoalName": "Silakan masukkan nama target",
+  "withdrawal": "Penarikan",
+  "start": "Mulai",
+  "goalReached": "Target Tercapai!",
+  "progress": "Kemajuan",
+
+  "achievements": "Pencapaian",
+  "financialHealthScore": "Skor Kesehatan Keuangan",
+  "financialHealth": "Kesehatan Keuangan",
+  "points": "poin",
+  "healthExcellent": "Sangat baik! Pertahankan!",
+  "healthGood": "Kemajuan bagus! Anda di jalur yang benar.",
+  "healthFair": "Cukup. Ada ruang untuk perbaikan.",
+  "healthNeedsWork": "Perlu perhatian. Mari perbaiki bersama!",
+  "paymentStreak": "Streak Pembayaran",
+  "dayStreak": "hari berturut-turut",
+  "keepItUp": "Pertahankan!",
+  "longest": "Terpanjang",
+  "unlocked": "Terbuka",
+  "locked": "Terkunci",
+
+  "financialCalendar": "Kalender Keuangan",
+  "monthView": "Tampilan Bulan",
+  "weekView": "Tampilan Minggu",
+  "today": "Hari Ini",
+  "noEventsForDay": "Tidak ada acara hari ini",
+  "goalDeadline": "Tenggat Target",
+  "contribution": "Kontribusi",
+
+  "reports": "Laporan",
+  "week": "Minggu",
+  "quarter": "Kuartal",
+  "allTime": "Semua Waktu",
+  "totalPaid": "Total Dibayar",
+  "totalDebt": "Total Hutang",
+  "debtVsPaid": "Hutang vs Dibayar",
+  "outstanding": "Belum Dibayar",
+  "noDataYet": "Belum ada data",
+  "monthlyOverview": "Ringkasan Bulanan",
+  "due": "Jatuh Tempo",
+  "paymentPerformance": "Performa Pembayaran",
+  "onTime": "Tepat Waktu",
+  "late": "Terlambat",
+  "onTimeRate": "Tingkat Tepat Waktu",
+
+  "rateAlerts": "Peringatan Suku Bunga",
+  "currentMarketRates": "Suku Bunga Pasar Saat Ini",
+  "edit": "Edit",
+  "triggeredAlerts": "Peringatan Aktif",
+  "activeAlerts": "Peringatan Aktif",
+  "inactiveAlerts": "Peringatan Nonaktif",
+  "noAlertsYet": "Belum ada peringatan",
+  "addAlertsSubtitle": "Tambah peringatan untuk melacak perubahan suku bunga",
+  "addAlert": "Tambah Peringatan",
+  "alertNameHint": "Nama peringatan (cth. Suku Bunga KPR)",
+  "loanType": "Jenis Pinjaman",
+  "alertWhen": "Peringatan Saat",
+  "rateDrops": "Suku Bunga Turun",
+  "rateRises": "Suku Bunga Naik",
+  "targetRate": "Suku Bunga Target",
+  "when": "Kapan",
+  "current": "Saat Ini",
+  "triggered": "Aktif",
+  "editMarketRates": "Edit Suku Bunga Pasar",
+  "personalLoan": "Pinjaman Pribadi",
+  "carLoan": "Kredit Mobil",
+  "savingsRate": "Suku Bunga Tabungan",
+  "homeShort": "Rumah",
+  "personalShort": "Pribadi",
+  "carShort": "Mobil",
+  "savingsShort": "Tabungan",
+  "rateDropAlert": "Peringatan Suku Bunga Turun!",
+  "rateIncreaseAlert": "Peringatan Suku Bunga Naik!",
+  "updated": "Diperbarui",
+
+  "newUpdateAvailable": "Pembaruan tersedia",
+  "updateAppMessage": "Versi baru tersedia. Perbarui untuk mendapatkan fitur dan perbaikan terbaru.",
+  "updateNow": "Perbarui sekarang",
+  "later": "Nanti",
+
+  "qrTools": "Alat QR",
+  "createQRCode": "Buat Kode QR",
+  "createQRSubtitle": "Buat kode QR",
+  "scanQRCode": "Pindai Kode QR",
+  "scanQRSubtitle": "Pindai kode QR apapun",
+  "selectQRType": "Pilih Jenis QR",
+  "qrLink": "Tautan",
+  "qrText": "Teks",
+  "qrWifi": "WiFi",
+  "qrContact": "Kontak",
+  "qrCode": "Kode QR",
+  "websiteAddress": "Alamat Website",
+  "textContent": "Konten Teks",
+  "enterContent": "Masukkan konten Anda di sini",
+  "networkNameSSID": "Nama Jaringan (SSID)",
+  "wifiPasswordLabel": "Kata Sandi",
+  "encryptionType": "Jenis Enkripsi",
+  "noEncryption": "Tanpa Enkripsi",
+  "contactName": "Nama Kontak",
+  "contactNameHint": "Budi Santoso",
+  "phoneNumber": "Nomor Telepon",
+  "generateQRButton": "Buat Kode QR",
+  "qrGeneratedOnDevice": "Kode QR dibuat di perangkat Anda",
+  "qrLinkInfo": "Masukkan URL untuk membuat kode QR yang membuka tautan saat dipindai.",
+  "qrWifiInfo": "Buat kode QR agar orang lain dapat terhubung ke WiFi Anda dengan cepat.",
+  "pleaseEnterWebsite": "Silakan masukkan alamat website",
+  "pleaseEnterTextContent": "Silakan masukkan konten teks",
+  "pleaseEnterWifiName": "Silakan masukkan nama jaringan WiFi",
+  "pleaseEnterContactName": "Silakan masukkan nama kontak",
+  "copy": "Salin",
+  "copyData": "Salin Data",
+  "dataCopied": "Data disalin ke clipboard",
+  "saveToGallery": "Simpan ke Galeri",
+  "qrPrivacyNote": "Kode QR ini dibuat secara lokal di perangkat Anda dan tidak dikirim ke server manapun.",
+  "wifiNetwork": "WiFi: {name}",
+  "@wifiNetwork": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "contactInfo": "Kontak: {name}",
+  "@contactInfo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "cannotCreateQRImage": "Tidak dapat membuat gambar QR",
+  "cannotSaveQR": "Tidak dapat menyimpan kode QR",
+  "qrSavedToGallerySuccess": "Kode QR disimpan ke galeri",
+  "errorWithMessage": "Kesalahan: {message}",
+  "@errorWithMessage": {
+    "placeholders": {
+      "message": {"type": "String"}
+    }
+  },
+  "scanAgain": "Pindai Lagi",
+  "openLink": "Buka Tautan",
+  "copyPassword": "Salin Kata Sandi",
+  "passwordCopied": "Kata sandi disalin ke clipboard",
+  "noQRCodeFound": "Tidak ada kode QR ditemukan di gambar",
+  "pointCameraAtQR": "Arahkan kamera ke kode QR",
+  "scanFromGallery": "Pindai dari galeri",
+  "websiteLink": "Tautan Website",
+  "wifiNetworkLabel": "Jaringan WiFi",
+  "openInBrowser": "Buka di browser",
+  "wifiCredentials": "Kredensial WiFi",
+  "contactInformation": "Informasi Kontak",
+  "plainTextContent": "Konten teks biasa",
+
+  "reportIssue": "Laporkan Masalah",
+  "reportIssueSubtitle": "Kirim umpan balik"
 }

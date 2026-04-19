@@ -8,6 +8,31 @@
   "history": "ประวัติ",
   "settings": "ตั้งค่า",
   "compare": "เปรียบเทียบ",
+  "simulate": "จำลอง",
+
+  "mainTools": "เครื่องมือหลัก",
+  "categories": "{count} หมวดหมู่",
+  "@categories": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "loanCalc": "คำนวณสินเชื่อ",
+  "loanCalcSubtitle": "ผ่อนรายเดือน",
+  "interestCalc": "ดอกเบี้ย",
+  "interestCalcSubtitle": "ธรรมดาและทบต้น",
+  "vault": "กระปุก",
+  "vaultSubtitle": "วางแผนอนาคต",
+  "historySubtitle": "การคำนวณที่ผ่านมา",
+
+  "proAccess": "การเข้าถึงแบบโปร",
+  "upgradeToPremium": "อัพเกรดเป็นพรีเมียม",
+  "premiumBannerDesc": "ปลดล็อคกราฟขั้นสูง\nและประสบการณ์ไร้โฆษณา",
+  "marketPulse": "ชีพจรตลาด",
+  "currentRates": "อัตราปัจจุบัน",
+  "homeLoan": "สินเชื่อบ้าน",
+  "savingsApy": "ดอกเบี้ยเงินฝาก",
 
   "calculatorSimpleInterest": "ดอกเบี้ยธรรมดา",
   "calculatorCompoundInterest": "ดอกเบี้ยทบต้น",
@@ -16,23 +41,33 @@
 
   "principal": "เงินต้น",
   "interestRate": "อัตราดอกเบี้ย",
+  "annualInterestRate": "อัตราดอกเบี้ย (ต่อปี)",
   "term": "ระยะเวลา",
   "termMonths": "ระยะเวลา (เดือน)",
   "termYears": "ระยะเวลา (ปี)",
   "monthlyPayment": "ผ่อนรายเดือน",
+  "firstMonthPayment": "ผ่อนเดือนแรก",
+  "lastMonthPayment": "ผ่อนเดือนสุดท้าย",
   "totalInterest": "ดอกเบี้ยรวม",
   "totalPayment": "ยอดชำระรวม",
   "interest": "ดอกเบี้ย",
   "totalAmount": "จำนวนรวม",
+  "interestPrincipalRatio": "อัตราส่วนดอกเบี้ย/เงินต้น",
+  "loanAmount": "จำนวนสินเชื่อ",
 
+  "paymentMethod": "วิธีการชำระ",
   "loanTypeFixed": "ผ่อนคงที่",
   "loanTypeReducing": "ลดต้นลดดอก",
   "savingsTypeReinvest": "นำดอกเบี้ยทบต้น",
-  "savingsTypeNoReinvest": "ไม่ทบต้น",
+  "savingsTypeWithdraw": "ถอนดอกเบี้ย",
+
+  "results": "ผลลัพธ์",
+  "paymentStructure": "โครงสร้างการชำระ",
 
   "amortizationSchedule": "ตารางผ่อนชำระ",
   "month": "เดือน",
   "year": "ปี",
+  "years": "ปี",
   "payment": "ชำระ",
   "principalPaid": "เงินต้น",
   "interestPaid": "ดอกเบี้ย",
@@ -44,19 +79,131 @@
   "exportPdf": "ส่งออก PDF",
   "calculate": "คำนวณ",
   "reset": "รีเซ็ต",
+  "close": "ปิด",
+  "add": "เพิ่ม",
+
+  "storageLimitTitle": "ขีดจำกัดพื้นที่เก็บข้อมูล",
+  "storageLimitLoans": "คุณบันทึกสินเชื่อครบ {count} รายการแล้ว อัพเกรดเป็นพรีเมียมเพื่อบันทึกไม่จำกัด!",
+  "@storageLimitLoans": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "storageLimitSavings": "คุณบันทึกเงินออมครบ {count} รายการแล้ว อัพเกรดเป็นพรีเมียมเพื่อบันทึกไม่จำกัด!",
+  "@storageLimitSavings": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "saveLoan": "บันทึกสินเชื่อ",
+  "loanNameHint": "ชื่อสินเชื่อ (ไม่บังคับ)",
+  "amount": "จำนวน",
+  "rate": "อัตรา",
+  "loanSaved": "บันทึกสินเชื่อแล้ว",
+
+  "saveSavings": "บันทึกเงินออม",
+  "savingsNameHint": "ชื่อเงินออม (ไม่บังคับ)",
+  "savingsSaved": "บันทึกเงินออมแล้ว",
 
   "savedLoans": "สินเชื่อที่บันทึก",
   "savedSavings": "เงินออมที่บันทึก",
+  "loansCount": "สินเชื่อ ({count})",
+  "@loansCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "savingsCount": "เงินออม ({count})",
+  "@savingsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "noSavedItems": "ยังไม่มีรายการบันทึก",
+  "noSavedLoans": "ไม่มีสินเชื่อที่บันทึก",
+  "noSavedLoansSubtitle": "คำนวณและบันทึกสินเชื่อเพื่อดูในภายหลัง",
+  "noSavedSavings": "ไม่มีเงินออมที่บันทึก",
+  "noSavedSavingsSubtitle": "คำนวณและบันทึกเงินออมเพื่อดูในภายหลัง",
+  "errorLoading": "ข้อผิดพลาด: {error}",
+  "@errorLoading": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+
+  "compoundingFrequency": "ความถี่การทบต้น",
+  "daily": "รายวัน",
+  "monthly": "รายเดือน",
+  "quarterly": "รายไตรมาส",
+  "yearly": "รายปี",
+  "calculationResults": "ผลการคำนวณ",
+  "totalReceived": "รับรวมทั้งหมด",
+  "interestEarned": "ดอกเบี้ยที่ได้รับ",
+  "effectiveAnnualRate": "อัตราต่อปีที่แท้จริง",
+  "compoundingPeriods": "จำนวนครั้งที่ทบต้น",
+  "compareWithSimple": "เปรียบเทียบกับดอกเบี้ยธรรมดา",
+  "simpleInterest": "ดอกเบี้ยธรรมดา",
+  "compoundInterest": "ดอกเบี้ยทบต้น",
+  "compoundBenefit": "ดอกเบี้ยทบต้นทำให้คุณได้รับมากขึ้น {amount}",
+  "@compoundBenefit": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+
+  "savingsType": "ประเภทเงินออม",
+  "initialDeposit": "เงินฝากเริ่มต้น",
+  "monthlyDeposit": "ฝากรายเดือน",
+  "annualRate": "อัตราต่อปี",
+  "finalBalance": "ยอดคงเหลือสุดท้าย",
+  "totalDeposited": "ฝากรวมทั้งหมด",
+  "returnRate": "อัตราผลตอบแทน",
+  "avgMonthlyInterest": "ดอกเบี้ยเฉลี่ยต่อเดือน",
+  "detailedAnalysis": "การวิเคราะห์โดยละเอียด",
+  "deposits": "เงินฝาก",
+  "reinvestInfo": "ดอกเบี้ยทบต้นรายเดือน",
+  "withdrawInfo": "ดอกเบี้ยจ่ายรายเดือน ไม่ทบต้น",
+
+  "averageMonthlyInterest": "ดอกเบี้ยเฉลี่ย/เดือน",
+  "totalStructure": "โครงสร้างรวม",
 
   "premium": "อัพเกรดเป็นพรีเมียม",
+  "premiumActivated": "คุณเป็นพรีเมียมแล้ว!",
+  "premiumMember": "สมาชิกพรีเมียม",
+  "premiumThanks": "ขอบคุณสำหรับการสนับสนุน!",
   "premiumDescription": "ปลดล็อคทุกฟีเจอร์",
   "premiumFeature1": "บันทึกไม่จำกัด",
-  "premiumFeature2": "กราฟครบถ้วน",
+  "premiumFeature1Desc": "เก็บสินเชื่อและเงินออมทั้งหมดของคุณ",
+  "premiumFeature2": "กราฟครบชุด",
+  "premiumFeature2Desc": "ดูรายละเอียดด้วยกราฟทุกประเภท",
   "premiumFeature3": "เปรียบเทียบสถานการณ์",
+  "premiumFeature3Desc": "เปรียบเทียบหลายตัวเลือกแบบเคียงข้าง",
   "premiumFeature4": "ส่งออก PDF",
+  "premiumFeature4Desc": "สร้างรายงานโดยละเอียดเพื่อพิมพ์หรือแชร์",
+  "premiumFeature5": "สนับสนุนการพัฒนา",
+  "premiumFeature5Desc": "ช่วยเราปรับปรุงแอป",
+  "premiumFeatures": "ฟีเจอร์พรีเมียม",
+  "lifetime": "ตลอดชีพ",
+  "oneTimePurchase": "จ่ายครั้งเดียว ใช้ตลอดไป",
+  "upgradeNow": "อัพเกรดเลย",
   "restorePurchase": "กู้คืนการซื้อ",
-  "upgrade": "อัพเกรด",
+  "purchaseDate": "วันที่ซื้อ: {date}",
+  "@purchaseDate": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+  "premiumRequired": "ต้องมีพรีเมียม",
+  "upgradeTo": "อัพเกรดเป็น {feature}",
+  "@upgradeTo": {
+    "placeholders": {
+      "feature": {"type": "String"}
+    }
+  },
+  "pro": "โปร",
+  "activated": "เปิดใช้งานแล้ว",
+  "unlockAllFeatures": "ปลดล็อคทุกฟีเจอร์",
 
   "theme": "ธีม",
   "themeLight": "สว่าง",
@@ -64,12 +211,299 @@
   "themeSystem": "ตามระบบ",
   "language": "ภาษา",
   "about": "เกี่ยวกับ",
-  "version": "เวอร์ชัน",
+  "version": "เวอร์ชัน {version}",
+  "@version": {
+    "placeholders": {
+      "version": {"type": "String"}
+    }
+  },
+  "termsOfService": "ข้อกำหนดการใช้งาน",
+  "privacyPolicy": "นโยบายความเป็นส่วนตัว",
 
   "error": "ข้อผิดพลาด",
-  "errorGeneric": "เกิดข้อผิดพลาด",
+  "errorGeneric": "เกิดข้อผิดพลาดบางอย่าง",
   "tryAgain": "ลองอีกครั้ง",
   "cancel": "ยกเลิก",
   "confirm": "ยืนยัน",
-  "ok": "ตกลง"
+  "ok": "ตกลง",
+  "upgrade": "อัพเกรด",
+
+  "compareScenarios": "เปรียบเทียบสถานการณ์",
+  "upgradeToCompare": "อัพเกรดเพื่อเปรียบเทียบสถานการณ์",
+  "loanSettings": "การตั้งค่าสินเชื่อ",
+  "scenarioA": "สถานการณ์ A",
+  "scenarioB": "สถานการณ์ B",
+  "comparison": "การเปรียบเทียบ",
+  "scenarioSaves": "สถานการณ์ {scenario} ประหยัด {amount}",
+  "@scenarioSaves": {
+    "placeholders": {
+      "scenario": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+
+  "simulation": "การจำลอง",
+  "noScenariosYet": "ยังไม่มีสถานการณ์",
+  "addScenariosSubtitle": "เพิ่มสินเชื่อหรือเงินออมเพื่อจำลอง\nการเงินของคุณตามช่วงเวลา",
+  "addLoan": "เพิ่มสินเชื่อ",
+  "addSavings": "เพิ่มเงินออม",
+  "loans": "สินเชื่อ",
+  "savings": "เงินออม",
+  "timeline": "ไทม์ไลน์",
+  "monthNumber": "เดือน {number}",
+  "@monthNumber": {
+    "placeholders": {
+      "number": {"type": "int"}
+    }
+  },
+  "netWorth": "มูลค่าสุทธิ",
+  "positive": "บวก",
+  "negativeDebt": "ลบ (หนี้)",
+  "now": "ตอนนี้",
+  "yearsCount": "{count} ปี",
+  "@yearsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "debt": "หนี้",
+  "remaining": "คงเหลือ",
+  "clearAll": "ล้างทั้งหมด?",
+  "allScenariosDeleted": "สถานการณ์ทั้งหมดจะถูกลบ",
+  "loanNameHintExample": "ชื่อสินเชื่อ (เช่น สินเชื่อบ้าน)",
+  "savingsNameHintExample": "ชื่อ (เช่น เกษียณ)",
+  "deposit": "ฝาก",
+  "loan": "สินเชื่อ",
+
+  "selectThemeDescription": "เลือกธีมสำหรับแอปของคุณ",
+  "selectLanguageDescription": "เลือกภาษาที่ต้องการ",
+  "apply": "ใช้งาน",
+
+  "financialTools": "เครื่องมือทางการเงิน",
+  "reminders": "การแจ้งเตือน",
+  "paymentRemindersSubtitle": "ติดตามวันครบกำหนด",
+  "savingsGoalsSubtitle": "บรรลุเป้าหมาย",
+  "calendar": "ปฏิทิน",
+  "calendarSubtitle": "ดูกิจกรรมทั้งหมด",
+  "achievementsSubtitle": "ความคืบหน้าของคุณ",
+  "reportsSubtitle": "ดูสถิติ",
+  "rateAlertsSubtitle": "ติดตามอัตราดอกเบี้ย",
+
+  "paymentReminders": "การแจ้งเตือนชำระเงิน",
+  "noRemindersYet": "ยังไม่มีการแจ้งเตือน",
+  "addRemindersSubtitle": "เพิ่มการแจ้งเตือนชำระเงินเพื่อไม่พลาดกำหนด",
+  "addReminder": "เพิ่มการแจ้งเตือน",
+  "editReminder": "แก้ไขการแจ้งเตือน",
+  "reminderNameHint": "ชื่อการแจ้งเตือน (เช่น บัตรเครดิต)",
+  "dueDate": "วันครบกำหนด",
+  "remindBefore": "แจ้งเตือนก่อน",
+  "days": "วัน",
+  "recurring": "ซ้ำ",
+  "totalDue": "รวมที่ต้องชำระ",
+  "overdue": "เกินกำหนด",
+  "upcoming": "ใกล้ถึง",
+  "completed": "เสร็จสมบูรณ์",
+  "markAsPaid": "ทำเครื่องหมายว่าชำระแล้ว",
+  "markAsPaidConfirm": "คุณแน่ใจหรือไม่ว่าต้องการทำเครื่องหมายว่าชำระแล้ว?",
+  "pending": "รอดำเนินการ",
+  "paid": "ชำระแล้ว",
+  "skipped": "ข้าม",
+  "markPaid": "ทำเครื่องหมายชำระ",
+  "weekly": "รายสัปดาห์",
+  "biWeekly": "สองสัปดาห์ครั้ง",
+  "dueToday": "ครบกำหนดวันนี้",
+  "dueTomorrow": "ครบกำหนดพรุ่งนี้",
+  "dueInDays": "ครบกำหนดใน {days} วัน",
+  "@dueInDays": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "pleaseEnterName": "กรุณากรอกชื่อ",
+
+  "savingsGoals": "เป้าหมายเงินออม",
+  "noGoalsYet": "ยังไม่มีเป้าหมาย",
+  "addGoalsSubtitle": "ตั้งเป้าหมายเงินออมและติดตามความคืบหน้า",
+  "addGoal": "เพิ่มเป้าหมาย",
+  "editGoal": "แก้ไขเป้าหมาย",
+  "goalNameHint": "ชื่อเป้าหมาย (เช่น ท่องเที่ยว)",
+  "targetAmount": "จำนวนเป้าหมาย",
+  "initialAmount": "จำนวนเริ่มต้น",
+  "deadline": "วันครบกำหนด",
+  "suggestedMonthly": "แนะนำรายเดือน",
+  "activeGoals": "เป้าหมายที่ใช้งาน",
+  "completedGoals": "เป้าหมายที่สำเร็จ",
+  "totalSaved": "ออมรวม",
+  "totalTarget": "เป้าหมายรวม",
+  "ofTotalTarget": "ของเป้าหมายรวม",
+  "saved": "ออมแล้ว",
+  "milestones": "ก้าวสำคัญ",
+  "addMoney": "เพิ่มเงิน",
+  "withdraw": "ถอน",
+  "addContribution": "เพิ่มการมีส่วนร่วม",
+  "notesOptional": "หมายเหตุ (ไม่บังคับ)",
+  "withdrawReason": "เหตุผลในการถอน",
+  "noContributionsYet": "ยังไม่มีการมีส่วนร่วม",
+  "pauseGoal": "หยุดเป้าหมายชั่วคราว",
+  "deleteGoal": "ลบเป้าหมาย",
+  "deleteGoalConfirm": "คุณแน่ใจหรือไม่ว่าต้องการลบเป้าหมายนี้?",
+  "target": "เป้าหมาย",
+  "goals": "เป้าหมาย",
+  "savePerMonth": "ออม {amount}/เดือน เพื่อบรรลุเป้าหมาย",
+  "@savePerMonth": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "pleaseEnterGoalName": "กรุณากรอกชื่อเป้าหมาย",
+  "withdrawal": "การถอน",
+  "start": "เริ่ม",
+  "goalReached": "บรรลุเป้าหมาย!",
+  "progress": "ความคืบหน้า",
+
+  "achievements": "ความสำเร็จ",
+  "financialHealthScore": "คะแนนสุขภาพทางการเงิน",
+  "financialHealth": "สุขภาพทางการเงิน",
+  "points": "คะแนน",
+  "healthExcellent": "ยอดเยี่ยม! ทำต่อไปแบบนี้!",
+  "healthGood": "ดีมาก! คุณอยู่บนเส้นทางที่ถูกต้อง",
+  "healthFair": "พอใช้ ยังมีที่ปรับปรุง",
+  "healthNeedsWork": "ต้องใส่ใจ มาปรับปรุงด้วยกัน!",
+  "paymentStreak": "ชุดการชำระต่อเนื่อง",
+  "dayStreak": "วันต่อเนื่อง",
+  "keepItUp": "ทำต่อไป!",
+  "longest": "ยาวที่สุด",
+  "unlocked": "ปลดล็อคแล้ว",
+  "locked": "ล็อคอยู่",
+
+  "financialCalendar": "ปฏิทินทางการเงิน",
+  "monthView": "มุมมองรายเดือน",
+  "weekView": "มุมมองรายสัปดาห์",
+  "today": "วันนี้",
+  "noEventsForDay": "ไม่มีกิจกรรมในวันนี้",
+  "goalDeadline": "วันครบกำหนดเป้าหมาย",
+  "contribution": "การมีส่วนร่วม",
+
+  "reports": "รายงาน",
+  "week": "สัปดาห์",
+  "quarter": "ไตรมาส",
+  "allTime": "ตลอดเวลา",
+  "totalPaid": "ชำระรวม",
+  "totalDebt": "หนี้รวม",
+  "debtVsPaid": "หนี้เทียบกับชำระ",
+  "outstanding": "ค้างชำระ",
+  "noDataYet": "ยังไม่มีข้อมูล",
+  "monthlyOverview": "ภาพรวมรายเดือน",
+  "due": "ครบกำหนด",
+  "paymentPerformance": "ประสิทธิภาพการชำระ",
+  "onTime": "ตรงเวลา",
+  "late": "สาย",
+  "onTimeRate": "อัตราตรงเวลา",
+
+  "rateAlerts": "การแจ้งเตือนอัตราดอกเบี้ย",
+  "currentMarketRates": "อัตราตลาดปัจจุบัน",
+  "edit": "แก้ไข",
+  "triggeredAlerts": "การแจ้งเตือนที่เริ่มทำงาน",
+  "activeAlerts": "การแจ้งเตือนที่ใช้งาน",
+  "inactiveAlerts": "การแจ้งเตือนที่ไม่ใช้งาน",
+  "noAlertsYet": "ยังไม่มีการแจ้งเตือน",
+  "addAlertsSubtitle": "เพิ่มการแจ้งเตือนเพื่อติดตามการเปลี่ยนแปลงอัตราดอกเบี้ย",
+  "addAlert": "เพิ่มการแจ้งเตือน",
+  "alertNameHint": "ชื่อการแจ้งเตือน (เช่น อัตราสินเชื่อบ้าน)",
+  "loanType": "ประเภทสินเชื่อ",
+  "alertWhen": "แจ้งเตือนเมื่อ",
+  "rateDrops": "อัตราลดลง",
+  "rateRises": "อัตราเพิ่มขึ้น",
+  "targetRate": "อัตราเป้าหมาย",
+  "when": "เมื่อ",
+  "current": "ปัจจุบัน",
+  "triggered": "เริ่มทำงาน",
+  "editMarketRates": "แก้ไขอัตราตลาด",
+  "personalLoan": "สินเชื่อส่วนบุคคล",
+  "carLoan": "สินเชื่อรถยนต์",
+  "savingsRate": "อัตราเงินออม",
+  "homeShort": "บ้าน",
+  "personalShort": "ส่วนบุคคล",
+  "carShort": "รถยนต์",
+  "savingsShort": "เงินออม",
+  "rateDropAlert": "แจ้งเตือนอัตราลดลง!",
+  "rateIncreaseAlert": "แจ้งเตือนอัตราเพิ่มขึ้น!",
+  "updated": "อัพเดทแล้ว",
+
+  "newUpdateAvailable": "มีอัพเดทใหม่",
+  "updateAppMessage": "มีเวอร์ชันใหม่ของแอปพร้อมแล้ว กรุณาอัพเดทเพื่อรับฟีเจอร์และการปรับปรุงล่าสุด",
+  "updateNow": "อัพเดทเลย",
+  "later": "ไว้ทีหลัง",
+
+  "qrTools": "เครื่องมือ QR",
+  "createQRCode": "สร้าง QR Code",
+  "createQRSubtitle": "สร้างรหัส QR",
+  "scanQRCode": "สแกน QR Code",
+  "scanQRSubtitle": "สแกนรหัส QR ใดๆ",
+  "selectQRType": "เลือกประเภท QR",
+  "qrLink": "ลิงก์",
+  "qrText": "ข้อความ",
+  "qrWifi": "WiFi",
+  "qrContact": "ผู้ติดต่อ",
+  "qrCode": "QR Code",
+  "websiteAddress": "ที่อยู่เว็บไซต์",
+  "textContent": "เนื้อหาข้อความ",
+  "enterContent": "กรอกเนื้อหาของคุณที่นี่",
+  "networkNameSSID": "ชื่อเครือข่าย (SSID)",
+  "wifiPasswordLabel": "รหัสผ่าน",
+  "encryptionType": "ประเภทการเข้ารหัส",
+  "noEncryption": "ไม่เข้ารหัส",
+  "contactName": "ชื่อผู้ติดต่อ",
+  "contactNameHint": "สมชาย ใจดี",
+  "phoneNumber": "เบอร์โทรศัพท์",
+  "generateQRButton": "สร้าง QR Code",
+  "qrGeneratedOnDevice": "QR code สร้างบนอุปกรณ์ของคุณ",
+  "qrLinkInfo": "กรอก URL เว็บไซต์เพื่อสร้าง QR code ที่เปิดลิงก์เมื่อสแกน",
+  "qrWifiInfo": "สร้าง QR code ที่ให้ผู้อื่นเชื่อมต่อเครือข่าย WiFi ของคุณได้อย่างรวดเร็ว",
+  "pleaseEnterWebsite": "กรุณากรอกที่อยู่เว็บไซต์",
+  "pleaseEnterTextContent": "กรุณากรอกเนื้อหาข้อความ",
+  "pleaseEnterWifiName": "กรุณากรอกชื่อเครือข่าย WiFi",
+  "pleaseEnterContactName": "กรุณากรอกชื่อผู้ติดต่อ",
+  "copy": "คัดลอก",
+  "copyData": "คัดลอกข้อมูล",
+  "dataCopied": "คัดลอกข้อมูลไปยังคลิปบอร์ดแล้ว",
+  "saveToGallery": "บันทึกไปยังแกลเลอรี",
+  "qrPrivacyNote": "QR code นี้สร้างในเครื่องของคุณและไม่ได้ส่งไปยังเซิร์ฟเวอร์ใดๆ",
+  "wifiNetwork": "WiFi: {name}",
+  "@wifiNetwork": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "contactInfo": "ผู้ติดต่อ: {name}",
+  "@contactInfo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "cannotCreateQRImage": "ไม่สามารถสร้างภาพ QR ได้",
+  "cannotSaveQR": "ไม่สามารถบันทึก QR code ได้",
+  "qrSavedToGallerySuccess": "บันทึก QR code ไปยังแกลเลอรีแล้ว",
+  "errorWithMessage": "ข้อผิดพลาด: {message}",
+  "@errorWithMessage": {
+    "placeholders": {
+      "message": {"type": "String"}
+    }
+  },
+  "scanAgain": "สแกนอีกครั้ง",
+  "openLink": "เปิดลิงก์",
+  "copyPassword": "คัดลอกรหัสผ่าน",
+  "passwordCopied": "คัดลอกรหัสผ่านไปยังคลิปบอร์ดแล้ว",
+  "noQRCodeFound": "ไม่พบ QR code ในภาพ",
+  "pointCameraAtQR": "เล็งกล้องไปที่ QR code",
+  "scanFromGallery": "สแกนจากแกลเลอรี",
+  "websiteLink": "ลิงก์เว็บไซต์",
+  "wifiNetworkLabel": "เครือข่าย WiFi",
+  "openInBrowser": "เปิดในเบราว์เซอร์",
+  "wifiCredentials": "ข้อมูลประจำตัว WiFi",
+  "contactInformation": "ข้อมูลผู้ติดต่อ",
+  "plainTextContent": "เนื้อหาข้อความธรรมดา",
+
+  "reportIssue": "รายงานปัญหา",
+  "reportIssueSubtitle": "ส่งความคิดเห็นถึงเรา"
 }

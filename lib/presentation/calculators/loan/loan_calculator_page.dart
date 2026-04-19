@@ -9,7 +9,6 @@ import 'package:money/core/configs/theme/app_colors.dart';
 import 'package:money/core/constants/app_constants.dart';
 import 'package:money/core/providers/dependency_providers.dart';
 import 'package:money/core/services/pdf_export_service.dart';
-import 'package:money/core/services/premium_service.dart';
 import 'package:money/core/services/share_service.dart';
 import 'package:money/core/storage/local_storage_service.dart';
 import 'package:money/core/utils/currency_formatter.dart';
@@ -327,43 +326,6 @@ class LoanCalculatorPage extends ConsumerWidget {
     LocalStorageService storage,
   ) {
     final l10n = AppLocalizations.of(context)!;
-    final currentCount = storage.getLoanCount();
-    final canSave = premiumStatus.isPremium || currentCount < PremiumLimits.maxSavedLoans;
-
-    if (!canSave) {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-          title: Row(
-            children: [
-              Icon(CupertinoIcons.lock_fill, color: AppColors.warning, size: 24.sp),
-              SizedBox(width: 8.w),
-              Text(l10n.storageLimitTitle),
-            ],
-          ),
-          content: Text(
-            l10n.storageLimitLoans(PremiumLimits.maxSavedLoans),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(ctx),
-              child: Text(l10n.close),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(ctx);
-                context.push('/premium');
-              },
-              style: ElevatedButton.styleFrom(backgroundColor: AppColors.warning),
-              child: Text(l10n.upgrade, style: const TextStyle(color: Colors.white)),
-            ),
-          ],
-        ),
-      );
-      return;
-    }
-
     final nameController = TextEditingController();
     showDialog(
       context: context,

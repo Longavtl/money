@@ -820,6 +820,12 @@ abstract class AppLocalizations {
   /// **'You are Premium!'**
   String get premiumActivated;
 
+  /// No description provided for @premiumMember.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Member'**
+  String get premiumMember;
+
   /// No description provided for @premiumThanks.
   ///
   /// In en, this message translates to:
@@ -2067,6 +2073,336 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Later'**
   String get later;
+
+  /// No description provided for @qrTools.
+  ///
+  /// In en, this message translates to:
+  /// **'QR Tools'**
+  String get qrTools;
+
+  /// No description provided for @createQRCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Create QR Code'**
+  String get createQRCode;
+
+  /// No description provided for @createQRSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate QR codes'**
+  String get createQRSubtitle;
+
+  /// No description provided for @scanQRCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR Code'**
+  String get scanQRCode;
+
+  /// No description provided for @scanQRSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan any QR code'**
+  String get scanQRSubtitle;
+
+  /// No description provided for @selectQRType.
+  ///
+  /// In en, this message translates to:
+  /// **'Select QR Type'**
+  String get selectQRType;
+
+  /// No description provided for @qrLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Link'**
+  String get qrLink;
+
+  /// No description provided for @qrText.
+  ///
+  /// In en, this message translates to:
+  /// **'Text'**
+  String get qrText;
+
+  /// No description provided for @qrWifi.
+  ///
+  /// In en, this message translates to:
+  /// **'WiFi'**
+  String get qrWifi;
+
+  /// No description provided for @qrContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get qrContact;
+
+  /// No description provided for @qrCode.
+  ///
+  /// In en, this message translates to:
+  /// **'QR Code'**
+  String get qrCode;
+
+  /// No description provided for @websiteAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Website Address'**
+  String get websiteAddress;
+
+  /// No description provided for @textContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Text Content'**
+  String get textContent;
+
+  /// No description provided for @enterContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your content here'**
+  String get enterContent;
+
+  /// No description provided for @networkNameSSID.
+  ///
+  /// In en, this message translates to:
+  /// **'Network Name (SSID)'**
+  String get networkNameSSID;
+
+  /// No description provided for @wifiPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get wifiPasswordLabel;
+
+  /// No description provided for @encryptionType.
+  ///
+  /// In en, this message translates to:
+  /// **'Encryption Type'**
+  String get encryptionType;
+
+  /// No description provided for @noEncryption.
+  ///
+  /// In en, this message translates to:
+  /// **'No Encryption'**
+  String get noEncryption;
+
+  /// No description provided for @contactName.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Name'**
+  String get contactName;
+
+  /// No description provided for @contactNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'John Doe'**
+  String get contactNameHint;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumber;
+
+  /// No description provided for @generateQRButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate QR Code'**
+  String get generateQRButton;
+
+  /// No description provided for @qrGeneratedOnDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code is generated on your device'**
+  String get qrGeneratedOnDevice;
+
+  /// No description provided for @qrLinkInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a website URL to create a QR code that opens the link when scanned.'**
+  String get qrLinkInfo;
+
+  /// No description provided for @qrWifiInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a QR code that allows others to quickly connect to your WiFi network.'**
+  String get qrWifiInfo;
+
+  /// No description provided for @pleaseEnterWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a website address'**
+  String get pleaseEnterWebsite;
+
+  /// No description provided for @pleaseEnterTextContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter text content'**
+  String get pleaseEnterTextContent;
+
+  /// No description provided for @pleaseEnterWifiName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter WiFi network name'**
+  String get pleaseEnterWifiName;
+
+  /// No description provided for @pleaseEnterContactName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter contact name'**
+  String get pleaseEnterContactName;
+
+  /// No description provided for @copy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copy;
+
+  /// No description provided for @copyData.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Data'**
+  String get copyData;
+
+  /// No description provided for @dataCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Data copied to clipboard'**
+  String get dataCopied;
+
+  /// No description provided for @saveToGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Save to Gallery'**
+  String get saveToGallery;
+
+  /// No description provided for @qrPrivacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This QR code is generated locally on your device and is not sent to any server.'**
+  String get qrPrivacyNote;
+
+  /// No description provided for @wifiNetwork.
+  ///
+  /// In en, this message translates to:
+  /// **'WiFi: {name}'**
+  String wifiNetwork(String name);
+
+  /// No description provided for @contactInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact: {name}'**
+  String contactInfo(String name);
+
+  /// No description provided for @cannotCreateQRImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot create QR image'**
+  String get cannotCreateQRImage;
+
+  /// No description provided for @cannotSaveQR.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot save QR code'**
+  String get cannotSaveQR;
+
+  /// No description provided for @qrSavedToGallerySuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'QR code saved to gallery'**
+  String get qrSavedToGallerySuccess;
+
+  /// No description provided for @errorWithMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Error: {message}'**
+  String errorWithMessage(String message);
+
+  /// No description provided for @scanAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan Again'**
+  String get scanAgain;
+
+  /// No description provided for @openLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Link'**
+  String get openLink;
+
+  /// No description provided for @copyPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy Password'**
+  String get copyPassword;
+
+  /// No description provided for @passwordCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Password copied to clipboard'**
+  String get passwordCopied;
+
+  /// No description provided for @noQRCodeFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No QR code found in image'**
+  String get noQRCodeFound;
+
+  /// No description provided for @pointCameraAtQR.
+  ///
+  /// In en, this message translates to:
+  /// **'Point camera at QR code'**
+  String get pointCameraAtQR;
+
+  /// No description provided for @scanFromGallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan from gallery'**
+  String get scanFromGallery;
+
+  /// No description provided for @websiteLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Website Link'**
+  String get websiteLink;
+
+  /// No description provided for @wifiNetworkLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'WiFi Network'**
+  String get wifiNetworkLabel;
+
+  /// No description provided for @openInBrowser.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in browser'**
+  String get openInBrowser;
+
+  /// No description provided for @wifiCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'WiFi credentials'**
+  String get wifiCredentials;
+
+  /// No description provided for @contactInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact information'**
+  String get contactInformation;
+
+  /// No description provided for @plainTextContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Plain text content'**
+  String get plainTextContent;
+
+  /// No description provided for @reportIssue.
+  ///
+  /// In en, this message translates to:
+  /// **'Report Issue'**
+  String get reportIssue;
+
+  /// No description provided for @reportIssueSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send us feedback'**
+  String get reportIssueSubtitle;
 }
 
 class _AppLocalizationsDelegate

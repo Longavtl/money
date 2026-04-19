@@ -26,4 +26,13 @@ class AppRoutes {
   static const String reports = '/reports';
   static const String achievements = '/achievements';
   static const String rateAlerts = '/rate-alerts';
+
+  // QR Code
+  static const String createQR = '/qr/create';
+  static const String qrPreview = '/qr/preview';
+  static const String qrScanner = '/qr/scanner';
+
+  // Legal
+  static const String termsOfService = '/legal/terms';
+  static const String privacyPolicy = '/legal/privacy';
 }

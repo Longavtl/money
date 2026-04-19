@@ -30,58 +30,58 @@ class AppLocalizationsId extends AppLocalizations {
   String get compare => 'Bandingkan';
 
   @override
-  String get simulate => 'Simulate';
+  String get simulate => 'Simulasi';
 
   @override
-  String get mainTools => 'Main Tools';
+  String get mainTools => 'Alat Utama';
 
   @override
   String categories(int count) {
-    return '$count CATEGORIES';
+    return '$count KATEGORI';
   }
 
   @override
-  String get loanCalc => 'Loan Calc';
+  String get loanCalc => 'Pinjaman';
 
   @override
-  String get loanCalcSubtitle => 'Monthly payments';
+  String get loanCalcSubtitle => 'Cicilan bulanan';
 
   @override
-  String get interestCalc => 'Interest';
+  String get interestCalc => 'Bunga';
 
   @override
-  String get interestCalcSubtitle => 'Simple & compound';
+  String get interestCalcSubtitle => 'Sederhana & majemuk';
 
   @override
-  String get vault => 'Vault';
+  String get vault => 'Brankas';
 
   @override
-  String get vaultSubtitle => 'Plan your future';
+  String get vaultSubtitle => 'Rencanakan masa depan';
 
   @override
-  String get historySubtitle => 'Past calculations';
+  String get historySubtitle => 'Perhitungan sebelumnya';
 
   @override
-  String get proAccess => 'PRO ACCESS';
+  String get proAccess => 'AKSES PRO';
 
   @override
-  String get upgradeToPremium => 'Upgrade to Premium';
+  String get upgradeToPremium => 'Upgrade ke Premium';
 
   @override
   String get premiumBannerDesc =>
-      'Unlock advanced charts\nand ad-free experience.';
+      'Buka grafik canggih dan\npengalaman bebas iklan.';
 
   @override
-  String get marketPulse => 'MARKET PULSE';
+  String get marketPulse => 'DENYUT PASAR';
 
   @override
-  String get currentRates => 'Current Rates';
+  String get currentRates => 'Suku bunga saat ini';
 
   @override
-  String get homeLoan => 'Home Loan';
+  String get homeLoan => 'Kredit Rumah';
 
   @override
-  String get savingsApy => 'Savings APY';
+  String get savingsApy => 'APY Tabungan';
 
   @override
   String get calculatorSimpleInterest => 'Bunga Sederhana';
@@ -102,7 +102,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get interestRate => 'Suku Bunga';
 
   @override
-  String get annualInterestRate => 'Interest Rate (Annual)';
+  String get annualInterestRate => 'Suku Bunga (Tahunan)';
 
   @override
   String get term => 'Jangka Waktu';
@@ -117,10 +117,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get monthlyPayment => 'Cicilan Bulanan';
 
   @override
-  String get firstMonthPayment => 'First Month Payment';
+  String get firstMonthPayment => 'Cicilan Bulan Pertama';
 
   @override
-  String get lastMonthPayment => 'Last Month Payment';
+  String get lastMonthPayment => 'Cicilan Bulan Terakhir';
 
   @override
   String get totalInterest => 'Total Bunga';
@@ -135,13 +135,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get totalAmount => 'Jumlah Total';
 
   @override
-  String get interestPrincipalRatio => 'Interest/Principal Ratio';
+  String get interestPrincipalRatio => 'Rasio Bunga/Pokok';
 
   @override
-  String get loanAmount => 'Loan Amount';
+  String get loanAmount => 'Jumlah Pinjaman';
 
   @override
-  String get paymentMethod => 'Payment Method';
+  String get paymentMethod => 'Metode Pembayaran';
 
   @override
   String get loanTypeFixed => 'Cicilan Tetap';
@@ -150,16 +150,16 @@ class AppLocalizationsId extends AppLocalizations {
   String get loanTypeReducing => 'Saldo Menurun';
 
   @override
-  String get savingsTypeReinvest => 'Investasi Ulang Bunga';
+  String get savingsTypeReinvest => 'Investasi Ulang';
 
   @override
-  String get savingsTypeWithdraw => 'Withdraw';
+  String get savingsTypeWithdraw => 'Tarik';
 
   @override
-  String get results => 'Results';
+  String get results => 'Hasil';
 
   @override
-  String get paymentStructure => 'Payment Structure';
+  String get paymentStructure => 'Struktur Pembayaran';
 
   @override
   String get amortizationSchedule => 'Jadwal Amortisasi';
@@ -171,7 +171,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get year => 'Tahun';
 
   @override
-  String get years => 'years';
+  String get years => 'tahun';
 
   @override
   String get payment => 'Pembayaran';
@@ -204,47 +204,47 @@ class AppLocalizationsId extends AppLocalizations {
   String get reset => 'Reset';
 
   @override
-  String get close => 'Close';
+  String get close => 'Tutup';
 
   @override
-  String get add => 'Add';
+  String get add => 'Tambah';
 
   @override
-  String get storageLimitTitle => 'Storage Limit';
+  String get storageLimitTitle => 'Batas Penyimpanan';
 
   @override
   String storageLimitLoans(int count) {
-    return 'You have saved the maximum of $count loans. Upgrade to Premium for unlimited saves!';
+    return 'Anda telah menyimpan maksimal $count pinjaman. Upgrade ke Premium untuk simpan tanpa batas!';
   }
 
   @override
   String storageLimitSavings(int count) {
-    return 'You have saved the maximum of $count savings. Upgrade to Premium for unlimited saves!';
+    return 'Anda telah menyimpan maksimal $count tabungan. Upgrade ke Premium untuk simpan tanpa batas!';
   }
 
   @override
-  String get saveLoan => 'Save Loan';
+  String get saveLoan => 'Simpan Pinjaman';
 
   @override
-  String get loanNameHint => 'Loan name (optional)';
+  String get loanNameHint => 'Nama pinjaman (opsional)';
 
   @override
-  String get amount => 'Amount';
+  String get amount => 'Jumlah';
 
   @override
-  String get rate => 'Rate';
+  String get rate => 'Bunga';
 
   @override
-  String get loanSaved => 'Loan saved';
+  String get loanSaved => 'Pinjaman disimpan';
 
   @override
-  String get saveSavings => 'Save Savings';
+  String get saveSavings => 'Simpan Tabungan';
 
   @override
-  String get savingsNameHint => 'Savings name (optional)';
+  String get savingsNameHint => 'Nama tabungan (opsional)';
 
   @override
-  String get savingsSaved => 'Savings saved';
+  String get savingsSaved => 'Tabungan disimpan';
 
   @override
   String get savedLoans => 'Pinjaman Tersimpan';
@@ -254,129 +254,133 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String loansCount(int count) {
-    return 'Loans ($count)';
+    return 'Pinjaman ($count)';
   }
 
   @override
   String savingsCount(int count) {
-    return 'Savings ($count)';
+    return 'Tabungan ($count)';
   }
 
   @override
   String get noSavedItems => 'Belum ada item tersimpan';
 
   @override
-  String get noSavedLoans => 'No saved loans';
+  String get noSavedLoans => 'Belum ada pinjaman tersimpan';
 
   @override
-  String get noSavedLoansSubtitle => 'Calculate and save loans to view later';
+  String get noSavedLoansSubtitle =>
+      'Hitung dan simpan pinjaman untuk dilihat nanti';
 
   @override
-  String get noSavedSavings => 'No saved savings';
+  String get noSavedSavings => 'Belum ada tabungan tersimpan';
 
   @override
   String get noSavedSavingsSubtitle =>
-      'Calculate and save savings to view later';
+      'Hitung dan simpan tabungan untuk dilihat nanti';
 
   @override
   String errorLoading(String error) {
-    return 'Error: $error';
+    return 'Kesalahan: $error';
   }
 
   @override
-  String get compoundingFrequency => 'Compounding Frequency';
+  String get compoundingFrequency => 'Frekuensi Bunga Majemuk';
 
   @override
-  String get daily => 'Daily';
+  String get daily => 'Harian';
 
   @override
-  String get monthly => 'Monthly';
+  String get monthly => 'Bulanan';
 
   @override
-  String get quarterly => 'Quarterly';
+  String get quarterly => 'Triwulan';
 
   @override
-  String get yearly => 'Yearly';
+  String get yearly => 'Tahunan';
 
   @override
-  String get calculationResults => 'Calculation Results';
+  String get calculationResults => 'Hasil Perhitungan';
 
   @override
-  String get totalReceived => 'Total Received';
+  String get totalReceived => 'Total Diterima';
 
   @override
-  String get interestEarned => 'Interest Earned';
+  String get interestEarned => 'Bunga Diperoleh';
 
   @override
-  String get effectiveAnnualRate => 'Effective Annual Rate';
+  String get effectiveAnnualRate => 'Suku Bunga Efektif Tahunan';
 
   @override
-  String get compoundingPeriods => 'Compounding Periods';
+  String get compoundingPeriods => 'Periode Bunga Majemuk';
 
   @override
-  String get compareWithSimple => 'Compare with Simple Interest';
+  String get compareWithSimple => 'Bandingkan dengan Bunga Sederhana';
 
   @override
-  String get simpleInterest => 'Simple Interest';
+  String get simpleInterest => 'Bunga Sederhana';
 
   @override
-  String get compoundInterest => 'Compound Interest';
+  String get compoundInterest => 'Bunga Majemuk';
 
   @override
   String compoundBenefit(String amount) {
-    return 'Compound interest earns you $amount more';
+    return 'Bunga majemuk menghasilkan $amount lebih banyak';
   }
 
   @override
-  String get savingsType => 'Savings Type';
+  String get savingsType => 'Jenis Tabungan';
 
   @override
-  String get initialDeposit => 'Initial Deposit';
+  String get initialDeposit => 'Setoran Awal';
 
   @override
-  String get monthlyDeposit => 'Monthly Deposit';
+  String get monthlyDeposit => 'Setoran Bulanan';
 
   @override
-  String get annualRate => 'Annual Rate';
+  String get annualRate => 'Suku Bunga Tahunan';
 
   @override
-  String get finalBalance => 'Final Balance';
+  String get finalBalance => 'Saldo Akhir';
 
   @override
-  String get totalDeposited => 'Total Deposited';
+  String get totalDeposited => 'Total Disetor';
 
   @override
-  String get returnRate => 'Return Rate';
+  String get returnRate => 'Tingkat Pengembalian';
 
   @override
-  String get avgMonthlyInterest => 'Avg Monthly Interest';
+  String get avgMonthlyInterest => 'Bunga Bulanan Rata-rata';
 
   @override
-  String get detailedAnalysis => 'Detailed Analysis';
+  String get detailedAnalysis => 'Analisis Detail';
 
   @override
-  String get deposits => 'Deposits';
+  String get deposits => 'Setoran';
 
   @override
-  String get reinvestInfo => 'Interest is compounded monthly';
+  String get reinvestInfo => 'Bunga dimajemukkan setiap bulan';
 
   @override
-  String get withdrawInfo => 'Interest is paid out monthly, not compounded';
+  String get withdrawInfo => 'Bunga dibayar bulanan, tidak dimajemukkan';
 
   @override
-  String get averageMonthlyInterest => 'Avg Interest/Month';
+  String get averageMonthlyInterest => 'Rata-rata Bunga/Bulan';
 
   @override
-  String get totalStructure => 'Total Structure';
+  String get totalStructure => 'Struktur Total';
 
   @override
   String get premium => 'Upgrade ke Premium';
 
   @override
-  String get premiumActivated => 'You are Premium!';
+  String get premiumActivated => 'Anda Premium!';
 
   @override
-  String get premiumThanks => 'Thank you for your support!';
+  String get premiumMember => 'Anggota Premium';
+
+  @override
+  String get premiumThanks => 'Terima kasih atas dukungannya!';
 
   @override
   String get premiumDescription => 'Buka semua fitur';
@@ -385,68 +389,69 @@ class AppLocalizationsId extends AppLocalizations {
   String get premiumFeature1 => 'Simpan tanpa batas';
 
   @override
-  String get premiumFeature1Desc => 'Store all your loans and savings';
+  String get premiumFeature1Desc => 'Simpan semua pinjaman dan tabungan Anda';
 
   @override
   String get premiumFeature2 => 'Grafik lengkap';
 
   @override
-  String get premiumFeature2Desc => 'View details with all chart types';
+  String get premiumFeature2Desc => 'Lihat detail dengan semua jenis grafik';
 
   @override
   String get premiumFeature3 => 'Perbandingan skenario';
 
   @override
-  String get premiumFeature3Desc => 'Compare multiple options side by side';
+  String get premiumFeature3Desc => 'Bandingkan beberapa opsi berdampingan';
 
   @override
   String get premiumFeature4 => 'Ekspor PDF';
 
   @override
-  String get premiumFeature4Desc => 'Create detailed reports to print or share';
+  String get premiumFeature4Desc =>
+      'Buat laporan detail untuk cetak atau bagikan';
 
   @override
-  String get premiumFeature5 => 'Support development';
+  String get premiumFeature5 => 'Dukung pengembangan';
 
   @override
-  String get premiumFeature5Desc => 'Help us improve the app';
+  String get premiumFeature5Desc => 'Bantu kami memperbaiki aplikasi';
 
   @override
-  String get premiumFeatures => 'Premium Features';
+  String get premiumFeatures => 'Fitur Premium';
 
   @override
-  String get lifetime => 'Lifetime';
+  String get lifetime => 'Seumur hidup';
 
   @override
-  String get oneTimePurchase => 'Pay once, use forever';
+  String get oneTimePurchase => 'Bayar sekali, gunakan selamanya';
 
   @override
-  String get upgradeNow => 'Upgrade Now';
+  String get upgradeNow => 'Upgrade Sekarang';
 
   @override
   String get restorePurchase => 'Pulihkan Pembelian';
 
   @override
   String purchaseDate(String date) {
-    return 'Purchase date: $date';
+    return 'Tanggal pembelian: $date';
   }
 
   @override
-  String get premiumRequired => 'Premium Required';
+  String get premiumRequired => 'Diperlukan Premium';
 
   @override
   String upgradeTo(String feature) {
-    return 'Upgrade to $feature';
+    return 'Upgrade ke $feature';
   }
 
   @override
   String get pro => 'PRO';
 
   @override
-  String get activated => 'Activated';
+  String get activated => 'Aktif';
 
   @override
-  String get unlockAllFeatures => 'Unlock all features';
+  String get unlockAllFeatures => 'Buka semua fitur';
 
   @override
   String get theme => 'Tema';
@@ -468,14 +473,14 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String version(String version) {
-    return 'Versi';
+    return 'Versi $version';
   }
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => 'Ketentuan Layanan';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'Kebijakan Privasi';
 
   @override
   String get error => 'Kesalahan';
@@ -499,521 +504,696 @@ class AppLocalizationsId extends AppLocalizations {
   String get upgrade => 'Upgrade';
 
   @override
-  String get compareScenarios => 'Compare Scenarios';
+  String get compareScenarios => 'Bandingkan Skenario';
 
   @override
-  String get upgradeToCompare => 'Upgrade to compare scenarios';
+  String get upgradeToCompare => 'Upgrade untuk membandingkan';
 
   @override
-  String get loanSettings => 'Loan Settings';
+  String get loanSettings => 'Pengaturan Pinjaman';
 
   @override
-  String get scenarioA => 'Scenario A';
+  String get scenarioA => 'Skenario A';
 
   @override
-  String get scenarioB => 'Scenario B';
+  String get scenarioB => 'Skenario B';
 
   @override
-  String get comparison => 'Comparison';
+  String get comparison => 'Perbandingan';
 
   @override
   String scenarioSaves(String scenario, String amount) {
-    return 'Scenario $scenario saves $amount';
+    return 'Skenario $scenario menghemat $amount';
   }
 
   @override
-  String get simulation => 'Simulation';
+  String get simulation => 'Simulasi';
 
   @override
-  String get noScenariosYet => 'No scenarios yet';
+  String get noScenariosYet => 'Belum ada skenario';
 
   @override
   String get addScenariosSubtitle =>
-      'Add loans or savings to simulate\nyour finances over time';
+      'Tambahkan pinjaman atau tabungan\nuntuk simulasi keuangan Anda';
 
   @override
-  String get addLoan => 'Add Loan';
+  String get addLoan => 'Tambah Pinjaman';
 
   @override
-  String get addSavings => 'Add Savings';
+  String get addSavings => 'Tambah Tabungan';
 
   @override
-  String get loans => 'Loans';
+  String get loans => 'Pinjaman';
 
   @override
-  String get savings => 'Savings';
+  String get savings => 'Tabungan';
 
   @override
   String get timeline => 'Timeline';
 
   @override
   String monthNumber(int number) {
-    return 'Month $number';
+    return 'Bulan $number';
   }
 
   @override
-  String get netWorth => 'Net Worth';
+  String get netWorth => 'Kekayaan Bersih';
 
   @override
-  String get positive => 'Positive';
+  String get positive => 'Positif';
 
   @override
-  String get negativeDebt => 'Negative (debt)';
+  String get negativeDebt => 'Negatif (hutang)';
 
   @override
-  String get now => 'Now';
+  String get now => 'Sekarang';
 
   @override
   String yearsCount(int count) {
-    return '$count years';
+    return '$count tahun';
   }
 
   @override
-  String get debt => 'Debt';
+  String get debt => 'Hutang';
 
   @override
-  String get remaining => 'Remaining';
+  String get remaining => 'Tersisa';
 
   @override
-  String get clearAll => 'Clear All?';
+  String get clearAll => 'Hapus Semua?';
 
   @override
-  String get allScenariosDeleted => 'All scenarios will be deleted.';
+  String get allScenariosDeleted => 'Semua skenario akan dihapus.';
 
   @override
-  String get loanNameHintExample => 'Loan name (e.g., Home Loan)';
+  String get loanNameHintExample => 'Nama pinjaman (cth. KPR)';
 
   @override
-  String get savingsNameHintExample => 'Name (e.g., Retirement)';
+  String get savingsNameHintExample => 'Nama (cth. Dana Pensiun)';
 
   @override
-  String get deposit => 'Deposit';
+  String get deposit => 'Setoran';
 
   @override
-  String get loan => 'Loan';
+  String get loan => 'Pinjaman';
 
   @override
-  String get selectThemeDescription => 'Choose a theme for your app';
+  String get selectThemeDescription => 'Pilih tema untuk aplikasi Anda';
 
   @override
-  String get selectLanguageDescription => 'Choose your preferred language';
+  String get selectLanguageDescription => 'Pilih bahasa pilihan Anda';
 
   @override
-  String get apply => 'Apply';
+  String get apply => 'Terapkan';
 
   @override
-  String get financialTools => 'Financial Tools';
+  String get financialTools => 'Alat Keuangan';
 
   @override
-  String get reminders => 'Reminders';
+  String get reminders => 'Pengingat';
 
   @override
-  String get paymentRemindersSubtitle => 'Track due dates';
+  String get paymentRemindersSubtitle => 'Lacak jatuh tempo';
 
   @override
-  String get savingsGoalsSubtitle => 'Reach your goals';
+  String get savingsGoalsSubtitle => 'Capai tujuan Anda';
 
   @override
-  String get calendar => 'Calendar';
+  String get calendar => 'Kalender';
 
   @override
-  String get calendarSubtitle => 'View all events';
+  String get calendarSubtitle => 'Lihat semua acara';
 
   @override
-  String get achievementsSubtitle => 'Your progress';
+  String get achievementsSubtitle => 'Kemajuan Anda';
 
   @override
-  String get reportsSubtitle => 'View statistics';
+  String get reportsSubtitle => 'Lihat statistik';
 
   @override
-  String get rateAlertsSubtitle => 'Monitor rates';
+  String get rateAlertsSubtitle => 'Pantau suku bunga';
 
   @override
-  String get paymentReminders => 'Payment Reminders';
+  String get paymentReminders => 'Pengingat Pembayaran';
 
   @override
-  String get noRemindersYet => 'No reminders yet';
+  String get noRemindersYet => 'Belum ada pengingat';
 
   @override
-  String get addRemindersSubtitle => 'Add payment reminders to stay on track';
+  String get addRemindersSubtitle => 'Tambahkan pengingat pembayaran';
 
   @override
-  String get addReminder => 'Add Reminder';
+  String get addReminder => 'Tambah Pengingat';
 
   @override
-  String get editReminder => 'Edit Reminder';
+  String get editReminder => 'Edit Pengingat';
 
   @override
-  String get reminderNameHint => 'Reminder name (e.g., Credit Card)';
+  String get reminderNameHint => 'Nama pengingat (cth. Kartu Kredit)';
 
   @override
-  String get dueDate => 'Due Date';
+  String get dueDate => 'Tanggal Jatuh Tempo';
 
   @override
-  String get remindBefore => 'Remind Before';
+  String get remindBefore => 'Ingatkan Sebelum';
 
   @override
-  String get days => 'days';
+  String get days => 'hari';
 
   @override
-  String get recurring => 'Recurring';
+  String get recurring => 'Berulang';
 
   @override
-  String get totalDue => 'Total Due';
+  String get totalDue => 'Total Jatuh Tempo';
 
   @override
-  String get overdue => 'Overdue';
+  String get overdue => 'Terlambat';
 
   @override
-  String get upcoming => 'Upcoming';
+  String get upcoming => 'Akan Datang';
 
   @override
-  String get completed => 'Completed';
+  String get completed => 'Selesai';
 
   @override
-  String get markAsPaid => 'Mark as Paid';
+  String get markAsPaid => 'Tandai Lunas';
 
   @override
-  String get markAsPaidConfirm => 'Are you sure you want to mark this as paid?';
+  String get markAsPaidConfirm => 'Yakin tandai sebagai lunas?';
 
   @override
-  String get pending => 'Pending';
+  String get pending => 'Tertunda';
 
   @override
-  String get paid => 'Paid';
+  String get paid => 'Lunas';
 
   @override
-  String get skipped => 'Skipped';
+  String get skipped => 'Dilewati';
 
   @override
-  String get markPaid => 'Mark Paid';
+  String get markPaid => 'Tandai Lunas';
 
   @override
-  String get weekly => 'Weekly';
+  String get weekly => 'Mingguan';
 
   @override
-  String get biWeekly => 'Bi-weekly';
+  String get biWeekly => 'Dua Mingguan';
 
   @override
-  String get dueToday => 'Due today';
+  String get dueToday => 'Jatuh tempo hari ini';
 
   @override
-  String get dueTomorrow => 'Due tomorrow';
+  String get dueTomorrow => 'Jatuh tempo besok';
 
   @override
   String dueInDays(int days) {
-    return 'Due in $days days';
+    return 'Jatuh tempo dalam $days hari';
   }
 
   @override
-  String get pleaseEnterName => 'Please enter a name';
+  String get pleaseEnterName => 'Silakan masukkan nama';
 
   @override
-  String get savingsGoals => 'Savings Goals';
+  String get savingsGoals => 'Target Tabungan';
 
   @override
-  String get noGoalsYet => 'No goals yet';
+  String get noGoalsYet => 'Belum ada target';
 
   @override
-  String get addGoalsSubtitle => 'Set savings goals and track your progress';
+  String get addGoalsSubtitle => 'Tetapkan target tabungan dan lacak kemajuan';
 
   @override
-  String get addGoal => 'Add Goal';
+  String get addGoal => 'Tambah Target';
 
   @override
-  String get editGoal => 'Edit Goal';
+  String get editGoal => 'Edit Target';
 
   @override
-  String get goalNameHint => 'Goal name (e.g., Vacation)';
+  String get goalNameHint => 'Nama target (cth. Liburan)';
 
   @override
-  String get targetAmount => 'Target Amount';
+  String get targetAmount => 'Jumlah Target';
 
   @override
-  String get initialAmount => 'Initial Amount';
+  String get initialAmount => 'Jumlah Awal';
 
   @override
-  String get deadline => 'Deadline';
+  String get deadline => 'Tenggat Waktu';
 
   @override
-  String get suggestedMonthly => 'Suggested Monthly';
+  String get suggestedMonthly => 'Saran Bulanan';
 
   @override
-  String get activeGoals => 'Active Goals';
+  String get activeGoals => 'Target Aktif';
 
   @override
-  String get completedGoals => 'Completed Goals';
+  String get completedGoals => 'Target Tercapai';
 
   @override
-  String get totalSaved => 'Total Saved';
+  String get totalSaved => 'Total Tersimpan';
 
   @override
   String get totalTarget => 'Total Target';
 
   @override
-  String get ofTotalTarget => 'of total target';
+  String get ofTotalTarget => 'dari total target';
 
   @override
-  String get milestones => 'Milestones';
+  String get milestones => 'Pencapaian';
 
   @override
-  String get addMoney => 'Add Money';
+  String get addMoney => 'Tambah Dana';
 
   @override
-  String get withdraw => 'Withdraw';
+  String get withdraw => 'Tarik';
 
   @override
-  String get addContribution => 'Add Contribution';
+  String get addContribution => 'Tambah Kontribusi';
 
   @override
-  String get notesOptional => 'Notes (optional)';
+  String get notesOptional => 'Catatan (opsional)';
 
   @override
-  String get withdrawReason => 'Reason for withdrawal';
+  String get withdrawReason => 'Alasan penarikan';
 
   @override
-  String get noContributionsYet => 'No contributions yet';
+  String get noContributionsYet => 'Belum ada kontribusi';
 
   @override
-  String get pauseGoal => 'Pause Goal';
+  String get pauseGoal => 'Jeda Target';
 
   @override
-  String get deleteGoal => 'Delete Goal';
+  String get deleteGoal => 'Hapus Target';
 
   @override
-  String get deleteGoalConfirm => 'Are you sure you want to delete this goal?';
+  String get deleteGoalConfirm => 'Yakin hapus target ini?';
 
   @override
   String get target => 'Target';
 
   @override
-  String get goals => 'Goals';
+  String get goals => 'Target';
 
   @override
   String savePerMonth(String amount) {
-    return 'Save $amount/month to reach goal';
+    return 'Simpan $amount/bulan untuk mencapai target';
   }
 
   @override
-  String get pleaseEnterGoalName => 'Please enter a goal name';
+  String get pleaseEnterGoalName => 'Silakan masukkan nama target';
 
   @override
-  String get withdrawal => 'Withdrawal';
+  String get withdrawal => 'Penarikan';
 
   @override
-  String get start => 'Start';
+  String get start => 'Mulai';
 
   @override
-  String get goalReached => 'Goal!';
+  String get goalReached => 'Target Tercapai!';
 
   @override
-  String get progress => 'Progress';
+  String get progress => 'Kemajuan';
 
   @override
-  String get achievements => 'Achievements';
+  String get achievements => 'Pencapaian';
 
   @override
-  String get financialHealthScore => 'Financial Health Score';
+  String get financialHealthScore => 'Skor Kesehatan Keuangan';
 
   @override
-  String get financialHealth => 'Financial Health';
+  String get financialHealth => 'Kesehatan Keuangan';
 
   @override
-  String get points => 'points';
+  String get points => 'poin';
 
   @override
-  String get healthExcellent => 'Excellent! Keep up the great work!';
+  String get healthExcellent => 'Sangat baik! Pertahankan!';
 
   @override
-  String get healthGood => 'Good progress! You\'re on the right track.';
+  String get healthGood => 'Kemajuan bagus! Anda di jalur yang benar.';
 
   @override
-  String get healthFair => 'Fair. There\'s room for improvement.';
+  String get healthFair => 'Cukup. Ada ruang untuk perbaikan.';
 
   @override
-  String get healthNeedsWork => 'Needs attention. Let\'s improve together!';
+  String get healthNeedsWork => 'Perlu perhatian. Mari perbaiki bersama!';
 
   @override
-  String get paymentStreak => 'Payment Streak';
+  String get paymentStreak => 'Streak Pembayaran';
 
   @override
-  String get dayStreak => 'day streak';
+  String get dayStreak => 'hari berturut-turut';
 
   @override
-  String get keepItUp => 'Keep it up!';
+  String get keepItUp => 'Pertahankan!';
 
   @override
-  String get longest => 'Longest';
+  String get longest => 'Terpanjang';
 
   @override
-  String get unlocked => 'Unlocked';
+  String get unlocked => 'Terbuka';
 
   @override
-  String get locked => 'Locked';
+  String get locked => 'Terkunci';
 
   @override
-  String get financialCalendar => 'Financial Calendar';
+  String get financialCalendar => 'Kalender Keuangan';
 
   @override
-  String get monthView => 'Month View';
+  String get monthView => 'Tampilan Bulan';
 
   @override
-  String get weekView => 'Week View';
+  String get weekView => 'Tampilan Minggu';
 
   @override
-  String get today => 'Today';
+  String get today => 'Hari Ini';
 
   @override
-  String get noEventsForDay => 'No events for this day';
+  String get noEventsForDay => 'Tidak ada acara hari ini';
 
   @override
-  String get goalDeadline => 'Goal Deadline';
+  String get goalDeadline => 'Tenggat Target';
 
   @override
-  String get contribution => 'Contribution';
+  String get contribution => 'Kontribusi';
 
   @override
-  String get reports => 'Reports';
+  String get reports => 'Laporan';
 
   @override
-  String get week => 'Week';
+  String get week => 'Minggu';
 
   @override
-  String get quarter => 'Quarter';
+  String get quarter => 'Kuartal';
 
   @override
-  String get allTime => 'All Time';
+  String get allTime => 'Semua Waktu';
 
   @override
-  String get totalPaid => 'Total Paid';
+  String get totalPaid => 'Total Dibayar';
 
   @override
-  String get totalDebt => 'Total Debt';
+  String get totalDebt => 'Total Hutang';
 
   @override
-  String get debtVsPaid => 'Debt vs Paid';
+  String get debtVsPaid => 'Hutang vs Dibayar';
 
   @override
-  String get outstanding => 'Outstanding';
+  String get outstanding => 'Belum Dibayar';
 
   @override
-  String get noDataYet => 'No data yet';
+  String get noDataYet => 'Belum ada data';
 
   @override
-  String get monthlyOverview => 'Monthly Overview';
+  String get monthlyOverview => 'Ringkasan Bulanan';
 
   @override
-  String get due => 'Due';
+  String get due => 'Jatuh Tempo';
 
   @override
-  String get paymentPerformance => 'Payment Performance';
+  String get paymentPerformance => 'Performa Pembayaran';
 
   @override
-  String get onTime => 'On Time';
+  String get onTime => 'Tepat Waktu';
 
   @override
-  String get late => 'Late';
+  String get late => 'Terlambat';
 
   @override
-  String get onTimeRate => 'On Time Rate';
+  String get onTimeRate => 'Tingkat Tepat Waktu';
 
   @override
-  String get rateAlerts => 'Rate Alerts';
+  String get rateAlerts => 'Peringatan Suku Bunga';
 
   @override
-  String get currentMarketRates => 'Current Market Rates';
+  String get currentMarketRates => 'Suku Bunga Pasar Saat Ini';
 
   @override
   String get edit => 'Edit';
 
   @override
-  String get triggeredAlerts => 'Triggered Alerts';
+  String get triggeredAlerts => 'Peringatan Aktif';
 
   @override
-  String get activeAlerts => 'Active Alerts';
+  String get activeAlerts => 'Peringatan Aktif';
 
   @override
-  String get inactiveAlerts => 'Inactive Alerts';
+  String get inactiveAlerts => 'Peringatan Nonaktif';
 
   @override
-  String get noAlertsYet => 'No alerts yet';
+  String get noAlertsYet => 'Belum ada peringatan';
 
   @override
-  String get addAlertsSubtitle => 'Add alerts to track interest rate changes';
+  String get addAlertsSubtitle =>
+      'Tambah peringatan untuk melacak perubahan suku bunga';
 
   @override
-  String get addAlert => 'Add Alert';
+  String get addAlert => 'Tambah Peringatan';
 
   @override
-  String get alertNameHint => 'Alert name (e.g., Home Loan Rate)';
+  String get alertNameHint => 'Nama peringatan (cth. Suku Bunga KPR)';
 
   @override
-  String get loanType => 'Loan Type';
+  String get loanType => 'Jenis Pinjaman';
 
   @override
-  String get alertWhen => 'Alert When';
+  String get alertWhen => 'Peringatan Saat';
 
   @override
-  String get rateDrops => 'Rate Drops';
+  String get rateDrops => 'Suku Bunga Turun';
 
   @override
-  String get rateRises => 'Rate Rises';
+  String get rateRises => 'Suku Bunga Naik';
 
   @override
-  String get targetRate => 'Target Rate';
+  String get targetRate => 'Suku Bunga Target';
 
   @override
-  String get when => 'When';
+  String get when => 'Kapan';
 
   @override
-  String get current => 'Current';
+  String get current => 'Saat Ini';
 
   @override
-  String get triggered => 'Triggered';
+  String get triggered => 'Aktif';
 
   @override
-  String get editMarketRates => 'Edit Market Rates';
+  String get editMarketRates => 'Edit Suku Bunga Pasar';
 
   @override
-  String get personalLoan => 'Personal Loan';
+  String get personalLoan => 'Pinjaman Pribadi';
 
   @override
-  String get carLoan => 'Car Loan';
+  String get carLoan => 'Kredit Mobil';
 
   @override
-  String get savingsRate => 'Savings Rate';
+  String get savingsRate => 'Suku Bunga Tabungan';
 
   @override
-  String get homeShort => 'Home';
+  String get homeShort => 'Rumah';
 
   @override
-  String get personalShort => 'Personal';
+  String get personalShort => 'Pribadi';
 
   @override
-  String get carShort => 'Car';
+  String get carShort => 'Mobil';
 
   @override
-  String get savingsShort => 'Savings';
+  String get savingsShort => 'Tabungan';
 
   @override
-  String get rateDropAlert => 'Rate Drop Alert!';
+  String get rateDropAlert => 'Peringatan Suku Bunga Turun!';
 
   @override
-  String get rateIncreaseAlert => 'Rate Increase Alert!';
+  String get rateIncreaseAlert => 'Peringatan Suku Bunga Naik!';
 
   @override
-  String get updated => 'Updated';
+  String get updated => 'Diperbarui';
 
   @override
-  String get newUpdateAvailable => 'Update Available';
+  String get newUpdateAvailable => 'Pembaruan tersedia';
 
   @override
   String get updateAppMessage =>
-      'A new version of the app is available. Please update to get the latest features and improvements.';
+      'Versi baru tersedia. Perbarui untuk mendapatkan fitur dan perbaikan terbaru.';
 
   @override
-  String get updateNow => 'Update Now';
+  String get updateNow => 'Perbarui sekarang';
 
   @override
-  String get later => 'Later';
+  String get later => 'Nanti';
+
+  @override
+  String get qrTools => 'Alat QR';
+
+  @override
+  String get createQRCode => 'Buat Kode QR';
+
+  @override
+  String get createQRSubtitle => 'Buat kode QR';
+
+  @override
+  String get scanQRCode => 'Pindai Kode QR';
+
+  @override
+  String get scanQRSubtitle => 'Pindai kode QR apapun';
+
+  @override
+  String get selectQRType => 'Pilih Jenis QR';
+
+  @override
+  String get qrLink => 'Tautan';
+
+  @override
+  String get qrText => 'Teks';
+
+  @override
+  String get qrWifi => 'WiFi';
+
+  @override
+  String get qrContact => 'Kontak';
+
+  @override
+  String get qrCode => 'Kode QR';
+
+  @override
+  String get websiteAddress => 'Alamat Website';
+
+  @override
+  String get textContent => 'Konten Teks';
+
+  @override
+  String get enterContent => 'Masukkan konten Anda di sini';
+
+  @override
+  String get networkNameSSID => 'Nama Jaringan (SSID)';
+
+  @override
+  String get wifiPasswordLabel => 'Kata Sandi';
+
+  @override
+  String get encryptionType => 'Jenis Enkripsi';
+
+  @override
+  String get noEncryption => 'Tanpa Enkripsi';
+
+  @override
+  String get contactName => 'Nama Kontak';
+
+  @override
+  String get contactNameHint => 'Budi Santoso';
+
+  @override
+  String get phoneNumber => 'Nomor Telepon';
+
+  @override
+  String get generateQRButton => 'Buat Kode QR';
+
+  @override
+  String get qrGeneratedOnDevice => 'Kode QR dibuat di perangkat Anda';
+
+  @override
+  String get qrLinkInfo =>
+      'Masukkan URL untuk membuat kode QR yang membuka tautan saat dipindai.';
+
+  @override
+  String get qrWifiInfo =>
+      'Buat kode QR agar orang lain dapat terhubung ke WiFi Anda dengan cepat.';
+
+  @override
+  String get pleaseEnterWebsite => 'Silakan masukkan alamat website';
+
+  @override
+  String get pleaseEnterTextContent => 'Silakan masukkan konten teks';
+
+  @override
+  String get pleaseEnterWifiName => 'Silakan masukkan nama jaringan WiFi';
+
+  @override
+  String get pleaseEnterContactName => 'Silakan masukkan nama kontak';
+
+  @override
+  String get copy => 'Salin';
+
+  @override
+  String get copyData => 'Salin Data';
+
+  @override
+  String get dataCopied => 'Data disalin ke clipboard';
+
+  @override
+  String get saveToGallery => 'Simpan ke Galeri';
+
+  @override
+  String get qrPrivacyNote =>
+      'Kode QR ini dibuat secara lokal di perangkat Anda dan tidak dikirim ke server manapun.';
+
+  @override
+  String wifiNetwork(String name) {
+    return 'WiFi: $name';
+  }
+
+  @override
+  String contactInfo(String name) {
+    return 'Kontak: $name';
+  }
+
+  @override
+  String get cannotCreateQRImage => 'Tidak dapat membuat gambar QR';
+
+  @override
+  String get cannotSaveQR => 'Tidak dapat menyimpan kode QR';
+
+  @override
+  String get qrSavedToGallerySuccess => 'Kode QR disimpan ke galeri';
+
+  @override
+  String errorWithMessage(String message) {
+    return 'Kesalahan: $message';
+  }
+
+  @override
+  String get scanAgain => 'Pindai Lagi';
+
+  @override
+  String get openLink => 'Buka Tautan';
+
+  @override
+  String get copyPassword => 'Salin Kata Sandi';
+
+  @override
+  String get passwordCopied => 'Kata sandi disalin ke clipboard';
+
+  @override
+  String get noQRCodeFound => 'Tidak ada kode QR ditemukan di gambar';
+
+  @override
+  String get pointCameraAtQR => 'Arahkan kamera ke kode QR';
+
+  @override
+  String get scanFromGallery => 'Pindai dari galeri';
+
+  @override
+  String get websiteLink => 'Tautan Website';
+
+  @override
+  String get wifiNetworkLabel => 'Jaringan WiFi';
+
+  @override
+  String get openInBrowser => 'Buka di browser';
+
+  @override
+  String get wifiCredentials => 'Kredensial WiFi';
+
+  @override
+  String get contactInformation => 'Informasi Kontak';
+
+  @override
+  String get plainTextContent => 'Konten teks biasa';
+
+  @override
+  String get reportIssue => 'Laporkan Masalah';
+
+  @override
+  String get reportIssueSubtitle => 'Kirim umpan balik';
 }

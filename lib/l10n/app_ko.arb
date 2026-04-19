@@ -8,6 +8,31 @@
   "history": "기록",
   "settings": "설정",
   "compare": "비교",
+  "simulate": "시뮬레이션",
+
+  "mainTools": "주요 도구",
+  "categories": "{count}개 카테고리",
+  "@categories": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "loanCalc": "대출",
+  "loanCalcSubtitle": "월 납입금",
+  "interestCalc": "이자",
+  "interestCalcSubtitle": "단리 및 복리",
+  "vault": "금고",
+  "vaultSubtitle": "미래를 계획하세요",
+  "historySubtitle": "이전 계산",
+
+  "proAccess": "PRO 액세스",
+  "upgradeToPremium": "프리미엄으로 업그레이드",
+  "premiumBannerDesc": "고급 차트와\n광고 없는 경험을 잠금 해제하세요.",
+  "marketPulse": "시장 동향",
+  "currentRates": "현재 금리",
+  "homeLoan": "주택담보대출",
+  "savingsApy": "저축 APY",
 
   "calculatorSimpleInterest": "단리 계산",
   "calculatorCompoundInterest": "복리 계산",
@@ -16,23 +41,33 @@
 
   "principal": "원금",
   "interestRate": "이자율",
+  "annualInterestRate": "연이율",
   "term": "기간",
   "termMonths": "기간 (개월)",
   "termYears": "기간 (년)",
   "monthlyPayment": "월 납입금",
+  "firstMonthPayment": "첫 달 납입금",
+  "lastMonthPayment": "마지막 달 납입금",
   "totalInterest": "총 이자",
   "totalPayment": "총 상환액",
   "interest": "이자",
   "totalAmount": "총액",
+  "interestPrincipalRatio": "이자/원금 비율",
+  "loanAmount": "대출 금액",
 
+  "paymentMethod": "상환 방식",
   "loanTypeFixed": "원리금균등",
   "loanTypeReducing": "원금균등",
-  "savingsTypeReinvest": "이자 재투자",
-  "savingsTypeNoReinvest": "재투자 없음",
+  "savingsTypeReinvest": "재투자",
+  "savingsTypeWithdraw": "인출",
+
+  "results": "결과",
+  "paymentStructure": "상환 구조",
 
   "amortizationSchedule": "상환 일정",
   "month": "월",
   "year": "년",
+  "years": "년",
   "payment": "납입",
   "principalPaid": "원금",
   "interestPaid": "이자",
@@ -44,19 +79,131 @@
   "exportPdf": "PDF 내보내기",
   "calculate": "계산",
   "reset": "초기화",
+  "close": "닫기",
+  "add": "추가",
+
+  "storageLimitTitle": "저장 한도",
+  "storageLimitLoans": "최대 {count}개의 대출을 저장했습니다. 무제한 저장을 위해 프리미엄으로 업그레이드하세요!",
+  "@storageLimitLoans": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "storageLimitSavings": "최대 {count}개의 저축을 저장했습니다. 무제한 저장을 위해 프리미엄으로 업그레이드하세요!",
+  "@storageLimitSavings": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "saveLoan": "대출 저장",
+  "loanNameHint": "대출명 (선택)",
+  "amount": "금액",
+  "rate": "금리",
+  "loanSaved": "대출이 저장되었습니다",
+
+  "saveSavings": "저축 저장",
+  "savingsNameHint": "저축명 (선택)",
+  "savingsSaved": "저축이 저장되었습니다",
 
   "savedLoans": "저장된 대출",
   "savedSavings": "저장된 저축",
+  "loansCount": "대출 ({count})",
+  "@loansCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "savingsCount": "저축 ({count})",
+  "@savingsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "noSavedItems": "저장된 항목이 없습니다",
+  "noSavedLoans": "저장된 대출이 없습니다",
+  "noSavedLoansSubtitle": "대출을 계산하고 저장하여 나중에 확인하세요",
+  "noSavedSavings": "저장된 저축이 없습니다",
+  "noSavedSavingsSubtitle": "저축을 계산하고 저장하여 나중에 확인하세요",
+  "errorLoading": "오류: {error}",
+  "@errorLoading": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+
+  "compoundingFrequency": "복리 빈도",
+  "daily": "매일",
+  "monthly": "매월",
+  "quarterly": "분기별",
+  "yearly": "매년",
+  "calculationResults": "계산 결과",
+  "totalReceived": "총 수령액",
+  "interestEarned": "이자 수익",
+  "effectiveAnnualRate": "실효 연이율",
+  "compoundingPeriods": "복리 기간",
+  "compareWithSimple": "단리와 비교",
+  "simpleInterest": "단리",
+  "compoundInterest": "복리",
+  "compoundBenefit": "복리로 {amount} 더 벌 수 있습니다",
+  "@compoundBenefit": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+
+  "savingsType": "저축 유형",
+  "initialDeposit": "초기 예금",
+  "monthlyDeposit": "월 예금",
+  "annualRate": "연이율",
+  "finalBalance": "최종 잔액",
+  "totalDeposited": "총 예금",
+  "returnRate": "수익률",
+  "avgMonthlyInterest": "평균 월 이자",
+  "detailedAnalysis": "상세 분석",
+  "deposits": "예금",
+  "reinvestInfo": "이자가 매월 복리로 계산됩니다",
+  "withdrawInfo": "이자가 매월 지급되며 복리 없음",
+
+  "averageMonthlyInterest": "평균 월 이자",
+  "totalStructure": "전체 구조",
 
   "premium": "프리미엄 업그레이드",
+  "premiumActivated": "프리미엄 회원입니다!",
+  "premiumMember": "프리미엄 회원",
+  "premiumThanks": "지원해 주셔서 감사합니다!",
   "premiumDescription": "모든 기능 잠금 해제",
   "premiumFeature1": "무제한 저장",
+  "premiumFeature1Desc": "모든 대출과 저축 저장",
   "premiumFeature2": "전체 차트",
+  "premiumFeature2Desc": "모든 차트 유형으로 세부 정보 확인",
   "premiumFeature3": "시나리오 비교",
+  "premiumFeature3Desc": "여러 옵션을 나란히 비교",
   "premiumFeature4": "PDF 내보내기",
+  "premiumFeature4Desc": "인쇄 또는 공유용 상세 보고서 생성",
+  "premiumFeature5": "개발 지원",
+  "premiumFeature5Desc": "앱 개선에 도움을 주세요",
+  "premiumFeatures": "프리미엄 기능",
+  "lifetime": "평생",
+  "oneTimePurchase": "한 번 결제, 영구 사용",
+  "upgradeNow": "지금 업그레이드",
   "restorePurchase": "구매 복원",
-  "upgrade": "업그레이드",
+  "purchaseDate": "구매일: {date}",
+  "@purchaseDate": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+  "premiumRequired": "프리미엄 필요",
+  "upgradeTo": "{feature}로 업그레이드",
+  "@upgradeTo": {
+    "placeholders": {
+      "feature": {"type": "String"}
+    }
+  },
+  "pro": "PRO",
+  "activated": "활성화됨",
+  "unlockAllFeatures": "모든 기능 잠금 해제",
 
   "theme": "테마",
   "themeLight": "라이트",
@@ -64,12 +211,299 @@
   "themeSystem": "시스템",
   "language": "언어",
   "about": "정보",
-  "version": "버전",
+  "version": "버전 {version}",
+  "@version": {
+    "placeholders": {
+      "version": {"type": "String"}
+    }
+  },
+  "termsOfService": "이용약관",
+  "privacyPolicy": "개인정보 처리방침",
 
   "error": "오류",
   "errorGeneric": "문제가 발생했습니다",
   "tryAgain": "다시 시도",
   "cancel": "취소",
   "confirm": "확인",
-  "ok": "확인"
+  "ok": "확인",
+  "upgrade": "업그레이드",
+
+  "compareScenarios": "시나리오 비교",
+  "upgradeToCompare": "비교하려면 업그레이드",
+  "loanSettings": "대출 설정",
+  "scenarioA": "시나리오 A",
+  "scenarioB": "시나리오 B",
+  "comparison": "비교",
+  "scenarioSaves": "시나리오 {scenario}가 {amount} 절약",
+  "@scenarioSaves": {
+    "placeholders": {
+      "scenario": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+
+  "simulation": "시뮬레이션",
+  "noScenariosYet": "아직 시나리오가 없습니다",
+  "addScenariosSubtitle": "대출이나 저축을 추가하여\n재정을 시뮬레이션하세요",
+  "addLoan": "대출 추가",
+  "addSavings": "저축 추가",
+  "loans": "대출",
+  "savings": "저축",
+  "timeline": "타임라인",
+  "monthNumber": "{number}개월차",
+  "@monthNumber": {
+    "placeholders": {
+      "number": {"type": "int"}
+    }
+  },
+  "netWorth": "순자산",
+  "positive": "플러스",
+  "negativeDebt": "마이너스 (부채)",
+  "now": "현재",
+  "yearsCount": "{count}년",
+  "@yearsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "debt": "부채",
+  "remaining": "남은",
+  "clearAll": "모두 삭제?",
+  "allScenariosDeleted": "모든 시나리오가 삭제됩니다.",
+  "loanNameHintExample": "대출명 (예: 주택담보대출)",
+  "savingsNameHintExample": "이름 (예: 은퇴자금)",
+  "deposit": "예금",
+  "loan": "대출",
+
+  "selectThemeDescription": "앱 테마를 선택하세요",
+  "selectLanguageDescription": "원하는 언어를 선택하세요",
+  "apply": "적용",
+
+  "financialTools": "금융 도구",
+  "reminders": "알림",
+  "paymentRemindersSubtitle": "납부일 추적",
+  "savingsGoalsSubtitle": "목표 달성",
+  "calendar": "캘린더",
+  "calendarSubtitle": "모든 일정 보기",
+  "achievementsSubtitle": "진행 상황",
+  "reportsSubtitle": "통계 보기",
+  "rateAlertsSubtitle": "금리 모니터링",
+
+  "paymentReminders": "납부 알림",
+  "noRemindersYet": "아직 알림이 없습니다",
+  "addRemindersSubtitle": "납부 알림을 추가하세요",
+  "addReminder": "알림 추가",
+  "editReminder": "알림 편집",
+  "reminderNameHint": "알림명 (예: 신용카드)",
+  "dueDate": "납부일",
+  "remindBefore": "사전 알림",
+  "days": "일",
+  "recurring": "반복",
+  "totalDue": "총 납부액",
+  "overdue": "연체",
+  "upcoming": "예정",
+  "completed": "완료",
+  "markAsPaid": "납부 완료로 표시",
+  "markAsPaidConfirm": "납부 완료로 표시하시겠습니까?",
+  "pending": "대기 중",
+  "paid": "납부됨",
+  "skipped": "건너뜀",
+  "markPaid": "납부 완료",
+  "weekly": "매주",
+  "biWeekly": "격주",
+  "dueToday": "오늘 납부",
+  "dueTomorrow": "내일 납부",
+  "dueInDays": "{days}일 후 납부",
+  "@dueInDays": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "pleaseEnterName": "이름을 입력하세요",
+
+  "savingsGoals": "저축 목표",
+  "noGoalsYet": "아직 목표가 없습니다",
+  "addGoalsSubtitle": "저축 목표를 설정하고 진행 상황을 추적하세요",
+  "addGoal": "목표 추가",
+  "editGoal": "목표 편집",
+  "goalNameHint": "목표명 (예: 여행)",
+  "targetAmount": "목표 금액",
+  "initialAmount": "초기 금액",
+  "deadline": "마감일",
+  "suggestedMonthly": "권장 월 저축액",
+  "activeGoals": "진행 중인 목표",
+  "completedGoals": "완료된 목표",
+  "totalSaved": "총 저축액",
+  "totalTarget": "총 목표액",
+  "ofTotalTarget": "총 목표의",
+  "saved": "저장됨",
+  "milestones": "마일스톤",
+  "addMoney": "입금",
+  "withdraw": "인출",
+  "addContribution": "기여 추가",
+  "notesOptional": "메모 (선택)",
+  "withdrawReason": "인출 사유",
+  "noContributionsYet": "아직 기여가 없습니다",
+  "pauseGoal": "목표 일시 중지",
+  "deleteGoal": "목표 삭제",
+  "deleteGoalConfirm": "이 목표를 삭제하시겠습니까?",
+  "target": "목표",
+  "goals": "목표",
+  "savePerMonth": "목표 달성을 위해 월 {amount} 저축",
+  "@savePerMonth": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "pleaseEnterGoalName": "목표명을 입력하세요",
+  "withdrawal": "인출",
+  "start": "시작",
+  "goalReached": "목표 달성!",
+  "progress": "진행",
+
+  "achievements": "업적",
+  "financialHealthScore": "재정 건전성 점수",
+  "financialHealth": "재정 건전성",
+  "points": "점",
+  "healthExcellent": "훌륭합니다! 계속 유지하세요!",
+  "healthGood": "좋은 진전입니다! 올바른 방향으로 가고 있습니다.",
+  "healthFair": "보통입니다. 개선의 여지가 있습니다.",
+  "healthNeedsWork": "주의가 필요합니다. 함께 개선해 나갑시다!",
+  "paymentStreak": "연속 납부",
+  "dayStreak": "일 연속",
+  "keepItUp": "계속 유지하세요!",
+  "longest": "최장",
+  "unlocked": "잠금 해제됨",
+  "locked": "잠김",
+
+  "financialCalendar": "재정 캘린더",
+  "monthView": "월별 보기",
+  "weekView": "주별 보기",
+  "today": "오늘",
+  "noEventsForDay": "이 날의 일정이 없습니다",
+  "goalDeadline": "목표 마감일",
+  "contribution": "기여",
+
+  "reports": "보고서",
+  "week": "주",
+  "quarter": "분기",
+  "allTime": "전체",
+  "totalPaid": "총 납부액",
+  "totalDebt": "총 부채",
+  "debtVsPaid": "부채 vs 납부",
+  "outstanding": "미납",
+  "noDataYet": "아직 데이터가 없습니다",
+  "monthlyOverview": "월별 개요",
+  "due": "납부",
+  "paymentPerformance": "납부 성과",
+  "onTime": "정시",
+  "late": "지연",
+  "onTimeRate": "정시 납부율",
+
+  "rateAlerts": "금리 알림",
+  "currentMarketRates": "현재 시장 금리",
+  "edit": "편집",
+  "triggeredAlerts": "발동된 알림",
+  "activeAlerts": "활성 알림",
+  "inactiveAlerts": "비활성 알림",
+  "noAlertsYet": "아직 알림이 없습니다",
+  "addAlertsSubtitle": "금리 변동을 추적하는 알림 추가",
+  "addAlert": "알림 추가",
+  "alertNameHint": "알림명 (예: 주택담보대출 금리)",
+  "loanType": "대출 유형",
+  "alertWhen": "알림 조건",
+  "rateDrops": "금리 하락 시",
+  "rateRises": "금리 상승 시",
+  "targetRate": "목표 금리",
+  "when": "시점",
+  "current": "현재",
+  "triggered": "발동됨",
+  "editMarketRates": "시장 금리 편집",
+  "personalLoan": "개인 대출",
+  "carLoan": "자동차 대출",
+  "savingsRate": "저축 금리",
+  "homeShort": "주택",
+  "personalShort": "개인",
+  "carShort": "자동차",
+  "savingsShort": "저축",
+  "rateDropAlert": "금리 하락 알림!",
+  "rateIncreaseAlert": "금리 상승 알림!",
+  "updated": "업데이트됨",
+
+  "newUpdateAvailable": "업데이트 가능",
+  "updateAppMessage": "새로운 버전이 있습니다. 최신 기능과 개선 사항을 받으려면 업데이트하세요.",
+  "updateNow": "지금 업데이트",
+  "later": "나중에",
+
+  "qrTools": "QR 도구",
+  "createQRCode": "QR 코드 생성",
+  "createQRSubtitle": "QR 코드 만들기",
+  "scanQRCode": "QR 코드 스캔",
+  "scanQRSubtitle": "모든 QR 코드 스캔",
+  "selectQRType": "QR 유형 선택",
+  "qrLink": "링크",
+  "qrText": "텍스트",
+  "qrWifi": "WiFi",
+  "qrContact": "연락처",
+  "qrCode": "QR 코드",
+  "websiteAddress": "웹사이트 주소",
+  "textContent": "텍스트 내용",
+  "enterContent": "여기에 내용을 입력하세요",
+  "networkNameSSID": "네트워크 이름 (SSID)",
+  "wifiPasswordLabel": "비밀번호",
+  "encryptionType": "암호화 유형",
+  "noEncryption": "암호화 없음",
+  "contactName": "연락처 이름",
+  "contactNameHint": "홍길동",
+  "phoneNumber": "전화번호",
+  "generateQRButton": "QR 코드 생성",
+  "qrGeneratedOnDevice": "QR 코드가 기기에서 생성됩니다",
+  "qrLinkInfo": "웹사이트 URL을 입력하여 스캔 시 링크를 여는 QR 코드를 만드세요.",
+  "qrWifiInfo": "WiFi 네트워크에 빠르게 연결할 수 있는 QR 코드를 만드세요.",
+  "pleaseEnterWebsite": "웹사이트 주소를 입력하세요",
+  "pleaseEnterTextContent": "텍스트 내용을 입력하세요",
+  "pleaseEnterWifiName": "WiFi 네트워크 이름을 입력하세요",
+  "pleaseEnterContactName": "연락처 이름을 입력하세요",
+  "copy": "복사",
+  "copyData": "데이터 복사",
+  "dataCopied": "클립보드에 복사되었습니다",
+  "saveToGallery": "갤러리에 저장",
+  "qrPrivacyNote": "이 QR 코드는 기기에서 로컬로 생성되며 서버로 전송되지 않습니다.",
+  "wifiNetwork": "WiFi: {name}",
+  "@wifiNetwork": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "contactInfo": "연락처: {name}",
+  "@contactInfo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "cannotCreateQRImage": "QR 이미지를 생성할 수 없습니다",
+  "cannotSaveQR": "QR 코드를 저장할 수 없습니다",
+  "qrSavedToGallerySuccess": "QR 코드가 갤러리에 저장되었습니다",
+  "errorWithMessage": "오류: {message}",
+  "@errorWithMessage": {
+    "placeholders": {
+      "message": {"type": "String"}
+    }
+  },
+  "scanAgain": "다시 스캔",
+  "openLink": "링크 열기",
+  "copyPassword": "비밀번호 복사",
+  "passwordCopied": "비밀번호가 클립보드에 복사되었습니다",
+  "noQRCodeFound": "이미지에서 QR 코드를 찾을 수 없습니다",
+  "pointCameraAtQR": "카메라를 QR 코드에 맞추세요",
+  "scanFromGallery": "갤러리에서 스캔",
+  "websiteLink": "웹사이트 링크",
+  "wifiNetworkLabel": "WiFi 네트워크",
+  "openInBrowser": "브라우저에서 열기",
+  "wifiCredentials": "WiFi 자격 증명",
+  "contactInformation": "연락처 정보",
+  "plainTextContent": "일반 텍스트",
+
+  "reportIssue": "문제 신고",
+  "reportIssueSubtitle": "피드백 보내기"
 }

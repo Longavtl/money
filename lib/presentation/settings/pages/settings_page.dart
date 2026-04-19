@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:money/core/configs/theme/app_colors.dart';
 import 'package:money/core/providers/settings_provider.dart';
@@ -10,6 +13,18 @@ import 'package:money/l10n/app_localizations.dart';
 import 'package:money/presentation/premium/premium_provider.dart';
 import 'package:money/presentation/premium/widgets/premium_gate.dart';
 import 'package:money/common/widgets/app_card.dart';
+
+/// SVG asset paths for settings icons
+class _SettingsAssets {
+  static const String theme = 'assets/svg/theme.svg';
+  static const String lang = 'assets/svg/lang.svg';
+  static const String report = 'assets/svg/report.svg';
+  static const String notification = 'assets/svg/notification.svg';
+  static const String about = 'assets/svg/about.svg';
+  static const String term = 'assets/svg/term.svg';
+  static const String privacy = 'assets/svg/privacy.svg';
+  static const String issueReport = 'assets/svg/issue_report.svg';
+}
 
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({super.key});
@@ -67,18 +82,24 @@ class SettingsPage extends ConsumerWidget {
                   child: Column(
                     children: [
                       _SettingsItem(
-                        icon: CupertinoIcons.sun_max_fill,
+                        svgPath: _SettingsAssets.theme,
                         iconColor: Colors.orange,
                         title: l10n.theme,
                         subtitle: getThemeLabel(settings.themeMode),
                         onTap: () => _showThemePicker(context, ref, l10n),
                       ),
-                      Divider(height: 1, indent: 56.w, color: isDark ? AppColors.darkBorder : AppColors.lightBorder),
+                      Divider(
+                          height: 1,
+                          indent: 56.w,
+                          color: isDark
+                              ? AppColors.darkBorder
+                              : AppColors.lightBorder),
                       _SettingsItem(
-                        icon: CupertinoIcons.globe,
+                        svgPath: _SettingsAssets.lang,
                         iconColor: Colors.blue,
                         title: l10n.language,
-                        subtitle: '${getCurrentLanguage().flag} ${getCurrentLanguage().nativeName}',
+                        subtitle:
+                            '${getCurrentLanguage().flag} ${getCurrentLanguage().nativeName}',
                         onTap: () => _showLanguagePicker(context, ref),
                       ),
                     ],
@@ -88,31 +109,35 @@ class SettingsPage extends ConsumerWidget {
               SizedBox(height: 16.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: AppCard(
-                  padding: EdgeInsets.zero,
-                  child: Column(
-                    children: [
-                      _SettingsItem(
-                        icon: CupertinoIcons.star_fill,
-                        iconColor: Colors.amber,
-                        title: 'MoneyMate Premium',
-                        subtitle: premiumStatus.isPremium ? l10n.activated : l10n.unlockAllFeatures,
-                        trailing: premiumStatus.isPremium ? const PremiumBadge(size: 16) : null,
-                        onTap: () => context.push('/premium'),
-                      ),
-                      if (!premiumStatus.isPremium) ...[
-                        Divider(height: 1, indent: 56.w, color: isDark ? AppColors.darkBorder : AppColors.lightBorder),
-                        _SettingsItem(
-                          icon: CupertinoIcons.arrow_counterclockwise,
-                          iconColor: Colors.green,
-                          title: l10n.restorePurchase,
-                          isLoading: premiumStatus.isLoading,
-                          onTap: () => premiumNotifier.restorePurchases(),
+                child: premiumStatus.isPremium
+                    ? _PremiumCard(onTap: () => context.push('/premium'))
+                    : AppCard(
+                        padding: EdgeInsets.zero,
+                        child: Column(
+                          children: [
+                            _SettingsItem(
+                              icon: CupertinoIcons.star_fill,
+                              iconColor: Colors.amber,
+                              title: 'MoneyNest ${l10n.premium}',
+                              subtitle: l10n.unlockAllFeatures,
+                              onTap: () => context.push('/premium'),
+                            ),
+                            Divider(
+                                height: 1,
+                                indent: 56.w,
+                                color: isDark
+                                    ? AppColors.darkBorder
+                                    : AppColors.lightBorder),
+                            _SettingsItem(
+                              icon: CupertinoIcons.arrow_counterclockwise,
+                              iconColor: Colors.green,
+                              title: l10n.restorePurchase,
+                              isLoading: premiumStatus.isLoading,
+                              onTap: () => premiumNotifier.restorePurchases(),
+                            ),
+                          ],
                         ),
-                      ],
-                    ],
-                  ),
-                ),
+                      ),
               ),
               SizedBox(height: 16.h),
               Padding(
@@ -122,15 +147,20 @@ class SettingsPage extends ConsumerWidget {
                   child: Column(
                     children: [
                       _SettingsItem(
-                        icon: CupertinoIcons.chart_bar_fill,
+                        svgPath: _SettingsAssets.report,
                         iconColor: Colors.blue,
                         title: l10n.reports,
                         subtitle: l10n.reportsSubtitle,
                         onTap: () => context.push('/reports'),
                       ),
-                      Divider(height: 1, indent: 56.w, color: isDark ? AppColors.darkBorder : AppColors.lightBorder),
+                      Divider(
+                          height: 1,
+                          indent: 56.w,
+                          color: isDark
+                              ? AppColors.darkBorder
+                              : AppColors.lightBorder),
                       _SettingsItem(
-                        icon: CupertinoIcons.bell_fill,
+                        svgPath: _SettingsAssets.notification,
                         iconColor: Colors.red,
                         title: l10n.rateAlerts,
                         subtitle: l10n.rateAlertsSubtitle,
@@ -148,25 +178,48 @@ class SettingsPage extends ConsumerWidget {
                   child: Column(
                     children: [
                       _SettingsItem(
-                        icon: CupertinoIcons.info_circle_fill,
+                        svgPath: _SettingsAssets.about,
                         iconColor: Colors.purple,
                         title: l10n.about,
                         subtitle: l10n.version('1.0.0'),
                         onTap: () {},
                       ),
-                      Divider(height: 1, indent: 56.w, color: isDark ? AppColors.darkBorder : AppColors.lightBorder),
+                      Divider(
+                          height: 1,
+                          indent: 56.w,
+                          color: isDark
+                              ? AppColors.darkBorder
+                              : AppColors.lightBorder),
                       _SettingsItem(
-                        icon: CupertinoIcons.doc_text_fill,
+                        svgPath: _SettingsAssets.term,
                         iconColor: Colors.teal,
                         title: l10n.termsOfService,
-                        onTap: () {},
+                        onTap: () => context.push('/legal/terms', extra: l10n.termsOfService),
                       ),
-                      Divider(height: 1, indent: 56.w, color: isDark ? AppColors.darkBorder : AppColors.lightBorder),
+                      Divider(
+                          height: 1,
+                          indent: 56.w,
+                          color: isDark
+                              ? AppColors.darkBorder
+                              : AppColors.lightBorder),
                       _SettingsItem(
-                        icon: CupertinoIcons.shield_fill,
+                        svgPath: _SettingsAssets.privacy,
                         iconColor: Colors.indigo,
                         title: l10n.privacyPolicy,
-                        onTap: () {},
+                        onTap: () => context.push('/legal/privacy', extra: l10n.privacyPolicy),
+                      ),
+                      Divider(
+                          height: 1,
+                          indent: 56.w,
+                          color: isDark
+                              ? AppColors.darkBorder
+                              : AppColors.lightBorder),
+                      _SettingsItem(
+                        svgPath: _SettingsAssets.issueReport,
+                        iconColor: Colors.red,
+                        title: l10n.reportIssue,
+                        subtitle: l10n.reportIssueSubtitle,
+                        onTap: () => _openReportEmail(context),
                       ),
                     ],
                   ),
@@ -180,15 +233,19 @@ class SettingsPage extends ConsumerWidget {
     );
   }
 
-  void _showThemePicker(BuildContext context, WidgetRef ref, AppLocalizations l10n) {
+  void _showThemePicker(
+      BuildContext context, WidgetRef ref, AppLocalizations l10n) {
     final settings = ref.read(settingsProvider);
     final settingsNotifier = ref.read(settingsProvider.notifier);
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
     final sheetBackground = isDark ? AppColors.darkSurface : Colors.white;
-    final cardBackground = isDark ? AppColors.darkBackground : AppColors.lightBackground;
+    final cardBackground =
+        isDark ? AppColors.darkBackground : AppColors.lightBackground;
 
     showModalBottomSheet(
       context: context,
@@ -218,7 +275,10 @@ class SettingsPage extends ConsumerWidget {
                     SizedBox(height: 20.h),
                     Text(
                       l10n.theme,
-                      style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: textPrimary),
+                      style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                          color: textPrimary),
                     ),
                     SizedBox(height: 8.h),
                     Text(
@@ -252,10 +312,14 @@ class SettingsPage extends ConsumerWidget {
                           child: Container(
                             padding: EdgeInsets.all(16.w),
                             decoration: BoxDecoration(
-                              color: isSelected ? AppColors.primary.withValues(alpha: 0.1) : cardBackground,
+                              color: isSelected
+                                  ? AppColors.primary.withValues(alpha: 0.1)
+                                  : cardBackground,
                               borderRadius: BorderRadius.circular(12.r),
                               border: Border.all(
-                                color: isSelected ? AppColors.primary : Colors.transparent,
+                                color: isSelected
+                                    ? AppColors.primary
+                                    : Colors.transparent,
                                 width: 2,
                               ),
                             ),
@@ -265,11 +329,18 @@ class SettingsPage extends ConsumerWidget {
                                   padding: EdgeInsets.all(10.w),
                                   decoration: BoxDecoration(
                                     color: isSelected
-                                        ? AppColors.primary.withValues(alpha: 0.2)
-                                        : (isDark ? Colors.grey[800] : Colors.grey[200]),
+                                        ? AppColors.primary
+                                            .withValues(alpha: 0.2)
+                                        : (isDark
+                                            ? Colors.grey[800]
+                                            : Colors.grey[200]),
                                     borderRadius: BorderRadius.circular(10.r),
                                   ),
-                                  child: Icon(icon, color: isSelected ? AppColors.primary : textSecondary, size: 22.sp),
+                                  child: Icon(icon,
+                                      color: isSelected
+                                          ? AppColors.primary
+                                          : textSecondary,
+                                      size: 22.sp),
                                 ),
                                 SizedBox(width: 16.w),
                                 Expanded(
@@ -277,13 +348,18 @@ class SettingsPage extends ConsumerWidget {
                                     label,
                                     style: TextStyle(
                                       fontSize: 16.sp,
-                                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                                      color: isSelected ? AppColors.primary : textPrimary,
+                                      fontWeight: isSelected
+                                          ? FontWeight.w600
+                                          : FontWeight.normal,
+                                      color: isSelected
+                                          ? AppColors.primary
+                                          : textPrimary,
                                     ),
                                   ),
                                 ),
                                 if (isSelected)
-                                  Icon(CupertinoIcons.checkmark_circle_fill, color: AppColors.primary, size: 24.sp),
+                                  Icon(CupertinoIcons.checkmark_circle_fill,
+                                      color: AppColors.primary, size: 24.sp),
                               ],
                             ),
                           ),
@@ -301,9 +377,14 @@ class SettingsPage extends ConsumerWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,
                           padding: EdgeInsets.symmetric(vertical: 16.h),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.r)),
                         ),
-                        child: Text(l10n.apply, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.white)),
+                        child: Text(l10n.apply,
+                            style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white)),
                       ),
                     ),
                   ],
@@ -316,16 +397,33 @@ class SettingsPage extends ConsumerWidget {
     );
   }
 
+  Future<void> _openReportEmail(BuildContext context) async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    final version = '${packageInfo.version} (${packageInfo.buildNumber})';
+    final subject = 'MoneyNest Issue Report - v$version';
+    final body =
+        'Please describe the issue:\n\n\n\n---\nApp Version: $version\n';
+
+    final url =
+        'mailto:longavtl@gmail.com?subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}';
+    final uri = Uri.parse(url);
+
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
+
   void _showLanguagePicker(BuildContext context, WidgetRef ref) {
     final settings = ref.read(settingsProvider);
     final settingsNotifier = ref.read(settingsProvider.notifier);
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
     final sheetBackground = isDark ? AppColors.darkSurface : Colors.white;
-    final cardBackground = isDark ? AppColors.darkBackground : AppColors.lightBackground;
+    final cardBackground =
+        isDark ? AppColors.darkBackground : AppColors.lightBackground;
 
     showModalBottomSheet(
       context: context,
@@ -335,7 +433,8 @@ class SettingsPage extends ConsumerWidget {
         String selectedCode = settings.languageCode;
         return StatefulBuilder(
           builder: (context, setModalState) => Container(
-            constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.75),
+            constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.75),
             decoration: BoxDecoration(
               color: sheetBackground,
               borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
@@ -359,12 +458,16 @@ class SettingsPage extends ConsumerWidget {
                         SizedBox(height: 20.h),
                         Text(
                           l10n.language,
-                          style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: textPrimary),
+                          style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.bold,
+                              color: textPrimary),
                         ),
                         SizedBox(height: 8.h),
                         Text(
                           l10n.selectLanguageDescription,
-                          style: TextStyle(fontSize: 14.sp, color: textSecondary),
+                          style:
+                              TextStyle(fontSize: 14.sp, color: textSecondary),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -381,42 +484,56 @@ class SettingsPage extends ConsumerWidget {
                         return Padding(
                           padding: EdgeInsets.only(bottom: 12.h),
                           child: GestureDetector(
-                            onTap: () => setModalState(() => selectedCode = lang.code),
+                            onTap: () =>
+                                setModalState(() => selectedCode = lang.code),
                             child: Container(
                               padding: EdgeInsets.all(16.w),
                               decoration: BoxDecoration(
-                                color: isSelected ? AppColors.primary.withValues(alpha: 0.1) : cardBackground,
+                                color: isSelected
+                                    ? AppColors.primary.withValues(alpha: 0.1)
+                                    : cardBackground,
                                 borderRadius: BorderRadius.circular(12.r),
                                 border: Border.all(
-                                  color: isSelected ? AppColors.primary : Colors.transparent,
+                                  color: isSelected
+                                      ? AppColors.primary
+                                      : Colors.transparent,
                                   width: 2,
                                 ),
                               ),
                               child: Row(
                                 children: [
-                                  Text(lang.flag, style: TextStyle(fontSize: 28.sp)),
+                                  Text(lang.flag,
+                                      style: TextStyle(fontSize: 28.sp)),
                                   SizedBox(width: 16.w),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           lang.nativeName,
                                           style: TextStyle(
                                             fontSize: 16.sp,
-                                            fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
-                                            color: isSelected ? AppColors.primary : textPrimary,
+                                            fontWeight: isSelected
+                                                ? FontWeight.w600
+                                                : FontWeight.normal,
+                                            color: isSelected
+                                                ? AppColors.primary
+                                                : textPrimary,
                                           ),
                                         ),
                                         Text(
                                           lang.name,
-                                          style: TextStyle(fontSize: 13.sp, color: textSecondary),
+                                          style: TextStyle(
+                                              fontSize: 13.sp,
+                                              color: textSecondary),
                                         ),
                                       ],
                                     ),
                                   ),
                                   if (isSelected)
-                                    Icon(CupertinoIcons.checkmark_circle_fill, color: AppColors.primary, size: 24.sp),
+                                    Icon(CupertinoIcons.checkmark_circle_fill,
+                                        color: AppColors.primary, size: 24.sp),
                                 ],
                               ),
                             ),
@@ -437,9 +554,14 @@ class SettingsPage extends ConsumerWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primary,
                           padding: EdgeInsets.symmetric(vertical: 16.h),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.r)),
                         ),
-                        child: Text(l10n.apply, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.white)),
+                        child: Text(l10n.apply,
+                            style: TextStyle(
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white)),
                       ),
                     ),
                   ),
@@ -453,8 +575,114 @@ class SettingsPage extends ConsumerWidget {
   }
 }
 
+class _PremiumCard extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _PremiumCard({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFFFFD700),
+              Color(0xFFFFA500),
+              Color(0xFFFF8C00),
+            ],
+          ),
+          borderRadius: BorderRadius.circular(16.r),
+          boxShadow: [
+            BoxShadow(
+              color: const Color(0xFFFFD700).withOpacity(0.25),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 48.w,
+              height: 48.w,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.25),
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: Icon(
+                CupertinoIcons.star_fill,
+                color: Colors.white,
+                size: 26.sp,
+              ),
+            ),
+            SizedBox(width: 14.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        l10n.premiumMember,
+                        style: TextStyle(
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(width: 8.w),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 8.w, vertical: 2.h),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        child: Text(
+                          l10n.pro,
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFFFF8C00),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 4.h),
+                  Text(
+                    l10n.premiumThanks,
+                    style: TextStyle(
+                      fontSize: 13.sp,
+                      color: Colors.white.withOpacity(0.9),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(
+              CupertinoIcons.checkmark_seal_fill,
+              color: Colors.white,
+              size: 28.sp,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class _SettingsItem extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
+  final String? svgPath;
   final Color? iconColor;
   final String title;
   final String? subtitle;
@@ -463,21 +691,25 @@ class _SettingsItem extends StatelessWidget {
   final VoidCallback onTap;
 
   const _SettingsItem({
-    required this.icon,
+    this.icon,
+    this.svgPath,
     this.iconColor,
     required this.title,
     this.subtitle,
     this.trailing,
     this.isLoading = false,
     required this.onTap,
-  });
+  }) : assert(icon != null || svgPath != null,
+            'Either icon or svgPath must be provided');
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
     final color = iconColor ?? textSecondary;
 
     return InkWell(
@@ -489,19 +721,32 @@ class _SettingsItem extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
-                color: color.withValues(alpha: 0.15),
+                color: color.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(10.r),
               ),
-              child: Icon(icon, color: color, size: 20.sp),
+              child: svgPath != null
+                  ? SvgPicture.asset(
+                      svgPath!,
+                      width: 18.sp,
+                      height: 18.sp,
+                      colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+                    )
+                  : Icon(icon, color: color, size: 18.sp),
             ),
             SizedBox(width: 12.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500, color: textPrimary)),
+                  Text(title,
+                      style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: textPrimary)),
                   if (subtitle != null)
-                    Text(subtitle!, style: TextStyle(fontSize: 13.sp, color: textSecondary)),
+                    Text(subtitle!,
+                        style:
+                            TextStyle(fontSize: 13.sp, color: textSecondary)),
                 ],
               ),
             ),
@@ -509,12 +754,14 @@ class _SettingsItem extends StatelessWidget {
               SizedBox(
                 width: 18.sp,
                 height: 18.sp,
-                child: CircularProgressIndicator(strokeWidth: 2, color: textSecondary),
+                child: CircularProgressIndicator(
+                    strokeWidth: 2, color: textSecondary),
               )
             else if (trailing != null)
               trailing!
             else
-              Icon(CupertinoIcons.chevron_right, color: textSecondary.withValues(alpha: 0.5), size: 18.sp),
+              Icon(CupertinoIcons.chevron_right,
+                  color: textSecondary.withValues(alpha: 0.5), size: 18.sp),
           ],
         ),
       ),

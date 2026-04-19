@@ -30,58 +30,58 @@ class AppLocalizationsHi extends AppLocalizations {
   String get compare => 'तुलना';
 
   @override
-  String get simulate => 'Simulate';
+  String get simulate => 'अनुकरण';
 
   @override
-  String get mainTools => 'Main Tools';
+  String get mainTools => 'मुख्य उपकरण';
 
   @override
   String categories(int count) {
-    return '$count CATEGORIES';
+    return '$count श्रेणियां';
   }
 
   @override
-  String get loanCalc => 'Loan Calc';
+  String get loanCalc => 'ऋण गणना';
 
   @override
-  String get loanCalcSubtitle => 'Monthly payments';
+  String get loanCalcSubtitle => 'मासिक भुगतान';
 
   @override
-  String get interestCalc => 'Interest';
+  String get interestCalc => 'ब्याज';
 
   @override
-  String get interestCalcSubtitle => 'Simple & compound';
+  String get interestCalcSubtitle => 'साधारण और चक्रवृद्धि';
 
   @override
-  String get vault => 'Vault';
+  String get vault => 'तिजोरी';
 
   @override
-  String get vaultSubtitle => 'Plan your future';
+  String get vaultSubtitle => 'अपने भविष्य की योजना बनाएं';
 
   @override
-  String get historySubtitle => 'Past calculations';
+  String get historySubtitle => 'पिछली गणनाएं';
 
   @override
-  String get proAccess => 'PRO ACCESS';
+  String get proAccess => 'प्रो एक्सेस';
 
   @override
-  String get upgradeToPremium => 'Upgrade to Premium';
+  String get upgradeToPremium => 'प्रीमियम में अपग्रेड करें';
 
   @override
   String get premiumBannerDesc =>
-      'Unlock advanced charts\nand ad-free experience.';
+      'उन्नत चार्ट और विज्ञापन-मुक्त\nअनुभव अनलॉक करें।';
 
   @override
-  String get marketPulse => 'MARKET PULSE';
+  String get marketPulse => 'बाजार नाड़ी';
 
   @override
-  String get currentRates => 'Current Rates';
+  String get currentRates => 'वर्तमान दरें';
 
   @override
-  String get homeLoan => 'Home Loan';
+  String get homeLoan => 'होम लोन';
 
   @override
-  String get savingsApy => 'Savings APY';
+  String get savingsApy => 'बचत APY';
 
   @override
   String get calculatorSimpleInterest => 'साधारण ब्याज';
@@ -102,7 +102,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get interestRate => 'ब्याज दर';
 
   @override
-  String get annualInterestRate => 'Interest Rate (Annual)';
+  String get annualInterestRate => 'ब्याज दर (वार्षिक)';
 
   @override
   String get term => 'अवधि';
@@ -117,10 +117,10 @@ class AppLocalizationsHi extends AppLocalizations {
   String get monthlyPayment => 'मासिक भुगतान';
 
   @override
-  String get firstMonthPayment => 'First Month Payment';
+  String get firstMonthPayment => 'पहले महीने का भुगतान';
 
   @override
-  String get lastMonthPayment => 'Last Month Payment';
+  String get lastMonthPayment => 'अंतिम महीने का भुगतान';
 
   @override
   String get totalInterest => 'कुल ब्याज';
@@ -135,13 +135,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get totalAmount => 'कुल राशि';
 
   @override
-  String get interestPrincipalRatio => 'Interest/Principal Ratio';
+  String get interestPrincipalRatio => 'ब्याज/मूलधन अनुपात';
 
   @override
-  String get loanAmount => 'Loan Amount';
+  String get loanAmount => 'ऋण राशि';
 
   @override
-  String get paymentMethod => 'Payment Method';
+  String get paymentMethod => 'भुगतान विधि';
 
   @override
   String get loanTypeFixed => 'समान किस्त';
@@ -150,16 +150,16 @@ class AppLocalizationsHi extends AppLocalizations {
   String get loanTypeReducing => 'घटता शेष';
 
   @override
-  String get savingsTypeReinvest => 'ब्याज पुनर्निवेश';
+  String get savingsTypeReinvest => 'पुनर्निवेश';
 
   @override
-  String get savingsTypeWithdraw => 'Withdraw';
+  String get savingsTypeWithdraw => 'निकासी';
 
   @override
-  String get results => 'Results';
+  String get results => 'परिणाम';
 
   @override
-  String get paymentStructure => 'Payment Structure';
+  String get paymentStructure => 'भुगतान संरचना';
 
   @override
   String get amortizationSchedule => 'परिशोधन अनुसूची';
@@ -171,7 +171,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get year => 'वर्ष';
 
   @override
-  String get years => 'years';
+  String get years => 'वर्ष';
 
   @override
   String get payment => 'भुगतान';
@@ -204,47 +204,47 @@ class AppLocalizationsHi extends AppLocalizations {
   String get reset => 'रीसेट';
 
   @override
-  String get close => 'Close';
+  String get close => 'बंद करें';
 
   @override
-  String get add => 'Add';
+  String get add => 'जोड़ें';
 
   @override
-  String get storageLimitTitle => 'Storage Limit';
+  String get storageLimitTitle => 'संग्रहण सीमा';
 
   @override
   String storageLimitLoans(int count) {
-    return 'You have saved the maximum of $count loans. Upgrade to Premium for unlimited saves!';
+    return 'आपने अधिकतम $count ऋण सहेजे हैं। असीमित सेव के लिए प्रीमियम में अपग्रेड करें!';
   }
 
   @override
   String storageLimitSavings(int count) {
-    return 'You have saved the maximum of $count savings. Upgrade to Premium for unlimited saves!';
+    return 'आपने अधिकतम $count बचत सहेजी हैं। असीमित सेव के लिए प्रीमियम में अपग्रेड करें!';
   }
 
   @override
-  String get saveLoan => 'Save Loan';
+  String get saveLoan => 'ऋण सहेजें';
 
   @override
-  String get loanNameHint => 'Loan name (optional)';
+  String get loanNameHint => 'ऋण का नाम (वैकल्पिक)';
 
   @override
-  String get amount => 'Amount';
+  String get amount => 'राशि';
 
   @override
-  String get rate => 'Rate';
+  String get rate => 'दर';
 
   @override
-  String get loanSaved => 'Loan saved';
+  String get loanSaved => 'ऋण सहेजा गया';
 
   @override
-  String get saveSavings => 'Save Savings';
+  String get saveSavings => 'बचत सहेजें';
 
   @override
-  String get savingsNameHint => 'Savings name (optional)';
+  String get savingsNameHint => 'बचत का नाम (वैकल्पिक)';
 
   @override
-  String get savingsSaved => 'Savings saved';
+  String get savingsSaved => 'बचत सहेजी गई';
 
   @override
   String get savedLoans => 'सहेजे गए ऋण';
@@ -254,129 +254,134 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String loansCount(int count) {
-    return 'Loans ($count)';
+    return 'ऋण ($count)';
   }
 
   @override
   String savingsCount(int count) {
-    return 'Savings ($count)';
+    return 'बचत ($count)';
   }
 
   @override
   String get noSavedItems => 'कोई सहेजे गए आइटम नहीं';
 
   @override
-  String get noSavedLoans => 'No saved loans';
+  String get noSavedLoans => 'कोई सहेजे गए ऋण नहीं';
 
   @override
-  String get noSavedLoansSubtitle => 'Calculate and save loans to view later';
+  String get noSavedLoansSubtitle =>
+      'बाद में देखने के लिए ऋण की गणना करें और सहेजें';
 
   @override
-  String get noSavedSavings => 'No saved savings';
+  String get noSavedSavings => 'कोई सहेजी गई बचत नहीं';
 
   @override
   String get noSavedSavingsSubtitle =>
-      'Calculate and save savings to view later';
+      'बाद में देखने के लिए बचत की गणना करें और सहेजें';
 
   @override
   String errorLoading(String error) {
-    return 'Error: $error';
+    return 'त्रुटि: $error';
   }
 
   @override
-  String get compoundingFrequency => 'Compounding Frequency';
+  String get compoundingFrequency => 'चक्रवृद्धि आवृत्ति';
 
   @override
-  String get daily => 'Daily';
+  String get daily => 'दैनिक';
 
   @override
-  String get monthly => 'Monthly';
+  String get monthly => 'मासिक';
 
   @override
-  String get quarterly => 'Quarterly';
+  String get quarterly => 'त्रैमासिक';
 
   @override
-  String get yearly => 'Yearly';
+  String get yearly => 'वार्षिक';
 
   @override
-  String get calculationResults => 'Calculation Results';
+  String get calculationResults => 'गणना परिणाम';
 
   @override
-  String get totalReceived => 'Total Received';
+  String get totalReceived => 'कुल प्राप्त';
 
   @override
-  String get interestEarned => 'Interest Earned';
+  String get interestEarned => 'अर्जित ब्याज';
 
   @override
-  String get effectiveAnnualRate => 'Effective Annual Rate';
+  String get effectiveAnnualRate => 'प्रभावी वार्षिक दर';
 
   @override
-  String get compoundingPeriods => 'Compounding Periods';
+  String get compoundingPeriods => 'चक्रवृद्धि अवधि';
 
   @override
-  String get compareWithSimple => 'Compare with Simple Interest';
+  String get compareWithSimple => 'साधारण ब्याज से तुलना करें';
 
   @override
-  String get simpleInterest => 'Simple Interest';
+  String get simpleInterest => 'साधारण ब्याज';
 
   @override
-  String get compoundInterest => 'Compound Interest';
+  String get compoundInterest => 'चक्रवृद्धि ब्याज';
 
   @override
   String compoundBenefit(String amount) {
-    return 'Compound interest earns you $amount more';
+    return 'चक्रवृद्धि ब्याज आपको $amount अधिक देता है';
   }
 
   @override
-  String get savingsType => 'Savings Type';
+  String get savingsType => 'बचत प्रकार';
 
   @override
-  String get initialDeposit => 'Initial Deposit';
+  String get initialDeposit => 'प्रारंभिक जमा';
 
   @override
-  String get monthlyDeposit => 'Monthly Deposit';
+  String get monthlyDeposit => 'मासिक जमा';
 
   @override
-  String get annualRate => 'Annual Rate';
+  String get annualRate => 'वार्षिक दर';
 
   @override
-  String get finalBalance => 'Final Balance';
+  String get finalBalance => 'अंतिम शेष';
 
   @override
-  String get totalDeposited => 'Total Deposited';
+  String get totalDeposited => 'कुल जमा';
 
   @override
-  String get returnRate => 'Return Rate';
+  String get returnRate => 'रिटर्न दर';
 
   @override
-  String get avgMonthlyInterest => 'Avg Monthly Interest';
+  String get avgMonthlyInterest => 'औसत मासिक ब्याज';
 
   @override
-  String get detailedAnalysis => 'Detailed Analysis';
+  String get detailedAnalysis => 'विस्तृत विश्लेषण';
 
   @override
-  String get deposits => 'Deposits';
+  String get deposits => 'जमा';
 
   @override
-  String get reinvestInfo => 'Interest is compounded monthly';
+  String get reinvestInfo => 'ब्याज मासिक रूप से चक्रवृद्धि होता है';
 
   @override
-  String get withdrawInfo => 'Interest is paid out monthly, not compounded';
+  String get withdrawInfo =>
+      'ब्याज मासिक रूप से भुगतान किया जाता है, चक्रवृद्धि नहीं होता';
 
   @override
-  String get averageMonthlyInterest => 'Avg Interest/Month';
+  String get averageMonthlyInterest => 'औसत ब्याज/महीना';
 
   @override
-  String get totalStructure => 'Total Structure';
+  String get totalStructure => 'कुल संरचना';
 
   @override
   String get premium => 'प्रीमियम में अपग्रेड करें';
 
   @override
-  String get premiumActivated => 'You are Premium!';
+  String get premiumActivated => 'आप प्रीमियम हैं!';
 
   @override
-  String get premiumThanks => 'Thank you for your support!';
+  String get premiumMember => 'प्रीमियम सदस्य';
+
+  @override
+  String get premiumThanks => 'आपके समर्थन के लिए धन्यवाद!';
 
   @override
   String get premiumDescription => 'सभी सुविधाएं अनलॉक करें';
@@ -385,68 +390,69 @@ class AppLocalizationsHi extends AppLocalizations {
   String get premiumFeature1 => 'असीमित सेव';
 
   @override
-  String get premiumFeature1Desc => 'Store all your loans and savings';
+  String get premiumFeature1Desc => 'अपने सभी ऋण और बचत संग्रहीत करें';
 
   @override
-  String get premiumFeature2 => 'पूर्ण चार्ट';
+  String get premiumFeature2 => 'पूर्ण चार्ट सूट';
 
   @override
-  String get premiumFeature2Desc => 'View details with all chart types';
+  String get premiumFeature2Desc => 'सभी चार्ट प्रकारों के साथ विवरण देखें';
 
   @override
   String get premiumFeature3 => 'परिदृश्य तुलना';
 
   @override
-  String get premiumFeature3Desc => 'Compare multiple options side by side';
+  String get premiumFeature3Desc => 'एक साथ कई विकल्पों की तुलना करें';
 
   @override
   String get premiumFeature4 => 'PDF निर्यात';
 
   @override
-  String get premiumFeature4Desc => 'Create detailed reports to print or share';
+  String get premiumFeature4Desc =>
+      'प्रिंट या साझा करने के लिए विस्तृत रिपोर्ट बनाएं';
 
   @override
-  String get premiumFeature5 => 'Support development';
+  String get premiumFeature5 => 'विकास का समर्थन करें';
 
   @override
-  String get premiumFeature5Desc => 'Help us improve the app';
+  String get premiumFeature5Desc => 'ऐप को बेहतर बनाने में हमारी मदद करें';
 
   @override
-  String get premiumFeatures => 'Premium Features';
+  String get premiumFeatures => 'प्रीमियम सुविधाएं';
 
   @override
-  String get lifetime => 'Lifetime';
+  String get lifetime => 'आजीवन';
 
   @override
-  String get oneTimePurchase => 'Pay once, use forever';
+  String get oneTimePurchase => 'एक बार भुगतान करें, हमेशा उपयोग करें';
 
   @override
-  String get upgradeNow => 'Upgrade Now';
+  String get upgradeNow => 'अभी अपग्रेड करें';
 
   @override
   String get restorePurchase => 'खरीद पुनर्स्थापित करें';
 
   @override
   String purchaseDate(String date) {
-    return 'Purchase date: $date';
+    return 'खरीद तिथि: $date';
   }
 
   @override
-  String get premiumRequired => 'Premium Required';
+  String get premiumRequired => 'प्रीमियम आवश्यक';
 
   @override
   String upgradeTo(String feature) {
-    return 'Upgrade to $feature';
+    return '$feature के लिए अपग्रेड करें';
   }
 
   @override
-  String get pro => 'PRO';
+  String get pro => 'प्रो';
 
   @override
-  String get activated => 'Activated';
+  String get activated => 'सक्रिय';
 
   @override
-  String get unlockAllFeatures => 'Unlock all features';
+  String get unlockAllFeatures => 'सभी सुविधाएं अनलॉक करें';
 
   @override
   String get theme => 'थीम';
@@ -468,14 +474,14 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String version(String version) {
-    return 'संस्करण';
+    return 'संस्करण $version';
   }
 
   @override
-  String get termsOfService => 'Terms of Service';
+  String get termsOfService => 'सेवा की शर्तें';
 
   @override
-  String get privacyPolicy => 'Privacy Policy';
+  String get privacyPolicy => 'गोपनीयता नीति';
 
   @override
   String get error => 'त्रुटि';
@@ -499,521 +505,700 @@ class AppLocalizationsHi extends AppLocalizations {
   String get upgrade => 'अपग्रेड';
 
   @override
-  String get compareScenarios => 'Compare Scenarios';
+  String get compareScenarios => 'परिदृश्यों की तुलना करें';
 
   @override
-  String get upgradeToCompare => 'Upgrade to compare scenarios';
+  String get upgradeToCompare => 'परिदृश्यों की तुलना करने के लिए अपग्रेड करें';
 
   @override
-  String get loanSettings => 'Loan Settings';
+  String get loanSettings => 'ऋण सेटिंग्स';
 
   @override
-  String get scenarioA => 'Scenario A';
+  String get scenarioA => 'परिदृश्य A';
 
   @override
-  String get scenarioB => 'Scenario B';
+  String get scenarioB => 'परिदृश्य B';
 
   @override
-  String get comparison => 'Comparison';
+  String get comparison => 'तुलना';
 
   @override
   String scenarioSaves(String scenario, String amount) {
-    return 'Scenario $scenario saves $amount';
+    return 'परिदृश्य $scenario $amount बचाता है';
   }
 
   @override
-  String get simulation => 'Simulation';
+  String get simulation => 'अनुकरण';
 
   @override
-  String get noScenariosYet => 'No scenarios yet';
+  String get noScenariosYet => 'अभी तक कोई परिदृश्य नहीं';
 
   @override
   String get addScenariosSubtitle =>
-      'Add loans or savings to simulate\nyour finances over time';
+      'समय के साथ अपने वित्त का\nअनुकरण करने के लिए ऋण या बचत जोड़ें';
 
   @override
-  String get addLoan => 'Add Loan';
+  String get addLoan => 'ऋण जोड़ें';
 
   @override
-  String get addSavings => 'Add Savings';
+  String get addSavings => 'बचत जोड़ें';
 
   @override
-  String get loans => 'Loans';
+  String get loans => 'ऋण';
 
   @override
-  String get savings => 'Savings';
+  String get savings => 'बचत';
 
   @override
-  String get timeline => 'Timeline';
+  String get timeline => 'समयरेखा';
 
   @override
   String monthNumber(int number) {
-    return 'Month $number';
+    return 'महीना $number';
   }
 
   @override
-  String get netWorth => 'Net Worth';
+  String get netWorth => 'कुल संपत्ति';
 
   @override
-  String get positive => 'Positive';
+  String get positive => 'सकारात्मक';
 
   @override
-  String get negativeDebt => 'Negative (debt)';
+  String get negativeDebt => 'नकारात्मक (ऋण)';
 
   @override
-  String get now => 'Now';
+  String get now => 'अभी';
 
   @override
   String yearsCount(int count) {
-    return '$count years';
+    return '$count वर्ष';
   }
 
   @override
-  String get debt => 'Debt';
+  String get debt => 'ऋण';
 
   @override
-  String get remaining => 'Remaining';
+  String get remaining => 'शेष';
 
   @override
-  String get clearAll => 'Clear All?';
+  String get clearAll => 'सभी साफ़ करें?';
 
   @override
-  String get allScenariosDeleted => 'All scenarios will be deleted.';
+  String get allScenariosDeleted => 'सभी परिदृश्य हटा दिए जाएंगे।';
 
   @override
-  String get loanNameHintExample => 'Loan name (e.g., Home Loan)';
+  String get loanNameHintExample => 'ऋण का नाम (जैसे, होम लोन)';
 
   @override
-  String get savingsNameHintExample => 'Name (e.g., Retirement)';
+  String get savingsNameHintExample => 'नाम (जैसे, सेवानिवृत्ति)';
 
   @override
-  String get deposit => 'Deposit';
+  String get deposit => 'जमा';
 
   @override
-  String get loan => 'Loan';
+  String get loan => 'ऋण';
 
   @override
-  String get selectThemeDescription => 'Choose a theme for your app';
+  String get selectThemeDescription => 'अपने ऐप के लिए एक थीम चुनें';
 
   @override
-  String get selectLanguageDescription => 'Choose your preferred language';
+  String get selectLanguageDescription => 'अपनी पसंदीदा भाषा चुनें';
 
   @override
-  String get apply => 'Apply';
+  String get apply => 'लागू करें';
 
   @override
-  String get financialTools => 'Financial Tools';
+  String get financialTools => 'वित्तीय उपकरण';
 
   @override
-  String get reminders => 'Reminders';
+  String get reminders => 'अनुस्मारक';
 
   @override
-  String get paymentRemindersSubtitle => 'Track due dates';
+  String get paymentRemindersSubtitle => 'नियत तिथियों को ट्रैक करें';
 
   @override
-  String get savingsGoalsSubtitle => 'Reach your goals';
+  String get savingsGoalsSubtitle => 'अपने लक्ष्यों तक पहुंचें';
 
   @override
-  String get calendar => 'Calendar';
+  String get calendar => 'कैलेंडर';
 
   @override
-  String get calendarSubtitle => 'View all events';
+  String get calendarSubtitle => 'सभी घटनाएं देखें';
 
   @override
-  String get achievementsSubtitle => 'Your progress';
+  String get achievementsSubtitle => 'आपकी प्रगति';
 
   @override
-  String get reportsSubtitle => 'View statistics';
+  String get reportsSubtitle => 'आंकड़े देखें';
 
   @override
-  String get rateAlertsSubtitle => 'Monitor rates';
+  String get rateAlertsSubtitle => 'दरों की निगरानी करें';
 
   @override
-  String get paymentReminders => 'Payment Reminders';
+  String get paymentReminders => 'भुगतान अनुस्मारक';
 
   @override
-  String get noRemindersYet => 'No reminders yet';
+  String get noRemindersYet => 'अभी तक कोई अनुस्मारक नहीं';
 
   @override
-  String get addRemindersSubtitle => 'Add payment reminders to stay on track';
+  String get addRemindersSubtitle =>
+      'ट्रैक पर बने रहने के लिए भुगतान अनुस्मारक जोड़ें';
 
   @override
-  String get addReminder => 'Add Reminder';
+  String get addReminder => 'अनुस्मारक जोड़ें';
 
   @override
-  String get editReminder => 'Edit Reminder';
+  String get editReminder => 'अनुस्मारक संपादित करें';
 
   @override
-  String get reminderNameHint => 'Reminder name (e.g., Credit Card)';
+  String get reminderNameHint => 'अनुस्मारक का नाम (जैसे, क्रेडिट कार्ड)';
 
   @override
-  String get dueDate => 'Due Date';
+  String get dueDate => 'नियत तिथि';
 
   @override
-  String get remindBefore => 'Remind Before';
+  String get remindBefore => 'पहले याद दिलाएं';
 
   @override
-  String get days => 'days';
+  String get days => 'दिन';
 
   @override
-  String get recurring => 'Recurring';
+  String get recurring => 'आवर्ती';
 
   @override
-  String get totalDue => 'Total Due';
+  String get totalDue => 'कुल बकाया';
 
   @override
-  String get overdue => 'Overdue';
+  String get overdue => 'अतिदेय';
 
   @override
-  String get upcoming => 'Upcoming';
+  String get upcoming => 'आगामी';
 
   @override
-  String get completed => 'Completed';
+  String get completed => 'पूर्ण';
 
   @override
-  String get markAsPaid => 'Mark as Paid';
+  String get markAsPaid => 'भुगतान के रूप में चिह्नित करें';
 
   @override
-  String get markAsPaidConfirm => 'Are you sure you want to mark this as paid?';
+  String get markAsPaidConfirm =>
+      'क्या आप वाकई इसे भुगतान के रूप में चिह्नित करना चाहते हैं?';
 
   @override
-  String get pending => 'Pending';
+  String get pending => 'लंबित';
 
   @override
-  String get paid => 'Paid';
+  String get paid => 'भुगतान';
 
   @override
-  String get skipped => 'Skipped';
+  String get skipped => 'छोड़ा गया';
 
   @override
-  String get markPaid => 'Mark Paid';
+  String get markPaid => 'भुगतान चिह्नित करें';
 
   @override
-  String get weekly => 'Weekly';
+  String get weekly => 'साप्ताहिक';
 
   @override
-  String get biWeekly => 'Bi-weekly';
+  String get biWeekly => 'पाक्षिक';
 
   @override
-  String get dueToday => 'Due today';
+  String get dueToday => 'आज देय';
 
   @override
-  String get dueTomorrow => 'Due tomorrow';
+  String get dueTomorrow => 'कल देय';
 
   @override
   String dueInDays(int days) {
-    return 'Due in $days days';
+    return '$days दिनों में देय';
   }
 
   @override
-  String get pleaseEnterName => 'Please enter a name';
+  String get pleaseEnterName => 'कृपया एक नाम दर्ज करें';
 
   @override
-  String get savingsGoals => 'Savings Goals';
+  String get savingsGoals => 'बचत लक्ष्य';
 
   @override
-  String get noGoalsYet => 'No goals yet';
+  String get noGoalsYet => 'अभी तक कोई लक्ष्य नहीं';
 
   @override
-  String get addGoalsSubtitle => 'Set savings goals and track your progress';
+  String get addGoalsSubtitle =>
+      'बचत लक्ष्य निर्धारित करें और अपनी प्रगति ट्रैक करें';
 
   @override
-  String get addGoal => 'Add Goal';
+  String get addGoal => 'लक्ष्य जोड़ें';
 
   @override
-  String get editGoal => 'Edit Goal';
+  String get editGoal => 'लक्ष्य संपादित करें';
 
   @override
-  String get goalNameHint => 'Goal name (e.g., Vacation)';
+  String get goalNameHint => 'लक्ष्य का नाम (जैसे, छुट्टी)';
 
   @override
-  String get targetAmount => 'Target Amount';
+  String get targetAmount => 'लक्ष्य राशि';
 
   @override
-  String get initialAmount => 'Initial Amount';
+  String get initialAmount => 'प्रारंभिक राशि';
 
   @override
-  String get deadline => 'Deadline';
+  String get deadline => 'अंतिम तिथि';
 
   @override
-  String get suggestedMonthly => 'Suggested Monthly';
+  String get suggestedMonthly => 'सुझाया गया मासिक';
 
   @override
-  String get activeGoals => 'Active Goals';
+  String get activeGoals => 'सक्रिय लक्ष्य';
 
   @override
-  String get completedGoals => 'Completed Goals';
+  String get completedGoals => 'पूर्ण लक्ष्य';
 
   @override
-  String get totalSaved => 'Total Saved';
+  String get totalSaved => 'कुल बचत';
 
   @override
-  String get totalTarget => 'Total Target';
+  String get totalTarget => 'कुल लक्ष्य';
 
   @override
-  String get ofTotalTarget => 'of total target';
+  String get ofTotalTarget => 'कुल लक्ष्य का';
 
   @override
-  String get milestones => 'Milestones';
+  String get milestones => 'मील के पत्थर';
 
   @override
-  String get addMoney => 'Add Money';
+  String get addMoney => 'पैसे जोड़ें';
 
   @override
-  String get withdraw => 'Withdraw';
+  String get withdraw => 'निकालें';
 
   @override
-  String get addContribution => 'Add Contribution';
+  String get addContribution => 'योगदान जोड़ें';
 
   @override
-  String get notesOptional => 'Notes (optional)';
+  String get notesOptional => 'नोट्स (वैकल्पिक)';
 
   @override
-  String get withdrawReason => 'Reason for withdrawal';
+  String get withdrawReason => 'निकासी का कारण';
 
   @override
-  String get noContributionsYet => 'No contributions yet';
+  String get noContributionsYet => 'अभी तक कोई योगदान नहीं';
 
   @override
-  String get pauseGoal => 'Pause Goal';
+  String get pauseGoal => 'लक्ष्य रोकें';
 
   @override
-  String get deleteGoal => 'Delete Goal';
+  String get deleteGoal => 'लक्ष्य हटाएं';
 
   @override
-  String get deleteGoalConfirm => 'Are you sure you want to delete this goal?';
+  String get deleteGoalConfirm => 'क्या आप वाकई इस लक्ष्य को हटाना चाहते हैं?';
 
   @override
-  String get target => 'Target';
+  String get target => 'लक्ष्य';
 
   @override
-  String get goals => 'Goals';
+  String get goals => 'लक्ष्य';
 
   @override
   String savePerMonth(String amount) {
-    return 'Save $amount/month to reach goal';
+    return 'लक्ष्य तक पहुंचने के लिए $amount/महीना बचाएं';
   }
 
   @override
-  String get pleaseEnterGoalName => 'Please enter a goal name';
+  String get pleaseEnterGoalName => 'कृपया एक लक्ष्य नाम दर्ज करें';
 
   @override
-  String get withdrawal => 'Withdrawal';
+  String get withdrawal => 'निकासी';
 
   @override
-  String get start => 'Start';
+  String get start => 'शुरू';
 
   @override
-  String get goalReached => 'Goal!';
+  String get goalReached => 'लक्ष्य!';
 
   @override
-  String get progress => 'Progress';
+  String get progress => 'प्रगति';
 
   @override
-  String get achievements => 'Achievements';
+  String get achievements => 'उपलब्धियां';
 
   @override
-  String get financialHealthScore => 'Financial Health Score';
+  String get financialHealthScore => 'वित्तीय स्वास्थ्य स्कोर';
 
   @override
-  String get financialHealth => 'Financial Health';
+  String get financialHealth => 'वित्तीय स्वास्थ्य';
 
   @override
-  String get points => 'points';
+  String get points => 'अंक';
 
   @override
-  String get healthExcellent => 'Excellent! Keep up the great work!';
+  String get healthExcellent => 'उत्कृष्ट! शानदार काम जारी रखें!';
 
   @override
-  String get healthGood => 'Good progress! You\'re on the right track.';
+  String get healthGood => 'अच्छी प्रगति! आप सही रास्ते पर हैं।';
 
   @override
-  String get healthFair => 'Fair. There\'s room for improvement.';
+  String get healthFair => 'ठीक है। सुधार की गुंजाइश है।';
 
   @override
-  String get healthNeedsWork => 'Needs attention. Let\'s improve together!';
+  String get healthNeedsWork =>
+      'ध्यान देने की जरूरत है। आइए एक साथ सुधार करें!';
 
   @override
-  String get paymentStreak => 'Payment Streak';
+  String get paymentStreak => 'भुगतान स्ट्रीक';
 
   @override
-  String get dayStreak => 'day streak';
+  String get dayStreak => 'दिन की स्ट्रीक';
 
   @override
-  String get keepItUp => 'Keep it up!';
+  String get keepItUp => 'इसे जारी रखें!';
 
   @override
-  String get longest => 'Longest';
+  String get longest => 'सबसे लंबा';
 
   @override
-  String get unlocked => 'Unlocked';
+  String get unlocked => 'अनलॉक किया गया';
 
   @override
-  String get locked => 'Locked';
+  String get locked => 'लॉक किया गया';
 
   @override
-  String get financialCalendar => 'Financial Calendar';
+  String get financialCalendar => 'वित्तीय कैलेंडर';
 
   @override
-  String get monthView => 'Month View';
+  String get monthView => 'महीना दृश्य';
 
   @override
-  String get weekView => 'Week View';
+  String get weekView => 'सप्ताह दृश्य';
 
   @override
-  String get today => 'Today';
+  String get today => 'आज';
 
   @override
-  String get noEventsForDay => 'No events for this day';
+  String get noEventsForDay => 'इस दिन के लिए कोई घटना नहीं';
 
   @override
-  String get goalDeadline => 'Goal Deadline';
+  String get goalDeadline => 'लक्ष्य की अंतिम तिथि';
 
   @override
-  String get contribution => 'Contribution';
+  String get contribution => 'योगदान';
 
   @override
-  String get reports => 'Reports';
+  String get reports => 'रिपोर्ट';
 
   @override
-  String get week => 'Week';
+  String get week => 'सप्ताह';
 
   @override
-  String get quarter => 'Quarter';
+  String get quarter => 'तिमाही';
 
   @override
-  String get allTime => 'All Time';
+  String get allTime => 'सभी समय';
 
   @override
-  String get totalPaid => 'Total Paid';
+  String get totalPaid => 'कुल भुगतान';
 
   @override
-  String get totalDebt => 'Total Debt';
+  String get totalDebt => 'कुल ऋण';
 
   @override
-  String get debtVsPaid => 'Debt vs Paid';
+  String get debtVsPaid => 'ऋण बनाम भुगतान';
 
   @override
-  String get outstanding => 'Outstanding';
+  String get outstanding => 'बकाया';
 
   @override
-  String get noDataYet => 'No data yet';
+  String get noDataYet => 'अभी तक कोई डेटा नहीं';
 
   @override
-  String get monthlyOverview => 'Monthly Overview';
+  String get monthlyOverview => 'मासिक अवलोकन';
 
   @override
-  String get due => 'Due';
+  String get due => 'देय';
 
   @override
-  String get paymentPerformance => 'Payment Performance';
+  String get paymentPerformance => 'भुगतान प्रदर्शन';
 
   @override
-  String get onTime => 'On Time';
+  String get onTime => 'समय पर';
 
   @override
-  String get late => 'Late';
+  String get late => 'देर से';
 
   @override
-  String get onTimeRate => 'On Time Rate';
+  String get onTimeRate => 'समय पर दर';
 
   @override
-  String get rateAlerts => 'Rate Alerts';
+  String get rateAlerts => 'दर अलर्ट';
 
   @override
-  String get currentMarketRates => 'Current Market Rates';
+  String get currentMarketRates => 'वर्तमान बाजार दरें';
 
   @override
-  String get edit => 'Edit';
+  String get edit => 'संपादित करें';
 
   @override
-  String get triggeredAlerts => 'Triggered Alerts';
+  String get triggeredAlerts => 'ट्रिगर किए गए अलर्ट';
 
   @override
-  String get activeAlerts => 'Active Alerts';
+  String get activeAlerts => 'सक्रिय अलर्ट';
 
   @override
-  String get inactiveAlerts => 'Inactive Alerts';
+  String get inactiveAlerts => 'निष्क्रिय अलर्ट';
 
   @override
-  String get noAlertsYet => 'No alerts yet';
+  String get noAlertsYet => 'अभी तक कोई अलर्ट नहीं';
 
   @override
-  String get addAlertsSubtitle => 'Add alerts to track interest rate changes';
+  String get addAlertsSubtitle =>
+      'ब्याज दर परिवर्तनों को ट्रैक करने के लिए अलर्ट जोड़ें';
 
   @override
-  String get addAlert => 'Add Alert';
+  String get addAlert => 'अलर्ट जोड़ें';
 
   @override
-  String get alertNameHint => 'Alert name (e.g., Home Loan Rate)';
+  String get alertNameHint => 'अलर्ट का नाम (जैसे, होम लोन दर)';
 
   @override
-  String get loanType => 'Loan Type';
+  String get loanType => 'ऋण प्रकार';
 
   @override
-  String get alertWhen => 'Alert When';
+  String get alertWhen => 'अलर्ट कब';
 
   @override
-  String get rateDrops => 'Rate Drops';
+  String get rateDrops => 'दर गिरती है';
 
   @override
-  String get rateRises => 'Rate Rises';
+  String get rateRises => 'दर बढ़ती है';
 
   @override
-  String get targetRate => 'Target Rate';
+  String get targetRate => 'लक्ष्य दर';
 
   @override
-  String get when => 'When';
+  String get when => 'कब';
 
   @override
-  String get current => 'Current';
+  String get current => 'वर्तमान';
 
   @override
-  String get triggered => 'Triggered';
+  String get triggered => 'ट्रिगर किया गया';
 
   @override
-  String get editMarketRates => 'Edit Market Rates';
+  String get editMarketRates => 'बाजार दरें संपादित करें';
 
   @override
-  String get personalLoan => 'Personal Loan';
+  String get personalLoan => 'व्यक्तिगत ऋण';
 
   @override
-  String get carLoan => 'Car Loan';
+  String get carLoan => 'कार ऋण';
 
   @override
-  String get savingsRate => 'Savings Rate';
+  String get savingsRate => 'बचत दर';
 
   @override
-  String get homeShort => 'Home';
+  String get homeShort => 'होम';
 
   @override
-  String get personalShort => 'Personal';
+  String get personalShort => 'व्यक्तिगत';
 
   @override
-  String get carShort => 'Car';
+  String get carShort => 'कार';
 
   @override
-  String get savingsShort => 'Savings';
+  String get savingsShort => 'बचत';
 
   @override
-  String get rateDropAlert => 'Rate Drop Alert!';
+  String get rateDropAlert => 'दर गिरावट अलर्ट!';
 
   @override
-  String get rateIncreaseAlert => 'Rate Increase Alert!';
+  String get rateIncreaseAlert => 'दर वृद्धि अलर्ट!';
 
   @override
-  String get updated => 'Updated';
+  String get updated => 'अपडेट किया गया';
 
   @override
-  String get newUpdateAvailable => 'Update Available';
+  String get newUpdateAvailable => 'अपडेट उपलब्ध';
 
   @override
   String get updateAppMessage =>
-      'A new version of the app is available. Please update to get the latest features and improvements.';
+      'ऐप का नया संस्करण उपलब्ध है। नवीनतम सुविधाओं और सुधारों के लिए अपडेट करें।';
 
   @override
-  String get updateNow => 'Update Now';
+  String get updateNow => 'अभी अपडेट करें';
 
   @override
-  String get later => 'Later';
+  String get later => 'बाद में';
+
+  @override
+  String get qrTools => 'QR उपकरण';
+
+  @override
+  String get createQRCode => 'QR कोड बनाएं';
+
+  @override
+  String get createQRSubtitle => 'QR कोड उत्पन्न करें';
+
+  @override
+  String get scanQRCode => 'QR कोड स्कैन करें';
+
+  @override
+  String get scanQRSubtitle => 'कोई भी QR कोड स्कैन करें';
+
+  @override
+  String get selectQRType => 'QR प्रकार चुनें';
+
+  @override
+  String get qrLink => 'लिंक';
+
+  @override
+  String get qrText => 'टेक्स्ट';
+
+  @override
+  String get qrWifi => 'WiFi';
+
+  @override
+  String get qrContact => 'संपर्क';
+
+  @override
+  String get qrCode => 'QR कोड';
+
+  @override
+  String get websiteAddress => 'वेबसाइट पता';
+
+  @override
+  String get textContent => 'टेक्स्ट सामग्री';
+
+  @override
+  String get enterContent => 'अपनी सामग्री यहां दर्ज करें';
+
+  @override
+  String get networkNameSSID => 'नेटवर्क नाम (SSID)';
+
+  @override
+  String get wifiPasswordLabel => 'पासवर्ड';
+
+  @override
+  String get encryptionType => 'एन्क्रिप्शन प्रकार';
+
+  @override
+  String get noEncryption => 'कोई एन्क्रिप्शन नहीं';
+
+  @override
+  String get contactName => 'संपर्क नाम';
+
+  @override
+  String get contactNameHint => 'राज कुमार';
+
+  @override
+  String get phoneNumber => 'फोन नंबर';
+
+  @override
+  String get generateQRButton => 'QR कोड उत्पन्न करें';
+
+  @override
+  String get qrGeneratedOnDevice => 'QR कोड आपके डिवाइस पर उत्पन्न होता है';
+
+  @override
+  String get qrLinkInfo =>
+      'एक QR कोड बनाने के लिए एक वेबसाइट URL दर्ज करें जो स्कैन करने पर लिंक खोलता है।';
+
+  @override
+  String get qrWifiInfo =>
+      'एक QR कोड बनाएं जो दूसरों को आपके WiFi नेटवर्क से जल्दी कनेक्ट करने की अनुमति देता है।';
+
+  @override
+  String get pleaseEnterWebsite => 'कृपया एक वेबसाइट पता दर्ज करें';
+
+  @override
+  String get pleaseEnterTextContent => 'कृपया टेक्स्ट सामग्री दर्ज करें';
+
+  @override
+  String get pleaseEnterWifiName => 'कृपया WiFi नेटवर्क नाम दर्ज करें';
+
+  @override
+  String get pleaseEnterContactName => 'कृपया संपर्क नाम दर्ज करें';
+
+  @override
+  String get copy => 'कॉपी करें';
+
+  @override
+  String get copyData => 'डेटा कॉपी करें';
+
+  @override
+  String get dataCopied => 'डेटा क्लिपबोर्ड पर कॉपी किया गया';
+
+  @override
+  String get saveToGallery => 'गैलरी में सहेजें';
+
+  @override
+  String get qrPrivacyNote =>
+      'यह QR कोड स्थानीय रूप से आपके डिवाइस पर उत्पन्न होता है और किसी भी सर्वर पर नहीं भेजा जाता है।';
+
+  @override
+  String wifiNetwork(String name) {
+    return 'WiFi: $name';
+  }
+
+  @override
+  String contactInfo(String name) {
+    return 'संपर्क: $name';
+  }
+
+  @override
+  String get cannotCreateQRImage => 'QR छवि नहीं बना सकते';
+
+  @override
+  String get cannotSaveQR => 'QR कोड सहेज नहीं सकते';
+
+  @override
+  String get qrSavedToGallerySuccess => 'QR कोड गैलरी में सहेजा गया';
+
+  @override
+  String errorWithMessage(String message) {
+    return 'त्रुटि: $message';
+  }
+
+  @override
+  String get scanAgain => 'फिर से स्कैन करें';
+
+  @override
+  String get openLink => 'लिंक खोलें';
+
+  @override
+  String get copyPassword => 'पासवर्ड कॉपी करें';
+
+  @override
+  String get passwordCopied => 'पासवर्ड क्लिपबोर्ड पर कॉपी किया गया';
+
+  @override
+  String get noQRCodeFound => 'छवि में कोई QR कोड नहीं मिला';
+
+  @override
+  String get pointCameraAtQR => 'कैमरा को QR कोड पर इंगित करें';
+
+  @override
+  String get scanFromGallery => 'गैलरी से स्कैन करें';
+
+  @override
+  String get websiteLink => 'वेबसाइट लिंक';
+
+  @override
+  String get wifiNetworkLabel => 'WiFi नेटवर्क';
+
+  @override
+  String get openInBrowser => 'ब्राउज़र में खोलें';
+
+  @override
+  String get wifiCredentials => 'WiFi क्रेडेंशियल्स';
+
+  @override
+  String get contactInformation => 'संपर्क जानकारी';
+
+  @override
+  String get plainTextContent => 'सादा टेक्स्ट सामग्री';
+
+  @override
+  String get reportIssue => 'समस्या रिपोर्ट करें';
+
+  @override
+  String get reportIssueSubtitle => 'हमें प्रतिक्रिया भेजें';
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -60,18 +61,21 @@ class GoalsPage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(CupertinoIcons.flag_slash, size: 64.sp, color: textSecondary.withValues(alpha: 0.3)),
+            Icon(CupertinoIcons.flag_slash, size: 64.sp, color: textSecondary.withValues(alpha: 0.3))
+                .animate()
+                .scale(duration: 500.ms, curve: Curves.elasticOut)
+                .fadeIn(),
             SizedBox(height: 16.h),
             Text(
               l10n.noGoalsYet,
               style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: textSecondary),
-            ),
+            ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.2, end: 0),
             SizedBox(height: 8.h),
             Text(
               l10n.addGoalsSubtitle,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 14.sp, color: textSecondary.withValues(alpha: 0.6)),
-            ),
+            ).animate().fadeIn(delay: 300.ms).slideY(begin: 0.2, end: 0),
             SizedBox(height: 32.h),
             ElevatedButton.icon(
               onPressed: () => _showAddGoalSheet(context, ref),
@@ -83,7 +87,7 @@ class GoalsPage extends ConsumerWidget {
                 padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
               ),
-            ),
+            ).animate().fadeIn(delay: 400.ms).scale(begin: const Offset(0.8, 0.8), end: const Offset(1, 1)),
           ],
         ),
       ),

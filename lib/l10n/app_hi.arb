@@ -8,6 +8,31 @@
   "history": "इतिहास",
   "settings": "सेटिंग्स",
   "compare": "तुलना",
+  "simulate": "अनुकरण",
+
+  "mainTools": "मुख्य उपकरण",
+  "categories": "{count} श्रेणियां",
+  "@categories": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "loanCalc": "ऋण गणना",
+  "loanCalcSubtitle": "मासिक भुगतान",
+  "interestCalc": "ब्याज",
+  "interestCalcSubtitle": "साधारण और चक्रवृद्धि",
+  "vault": "तिजोरी",
+  "vaultSubtitle": "अपने भविष्य की योजना बनाएं",
+  "historySubtitle": "पिछली गणनाएं",
+
+  "proAccess": "प्रो एक्सेस",
+  "upgradeToPremium": "प्रीमियम में अपग्रेड करें",
+  "premiumBannerDesc": "उन्नत चार्ट और विज्ञापन-मुक्त\nअनुभव अनलॉक करें।",
+  "marketPulse": "बाजार नाड़ी",
+  "currentRates": "वर्तमान दरें",
+  "homeLoan": "होम लोन",
+  "savingsApy": "बचत APY",
 
   "calculatorSimpleInterest": "साधारण ब्याज",
   "calculatorCompoundInterest": "चक्रवृद्धि ब्याज",
@@ -16,23 +41,33 @@
 
   "principal": "मूलधन",
   "interestRate": "ब्याज दर",
+  "annualInterestRate": "ब्याज दर (वार्षिक)",
   "term": "अवधि",
   "termMonths": "अवधि (महीने)",
   "termYears": "अवधि (वर्ष)",
   "monthlyPayment": "मासिक भुगतान",
+  "firstMonthPayment": "पहले महीने का भुगतान",
+  "lastMonthPayment": "अंतिम महीने का भुगतान",
   "totalInterest": "कुल ब्याज",
   "totalPayment": "कुल भुगतान",
   "interest": "ब्याज",
   "totalAmount": "कुल राशि",
+  "interestPrincipalRatio": "ब्याज/मूलधन अनुपात",
+  "loanAmount": "ऋण राशि",
 
+  "paymentMethod": "भुगतान विधि",
   "loanTypeFixed": "समान किस्त",
   "loanTypeReducing": "घटता शेष",
-  "savingsTypeReinvest": "ब्याज पुनर्निवेश",
-  "savingsTypeNoReinvest": "पुनर्निवेश नहीं",
+  "savingsTypeReinvest": "पुनर्निवेश",
+  "savingsTypeWithdraw": "निकासी",
+
+  "results": "परिणाम",
+  "paymentStructure": "भुगतान संरचना",
 
   "amortizationSchedule": "परिशोधन अनुसूची",
   "month": "महीना",
   "year": "वर्ष",
+  "years": "वर्ष",
   "payment": "भुगतान",
   "principalPaid": "मूलधन",
   "interestPaid": "ब्याज",
@@ -44,19 +79,131 @@
   "exportPdf": "PDF निर्यात",
   "calculate": "गणना",
   "reset": "रीसेट",
+  "close": "बंद करें",
+  "add": "जोड़ें",
+
+  "storageLimitTitle": "संग्रहण सीमा",
+  "storageLimitLoans": "आपने अधिकतम {count} ऋण सहेजे हैं। असीमित सेव के लिए प्रीमियम में अपग्रेड करें!",
+  "@storageLimitLoans": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "storageLimitSavings": "आपने अधिकतम {count} बचत सहेजी हैं। असीमित सेव के लिए प्रीमियम में अपग्रेड करें!",
+  "@storageLimitSavings": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "saveLoan": "ऋण सहेजें",
+  "loanNameHint": "ऋण का नाम (वैकल्पिक)",
+  "amount": "राशि",
+  "rate": "दर",
+  "loanSaved": "ऋण सहेजा गया",
+
+  "saveSavings": "बचत सहेजें",
+  "savingsNameHint": "बचत का नाम (वैकल्पिक)",
+  "savingsSaved": "बचत सहेजी गई",
 
   "savedLoans": "सहेजे गए ऋण",
   "savedSavings": "सहेजी गई बचत",
+  "loansCount": "ऋण ({count})",
+  "@loansCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "savingsCount": "बचत ({count})",
+  "@savingsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "noSavedItems": "कोई सहेजे गए आइटम नहीं",
+  "noSavedLoans": "कोई सहेजे गए ऋण नहीं",
+  "noSavedLoansSubtitle": "बाद में देखने के लिए ऋण की गणना करें और सहेजें",
+  "noSavedSavings": "कोई सहेजी गई बचत नहीं",
+  "noSavedSavingsSubtitle": "बाद में देखने के लिए बचत की गणना करें और सहेजें",
+  "errorLoading": "त्रुटि: {error}",
+  "@errorLoading": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+
+  "compoundingFrequency": "चक्रवृद्धि आवृत्ति",
+  "daily": "दैनिक",
+  "monthly": "मासिक",
+  "quarterly": "त्रैमासिक",
+  "yearly": "वार्षिक",
+  "calculationResults": "गणना परिणाम",
+  "totalReceived": "कुल प्राप्त",
+  "interestEarned": "अर्जित ब्याज",
+  "effectiveAnnualRate": "प्रभावी वार्षिक दर",
+  "compoundingPeriods": "चक्रवृद्धि अवधि",
+  "compareWithSimple": "साधारण ब्याज से तुलना करें",
+  "simpleInterest": "साधारण ब्याज",
+  "compoundInterest": "चक्रवृद्धि ब्याज",
+  "compoundBenefit": "चक्रवृद्धि ब्याज आपको {amount} अधिक देता है",
+  "@compoundBenefit": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+
+  "savingsType": "बचत प्रकार",
+  "initialDeposit": "प्रारंभिक जमा",
+  "monthlyDeposit": "मासिक जमा",
+  "annualRate": "वार्षिक दर",
+  "finalBalance": "अंतिम शेष",
+  "totalDeposited": "कुल जमा",
+  "returnRate": "रिटर्न दर",
+  "avgMonthlyInterest": "औसत मासिक ब्याज",
+  "detailedAnalysis": "विस्तृत विश्लेषण",
+  "deposits": "जमा",
+  "reinvestInfo": "ब्याज मासिक रूप से चक्रवृद्धि होता है",
+  "withdrawInfo": "ब्याज मासिक रूप से भुगतान किया जाता है, चक्रवृद्धि नहीं होता",
+
+  "averageMonthlyInterest": "औसत ब्याज/महीना",
+  "totalStructure": "कुल संरचना",
 
   "premium": "प्रीमियम में अपग्रेड करें",
+  "premiumActivated": "आप प्रीमियम हैं!",
+  "premiumMember": "प्रीमियम सदस्य",
+  "premiumThanks": "आपके समर्थन के लिए धन्यवाद!",
   "premiumDescription": "सभी सुविधाएं अनलॉक करें",
   "premiumFeature1": "असीमित सेव",
-  "premiumFeature2": "पूर्ण चार्ट",
+  "premiumFeature1Desc": "अपने सभी ऋण और बचत संग्रहीत करें",
+  "premiumFeature2": "पूर्ण चार्ट सूट",
+  "premiumFeature2Desc": "सभी चार्ट प्रकारों के साथ विवरण देखें",
   "premiumFeature3": "परिदृश्य तुलना",
+  "premiumFeature3Desc": "एक साथ कई विकल्पों की तुलना करें",
   "premiumFeature4": "PDF निर्यात",
+  "premiumFeature4Desc": "प्रिंट या साझा करने के लिए विस्तृत रिपोर्ट बनाएं",
+  "premiumFeature5": "विकास का समर्थन करें",
+  "premiumFeature5Desc": "ऐप को बेहतर बनाने में हमारी मदद करें",
+  "premiumFeatures": "प्रीमियम सुविधाएं",
+  "lifetime": "आजीवन",
+  "oneTimePurchase": "एक बार भुगतान करें, हमेशा उपयोग करें",
+  "upgradeNow": "अभी अपग्रेड करें",
   "restorePurchase": "खरीद पुनर्स्थापित करें",
-  "upgrade": "अपग्रेड",
+  "purchaseDate": "खरीद तिथि: {date}",
+  "@purchaseDate": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+  "premiumRequired": "प्रीमियम आवश्यक",
+  "upgradeTo": "{feature} के लिए अपग्रेड करें",
+  "@upgradeTo": {
+    "placeholders": {
+      "feature": {"type": "String"}
+    }
+  },
+  "pro": "प्रो",
+  "activated": "सक्रिय",
+  "unlockAllFeatures": "सभी सुविधाएं अनलॉक करें",
 
   "theme": "थीम",
   "themeLight": "लाइट",
@@ -64,12 +211,298 @@
   "themeSystem": "सिस्टम",
   "language": "भाषा",
   "about": "के बारे में",
-  "version": "संस्करण",
+  "version": "संस्करण {version}",
+  "@version": {
+    "placeholders": {
+      "version": {"type": "String"}
+    }
+  },
+  "termsOfService": "सेवा की शर्तें",
+  "privacyPolicy": "गोपनीयता नीति",
 
   "error": "त्रुटि",
   "errorGeneric": "कुछ गलत हो गया",
   "tryAgain": "पुनः प्रयास करें",
   "cancel": "रद्द करें",
   "confirm": "पुष्टि करें",
-  "ok": "ठीक है"
+  "ok": "ठीक है",
+  "upgrade": "अपग्रेड",
+
+  "compareScenarios": "परिदृश्यों की तुलना करें",
+  "upgradeToCompare": "परिदृश्यों की तुलना करने के लिए अपग्रेड करें",
+  "loanSettings": "ऋण सेटिंग्स",
+  "scenarioA": "परिदृश्य A",
+  "scenarioB": "परिदृश्य B",
+  "comparison": "तुलना",
+  "scenarioSaves": "परिदृश्य {scenario} {amount} बचाता है",
+  "@scenarioSaves": {
+    "placeholders": {
+      "scenario": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+
+  "simulation": "अनुकरण",
+  "noScenariosYet": "अभी तक कोई परिदृश्य नहीं",
+  "addScenariosSubtitle": "समय के साथ अपने वित्त का\nअनुकरण करने के लिए ऋण या बचत जोड़ें",
+  "addLoan": "ऋण जोड़ें",
+  "addSavings": "बचत जोड़ें",
+  "loans": "ऋण",
+  "savings": "बचत",
+  "timeline": "समयरेखा",
+  "monthNumber": "महीना {number}",
+  "@monthNumber": {
+    "placeholders": {
+      "number": {"type": "int"}
+    }
+  },
+  "netWorth": "कुल संपत्ति",
+  "positive": "सकारात्मक",
+  "negativeDebt": "नकारात्मक (ऋण)",
+  "now": "अभी",
+  "yearsCount": "{count} वर्ष",
+  "@yearsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "debt": "ऋण",
+  "remaining": "शेष",
+  "clearAll": "सभी साफ़ करें?",
+  "allScenariosDeleted": "सभी परिदृश्य हटा दिए जाएंगे।",
+  "loanNameHintExample": "ऋण का नाम (जैसे, होम लोन)",
+  "savingsNameHintExample": "नाम (जैसे, सेवानिवृत्ति)",
+  "deposit": "जमा",
+  "loan": "ऋण",
+
+  "selectThemeDescription": "अपने ऐप के लिए एक थीम चुनें",
+  "selectLanguageDescription": "अपनी पसंदीदा भाषा चुनें",
+  "apply": "लागू करें",
+
+  "financialTools": "वित्तीय उपकरण",
+  "reminders": "अनुस्मारक",
+  "paymentRemindersSubtitle": "नियत तिथियों को ट्रैक करें",
+  "savingsGoalsSubtitle": "अपने लक्ष्यों तक पहुंचें",
+  "calendar": "कैलेंडर",
+  "calendarSubtitle": "सभी घटनाएं देखें",
+  "achievementsSubtitle": "आपकी प्रगति",
+  "reportsSubtitle": "आंकड़े देखें",
+  "rateAlertsSubtitle": "दरों की निगरानी करें",
+
+  "paymentReminders": "भुगतान अनुस्मारक",
+  "noRemindersYet": "अभी तक कोई अनुस्मारक नहीं",
+  "addRemindersSubtitle": "ट्रैक पर बने रहने के लिए भुगतान अनुस्मारक जोड़ें",
+  "addReminder": "अनुस्मारक जोड़ें",
+  "editReminder": "अनुस्मारक संपादित करें",
+  "reminderNameHint": "अनुस्मारक का नाम (जैसे, क्रेडिट कार्ड)",
+  "dueDate": "नियत तिथि",
+  "remindBefore": "पहले याद दिलाएं",
+  "days": "दिन",
+  "recurring": "आवर्ती",
+  "totalDue": "कुल बकाया",
+  "overdue": "अतिदेय",
+  "upcoming": "आगामी",
+  "completed": "पूर्ण",
+  "markAsPaid": "भुगतान के रूप में चिह्नित करें",
+  "markAsPaidConfirm": "क्या आप वाकई इसे भुगतान के रूप में चिह्नित करना चाहते हैं?",
+  "pending": "लंबित",
+  "paid": "भुगतान",
+  "skipped": "छोड़ा गया",
+  "markPaid": "भुगतान चिह्नित करें",
+  "weekly": "साप्ताहिक",
+  "biWeekly": "पाक्षिक",
+  "dueToday": "आज देय",
+  "dueTomorrow": "कल देय",
+  "dueInDays": "{days} दिनों में देय",
+  "@dueInDays": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "pleaseEnterName": "कृपया एक नाम दर्ज करें",
+
+  "savingsGoals": "बचत लक्ष्य",
+  "noGoalsYet": "अभी तक कोई लक्ष्य नहीं",
+  "addGoalsSubtitle": "बचत लक्ष्य निर्धारित करें और अपनी प्रगति ट्रैक करें",
+  "addGoal": "लक्ष्य जोड़ें",
+  "editGoal": "लक्ष्य संपादित करें",
+  "goalNameHint": "लक्ष्य का नाम (जैसे, छुट्टी)",
+  "targetAmount": "लक्ष्य राशि",
+  "initialAmount": "प्रारंभिक राशि",
+  "deadline": "अंतिम तिथि",
+  "suggestedMonthly": "सुझाया गया मासिक",
+  "activeGoals": "सक्रिय लक्ष्य",
+  "completedGoals": "पूर्ण लक्ष्य",
+  "totalSaved": "कुल बचत",
+  "totalTarget": "कुल लक्ष्य",
+  "ofTotalTarget": "कुल लक्ष्य का",
+  "milestones": "मील के पत्थर",
+  "addMoney": "पैसे जोड़ें",
+  "withdraw": "निकालें",
+  "addContribution": "योगदान जोड़ें",
+  "notesOptional": "नोट्स (वैकल्पिक)",
+  "withdrawReason": "निकासी का कारण",
+  "noContributionsYet": "अभी तक कोई योगदान नहीं",
+  "pauseGoal": "लक्ष्य रोकें",
+  "deleteGoal": "लक्ष्य हटाएं",
+  "deleteGoalConfirm": "क्या आप वाकई इस लक्ष्य को हटाना चाहते हैं?",
+  "target": "लक्ष्य",
+  "goals": "लक्ष्य",
+  "savePerMonth": "लक्ष्य तक पहुंचने के लिए {amount}/महीना बचाएं",
+  "@savePerMonth": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "pleaseEnterGoalName": "कृपया एक लक्ष्य नाम दर्ज करें",
+  "withdrawal": "निकासी",
+  "start": "शुरू",
+  "goalReached": "लक्ष्य!",
+  "progress": "प्रगति",
+
+  "achievements": "उपलब्धियां",
+  "financialHealthScore": "वित्तीय स्वास्थ्य स्कोर",
+  "financialHealth": "वित्तीय स्वास्थ्य",
+  "points": "अंक",
+  "healthExcellent": "उत्कृष्ट! शानदार काम जारी रखें!",
+  "healthGood": "अच्छी प्रगति! आप सही रास्ते पर हैं।",
+  "healthFair": "ठीक है। सुधार की गुंजाइश है।",
+  "healthNeedsWork": "ध्यान देने की जरूरत है। आइए एक साथ सुधार करें!",
+  "paymentStreak": "भुगतान स्ट्रीक",
+  "dayStreak": "दिन की स्ट्रीक",
+  "keepItUp": "इसे जारी रखें!",
+  "longest": "सबसे लंबा",
+  "unlocked": "अनलॉक किया गया",
+  "locked": "लॉक किया गया",
+
+  "financialCalendar": "वित्तीय कैलेंडर",
+  "monthView": "महीना दृश्य",
+  "weekView": "सप्ताह दृश्य",
+  "today": "आज",
+  "noEventsForDay": "इस दिन के लिए कोई घटना नहीं",
+  "goalDeadline": "लक्ष्य की अंतिम तिथि",
+  "contribution": "योगदान",
+
+  "reports": "रिपोर्ट",
+  "week": "सप्ताह",
+  "quarter": "तिमाही",
+  "allTime": "सभी समय",
+  "totalPaid": "कुल भुगतान",
+  "totalDebt": "कुल ऋण",
+  "debtVsPaid": "ऋण बनाम भुगतान",
+  "outstanding": "बकाया",
+  "noDataYet": "अभी तक कोई डेटा नहीं",
+  "monthlyOverview": "मासिक अवलोकन",
+  "due": "देय",
+  "paymentPerformance": "भुगतान प्रदर्शन",
+  "onTime": "समय पर",
+  "late": "देर से",
+  "onTimeRate": "समय पर दर",
+
+  "rateAlerts": "दर अलर्ट",
+  "currentMarketRates": "वर्तमान बाजार दरें",
+  "edit": "संपादित करें",
+  "triggeredAlerts": "ट्रिगर किए गए अलर्ट",
+  "activeAlerts": "सक्रिय अलर्ट",
+  "inactiveAlerts": "निष्क्रिय अलर्ट",
+  "noAlertsYet": "अभी तक कोई अलर्ट नहीं",
+  "addAlertsSubtitle": "ब्याज दर परिवर्तनों को ट्रैक करने के लिए अलर्ट जोड़ें",
+  "addAlert": "अलर्ट जोड़ें",
+  "alertNameHint": "अलर्ट का नाम (जैसे, होम लोन दर)",
+  "loanType": "ऋण प्रकार",
+  "alertWhen": "अलर्ट कब",
+  "rateDrops": "दर गिरती है",
+  "rateRises": "दर बढ़ती है",
+  "targetRate": "लक्ष्य दर",
+  "when": "कब",
+  "current": "वर्तमान",
+  "triggered": "ट्रिगर किया गया",
+  "editMarketRates": "बाजार दरें संपादित करें",
+  "personalLoan": "व्यक्तिगत ऋण",
+  "carLoan": "कार ऋण",
+  "savingsRate": "बचत दर",
+  "homeShort": "होम",
+  "personalShort": "व्यक्तिगत",
+  "carShort": "कार",
+  "savingsShort": "बचत",
+  "rateDropAlert": "दर गिरावट अलर्ट!",
+  "rateIncreaseAlert": "दर वृद्धि अलर्ट!",
+  "updated": "अपडेट किया गया",
+
+  "newUpdateAvailable": "अपडेट उपलब्ध",
+  "updateAppMessage": "ऐप का नया संस्करण उपलब्ध है। नवीनतम सुविधाओं और सुधारों के लिए अपडेट करें।",
+  "updateNow": "अभी अपडेट करें",
+  "later": "बाद में",
+
+  "qrTools": "QR उपकरण",
+  "createQRCode": "QR कोड बनाएं",
+  "createQRSubtitle": "QR कोड उत्पन्न करें",
+  "scanQRCode": "QR कोड स्कैन करें",
+  "scanQRSubtitle": "कोई भी QR कोड स्कैन करें",
+  "selectQRType": "QR प्रकार चुनें",
+  "qrLink": "लिंक",
+  "qrText": "टेक्स्ट",
+  "qrWifi": "WiFi",
+  "qrContact": "संपर्क",
+  "qrCode": "QR कोड",
+  "websiteAddress": "वेबसाइट पता",
+  "textContent": "टेक्स्ट सामग्री",
+  "enterContent": "अपनी सामग्री यहां दर्ज करें",
+  "networkNameSSID": "नेटवर्क नाम (SSID)",
+  "wifiPasswordLabel": "पासवर्ड",
+  "encryptionType": "एन्क्रिप्शन प्रकार",
+  "noEncryption": "कोई एन्क्रिप्शन नहीं",
+  "contactName": "संपर्क नाम",
+  "contactNameHint": "राज कुमार",
+  "phoneNumber": "फोन नंबर",
+  "generateQRButton": "QR कोड उत्पन्न करें",
+  "qrGeneratedOnDevice": "QR कोड आपके डिवाइस पर उत्पन्न होता है",
+  "qrLinkInfo": "एक QR कोड बनाने के लिए एक वेबसाइट URL दर्ज करें जो स्कैन करने पर लिंक खोलता है।",
+  "qrWifiInfo": "एक QR कोड बनाएं जो दूसरों को आपके WiFi नेटवर्क से जल्दी कनेक्ट करने की अनुमति देता है।",
+  "pleaseEnterWebsite": "कृपया एक वेबसाइट पता दर्ज करें",
+  "pleaseEnterTextContent": "कृपया टेक्स्ट सामग्री दर्ज करें",
+  "pleaseEnterWifiName": "कृपया WiFi नेटवर्क नाम दर्ज करें",
+  "pleaseEnterContactName": "कृपया संपर्क नाम दर्ज करें",
+  "copy": "कॉपी करें",
+  "copyData": "डेटा कॉपी करें",
+  "dataCopied": "डेटा क्लिपबोर्ड पर कॉपी किया गया",
+  "saveToGallery": "गैलरी में सहेजें",
+  "qrPrivacyNote": "यह QR कोड स्थानीय रूप से आपके डिवाइस पर उत्पन्न होता है और किसी भी सर्वर पर नहीं भेजा जाता है।",
+  "wifiNetwork": "WiFi: {name}",
+  "@wifiNetwork": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "contactInfo": "संपर्क: {name}",
+  "@contactInfo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "cannotCreateQRImage": "QR छवि नहीं बना सकते",
+  "cannotSaveQR": "QR कोड सहेज नहीं सकते",
+  "qrSavedToGallerySuccess": "QR कोड गैलरी में सहेजा गया",
+  "errorWithMessage": "त्रुटि: {message}",
+  "@errorWithMessage": {
+    "placeholders": {
+      "message": {"type": "String"}
+    }
+  },
+  "scanAgain": "फिर से स्कैन करें",
+  "openLink": "लिंक खोलें",
+  "copyPassword": "पासवर्ड कॉपी करें",
+  "passwordCopied": "पासवर्ड क्लिपबोर्ड पर कॉपी किया गया",
+  "noQRCodeFound": "छवि में कोई QR कोड नहीं मिला",
+  "pointCameraAtQR": "कैमरा को QR कोड पर इंगित करें",
+  "scanFromGallery": "गैलरी से स्कैन करें",
+  "websiteLink": "वेबसाइट लिंक",
+  "wifiNetworkLabel": "WiFi नेटवर्क",
+  "openInBrowser": "ब्राउज़र में खोलें",
+  "wifiCredentials": "WiFi क्रेडेंशियल्स",
+  "contactInformation": "संपर्क जानकारी",
+  "plainTextContent": "सादा टेक्स्ट सामग्री",
+
+  "reportIssue": "समस्या रिपोर्ट करें",
+  "reportIssueSubtitle": "हमें प्रतिक्रिया भेजें"
 }

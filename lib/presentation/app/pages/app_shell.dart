@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:money/l10n/app_localizations.dart';
 
 import 'package:money/core/configs/theme/app_colors.dart';
@@ -10,6 +11,8 @@ import 'package:money/presentation/home/pages/home_page.dart';
 import 'package:money/presentation/simulation/pages/simulation_page.dart';
 import 'package:money/presentation/saved/pages/saved_page.dart';
 import 'package:money/presentation/settings/pages/settings_page.dart';
+
+import '../../../core/routes/app_routes.dart';
 
 class AppShell extends ConsumerWidget {
   const AppShell({super.key});
@@ -60,7 +63,7 @@ class AppShell extends ConsumerWidget {
           ),
         ),
         title: Text(
-          'MoneyMate',
+          'MoneyNest',
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.bold,
@@ -71,10 +74,10 @@ class AppShell extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () {
-              ref.read(appShellIndexProvider.notifier).state = 3;
+              context.push(AppRoutes.reminders);
             },
             icon: Icon(
-              CupertinoIcons.gear,
+              CupertinoIcons.bell,
               color: textSecondary,
               size: 24.sp,
             ),
@@ -87,7 +90,8 @@ class AppShell extends ConsumerWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        onTap: (index) => ref.read(appShellIndexProvider.notifier).state = index,
+        onTap: (index) =>
+            ref.read(appShellIndexProvider.notifier).state = index,
         type: BottomNavigationBarType.fixed,
         backgroundColor: surfaceColor,
         selectedItemColor: AppColors.primary,

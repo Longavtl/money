@@ -376,6 +376,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get premiumActivated => 'You are Premium!';
 
   @override
+  String get premiumMember => 'Premium Member';
+
+  @override
   String get premiumThanks => 'Thank you for your support!';
 
   @override
@@ -1016,4 +1019,178 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get later => 'Later';
+
+  @override
+  String get qrTools => 'QR Tools';
+
+  @override
+  String get createQRCode => 'Create QR Code';
+
+  @override
+  String get createQRSubtitle => 'Generate QR codes';
+
+  @override
+  String get scanQRCode => 'Scan QR Code';
+
+  @override
+  String get scanQRSubtitle => 'Scan any QR code';
+
+  @override
+  String get selectQRType => 'Select QR Type';
+
+  @override
+  String get qrLink => 'Link';
+
+  @override
+  String get qrText => 'Text';
+
+  @override
+  String get qrWifi => 'WiFi';
+
+  @override
+  String get qrContact => 'Contact';
+
+  @override
+  String get qrCode => 'QR Code';
+
+  @override
+  String get websiteAddress => 'Website Address';
+
+  @override
+  String get textContent => 'Text Content';
+
+  @override
+  String get enterContent => 'Enter your content here';
+
+  @override
+  String get networkNameSSID => 'Network Name (SSID)';
+
+  @override
+  String get wifiPasswordLabel => 'Password';
+
+  @override
+  String get encryptionType => 'Encryption Type';
+
+  @override
+  String get noEncryption => 'No Encryption';
+
+  @override
+  String get contactName => 'Contact Name';
+
+  @override
+  String get contactNameHint => 'John Doe';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get generateQRButton => 'Generate QR Code';
+
+  @override
+  String get qrGeneratedOnDevice => 'QR code is generated on your device';
+
+  @override
+  String get qrLinkInfo =>
+      'Enter a website URL to create a QR code that opens the link when scanned.';
+
+  @override
+  String get qrWifiInfo =>
+      'Create a QR code that allows others to quickly connect to your WiFi network.';
+
+  @override
+  String get pleaseEnterWebsite => 'Please enter a website address';
+
+  @override
+  String get pleaseEnterTextContent => 'Please enter text content';
+
+  @override
+  String get pleaseEnterWifiName => 'Please enter WiFi network name';
+
+  @override
+  String get pleaseEnterContactName => 'Please enter contact name';
+
+  @override
+  String get copy => 'Copy';
+
+  @override
+  String get copyData => 'Copy Data';
+
+  @override
+  String get dataCopied => 'Data copied to clipboard';
+
+  @override
+  String get saveToGallery => 'Save to Gallery';
+
+  @override
+  String get qrPrivacyNote =>
+      'This QR code is generated locally on your device and is not sent to any server.';
+
+  @override
+  String wifiNetwork(String name) {
+    return 'WiFi: $name';
+  }
+
+  @override
+  String contactInfo(String name) {
+    return 'Contact: $name';
+  }
+
+  @override
+  String get cannotCreateQRImage => 'Cannot create QR image';
+
+  @override
+  String get cannotSaveQR => 'Cannot save QR code';
+
+  @override
+  String get qrSavedToGallerySuccess => 'QR code saved to gallery';
+
+  @override
+  String errorWithMessage(String message) {
+    return 'Error: $message';
+  }
+
+  @override
+  String get scanAgain => 'Scan Again';
+
+  @override
+  String get openLink => 'Open Link';
+
+  @override
+  String get copyPassword => 'Copy Password';
+
+  @override
+  String get passwordCopied => 'Password copied to clipboard';
+
+  @override
+  String get noQRCodeFound => 'No QR code found in image';
+
+  @override
+  String get pointCameraAtQR => 'Point camera at QR code';
+
+  @override
+  String get scanFromGallery => 'Scan from gallery';
+
+  @override
+  String get websiteLink => 'Website Link';
+
+  @override
+  String get wifiNetworkLabel => 'WiFi Network';
+
+  @override
+  String get openInBrowser => 'Open in browser';
+
+  @override
+  String get wifiCredentials => 'WiFi credentials';
+
+  @override
+  String get contactInformation => 'Contact information';
+
+  @override
+  String get plainTextContent => 'Plain text content';
+
+  @override
+  String get reportIssue => 'Report Issue';
+
+  @override
+  String get reportIssueSubtitle => 'Send us feedback';
 }

@@ -4,6 +4,8 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:money/core/providers/dependency_providers.dart';
 import 'package:money/core/services/premium_service.dart';
 
+export 'package:money/core/services/premium_service.dart' show SubscriptionType;
+
 /// Premium service provider
 final premiumServiceProvider = Provider<PremiumService>((ref) {
   final prefs = ref.watch(sharedPreferencesProvider);
@@ -54,20 +56,59 @@ class PremiumStatus {
 }
 
 /// TODO: Set to false before release to production
-const bool kTestPremiumMode = true;
+const bool kTestPremiumMode = false;
 
 /// Premium status notifier
 class PremiumStatusNotifier extends StateNotifier<PremiumStatus> {
   final PremiumService _service;
+  bool _initialized = false;
 
   PremiumStatusNotifier(this._service)
       : super(PremiumStatus(
           isPremium: _service.isPremium,
           purchaseDate: _service.purchaseDate,
-        ));
+        )) {
+    _initializeService();
+  }
 
-  /// Purchase premium
-  Future<void> purchasePremium() async {
+  /// Initialize the IAP service
+  Future<void> _initializeService() async {
+    if (_initialized) return;
+    _initialized = true;
+
+    // Setup callbacks
+    _service.onPurchaseSuccess = (purchase) {
+      state = state.copyWith(
+        isPremium: true,
+        isLoading: false,
+        purchaseDate: DateTime.now(),
+      );
+    };
+
+    _service.onPurchaseRestored = (purchase) {
+      state = state.copyWith(
+        isPremium: true,
+        isLoading: false,
+        purchaseDate: _service.purchaseDate,
+      );
+    };
+
+    _service.onPurchaseError = (error) {
+      state = state.copyWith(
+        isLoading: false,
+        error: error,
+      );
+    };
+
+    _service.onPurchasePending = () {
+      state = state.copyWith(isLoading: true);
+    };
+
+    await _service.initialize();
+  }
+
+  /// Purchase premium by type
+  Future<void> purchasePremium([SubscriptionType type = SubscriptionType.lifetime]) async {
     state = state.copyWith(isLoading: true, error: null);
 
     // Test mode: fake purchase for testing
@@ -83,7 +124,7 @@ class PremiumStatusNotifier extends StateNotifier<PremiumStatus> {
     }
 
     try {
-      final success = await _service.purchasePremium();
+      final success = await _service.purchasePremium(type);
       if (!success) {
         state = state.copyWith(
           isLoading: false,

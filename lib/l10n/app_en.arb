@@ -170,6 +170,7 @@
 
   "premium": "Upgrade to Premium",
   "premiumActivated": "You are Premium!",
+  "premiumMember": "Premium Member",
   "premiumThanks": "Thank you for your support!",
   "premiumDescription": "Unlock all features",
   "premiumFeature1": "Unlimited saves",
@@ -433,5 +434,77 @@
   "newUpdateAvailable": "Update Available",
   "updateAppMessage": "A new version of the app is available. Please update to get the latest features and improvements.",
   "updateNow": "Update Now",
-  "later": "Later"
+  "later": "Later",
+
+  "qrTools": "QR Tools",
+  "createQRCode": "Create QR Code",
+  "createQRSubtitle": "Generate QR codes",
+  "scanQRCode": "Scan QR Code",
+  "scanQRSubtitle": "Scan any QR code",
+  "selectQRType": "Select QR Type",
+  "qrLink": "Link",
+  "qrText": "Text",
+  "qrWifi": "WiFi",
+  "qrContact": "Contact",
+  "qrCode": "QR Code",
+  "websiteAddress": "Website Address",
+  "textContent": "Text Content",
+  "enterContent": "Enter your content here",
+  "networkNameSSID": "Network Name (SSID)",
+  "wifiPasswordLabel": "Password",
+  "encryptionType": "Encryption Type",
+  "noEncryption": "No Encryption",
+  "contactName": "Contact Name",
+  "contactNameHint": "John Doe",
+  "phoneNumber": "Phone Number",
+  "generateQRButton": "Generate QR Code",
+  "qrGeneratedOnDevice": "QR code is generated on your device",
+  "qrLinkInfo": "Enter a website URL to create a QR code that opens the link when scanned.",
+  "qrWifiInfo": "Create a QR code that allows others to quickly connect to your WiFi network.",
+  "pleaseEnterWebsite": "Please enter a website address",
+  "pleaseEnterTextContent": "Please enter text content",
+  "pleaseEnterWifiName": "Please enter WiFi network name",
+  "pleaseEnterContactName": "Please enter contact name",
+  "copy": "Copy",
+  "copyData": "Copy Data",
+  "dataCopied": "Data copied to clipboard",
+  "saveToGallery": "Save to Gallery",
+  "qrPrivacyNote": "This QR code is generated locally on your device and is not sent to any server.",
+  "wifiNetwork": "WiFi: {name}",
+  "@wifiNetwork": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "contactInfo": "Contact: {name}",
+  "@contactInfo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "cannotCreateQRImage": "Cannot create QR image",
+  "cannotSaveQR": "Cannot save QR code",
+  "qrSavedToGallerySuccess": "QR code saved to gallery",
+  "errorWithMessage": "Error: {message}",
+  "@errorWithMessage": {
+    "placeholders": {
+      "message": {"type": "String"}
+    }
+  },
+  "scanAgain": "Scan Again",
+  "openLink": "Open Link",
+  "copyPassword": "Copy Password",
+  "passwordCopied": "Password copied to clipboard",
+  "noQRCodeFound": "No QR code found in image",
+  "pointCameraAtQR": "Point camera at QR code",
+  "scanFromGallery": "Scan from gallery",
+  "websiteLink": "Website Link",
+  "wifiNetworkLabel": "WiFi Network",
+  "openInBrowser": "Open in browser",
+  "wifiCredentials": "WiFi credentials",
+  "contactInformation": "Contact information",
+  "plainTextContent": "Plain text content",
+
+  "reportIssue": "Report Issue",
+  "reportIssueSubtitle": "Send us feedback"
 }

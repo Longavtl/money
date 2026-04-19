@@ -8,6 +8,31 @@
   "history": "历史",
   "settings": "设置",
   "compare": "比较",
+  "simulate": "模拟",
+
+  "mainTools": "主要工具",
+  "categories": "{count} 个分类",
+  "@categories": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "loanCalc": "贷款",
+  "loanCalcSubtitle": "月供计算",
+  "interestCalc": "利息",
+  "interestCalcSubtitle": "单利和复利",
+  "vault": "金库",
+  "vaultSubtitle": "规划您的未来",
+  "historySubtitle": "历史计算记录",
+
+  "proAccess": "专业版",
+  "upgradeToPremium": "升级到高级版",
+  "premiumBannerDesc": "解锁高级图表\n和无广告体验。",
+  "marketPulse": "市场动态",
+  "currentRates": "当前利率",
+  "homeLoan": "房贷",
+  "savingsApy": "储蓄年化收益",
 
   "calculatorSimpleInterest": "单利计算",
   "calculatorCompoundInterest": "复利计算",
@@ -16,23 +41,33 @@
 
   "principal": "本金",
   "interestRate": "利率",
+  "annualInterestRate": "年利率",
   "term": "期限",
   "termMonths": "期限（月）",
   "termYears": "期限（年）",
   "monthlyPayment": "月供",
+  "firstMonthPayment": "首月还款",
+  "lastMonthPayment": "末月还款",
   "totalInterest": "总利息",
   "totalPayment": "总还款",
   "interest": "利息",
   "totalAmount": "总金额",
+  "interestPrincipalRatio": "利息/本金比",
+  "loanAmount": "贷款金额",
 
+  "paymentMethod": "还款方式",
   "loanTypeFixed": "等额本息",
   "loanTypeReducing": "等额本金",
-  "savingsTypeReinvest": "利息再投资",
-  "savingsTypeNoReinvest": "不再投资",
+  "savingsTypeReinvest": "再投资",
+  "savingsTypeWithdraw": "提取",
+
+  "results": "结果",
+  "paymentStructure": "还款结构",
 
   "amortizationSchedule": "还款计划表",
   "month": "月",
   "year": "年",
+  "years": "年",
   "payment": "还款",
   "principalPaid": "本金",
   "interestPaid": "利息",
@@ -44,19 +79,131 @@
   "exportPdf": "导出PDF",
   "calculate": "计算",
   "reset": "重置",
+  "close": "关闭",
+  "add": "添加",
+
+  "storageLimitTitle": "存储限制",
+  "storageLimitLoans": "您已保存最多{count}笔贷款。升级到高级版可无限保存！",
+  "@storageLimitLoans": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "storageLimitSavings": "您已保存最多{count}笔储蓄。升级到高级版可无限保存！",
+  "@storageLimitSavings": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "saveLoan": "保存贷款",
+  "loanNameHint": "贷款名称（可选）",
+  "amount": "金额",
+  "rate": "利率",
+  "loanSaved": "贷款已保存",
+
+  "saveSavings": "保存储蓄",
+  "savingsNameHint": "储蓄名称（可选）",
+  "savingsSaved": "储蓄已保存",
 
   "savedLoans": "已保存贷款",
   "savedSavings": "已保存储蓄",
+  "loansCount": "贷款 ({count})",
+  "@loansCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "savingsCount": "储蓄 ({count})",
+  "@savingsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "noSavedItems": "暂无保存项目",
+  "noSavedLoans": "暂无保存的贷款",
+  "noSavedLoansSubtitle": "计算并保存贷款以便稍后查看",
+  "noSavedSavings": "暂无保存的储蓄",
+  "noSavedSavingsSubtitle": "计算并保存储蓄以便稍后查看",
+  "errorLoading": "错误: {error}",
+  "@errorLoading": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+
+  "compoundingFrequency": "复利频率",
+  "daily": "每日",
+  "monthly": "每月",
+  "quarterly": "每季度",
+  "yearly": "每年",
+  "calculationResults": "计算结果",
+  "totalReceived": "总收入",
+  "interestEarned": "利息收入",
+  "effectiveAnnualRate": "实际年利率",
+  "compoundingPeriods": "复利周期",
+  "compareWithSimple": "与单利比较",
+  "simpleInterest": "单利",
+  "compoundInterest": "复利",
+  "compoundBenefit": "复利为您多赚 {amount}",
+  "@compoundBenefit": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+
+  "savingsType": "储蓄类型",
+  "initialDeposit": "初始存款",
+  "monthlyDeposit": "月存款",
+  "annualRate": "年利率",
+  "finalBalance": "最终余额",
+  "totalDeposited": "总存款",
+  "returnRate": "收益率",
+  "avgMonthlyInterest": "平均月息",
+  "detailedAnalysis": "详细分析",
+  "deposits": "存款",
+  "reinvestInfo": "利息按月复利",
+  "withdrawInfo": "利息按月支付，不复利",
+
+  "averageMonthlyInterest": "平均月息",
+  "totalStructure": "总体结构",
 
   "premium": "升级高级版",
+  "premiumActivated": "您已是高级会员！",
+  "premiumMember": "高级会员",
+  "premiumThanks": "感谢您的支持！",
   "premiumDescription": "解锁所有功能",
   "premiumFeature1": "无限保存",
+  "premiumFeature1Desc": "保存所有贷款和储蓄记录",
   "premiumFeature2": "完整图表",
+  "premiumFeature2Desc": "查看所有类型图表的详情",
   "premiumFeature3": "方案比较",
+  "premiumFeature3Desc": "并排比较多个选项",
   "premiumFeature4": "PDF导出",
+  "premiumFeature4Desc": "创建详细报告用于打印或分享",
+  "premiumFeature5": "支持开发",
+  "premiumFeature5Desc": "帮助我们改进应用",
+  "premiumFeatures": "高级功能",
+  "lifetime": "终身",
+  "oneTimePurchase": "一次付费，永久使用",
+  "upgradeNow": "立即升级",
   "restorePurchase": "恢复购买",
-  "upgrade": "升级",
+  "purchaseDate": "购买日期: {date}",
+  "@purchaseDate": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+  "premiumRequired": "需要高级版",
+  "upgradeTo": "升级到 {feature}",
+  "@upgradeTo": {
+    "placeholders": {
+      "feature": {"type": "String"}
+    }
+  },
+  "pro": "专业版",
+  "activated": "已激活",
+  "unlockAllFeatures": "解锁所有功能",
 
   "theme": "主题",
   "themeLight": "浅色",
@@ -64,12 +211,299 @@
   "themeSystem": "跟随系统",
   "language": "语言",
   "about": "关于",
-  "version": "版本",
+  "version": "版本 {version}",
+  "@version": {
+    "placeholders": {
+      "version": {"type": "String"}
+    }
+  },
+  "termsOfService": "服务条款",
+  "privacyPolicy": "隐私政策",
 
   "error": "错误",
   "errorGeneric": "出错了",
   "tryAgain": "重试",
   "cancel": "取消",
   "confirm": "确认",
-  "ok": "确定"
+  "ok": "确定",
+  "upgrade": "升级",
+
+  "compareScenarios": "比较方案",
+  "upgradeToCompare": "升级以比较方案",
+  "loanSettings": "贷款设置",
+  "scenarioA": "方案 A",
+  "scenarioB": "方案 B",
+  "comparison": "比较",
+  "scenarioSaves": "方案 {scenario} 节省 {amount}",
+  "@scenarioSaves": {
+    "placeholders": {
+      "scenario": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+
+  "simulation": "模拟",
+  "noScenariosYet": "暂无方案",
+  "addScenariosSubtitle": "添加贷款或储蓄\n模拟您的财务状况",
+  "addLoan": "添加贷款",
+  "addSavings": "添加储蓄",
+  "loans": "贷款",
+  "savings": "储蓄",
+  "timeline": "时间线",
+  "monthNumber": "第 {number} 月",
+  "@monthNumber": {
+    "placeholders": {
+      "number": {"type": "int"}
+    }
+  },
+  "netWorth": "净资产",
+  "positive": "正数",
+  "negativeDebt": "负数（负债）",
+  "now": "现在",
+  "yearsCount": "{count} 年",
+  "@yearsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "debt": "负债",
+  "remaining": "剩余",
+  "clearAll": "清除所有？",
+  "allScenariosDeleted": "所有方案将被删除。",
+  "loanNameHintExample": "贷款名称（如：房贷）",
+  "savingsNameHintExample": "名称（如：退休金）",
+  "deposit": "存款",
+  "loan": "贷款",
+
+  "selectThemeDescription": "为您的应用选择主题",
+  "selectLanguageDescription": "选择您的首选语言",
+  "apply": "应用",
+
+  "financialTools": "财务工具",
+  "reminders": "提醒",
+  "paymentRemindersSubtitle": "跟踪还款日期",
+  "savingsGoalsSubtitle": "实现您的目标",
+  "calendar": "日历",
+  "calendarSubtitle": "查看所有事件",
+  "achievementsSubtitle": "您的进度",
+  "reportsSubtitle": "查看统计",
+  "rateAlertsSubtitle": "监控利率",
+
+  "paymentReminders": "还款提醒",
+  "noRemindersYet": "暂无提醒",
+  "addRemindersSubtitle": "添加还款提醒以保持跟踪",
+  "addReminder": "添加提醒",
+  "editReminder": "编辑提醒",
+  "reminderNameHint": "提醒名称（如：信用卡）",
+  "dueDate": "到期日",
+  "remindBefore": "提前提醒",
+  "days": "天",
+  "recurring": "重复",
+  "totalDue": "应付总额",
+  "overdue": "逾期",
+  "upcoming": "即将到期",
+  "completed": "已完成",
+  "markAsPaid": "标记为已付",
+  "markAsPaidConfirm": "确定要标记为已付吗？",
+  "pending": "待处理",
+  "paid": "已付",
+  "skipped": "已跳过",
+  "markPaid": "标记已付",
+  "weekly": "每周",
+  "biWeekly": "两周一次",
+  "dueToday": "今天到期",
+  "dueTomorrow": "明天到期",
+  "dueInDays": "{days} 天后到期",
+  "@dueInDays": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "pleaseEnterName": "请输入名称",
+
+  "savingsGoals": "储蓄目标",
+  "noGoalsYet": "暂无目标",
+  "addGoalsSubtitle": "设定储蓄目标并跟踪进度",
+  "addGoal": "添加目标",
+  "editGoal": "编辑目标",
+  "goalNameHint": "目标名称（如：度假）",
+  "targetAmount": "目标金额",
+  "initialAmount": "初始金额",
+  "deadline": "截止日期",
+  "suggestedMonthly": "建议月存",
+  "activeGoals": "进行中的目标",
+  "completedGoals": "已完成的目标",
+  "totalSaved": "总储蓄",
+  "totalTarget": "总目标",
+  "ofTotalTarget": "占总目标",
+  "saved": "已保存",
+  "milestones": "里程碑",
+  "addMoney": "存入",
+  "withdraw": "取出",
+  "addContribution": "添加存款",
+  "notesOptional": "备注（可选）",
+  "withdrawReason": "取款原因",
+  "noContributionsYet": "暂无存款记录",
+  "pauseGoal": "暂停目标",
+  "deleteGoal": "删除目标",
+  "deleteGoalConfirm": "确定要删除此目标吗？",
+  "target": "目标",
+  "goals": "目标",
+  "savePerMonth": "每月存 {amount} 以达成目标",
+  "@savePerMonth": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "pleaseEnterGoalName": "请输入目标名称",
+  "withdrawal": "取款",
+  "start": "开始",
+  "goalReached": "目标达成！",
+  "progress": "进度",
+
+  "achievements": "成就",
+  "financialHealthScore": "财务健康评分",
+  "financialHealth": "财务健康",
+  "points": "分",
+  "healthExcellent": "优秀！继续保持！",
+  "healthGood": "进展良好！您正在正确的轨道上。",
+  "healthFair": "一般。还有改进空间。",
+  "healthNeedsWork": "需要关注。让我们一起改进！",
+  "paymentStreak": "连续还款",
+  "dayStreak": "天连续",
+  "keepItUp": "继续加油！",
+  "longest": "最长",
+  "unlocked": "已解锁",
+  "locked": "已锁定",
+
+  "financialCalendar": "财务日历",
+  "monthView": "月视图",
+  "weekView": "周视图",
+  "today": "今天",
+  "noEventsForDay": "当天无事件",
+  "goalDeadline": "目标截止",
+  "contribution": "存款",
+
+  "reports": "报告",
+  "week": "周",
+  "quarter": "季度",
+  "allTime": "全部",
+  "totalPaid": "已付总额",
+  "totalDebt": "总负债",
+  "debtVsPaid": "负债 vs 已付",
+  "outstanding": "未付",
+  "noDataYet": "暂无数据",
+  "monthlyOverview": "月度概览",
+  "due": "到期",
+  "paymentPerformance": "还款表现",
+  "onTime": "准时",
+  "late": "逾期",
+  "onTimeRate": "准时率",
+
+  "rateAlerts": "利率提醒",
+  "currentMarketRates": "当前市场利率",
+  "edit": "编辑",
+  "triggeredAlerts": "已触发提醒",
+  "activeAlerts": "活跃提醒",
+  "inactiveAlerts": "非活跃提醒",
+  "noAlertsYet": "暂无提醒",
+  "addAlertsSubtitle": "添加提醒以跟踪利率变化",
+  "addAlert": "添加提醒",
+  "alertNameHint": "提醒名称（如：房贷利率）",
+  "loanType": "贷款类型",
+  "alertWhen": "提醒条件",
+  "rateDrops": "利率下降",
+  "rateRises": "利率上升",
+  "targetRate": "目标利率",
+  "when": "时间",
+  "current": "当前",
+  "triggered": "已触发",
+  "editMarketRates": "编辑市场利率",
+  "personalLoan": "个人贷款",
+  "carLoan": "车贷",
+  "savingsRate": "储蓄利率",
+  "homeShort": "房贷",
+  "personalShort": "个人",
+  "carShort": "车贷",
+  "savingsShort": "储蓄",
+  "rateDropAlert": "利率下降提醒！",
+  "rateIncreaseAlert": "利率上升提醒！",
+  "updated": "已更新",
+
+  "newUpdateAvailable": "有新版本",
+  "updateAppMessage": "有新版本可用。请更新以获取最新功能和改进。",
+  "updateNow": "立即更新",
+  "later": "稍后",
+
+  "qrTools": "二维码工具",
+  "createQRCode": "创建二维码",
+  "createQRSubtitle": "生成二维码",
+  "scanQRCode": "扫描二维码",
+  "scanQRSubtitle": "扫描任意二维码",
+  "selectQRType": "选择二维码类型",
+  "qrLink": "链接",
+  "qrText": "文本",
+  "qrWifi": "WiFi",
+  "qrContact": "联系人",
+  "qrCode": "二维码",
+  "websiteAddress": "网站地址",
+  "textContent": "文本内容",
+  "enterContent": "在此输入内容",
+  "networkNameSSID": "网络名称 (SSID)",
+  "wifiPasswordLabel": "密码",
+  "encryptionType": "加密类型",
+  "noEncryption": "无加密",
+  "contactName": "联系人姓名",
+  "contactNameHint": "张三",
+  "phoneNumber": "电话号码",
+  "generateQRButton": "生成二维码",
+  "qrGeneratedOnDevice": "二维码在您的设备上生成",
+  "qrLinkInfo": "输入网址以创建一个扫描后打开链接的二维码。",
+  "qrWifiInfo": "创建一个让他人快速连接到您的WiFi网络的二维码。",
+  "pleaseEnterWebsite": "请输入网站地址",
+  "pleaseEnterTextContent": "请输入文本内容",
+  "pleaseEnterWifiName": "请输入WiFi网络名称",
+  "pleaseEnterContactName": "请输入联系人姓名",
+  "copy": "复制",
+  "copyData": "复制数据",
+  "dataCopied": "数据已复制到剪贴板",
+  "saveToGallery": "保存到相册",
+  "qrPrivacyNote": "此二维码在您的设备上本地生成，不会发送到任何服务器。",
+  "wifiNetwork": "WiFi: {name}",
+  "@wifiNetwork": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "contactInfo": "联系人: {name}",
+  "@contactInfo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "cannotCreateQRImage": "无法创建二维码图片",
+  "cannotSaveQR": "无法保存二维码",
+  "qrSavedToGallerySuccess": "二维码已保存到相册",
+  "errorWithMessage": "错误: {message}",
+  "@errorWithMessage": {
+    "placeholders": {
+      "message": {"type": "String"}
+    }
+  },
+  "scanAgain": "重新扫描",
+  "openLink": "打开链接",
+  "copyPassword": "复制密码",
+  "passwordCopied": "密码已复制到剪贴板",
+  "noQRCodeFound": "图片中未找到二维码",
+  "pointCameraAtQR": "将相机对准二维码",
+  "scanFromGallery": "从相册扫描",
+  "websiteLink": "网站链接",
+  "wifiNetworkLabel": "WiFi网络",
+  "openInBrowser": "在浏览器中打开",
+  "wifiCredentials": "WiFi凭证",
+  "contactInformation": "联系信息",
+  "plainTextContent": "纯文本内容",
+
+  "reportIssue": "报告问题",
+  "reportIssueSubtitle": "发送反馈"
 }

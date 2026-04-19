@@ -8,6 +8,31 @@
   "history": "履歴",
   "settings": "設定",
   "compare": "比較",
+  "simulate": "シミュレーション",
+
+  "mainTools": "メインツール",
+  "categories": "{count} カテゴリー",
+  "@categories": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "loanCalc": "ローン",
+  "loanCalcSubtitle": "月々の支払い",
+  "interestCalc": "利息",
+  "interestCalcSubtitle": "単利と複利",
+  "vault": "金庫",
+  "vaultSubtitle": "未来を計画",
+  "historySubtitle": "過去の計算",
+
+  "proAccess": "PRO アクセス",
+  "upgradeToPremium": "プレミアムにアップグレード",
+  "premiumBannerDesc": "高度なチャートと\n広告なしの体験をアンロック。",
+  "marketPulse": "マーケット動向",
+  "currentRates": "現在の金利",
+  "homeLoan": "住宅ローン",
+  "savingsApy": "貯蓄APY",
 
   "calculatorSimpleInterest": "単利計算",
   "calculatorCompoundInterest": "複利計算",
@@ -16,23 +41,33 @@
 
   "principal": "元本",
   "interestRate": "金利",
+  "annualInterestRate": "年利",
   "term": "期間",
   "termMonths": "期間（月）",
   "termYears": "期間（年）",
   "monthlyPayment": "月々の支払い",
+  "firstMonthPayment": "初月の支払い",
+  "lastMonthPayment": "最終月の支払い",
   "totalInterest": "総利息",
   "totalPayment": "総支払額",
   "interest": "利息",
   "totalAmount": "合計金額",
+  "interestPrincipalRatio": "利息/元本比",
+  "loanAmount": "ローン金額",
 
+  "paymentMethod": "支払方法",
   "loanTypeFixed": "元利均等",
   "loanTypeReducing": "元金均等",
-  "savingsTypeReinvest": "利息再投資",
-  "savingsTypeNoReinvest": "再投資なし",
+  "savingsTypeReinvest": "再投資",
+  "savingsTypeWithdraw": "引き出し",
+
+  "results": "結果",
+  "paymentStructure": "支払い構造",
 
   "amortizationSchedule": "返済スケジュール",
   "month": "月",
   "year": "年",
+  "years": "年",
   "payment": "支払い",
   "principalPaid": "元本",
   "interestPaid": "利息",
@@ -44,19 +79,131 @@
   "exportPdf": "PDF出力",
   "calculate": "計算",
   "reset": "リセット",
+  "close": "閉じる",
+  "add": "追加",
+
+  "storageLimitTitle": "保存制限",
+  "storageLimitLoans": "最大{count}件のローンを保存しました。無制限に保存するにはプレミアムにアップグレードしてください！",
+  "@storageLimitLoans": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "storageLimitSavings": "最大{count}件の貯蓄を保存しました。無制限に保存するにはプレミアムにアップグレードしてください！",
+  "@storageLimitSavings": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "saveLoan": "ローンを保存",
+  "loanNameHint": "ローン名（任意）",
+  "amount": "金額",
+  "rate": "金利",
+  "loanSaved": "ローンを保存しました",
+
+  "saveSavings": "貯蓄を保存",
+  "savingsNameHint": "貯蓄名（任意）",
+  "savingsSaved": "貯蓄を保存しました",
 
   "savedLoans": "保存済みローン",
   "savedSavings": "保存済み貯蓄",
+  "loansCount": "ローン ({count})",
+  "@loansCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "savingsCount": "貯蓄 ({count})",
+  "@savingsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
   "noSavedItems": "保存された項目はありません",
+  "noSavedLoans": "保存されたローンはありません",
+  "noSavedLoansSubtitle": "ローンを計算して保存すると後で確認できます",
+  "noSavedSavings": "保存された貯蓄はありません",
+  "noSavedSavingsSubtitle": "貯蓄を計算して保存すると後で確認できます",
+  "errorLoading": "エラー: {error}",
+  "@errorLoading": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+
+  "compoundingFrequency": "複利の頻度",
+  "daily": "毎日",
+  "monthly": "毎月",
+  "quarterly": "四半期ごと",
+  "yearly": "毎年",
+  "calculationResults": "計算結果",
+  "totalReceived": "受取総額",
+  "interestEarned": "利息収入",
+  "effectiveAnnualRate": "実効年利",
+  "compoundingPeriods": "複利期間",
+  "compareWithSimple": "単利と比較",
+  "simpleInterest": "単利",
+  "compoundInterest": "複利",
+  "compoundBenefit": "複利により {amount} 多く獲得",
+  "@compoundBenefit": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+
+  "savingsType": "貯蓄タイプ",
+  "initialDeposit": "初期預金",
+  "monthlyDeposit": "毎月の預金",
+  "annualRate": "年利",
+  "finalBalance": "最終残高",
+  "totalDeposited": "預金総額",
+  "returnRate": "収益率",
+  "avgMonthlyInterest": "平均月利",
+  "detailedAnalysis": "詳細分析",
+  "deposits": "預金",
+  "reinvestInfo": "利息は毎月複利で計算されます",
+  "withdrawInfo": "利息は毎月支払われ、複利なし",
+
+  "averageMonthlyInterest": "平均月利",
+  "totalStructure": "全体構造",
 
   "premium": "プレミアムにアップグレード",
+  "premiumActivated": "プレミアム会員です！",
+  "premiumMember": "プレミアム会員",
+  "premiumThanks": "ご支援ありがとうございます！",
   "premiumDescription": "すべての機能をアンロック",
   "premiumFeature1": "無制限の保存",
+  "premiumFeature1Desc": "すべてのローンと貯蓄を保存",
   "premiumFeature2": "完全なチャート",
+  "premiumFeature2Desc": "すべてのチャートタイプで詳細を確認",
   "premiumFeature3": "シナリオ比較",
+  "premiumFeature3Desc": "複数のオプションを並べて比較",
   "premiumFeature4": "PDF出力",
+  "premiumFeature4Desc": "印刷や共有用の詳細レポートを作成",
+  "premiumFeature5": "開発をサポート",
+  "premiumFeature5Desc": "アプリの改善にご協力ください",
+  "premiumFeatures": "プレミアム機能",
+  "lifetime": "永久",
+  "oneTimePurchase": "一度の支払いで永久に使用",
+  "upgradeNow": "今すぐアップグレード",
   "restorePurchase": "購入を復元",
-  "upgrade": "アップグレード",
+  "purchaseDate": "購入日: {date}",
+  "@purchaseDate": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+  "premiumRequired": "プレミアムが必要",
+  "upgradeTo": "{feature}にアップグレード",
+  "@upgradeTo": {
+    "placeholders": {
+      "feature": {"type": "String"}
+    }
+  },
+  "pro": "PRO",
+  "activated": "有効",
+  "unlockAllFeatures": "すべての機能をアンロック",
 
   "theme": "テーマ",
   "themeLight": "ライト",
@@ -64,12 +211,299 @@
   "themeSystem": "システム",
   "language": "言語",
   "about": "このアプリについて",
-  "version": "バージョン",
+  "version": "バージョン {version}",
+  "@version": {
+    "placeholders": {
+      "version": {"type": "String"}
+    }
+  },
+  "termsOfService": "利用規約",
+  "privacyPolicy": "プライバシーポリシー",
 
   "error": "エラー",
   "errorGeneric": "問題が発生しました",
   "tryAgain": "再試行",
   "cancel": "キャンセル",
   "confirm": "確認",
-  "ok": "OK"
+  "ok": "OK",
+  "upgrade": "アップグレード",
+
+  "compareScenarios": "シナリオを比較",
+  "upgradeToCompare": "比較するにはアップグレード",
+  "loanSettings": "ローン設定",
+  "scenarioA": "シナリオ A",
+  "scenarioB": "シナリオ B",
+  "comparison": "比較",
+  "scenarioSaves": "シナリオ {scenario} は {amount} 節約",
+  "@scenarioSaves": {
+    "placeholders": {
+      "scenario": {"type": "String"},
+      "amount": {"type": "String"}
+    }
+  },
+
+  "simulation": "シミュレーション",
+  "noScenariosYet": "シナリオはまだありません",
+  "addScenariosSubtitle": "ローンや貯蓄を追加して\n財務をシミュレーション",
+  "addLoan": "ローンを追加",
+  "addSavings": "貯蓄を追加",
+  "loans": "ローン",
+  "savings": "貯蓄",
+  "timeline": "タイムライン",
+  "monthNumber": "{number}ヶ月目",
+  "@monthNumber": {
+    "placeholders": {
+      "number": {"type": "int"}
+    }
+  },
+  "netWorth": "純資産",
+  "positive": "プラス",
+  "negativeDebt": "マイナス（負債）",
+  "now": "現在",
+  "yearsCount": "{count}年",
+  "@yearsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "debt": "負債",
+  "remaining": "残り",
+  "clearAll": "すべてクリア？",
+  "allScenariosDeleted": "すべてのシナリオが削除されます。",
+  "loanNameHintExample": "ローン名（例：住宅ローン）",
+  "savingsNameHintExample": "名前（例：退職金）",
+  "deposit": "預金",
+  "loan": "ローン",
+
+  "selectThemeDescription": "アプリのテーマを選択",
+  "selectLanguageDescription": "言語を選択",
+  "apply": "適用",
+
+  "financialTools": "財務ツール",
+  "reminders": "リマインダー",
+  "paymentRemindersSubtitle": "支払日を追跡",
+  "savingsGoalsSubtitle": "目標を達成",
+  "calendar": "カレンダー",
+  "calendarSubtitle": "すべてのイベントを表示",
+  "achievementsSubtitle": "あなたの進捗",
+  "reportsSubtitle": "統計を表示",
+  "rateAlertsSubtitle": "金利を監視",
+
+  "paymentReminders": "支払いリマインダー",
+  "noRemindersYet": "リマインダーはまだありません",
+  "addRemindersSubtitle": "支払いリマインダーを追加",
+  "addReminder": "リマインダーを追加",
+  "editReminder": "リマインダーを編集",
+  "reminderNameHint": "リマインダー名（例：クレジットカード）",
+  "dueDate": "期日",
+  "remindBefore": "事前に通知",
+  "days": "日",
+  "recurring": "繰り返し",
+  "totalDue": "合計支払額",
+  "overdue": "期限超過",
+  "upcoming": "近日中",
+  "completed": "完了",
+  "markAsPaid": "支払い済みにする",
+  "markAsPaidConfirm": "支払い済みにしますか？",
+  "pending": "保留中",
+  "paid": "支払い済み",
+  "skipped": "スキップ",
+  "markPaid": "支払い済み",
+  "weekly": "毎週",
+  "biWeekly": "隔週",
+  "dueToday": "今日が期日",
+  "dueTomorrow": "明日が期日",
+  "dueInDays": "{days}日後が期日",
+  "@dueInDays": {
+    "placeholders": {
+      "days": {"type": "int"}
+    }
+  },
+  "pleaseEnterName": "名前を入力してください",
+
+  "savingsGoals": "貯蓄目標",
+  "noGoalsYet": "目標はまだありません",
+  "addGoalsSubtitle": "貯蓄目標を設定して進捗を追跡",
+  "addGoal": "目標を追加",
+  "editGoal": "目標を編集",
+  "goalNameHint": "目標名（例：旅行）",
+  "targetAmount": "目標金額",
+  "initialAmount": "初期金額",
+  "deadline": "期限",
+  "suggestedMonthly": "推奨月額",
+  "activeGoals": "進行中の目標",
+  "completedGoals": "達成した目標",
+  "totalSaved": "総貯蓄額",
+  "totalTarget": "総目標額",
+  "ofTotalTarget": "総目標の",
+  "saved": "保存済み",
+  "milestones": "マイルストーン",
+  "addMoney": "入金",
+  "withdraw": "引き出し",
+  "addContribution": "貢献を追加",
+  "notesOptional": "メモ（任意）",
+  "withdrawReason": "引き出しの理由",
+  "noContributionsYet": "貢献はまだありません",
+  "pauseGoal": "目標を一時停止",
+  "deleteGoal": "目標を削除",
+  "deleteGoalConfirm": "この目標を削除しますか？",
+  "target": "目標",
+  "goals": "目標",
+  "savePerMonth": "目標達成のため月々 {amount} を貯蓄",
+  "@savePerMonth": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "pleaseEnterGoalName": "目標名を入力してください",
+  "withdrawal": "引き出し",
+  "start": "開始",
+  "goalReached": "目標達成！",
+  "progress": "進捗",
+
+  "achievements": "実績",
+  "financialHealthScore": "財務健全性スコア",
+  "financialHealth": "財務健全性",
+  "points": "ポイント",
+  "healthExcellent": "素晴らしい！この調子で！",
+  "healthGood": "順調です！正しい道を進んでいます。",
+  "healthFair": "まあまあ。改善の余地があります。",
+  "healthNeedsWork": "注意が必要。一緒に改善しましょう！",
+  "paymentStreak": "連続支払い",
+  "dayStreak": "日連続",
+  "keepItUp": "この調子で！",
+  "longest": "最長",
+  "unlocked": "アンロック済み",
+  "locked": "ロック中",
+
+  "financialCalendar": "財務カレンダー",
+  "monthView": "月表示",
+  "weekView": "週表示",
+  "today": "今日",
+  "noEventsForDay": "この日のイベントはありません",
+  "goalDeadline": "目標期限",
+  "contribution": "貢献",
+
+  "reports": "レポート",
+  "week": "週",
+  "quarter": "四半期",
+  "allTime": "すべて",
+  "totalPaid": "支払い総額",
+  "totalDebt": "負債総額",
+  "debtVsPaid": "負債 vs 支払い",
+  "outstanding": "未払い",
+  "noDataYet": "データはまだありません",
+  "monthlyOverview": "月次概要",
+  "due": "期日",
+  "paymentPerformance": "支払いパフォーマンス",
+  "onTime": "期限内",
+  "late": "遅延",
+  "onTimeRate": "期限内率",
+
+  "rateAlerts": "金利アラート",
+  "currentMarketRates": "現在の市場金利",
+  "edit": "編集",
+  "triggeredAlerts": "発動したアラート",
+  "activeAlerts": "アクティブなアラート",
+  "inactiveAlerts": "非アクティブなアラート",
+  "noAlertsYet": "アラートはまだありません",
+  "addAlertsSubtitle": "金利変動を追跡するアラートを追加",
+  "addAlert": "アラートを追加",
+  "alertNameHint": "アラート名（例：住宅ローン金利）",
+  "loanType": "ローンタイプ",
+  "alertWhen": "アラート条件",
+  "rateDrops": "金利が下がったら",
+  "rateRises": "金利が上がったら",
+  "targetRate": "目標金利",
+  "when": "いつ",
+  "current": "現在",
+  "triggered": "発動済み",
+  "editMarketRates": "市場金利を編集",
+  "personalLoan": "個人ローン",
+  "carLoan": "自動車ローン",
+  "savingsRate": "貯蓄金利",
+  "homeShort": "住宅",
+  "personalShort": "個人",
+  "carShort": "自動車",
+  "savingsShort": "貯蓄",
+  "rateDropAlert": "金利下落アラート！",
+  "rateIncreaseAlert": "金利上昇アラート！",
+  "updated": "更新済み",
+
+  "newUpdateAvailable": "アップデートがあります",
+  "updateAppMessage": "新しいバージョンがあります。最新の機能と改善を入手するには更新してください。",
+  "updateNow": "今すぐ更新",
+  "later": "後で",
+
+  "qrTools": "QRツール",
+  "createQRCode": "QRコードを作成",
+  "createQRSubtitle": "QRコードを生成",
+  "scanQRCode": "QRコードをスキャン",
+  "scanQRSubtitle": "任意のQRコードをスキャン",
+  "selectQRType": "QRタイプを選択",
+  "qrLink": "リンク",
+  "qrText": "テキスト",
+  "qrWifi": "WiFi",
+  "qrContact": "連絡先",
+  "qrCode": "QRコード",
+  "websiteAddress": "ウェブサイトアドレス",
+  "textContent": "テキスト内容",
+  "enterContent": "ここに内容を入力",
+  "networkNameSSID": "ネットワーク名（SSID）",
+  "wifiPasswordLabel": "パスワード",
+  "encryptionType": "暗号化タイプ",
+  "noEncryption": "暗号化なし",
+  "contactName": "連絡先名",
+  "contactNameHint": "山田太郎",
+  "phoneNumber": "電話番号",
+  "generateQRButton": "QRコードを生成",
+  "qrGeneratedOnDevice": "QRコードはデバイス上で生成されます",
+  "qrLinkInfo": "ウェブサイトURLを入力して、スキャン時にリンクを開くQRコードを作成します。",
+  "qrWifiInfo": "WiFiネットワークに素早く接続できるQRコードを作成します。",
+  "pleaseEnterWebsite": "ウェブサイトアドレスを入力してください",
+  "pleaseEnterTextContent": "テキスト内容を入力してください",
+  "pleaseEnterWifiName": "WiFiネットワーク名を入力してください",
+  "pleaseEnterContactName": "連絡先名を入力してください",
+  "copy": "コピー",
+  "copyData": "データをコピー",
+  "dataCopied": "データをクリップボードにコピーしました",
+  "saveToGallery": "ギャラリーに保存",
+  "qrPrivacyNote": "このQRコードはデバイス上でローカルに生成され、サーバーには送信されません。",
+  "wifiNetwork": "WiFi: {name}",
+  "@wifiNetwork": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "contactInfo": "連絡先: {name}",
+  "@contactInfo": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "cannotCreateQRImage": "QR画像を作成できません",
+  "cannotSaveQR": "QRコードを保存できません",
+  "qrSavedToGallerySuccess": "QRコードをギャラリーに保存しました",
+  "errorWithMessage": "エラー: {message}",
+  "@errorWithMessage": {
+    "placeholders": {
+      "message": {"type": "String"}
+    }
+  },
+  "scanAgain": "再スキャン",
+  "openLink": "リンクを開く",
+  "copyPassword": "パスワードをコピー",
+  "passwordCopied": "パスワードをクリップボードにコピーしました",
+  "noQRCodeFound": "画像にQRコードが見つかりません",
+  "pointCameraAtQR": "カメラをQRコードに向けてください",
+  "scanFromGallery": "ギャラリーからスキャン",
+  "websiteLink": "ウェブサイトリンク",
+  "wifiNetworkLabel": "WiFiネットワーク",
+  "openInBrowser": "ブラウザで開く",
+  "wifiCredentials": "WiFi認証情報",
+  "contactInformation": "連絡先情報",
+  "plainTextContent": "プレーンテキスト",
+
+  "reportIssue": "問題を報告",
+  "reportIssueSubtitle": "フィードバックを送信"
 }

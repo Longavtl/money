@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -10,6 +11,9 @@ import 'package:money/core/services/premium_service.dart';
 import 'package:money/l10n/app_localizations.dart';
 import 'package:money/presentation/premium/premium_provider.dart';
 
+/// Selected subscription type provider
+final selectedSubscriptionProvider = StateProvider<SubscriptionType>((ref) => SubscriptionType.yearly);
+
 /// Premium upgrade page
 class PremiumPage extends ConsumerWidget {
   const PremiumPage({super.key});
@@ -19,6 +23,7 @@ class PremiumPage extends ConsumerWidget {
     final status = ref.watch(premiumStatusProvider);
     final notifier = ref.read(premiumStatusProvider.notifier);
     final service = ref.watch(premiumServiceProvider);
+    final selectedType = ref.watch(selectedSubscriptionProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
 
@@ -76,12 +81,21 @@ class PremiumPage extends ConsumerWidget {
                       children: [
                         SizedBox(height: 20.h),
 
-                        // Premium icon
-                        _buildPremiumIcon(),
+                        // Premium icon with animation
+                        _buildPremiumIcon()
+                            .animate()
+                            .scale(
+                              begin: const Offset(0, 0),
+                              end: const Offset(1, 1),
+                              duration: 600.ms,
+                              curve: Curves.elasticOut,
+                            )
+                            .then(delay: 200.ms)
+                            .shimmer(duration: 1500.ms, color: Colors.white38),
 
                         SizedBox(height: 24.h),
 
-                        // Title
+                        // Title with animation
                         Text(
                           status.isPremium
                               ? l10n.premiumActivated
@@ -91,7 +105,10 @@ class PremiumPage extends ConsumerWidget {
                             fontWeight: FontWeight.bold,
                             color: isDark ? Colors.white : Colors.black,
                           ),
-                        ),
+                        )
+                            .animate()
+                            .fadeIn(delay: 200.ms, duration: 400.ms)
+                            .slideY(begin: 0.2, end: 0),
 
                         SizedBox(height: 8.h),
 
@@ -103,24 +120,35 @@ class PremiumPage extends ConsumerWidget {
                             fontSize: 16.sp,
                             color: isDark ? Colors.white60 : Colors.black54,
                           ),
-                        ),
+                        )
+                            .animate()
+                            .fadeIn(delay: 300.ms, duration: 400.ms)
+                            .slideY(begin: 0.2, end: 0),
 
                         SizedBox(height: 32.h),
 
-                        // Features list
-                        _buildFeaturesList(isDark, l10n),
+                        // Features list with animation
+                        _buildFeaturesList(isDark, l10n)
+                            .animate()
+                            .fadeIn(delay: 400.ms, duration: 500.ms)
+                            .slideY(begin: 0.1, end: 0),
 
                         SizedBox(height: 32.h),
 
-                        // Price card
+                        // Price options with stagger animation
                         if (!status.isPremium) ...[
-                          _buildPriceCard(service, isDark, l10n),
+                          _buildPriceOptions(context, ref, service, selectedType, isDark, l10n),
                           SizedBox(height: 24.h),
                         ],
 
-                        // Purchase button
+                        // Purchase button with animation
                         if (!status.isPremium)
-                          _buildPurchaseButton(notifier, status, isDark, l10n),
+                          _buildPurchaseButton(notifier, status, selectedType, isDark, l10n)
+                              .animate()
+                              .fadeIn(delay: 800.ms, duration: 400.ms)
+                              .slideY(begin: 0.3, end: 0)
+                              .then()
+                              .shimmer(delay: 500.ms, duration: 1800.ms),
 
                         SizedBox(height: 16.h),
 
@@ -230,9 +258,14 @@ class PremiumPage extends ConsumerWidget {
   Widget _buildFeaturesList(bool isDark, AppLocalizations l10n) {
     final features = [
       _FeatureItem(
-        icon: CupertinoIcons.infinite,
+        icon: CupertinoIcons.bell_fill,
         title: l10n.premiumFeature1,
         description: l10n.premiumFeature1Desc,
+      ),
+      _FeatureItem(
+        icon: CupertinoIcons.calendar,
+        title: l10n.calendar,
+        description: l10n.calendarSubtitle,
       ),
       _FeatureItem(
         icon: CupertinoIcons.chart_bar_alt_fill,
@@ -248,11 +281,6 @@ class PremiumPage extends ConsumerWidget {
         icon: CupertinoIcons.doc_text_fill,
         title: l10n.premiumFeature4,
         description: l10n.premiumFeature4Desc,
-      ),
-      _FeatureItem(
-        icon: CupertinoIcons.heart_fill,
-        title: l10n.premiumFeature5,
-        description: l10n.premiumFeature5Desc,
       ),
     ];
 
@@ -329,42 +357,204 @@ class PremiumPage extends ConsumerWidget {
     );
   }
 
-  Widget _buildPriceCard(PremiumService service, bool isDark, AppLocalizations l10n) {
-    return AppCard(
-      child: Padding(
-        padding: EdgeInsets.all(20.w),
-        child: Column(
+  Widget _buildPriceOptions(
+    BuildContext context,
+    WidgetRef ref,
+    PremiumService service,
+    SubscriptionType selectedType,
+    bool isDark,
+    AppLocalizations l10n,
+  ) {
+    return Column(
+      children: [
+        // Monthly option
+        _buildPriceOption(
+          context: context,
+          ref: ref,
+          type: SubscriptionType.monthly,
+          selectedType: selectedType,
+          price: service.getFormattedPrice(SubscriptionType.monthly),
+          label: l10n.monthly,
+          description: '/month',
+          isDark: isDark,
+        )
+            .animate()
+            .fadeIn(delay: 500.ms, duration: 400.ms)
+            .slideX(begin: -0.1, end: 0),
+        SizedBox(height: 12.h),
+
+        // Yearly option (recommended)
+        _buildPriceOption(
+          context: context,
+          ref: ref,
+          type: SubscriptionType.yearly,
+          selectedType: selectedType,
+          price: service.getFormattedPrice(SubscriptionType.yearly),
+          label: l10n.yearly,
+          description: '/year',
+          badge: 'Save 58%',
+          isRecommended: true,
+          isDark: isDark,
+        )
+            .animate()
+            .fadeIn(delay: 600.ms, duration: 400.ms)
+            .slideX(begin: -0.1, end: 0),
+        SizedBox(height: 12.h),
+
+        // Lifetime option
+        _buildPriceOption(
+          context: context,
+          ref: ref,
+          type: SubscriptionType.lifetime,
+          selectedType: selectedType,
+          price: service.getFormattedPrice(SubscriptionType.lifetime),
+          label: l10n.lifetime,
+          description: l10n.oneTimePurchase,
+          isDark: isDark,
+        )
+            .animate()
+            .fadeIn(delay: 700.ms, duration: 400.ms)
+            .slideX(begin: -0.1, end: 0),
+      ],
+    );
+  }
+
+  Widget _buildPriceOption({
+    required BuildContext context,
+    required WidgetRef ref,
+    required SubscriptionType type,
+    required SubscriptionType selectedType,
+    required String price,
+    required String label,
+    required String description,
+    required bool isDark,
+    String? badge,
+    bool isRecommended = false,
+  }) {
+    final isSelected = type == selectedType;
+    final borderColor = isSelected
+        ? AppColors.warning
+        : (isDark ? Colors.white24 : Colors.black12);
+    final bgColor = isSelected
+        ? AppColors.warning.withValues(alpha: 0.1)
+        : (isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white);
+
+    return GestureDetector(
+      onTap: () => ref.read(selectedSubscriptionProvider.notifier).state = type,
+      child: Container(
+        padding: EdgeInsets.all(16.w),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(16.r),
+          border: Border.all(
+            color: borderColor,
+            width: isSelected ? 2 : 1,
+          ),
+        ),
+        child: Row(
           children: [
+            // Radio indicator
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+              width: 24.w,
+              height: 24.w,
               decoration: BoxDecoration(
-                color: AppColors.success.withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(20.r),
-              ),
-              child: Text(
-                l10n.lifetime,
-                style: TextStyle(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.success,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: isSelected ? AppColors.warning : Colors.grey,
+                  width: 2,
                 ),
               ),
+              child: isSelected
+                  ? Center(
+                      child: Container(
+                        width: 12.w,
+                        height: 12.w,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppColors.warning,
+                        ),
+                      ),
+                    )
+                  : null,
             ),
-            SizedBox(height: 12.h),
-            Text(
-              service.formattedPrice,
-              style: TextStyle(
-                fontSize: 36.sp,
-                fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white : AppColors.lightTextPrimary,
+            SizedBox(width: 14.w),
+
+            // Label and description
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        label,
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? Colors.white : AppColors.lightTextPrimary,
+                        ),
+                      ),
+                      if (badge != null) ...[
+                        SizedBox(width: 8.w),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+                          decoration: BoxDecoration(
+                            color: AppColors.success,
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          child: Text(
+                            badge,
+                            style: TextStyle(
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                      if (isRecommended) ...[
+                        SizedBox(width: 8.w),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [AppColors.warning, AppColors.warning.withValues(alpha: 0.8)],
+                            ),
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          child: Text(
+                            'Best Value',
+                            style: TextStyle(
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ],
+                  ),
+                  SizedBox(height: 2.h),
+                  Text(
+                    description,
+                    style: TextStyle(
+                      fontSize: 13.sp,
+                      color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(height: 4.h),
+
+            // Price
             Text(
-              l10n.oneTimePurchase,
+              price,
               style: TextStyle(
-                fontSize: 14.sp,
-                color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.bold,
+                color: isSelected
+                    ? AppColors.warning
+                    : (isDark ? Colors.white : AppColors.lightTextPrimary),
               ),
             ),
           ],
@@ -376,11 +566,12 @@ class PremiumPage extends ConsumerWidget {
   Widget _buildPurchaseButton(
     PremiumStatusNotifier notifier,
     PremiumStatus status,
+    SubscriptionType selectedType,
     bool isDark,
     AppLocalizations l10n,
   ) {
     return GestureDetector(
-      onTap: status.isLoading ? null : () => notifier.purchasePremium(),
+      onTap: status.isLoading ? null : () => notifier.purchasePremium(selectedType),
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 16.h),

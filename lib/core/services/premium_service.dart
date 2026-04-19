@@ -7,18 +7,35 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// Premium feature limits for free tier
 class PremiumLimits {
-  static const int maxSavedLoans = 3;
-  static const int maxSavedSavings = 3;
+  // Unlimited for free users
+  static const int maxSavedLoans = 999999;
+  static const int maxSavedSavings = 999999;
+  static const int maxSavedGoals = 999999;
+  // Limited for free users
+  static const int maxReminders = 3;
+  // Features
   static const bool canCompare = false;
   static const bool canExportPdf = false;
   static const bool hasFullCharts = false;
+  static const bool canAccessCalendar = false;
+}
+
+/// Subscription type
+enum SubscriptionType {
+  monthly,
+  yearly,
+  lifetime,
 }
 
 /// Premium product IDs
 class PremiumProducts {
-  static const String lifetimePremium = 'moneymate_premium_lifetime';
+  static const String monthly = 'premium_monthly';
+  static const String yearly = 'premium_yearly';
+  static const String lifetime = 'premium_lifetime';
 
-  static Set<String> get all => {lifetimePremium};
+  static Set<String> get all => {monthly, yearly, lifetime};
+
+  static Set<String> get subscriptions => {monthly, yearly};
 }
 
 /// Premium service for managing in-app purchases
@@ -32,6 +49,12 @@ class PremiumService {
 
   static const _premiumKey = 'is_premium';
   static const _purchaseDateKey = 'premium_purchase_date';
+
+  /// Callbacks for purchase events
+  void Function(PurchaseDetails purchase)? onPurchaseSuccess;
+  void Function(PurchaseDetails purchase)? onPurchaseRestored;
+  void Function(String error)? onPurchaseError;
+  void Function()? onPurchasePending;
 
   PremiumService(this._prefs);
 
@@ -63,14 +86,22 @@ class PremiumService {
 
   /// Load available products
   Future<void> _loadProducts() async {
+    debugPrint('Loading products with IDs: ${PremiumProducts.all}');
     final response = await _iap.queryProductDetails(PremiumProducts.all);
 
     if (response.notFoundIDs.isNotEmpty) {
       debugPrint('Products not found: ${response.notFoundIDs}');
     }
 
+    if (response.error != null) {
+      debugPrint('Product query error: ${response.error}');
+    }
+
     _products = response.productDetails;
-    debugPrint('Loaded ${_products.length} products');
+    debugPrint('Loaded ${_products.length} products:');
+    for (final product in _products) {
+      debugPrint('  - ${product.id}: ${product.price} (${product.title})');
+    }
   }
 
   /// Handle purchase updates
@@ -85,15 +116,24 @@ class PremiumService {
     if (purchase.status == PurchaseStatus.pending) {
       // Show pending UI
       debugPrint('Purchase pending: ${purchase.productID}');
+      onPurchasePending?.call();
     } else if (purchase.status == PurchaseStatus.error) {
       // Show error
       debugPrint('Purchase error: ${purchase.error}');
-    } else if (purchase.status == PurchaseStatus.purchased ||
-        purchase.status == PurchaseStatus.restored) {
+      onPurchaseError?.call(purchase.error?.message ?? 'Purchase failed');
+    } else if (purchase.status == PurchaseStatus.purchased) {
       // Verify and deliver
       final valid = await _verifyPurchase(purchase);
       if (valid) {
         await _deliverPremium();
+        onPurchaseSuccess?.call(purchase);
+      }
+    } else if (purchase.status == PurchaseStatus.restored) {
+      // Verify and deliver restored purchase
+      final valid = await _verifyPurchase(purchase);
+      if (valid) {
+        await _deliverPremium();
+        onPurchaseRestored?.call(purchase);
       }
     }
 
@@ -107,7 +147,7 @@ class PremiumService {
   Future<bool> _verifyPurchase(PurchaseDetails purchase) async {
     // In production, verify with your server
     // For now, we trust the purchase
-    return purchase.productID == PremiumProducts.lifetimePremium;
+    return PremiumProducts.all.contains(purchase.productID);
   }
 
   /// Deliver premium features
@@ -132,30 +172,63 @@ class PremiumService {
   /// Get available products
   List<ProductDetails> get products => _products;
 
-  /// Get lifetime premium product
-  ProductDetails? get lifetimeProduct {
+  /// Get monthly product
+  ProductDetails? get monthlyProduct {
     try {
-      return _products.firstWhere(
-        (p) => p.id == PremiumProducts.lifetimePremium,
-      );
+      return _products.firstWhere((p) => p.id == PremiumProducts.monthly);
     } catch (e) {
       return null;
     }
   }
 
-  /// Purchase premium
-  Future<bool> purchasePremium() async {
-    final product = lifetimeProduct;
+  /// Get yearly product
+  ProductDetails? get yearlyProduct {
+    try {
+      return _products.firstWhere((p) => p.id == PremiumProducts.yearly);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /// Get lifetime premium product
+  ProductDetails? get lifetimeProduct {
+    try {
+      return _products.firstWhere((p) => p.id == PremiumProducts.lifetime);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /// Get product by type
+  ProductDetails? getProduct(SubscriptionType type) {
+    switch (type) {
+      case SubscriptionType.monthly:
+        return monthlyProduct;
+      case SubscriptionType.yearly:
+        return yearlyProduct;
+      case SubscriptionType.lifetime:
+        return lifetimeProduct;
+    }
+  }
+
+  /// Purchase premium by type
+  Future<bool> purchasePremium([SubscriptionType type = SubscriptionType.lifetime]) async {
+    final product = getProduct(type);
     if (product == null) {
-      debugPrint('Product not found');
+      debugPrint('Product not found: $type');
       return false;
     }
 
     final purchaseParam = PurchaseParam(productDetails: product);
 
     try {
-      // Non-consumable for lifetime
-      return await _iap.buyNonConsumable(purchaseParam: purchaseParam);
+      if (type == SubscriptionType.lifetime) {
+        // Non-consumable for lifetime
+        return await _iap.buyNonConsumable(purchaseParam: purchaseParam);
+      } else {
+        // Subscription for monthly/yearly
+        return await _iap.buyNonConsumable(purchaseParam: purchaseParam);
+      }
     } catch (e) {
       debugPrint('Purchase failed: $e');
       return false;
@@ -193,12 +266,29 @@ class PremiumService {
 
   bool get hasFullCharts => isPremium || PremiumLimits.hasFullCharts;
 
-  /// Get formatted price
-  String get formattedPrice {
-    final product = lifetimeProduct;
-    if (product == null) {
-      return Platform.isIOS ? '\$4.99' : '99.000đ';
-    }
-    return product.price;
+  bool get canAccessCalendar => isPremium || PremiumLimits.canAccessCalendar;
+
+  bool canAddReminder(int currentCount) {
+    return isPremium || currentCount < PremiumLimits.maxReminders;
   }
+
+  /// Get formatted price for a product type
+  String getFormattedPrice(SubscriptionType type) {
+    final product = getProduct(type);
+    if (product != null) {
+      return product.price;
+    }
+    // Default prices if products not loaded
+    switch (type) {
+      case SubscriptionType.monthly:
+        return Platform.isIOS ? '\$1.99' : '49.000đ';
+      case SubscriptionType.yearly:
+        return Platform.isIOS ? '\$9.99' : '199.000đ';
+      case SubscriptionType.lifetime:
+        return Platform.isIOS ? '\$19.99' : '399.000đ';
+    }
+  }
+
+  /// Get formatted price (legacy - returns lifetime price)
+  String get formattedPrice => getFormattedPrice(SubscriptionType.lifetime);
 }

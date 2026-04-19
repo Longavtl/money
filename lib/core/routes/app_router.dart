@@ -16,6 +16,10 @@ import 'package:money/presentation/calendar/pages/calendar_page.dart';
 import 'package:money/presentation/reports/pages/reports_page.dart';
 import 'package:money/presentation/achievements/pages/achievements_page.dart';
 import 'package:money/presentation/alerts/pages/rate_alerts_page.dart';
+import 'package:money/presentation/qr/pages/create_qr_page.dart';
+import 'package:money/presentation/qr/pages/qr_preview_page.dart';
+import 'package:money/presentation/qr/pages/qr_scanner_page.dart';
+import 'package:money/presentation/settings/pages/webview_page.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -105,6 +109,54 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutes.rateAlerts,
       name: 'rate-alerts',
       builder: (context, state) => const RateAlertsPage(),
+    ),
+
+    // QR Code routes
+    GoRoute(
+      path: AppRoutes.createQR,
+      name: 'create-qr',
+      builder: (context, state) => const CreateQRPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.qrPreview,
+      name: 'qr-preview',
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>;
+        return QRPreviewPage(
+          data: extra['data'] as String,
+          title: extra['title'] as String,
+          type: extra['type'] as String,
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.qrScanner,
+      name: 'qr-scanner',
+      builder: (context, state) => const QRScannerPage(),
+    ),
+
+    // Legal routes
+    GoRoute(
+      path: AppRoutes.termsOfService,
+      name: 'terms-of-service',
+      builder: (context, state) {
+        final title = state.extra as String? ?? 'Terms of Service';
+        return WebViewPage(
+          url: 'https://sites.google.com/view/moneynest1/terms-of-service',
+          title: title,
+        );
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.privacyPolicy,
+      name: 'privacy-policy',
+      builder: (context, state) {
+        final title = state.extra as String? ?? 'Privacy Policy';
+        return WebViewPage(
+          url: 'https://sites.google.com/view/moneynest1/privacy-policy',
+          title: title,
+        );
+      },
     ),
   ],
 );
