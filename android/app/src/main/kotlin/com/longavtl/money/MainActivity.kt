@@ -1,4 +1,4 @@
-package com.moneymate.money
+package com.longavtl.money
 
 import io.flutter.embedding.android.FlutterActivity
 

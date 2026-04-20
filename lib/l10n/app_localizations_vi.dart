@@ -9,7 +9,7 @@ class AppLocalizationsVi extends AppLocalizations {
   AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
-  String get appName => 'Money Nest';
+  String get appName => 'Money Wave';
 
   @override
   String get appTagline => 'Tính toán tương lai của bạn';
@@ -435,6 +435,41 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get premiumRequired => 'Yêu cầu Premium';
+
+  @override
+  String get premiumMonthlyTitle => 'Gói Premium Hàng Tháng';
+
+  @override
+  String get premiumYearlyTitle => 'Gói Premium Hàng Năm';
+
+  @override
+  String get premiumLifetimeTitle => 'Premium Trọn Đời';
+
+  @override
+  String get billedMonthly => 'Thanh toán hàng tháng';
+
+  @override
+  String get billedAnnually => 'Thanh toán hàng năm';
+
+  @override
+  String get payOnceOwnForever => 'Thanh toán một lần, sử dụng mãi mãi';
+
+  @override
+  String get perMonth => 'mỗi tháng';
+
+  @override
+  String get perYear => 'mỗi năm';
+
+  @override
+  String get oneTime => 'một lần';
+
+  @override
+  String get subscriptionPaymentInfo =>
+      'Thanh toán sẽ được tính vào tài khoản Apple ID của bạn khi xác nhận mua hàng.';
+
+  @override
+  String get subscriptionAutoRenewInfo =>
+      'Đăng ký tự động gia hạn trừ khi tắt tự động gia hạn ít nhất 24 giờ trước khi kết thúc kỳ hiện tại. Bạn có thể quản lý và hủy đăng ký trong cài đặt tài khoản App Store.';
 
   @override
   String upgradeTo(String feature) {

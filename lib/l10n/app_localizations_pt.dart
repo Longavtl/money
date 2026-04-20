@@ -9,7 +9,7 @@ class AppLocalizationsPt extends AppLocalizations {
   AppLocalizationsPt([String locale = 'pt']) : super(locale);
 
   @override
-  String get appName => 'Money Nest';
+  String get appName => 'Money Wave';
 
   @override
   String get appTagline => 'Calcule Seu Futuro';
@@ -441,6 +441,41 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get premiumRequired => 'Premium Necessário';
+
+  @override
+  String get premiumMonthlyTitle => 'Premium Monthly Subscription';
+
+  @override
+  String get premiumYearlyTitle => 'Premium Yearly Subscription';
+
+  @override
+  String get premiumLifetimeTitle => 'Premium Lifetime Access';
+
+  @override
+  String get billedMonthly => 'Billed monthly';
+
+  @override
+  String get billedAnnually => 'Billed annually';
+
+  @override
+  String get payOnceOwnForever => 'Pay once, own forever';
+
+  @override
+  String get perMonth => 'per month';
+
+  @override
+  String get perYear => 'per year';
+
+  @override
+  String get oneTime => 'one-time';
+
+  @override
+  String get subscriptionPaymentInfo =>
+      'Payment will be charged to your Apple ID account at confirmation of purchase.';
+
+  @override
+  String get subscriptionAutoRenewInfo =>
+      'Subscriptions automatically renew unless auto-renew is turned off at least 24 hours before the end of the current period. You can manage and cancel subscriptions in your App Store account settings.';
 
   @override
   String upgradeTo(String feature) {

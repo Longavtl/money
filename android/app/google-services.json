@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:505269639902:android:22259dbd97ca8f6877404f",
+        "mobilesdk_app_id": "1:505269639902:android:8a5c8a47336ae66577404f",
         "android_client_info": {
-          "package_name": "com.moneymate.money"
+          "package_name": "com.longavtl.money"
         }
       },
       "oauth_client": [],

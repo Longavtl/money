@@ -3,7 +3,7 @@ class AppConstants {
   AppConstants._();
 
   // App info
-  static const String appName = 'Money Nest';
+  static const String appName = 'Money Wave';
   static const String appTagline = 'Calculate Your Future';
 
   // Premium
@@ -27,6 +27,11 @@ class AppConstants {
   static const double maxRate = 50.0;
   static const int minTermMonths = 1;
   static const int maxTermMonths = 600; // 50 years
+
+  // URLs
+  static const String termsOfServiceUrl = 'https://sites.google.com/view/moneynest1/trang-ch%E1%BB%A7';
+  static const String privacyPolicyUrl = 'https://sites.google.com/view/moneynest1/trang-ch%E1%BB%A7';
+  static const String supportEmail = 'longavtl@gmail.com';
 
   // Debounce
   static const int calculatorDebounceMs = 150;

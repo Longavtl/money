@@ -8,6 +8,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/app_constants.dart';
 import 'package:money/core/providers/settings_provider.dart';
 import 'package:money/l10n/app_localizations.dart';
 import 'package:money/presentation/premium/premium_provider.dart';
@@ -118,7 +119,7 @@ class SettingsPage extends ConsumerWidget {
                             _SettingsItem(
                               icon: CupertinoIcons.star_fill,
                               iconColor: Colors.amber,
-                              title: 'MoneyNest ${l10n.premium}',
+                              title: 'Money Wave ${l10n.premium}',
                               subtitle: l10n.unlockAllFeatures,
                               onTap: () => context.push('/premium'),
                             ),
@@ -194,7 +195,7 @@ class SettingsPage extends ConsumerWidget {
                         svgPath: _SettingsAssets.term,
                         iconColor: Colors.teal,
                         title: l10n.termsOfService,
-                        onTap: () => context.push('/legal/terms', extra: l10n.termsOfService),
+                        onTap: () => _openUrl(AppConstants.termsOfServiceUrl),
                       ),
                       Divider(
                           height: 1,
@@ -206,7 +207,7 @@ class SettingsPage extends ConsumerWidget {
                         svgPath: _SettingsAssets.privacy,
                         iconColor: Colors.indigo,
                         title: l10n.privacyPolicy,
-                        onTap: () => context.push('/legal/privacy', extra: l10n.privacyPolicy),
+                        onTap: () => _openUrl(AppConstants.privacyPolicyUrl),
                       ),
                       Divider(
                           height: 1,
@@ -400,15 +401,22 @@ class SettingsPage extends ConsumerWidget {
   Future<void> _openReportEmail(BuildContext context) async {
     final packageInfo = await PackageInfo.fromPlatform();
     final version = '${packageInfo.version} (${packageInfo.buildNumber})';
-    final subject = 'MoneyNest Issue Report - v$version';
+    final subject = 'Money Wave Issue Report - v$version';
     final body =
         'Please describe the issue:\n\n\n\n---\nApp Version: $version\n';
 
     final url =
-        'mailto:longavtl@gmail.com?subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}';
+        'mailto:${AppConstants.supportEmail}?subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}';
     final uri = Uri.parse(url);
 
     await launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
+
+  Future<void> _openUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   void _showLanguagePicker(BuildContext context, WidgetRef ref) {

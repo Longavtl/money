@@ -63,7 +63,7 @@ class AppShell extends ConsumerWidget {
           ),
         ),
         title: Text(
-          'MoneyNest',
+          'Money Wave',
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.bold,

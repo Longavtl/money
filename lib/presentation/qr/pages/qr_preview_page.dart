@@ -450,7 +450,7 @@ class QRPreviewPage extends ConsumerWidget {
       final result = await SaverGallery.saveImage(
         bytes,
         fileName: fileName,
-        androidRelativePath: 'Pictures/MoneyNest',
+        androidRelativePath: 'Pictures/MoneyWave',
         skipIfExists: false,
       );
 

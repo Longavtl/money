@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "appName": "Money Nest",
+  "appName": "Money Wave",
   "appTagline": "あなたの未来を計算",
 
   "home": "ホーム",
@@ -195,6 +195,17 @@
     }
   },
   "premiumRequired": "プレミアムが必要",
+  "premiumMonthlyTitle": "Premium Monthly Subscription",
+  "premiumYearlyTitle": "Premium Yearly Subscription",
+  "premiumLifetimeTitle": "Premium Lifetime Access",
+  "billedMonthly": "Billed monthly",
+  "billedAnnually": "Billed annually",
+  "payOnceOwnForever": "Pay once, own forever",
+  "perMonth": "per month",
+  "perYear": "per year",
+  "oneTime": "one-time",
+  "subscriptionPaymentInfo": "Payment will be charged to your Apple ID account at confirmation of purchase.",
+  "subscriptionAutoRenewInfo": "Subscriptions automatically renew unless auto-renew is turned off at least 24 hours before the end of the current period. You can manage and cancel subscriptions in your App Store account settings.",
   "upgradeTo": "{feature}にアップグレード",
   "@upgradeTo": {
     "placeholders": {

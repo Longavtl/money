@@ -121,7 +121,7 @@ abstract class AppLocalizations {
   /// No description provided for @appName.
   ///
   /// In en, this message translates to:
-  /// **'Money Nest'**
+  /// **'Money Wave'**
   String get appName;
 
   /// No description provided for @appTagline.
@@ -939,6 +939,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Premium Required'**
   String get premiumRequired;
+
+  /// No description provided for @premiumMonthlyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Monthly Subscription'**
+  String get premiumMonthlyTitle;
+
+  /// No description provided for @premiumYearlyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Yearly Subscription'**
+  String get premiumYearlyTitle;
+
+  /// No description provided for @premiumLifetimeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium Lifetime Access'**
+  String get premiumLifetimeTitle;
+
+  /// No description provided for @billedMonthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Billed monthly'**
+  String get billedMonthly;
+
+  /// No description provided for @billedAnnually.
+  ///
+  /// In en, this message translates to:
+  /// **'Billed annually'**
+  String get billedAnnually;
+
+  /// No description provided for @payOnceOwnForever.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay once, own forever'**
+  String get payOnceOwnForever;
+
+  /// No description provided for @perMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'per month'**
+  String get perMonth;
+
+  /// No description provided for @perYear.
+  ///
+  /// In en, this message translates to:
+  /// **'per year'**
+  String get perYear;
+
+  /// No description provided for @oneTime.
+  ///
+  /// In en, this message translates to:
+  /// **'one-time'**
+  String get oneTime;
+
+  /// No description provided for @subscriptionPaymentInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment will be charged to your Apple ID account at confirmation of purchase.'**
+  String get subscriptionPaymentInfo;
+
+  /// No description provided for @subscriptionAutoRenewInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions automatically renew unless auto-renew is turned off at least 24 hours before the end of the current period. You can manage and cancel subscriptions in your App Store account settings.'**
+  String get subscriptionAutoRenewInfo;
 
   /// No description provided for @upgradeTo.
   ///

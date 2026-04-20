@@ -10,7 +10,7 @@ class ShareService {
     final text = _buildLoanText(loan);
     await SharePlus.instance.share(ShareParams(
       text: text,
-      subject: 'Money Nest - Kết quả tính khoản vay',
+      subject: 'Money Wave - Kết quả tính khoản vay',
     ));
   }
 
@@ -19,7 +19,7 @@ class ShareService {
     final text = _buildSavingsText(savings);
     await SharePlus.instance.share(ShareParams(
       text: text,
-      subject: 'Money Nest - Kết quả tính tiết kiệm',
+      subject: 'Money Wave - Kết quả tính tiết kiệm',
     ));
   }
 
@@ -29,7 +29,7 @@ class ShareService {
     final text = _buildSimpleInterestText(result);
     await SharePlus.instance.share(ShareParams(
       text: text,
-      subject: 'Money Nest - Kết quả tính lãi đơn',
+      subject: 'Money Wave - Kết quả tính lãi đơn',
     ));
   }
 
@@ -39,7 +39,7 @@ class ShareService {
     final text = _buildCompoundInterestText(result);
     await SharePlus.instance.share(ShareParams(
       text: text,
-      subject: 'Money Nest - Kết quả tính lãi kép',
+      subject: 'Money Wave - Kết quả tính lãi kép',
     ));
   }
 
@@ -66,7 +66,7 @@ class ShareService {
         '📉 Tỷ lệ lãi/gốc: ${loan.interestPercentage.toStringAsFixed(1)}%');
     buffer.writeln();
     buffer.writeln('---');
-    buffer.writeln('Tính toán bởi Money Nest 🧮');
+    buffer.writeln('Tính toán bởi Money Wave 🧮');
     return buffer.toString();
   }
 
@@ -95,7 +95,7 @@ class ShareService {
         '📈 Lợi nhuận: ${savings.returnPercentage.toStringAsFixed(1)}%');
     buffer.writeln();
     buffer.writeln('---');
-    buffer.writeln('Tính toán bởi Money Nest 🧮');
+    buffer.writeln('Tính toán bởi Money Wave 🧮');
     return buffer.toString();
   }
 
@@ -114,7 +114,7 @@ class ShareService {
         '🏆 Tổng tiền: ${CurrencyFormatter.format(result.totalAmount)}');
     buffer.writeln();
     buffer.writeln('---');
-    buffer.writeln('Tính toán bởi Money Nest 🧮');
+    buffer.writeln('Tính toán bởi Money Wave 🧮');
     return buffer.toString();
   }
 
@@ -136,7 +136,7 @@ class ShareService {
         '📊 Lãi suất thực: ${result.effectiveAnnualRate.toStringAsFixed(2)}%');
     buffer.writeln();
     buffer.writeln('---');
-    buffer.writeln('Tính toán bởi Money Nest 🧮');
+    buffer.writeln('Tính toán bởi Money Wave 🧮');
     return buffer.toString();
   }
 }

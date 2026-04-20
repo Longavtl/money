@@ -1,6 +1,6 @@
 {
   "@@locale": "vi",
-  "appName": "Money Nest",
+  "appName": "Money Wave",
   "appTagline": "Tính toán tương lai của bạn",
 
   "home": "Trang chủ",
@@ -195,6 +195,17 @@
     }
   },
   "premiumRequired": "Yêu cầu Premium",
+  "premiumMonthlyTitle": "Gói Premium Hàng Tháng",
+  "premiumYearlyTitle": "Gói Premium Hàng Năm",
+  "premiumLifetimeTitle": "Premium Trọn Đời",
+  "billedMonthly": "Thanh toán hàng tháng",
+  "billedAnnually": "Thanh toán hàng năm",
+  "payOnceOwnForever": "Thanh toán một lần, sử dụng mãi mãi",
+  "perMonth": "mỗi tháng",
+  "perYear": "mỗi năm",
+  "oneTime": "một lần",
+  "subscriptionPaymentInfo": "Thanh toán sẽ được tính vào tài khoản Apple ID của bạn khi xác nhận mua hàng.",
+  "subscriptionAutoRenewInfo": "Đăng ký tự động gia hạn trừ khi tắt tự động gia hạn ít nhất 24 giờ trước khi kết thúc kỳ hiện tại. Bạn có thể quản lý và hủy đăng ký trong cài đặt tài khoản App Store.",
   "upgradeTo": "Nâng cấp để mở khóa {feature}",
   "@upgradeTo": {
     "placeholders": {

@@ -4,9 +4,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:money/common/widgets/app_card.dart';
 import 'package:money/core/configs/theme/app_colors.dart';
+import 'package:money/core/constants/app_constants.dart';
 import 'package:money/core/services/premium_service.dart';
 import 'package:money/l10n/app_localizations.dart';
 import 'package:money/presentation/premium/premium_provider.dart';
@@ -155,6 +157,10 @@ class PremiumPage extends ConsumerWidget {
                         // Restore button
                         if (!status.isPremium)
                           _buildRestoreButton(notifier, status, isDark, l10n),
+
+                        // Terms and Privacy links (required for App Store)
+                        if (!status.isPremium)
+                          _buildLegalLinks(isDark, l10n),
 
                         // Error message
                         if (status.error != null) ...[
@@ -374,8 +380,8 @@ class PremiumPage extends ConsumerWidget {
           type: SubscriptionType.monthly,
           selectedType: selectedType,
           price: service.getFormattedPrice(SubscriptionType.monthly),
-          label: l10n.monthly,
-          description: '/month',
+          label: l10n.premiumMonthlyTitle,
+          description: l10n.perMonth,
           isDark: isDark,
         )
             .animate()
@@ -390,8 +396,8 @@ class PremiumPage extends ConsumerWidget {
           type: SubscriptionType.yearly,
           selectedType: selectedType,
           price: service.getFormattedPrice(SubscriptionType.yearly),
-          label: l10n.yearly,
-          description: '/year',
+          label: l10n.premiumYearlyTitle,
+          description: l10n.perYear,
           badge: 'Save 58%',
           isRecommended: true,
           isDark: isDark,
@@ -408,8 +414,8 @@ class PremiumPage extends ConsumerWidget {
           type: SubscriptionType.lifetime,
           selectedType: selectedType,
           price: service.getFormattedPrice(SubscriptionType.lifetime),
-          label: l10n.lifetime,
-          description: l10n.oneTimePurchase,
+          label: l10n.premiumLifetimeTitle,
+          description: l10n.payOnceOwnForever,
           isDark: isDark,
         )
             .animate()
@@ -484,28 +490,40 @@ class PremiumPage extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Title - single line
+                  Text(
+                    label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      color: isDark ? Colors.white : AppColors.lightTextPrimary,
+                    ),
+                  ),
+                  SizedBox(height: 4.h),
+                  // Description with badges
                   Row(
                     children: [
                       Text(
-                        label,
+                        description,
                         style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600,
-                          color: isDark ? Colors.white : AppColors.lightTextPrimary,
+                          fontSize: 12.sp,
+                          color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
                         ),
                       ),
                       if (badge != null) ...[
                         SizedBox(width: 8.w),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+                          padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
                           decoration: BoxDecoration(
                             color: AppColors.success,
-                            borderRadius: BorderRadius.circular(10.r),
+                            borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Text(
                             badge,
                             style: TextStyle(
-                              fontSize: 10.sp,
+                              fontSize: 9.sp,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                             ),
@@ -513,19 +531,19 @@ class PremiumPage extends ConsumerWidget {
                         ),
                       ],
                       if (isRecommended) ...[
-                        SizedBox(width: 8.w),
+                        SizedBox(width: 6.w),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
+                          padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [AppColors.warning, AppColors.warning.withValues(alpha: 0.8)],
                             ),
-                            borderRadius: BorderRadius.circular(10.r),
+                            borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Text(
-                            'Best Value',
+                            'Best',
                             style: TextStyle(
-                              fontSize: 10.sp,
+                              fontSize: 9.sp,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                             ),
@@ -533,14 +551,6 @@ class PremiumPage extends ConsumerWidget {
                         ),
                       ],
                     ],
-                  ),
-                  SizedBox(height: 2.h),
-                  Text(
-                    description,
-                    style: TextStyle(
-                      fontSize: 13.sp,
-                      color: isDark ? Colors.white60 : AppColors.lightTextSecondary,
-                    ),
                   ),
                 ],
               ),
@@ -550,7 +560,7 @@ class PremiumPage extends ConsumerWidget {
             Text(
               price,
               style: TextStyle(
-                fontSize: 18.sp,
+                fontSize: 16.sp,
                 fontWeight: FontWeight.bold,
                 color: isSelected
                     ? AppColors.warning
@@ -641,6 +651,93 @@ class PremiumPage extends ConsumerWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildLegalLinks(bool isDark, AppLocalizations l10n) {
+    return Padding(
+      padding: EdgeInsets.only(top: 12.h),
+      child: Column(
+        children: [
+          // Payment info text
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Text(
+              l10n.subscriptionPaymentInfo,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12.sp,
+                color: isDark ? Colors.white54 : Colors.black54,
+                height: 1.4,
+              ),
+            ),
+          ),
+          SizedBox(height: 8.h),
+          // Subscription info text
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Text(
+              l10n.subscriptionAutoRenewInfo,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12.sp,
+                color: isDark ? Colors.white54 : Colors.black54,
+                height: 1.4,
+              ),
+            ),
+          ),
+          SizedBox(height: 16.h),
+          // Terms and Privacy links - bigger and clearer
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                onPressed: () => _openUrl(AppConstants.termsOfServiceUrl),
+                child: Text(
+                  l10n.termsOfService,
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primary,
+                    decoration: TextDecoration.underline,
+                    decorationColor: AppColors.primary,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                child: Text(
+                  '•',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: isDark ? Colors.white54 : Colors.black54,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () => _openUrl(AppConstants.privacyPolicyUrl),
+                child: Text(
+                  l10n.privacyPolicy,
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primary,
+                    decoration: TextDecoration.underline,
+                    decorationColor: AppColors.primary,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _openUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
   }
 
   Widget _buildPremiumInfo(PremiumStatus status, bool isDark, AppLocalizations l10n) {
