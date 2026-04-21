@@ -516,5 +516,22 @@
   "plainTextContent": "Einfacher Textinhalt",
 
   "reportIssue": "Problem melden",
-  "reportIssueSubtitle": "Feedback senden"
+  "reportIssueSubtitle": "Feedback senden",
+
+  "earlyWithdrawal": "Vorzeitige Abhebung",
+  "earlyWithdrawalSubtitle": "Verlust bei vorzeitiger Kündigung",
+  "depositAmount": "Einlagebetrag",
+  "termDepositRate": "Festgeldzins",
+  "demandDepositRate": "Sichtzins",
+  "originalTerm": "Ursprüngliche Laufzeit",
+  "actualHoldingPeriod": "Tatsächliche Haltedauer",
+  "withdrawalResult": "Abhebungsergebnis",
+  "amountReceived": "Erhaltener Betrag",
+  "actualInterestReceived": "Tatsächlich erhaltene Zinsen",
+  "interestLost": "Verlorene Zinsen",
+  "lossPercentage": "Verlustprozentsatz",
+  "ifHeldToMaturity": "Bei Halten bis Fälligkeit",
+  "youWillLose": "Sie verlieren",
+  "earlyWithdrawalWarning": "Warnung vor vorzeitiger Abhebung",
+  "earlyWithdrawalWarningDesc": "Bei vorzeitiger Abhebung gilt der Sichtzins statt des Festgeldzinses."
 }

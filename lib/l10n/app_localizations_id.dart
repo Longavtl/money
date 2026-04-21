@@ -1231,4 +1231,53 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'Kirim umpan balik';
+
+  @override
+  String get earlyWithdrawal => 'Penarikan Dini';
+
+  @override
+  String get earlyWithdrawalSubtitle => 'Hitung kerugian penarikan dini';
+
+  @override
+  String get depositAmount => 'Jumlah Deposito';
+
+  @override
+  String get termDepositRate => 'Suku Bunga Deposito';
+
+  @override
+  String get demandDepositRate => 'Suku Bunga Tabungan';
+
+  @override
+  String get originalTerm => 'Jangka Waktu Asli';
+
+  @override
+  String get actualHoldingPeriod => 'Periode Kepemilikan Aktual';
+
+  @override
+  String get withdrawalResult => 'Hasil Penarikan';
+
+  @override
+  String get amountReceived => 'Jumlah Diterima';
+
+  @override
+  String get actualInterestReceived => 'Bunga Aktual Diterima';
+
+  @override
+  String get interestLost => 'Bunga Hilang';
+
+  @override
+  String get lossPercentage => 'Persentase Kerugian';
+
+  @override
+  String get ifHeldToMaturity => 'Jika Ditahan Sampai Jatuh Tempo';
+
+  @override
+  String get youWillLose => 'Anda akan kehilangan';
+
+  @override
+  String get earlyWithdrawalWarning => 'Peringatan Penarikan Dini';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      'Penarikan dini menerapkan suku bunga tabungan bukan suku bunga deposito.';
 }

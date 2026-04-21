@@ -1228,4 +1228,53 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'Gửi phản hồi cho chúng tôi';
+
+  @override
+  String get earlyWithdrawal => 'Rút trước hạn';
+
+  @override
+  String get earlyWithdrawalSubtitle => 'Tính lãi khi rút tiền gửi trước hạn';
+
+  @override
+  String get depositAmount => 'Số tiền gửi';
+
+  @override
+  String get termDepositRate => 'Lãi suất kỳ hạn';
+
+  @override
+  String get demandDepositRate => 'Lãi suất không kỳ hạn';
+
+  @override
+  String get originalTerm => 'Kỳ hạn gốc';
+
+  @override
+  String get actualHoldingPeriod => 'Thời gian gửi thực tế';
+
+  @override
+  String get withdrawalResult => 'Kết quả rút tiền';
+
+  @override
+  String get amountReceived => 'Số tiền nhận về';
+
+  @override
+  String get actualInterestReceived => 'Lãi thực nhận';
+
+  @override
+  String get interestLost => 'Lãi bị mất';
+
+  @override
+  String get lossPercentage => 'Tỷ lệ mất lãi';
+
+  @override
+  String get ifHeldToMaturity => 'Nếu gửi đủ kỳ hạn';
+
+  @override
+  String get youWillLose => 'Bạn sẽ mất';
+
+  @override
+  String get earlyWithdrawalWarning => 'Cảnh báo rút trước hạn';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      'Rút tiền trước hạn sẽ chỉ được hưởng lãi suất không kỳ hạn. Hãy cân nhắc chờ đến khi đủ kỳ hạn.';
 }

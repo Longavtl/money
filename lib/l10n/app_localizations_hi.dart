@@ -1236,4 +1236,53 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'हमें प्रतिक्रिया भेजें';
+
+  @override
+  String get earlyWithdrawal => 'समय पूर्व निकासी';
+
+  @override
+  String get earlyWithdrawalSubtitle => 'समय पूर्व निकासी की हानि गणना';
+
+  @override
+  String get depositAmount => 'जमा राशि';
+
+  @override
+  String get termDepositRate => 'सावधि जमा दर';
+
+  @override
+  String get demandDepositRate => 'बचत खाता दर';
+
+  @override
+  String get originalTerm => 'मूल अवधि';
+
+  @override
+  String get actualHoldingPeriod => 'वास्तविक रखने की अवधि';
+
+  @override
+  String get withdrawalResult => 'निकासी परिणाम';
+
+  @override
+  String get amountReceived => 'प्राप्त राशि';
+
+  @override
+  String get actualInterestReceived => 'वास्तविक प्राप्त ब्याज';
+
+  @override
+  String get interestLost => 'खोया ब्याज';
+
+  @override
+  String get lossPercentage => 'हानि प्रतिशत';
+
+  @override
+  String get ifHeldToMaturity => 'परिपक्वता तक रखने पर';
+
+  @override
+  String get youWillLose => 'आप खो देंगे';
+
+  @override
+  String get earlyWithdrawalWarning => 'समय पूर्व निकासी चेतावनी';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      'समय पूर्व निकासी पर सावधि जमा दर के बजाय बचत खाता दर लागू होती है।';
 }

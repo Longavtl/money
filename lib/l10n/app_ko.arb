@@ -516,5 +516,22 @@
   "plainTextContent": "일반 텍스트",
 
   "reportIssue": "문제 신고",
-  "reportIssueSubtitle": "피드백 보내기"
+  "reportIssueSubtitle": "피드백 보내기",
+
+  "earlyWithdrawal": "조기 출금",
+  "earlyWithdrawalSubtitle": "조기 출금 시 손실 계산",
+  "depositAmount": "예금 금액",
+  "termDepositRate": "정기 예금 금리",
+  "demandDepositRate": "보통 예금 금리",
+  "originalTerm": "원래 기간",
+  "actualHoldingPeriod": "실제 보유 기간",
+  "withdrawalResult": "출금 결과",
+  "amountReceived": "수령 금액",
+  "actualInterestReceived": "실제 이자 수령",
+  "interestLost": "손실 이자",
+  "lossPercentage": "손실 비율",
+  "ifHeldToMaturity": "만기까지 보유 시",
+  "youWillLose": "손실 금액",
+  "earlyWithdrawalWarning": "조기 출금 경고",
+  "earlyWithdrawalWarningDesc": "조기 출금 시 정기 예금 이자가 아닌 보통 예금 이자율로 계산됩니다."
 }

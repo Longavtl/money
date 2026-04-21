@@ -1228,4 +1228,54 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'Send us feedback';
+
+  @override
+  String get earlyWithdrawal => 'Early Withdrawal';
+
+  @override
+  String get earlyWithdrawalSubtitle =>
+      'Calculate penalty for early withdrawal';
+
+  @override
+  String get depositAmount => 'Deposit Amount';
+
+  @override
+  String get termDepositRate => 'Term Deposit Rate';
+
+  @override
+  String get demandDepositRate => 'Demand Deposit Rate';
+
+  @override
+  String get originalTerm => 'Original Term';
+
+  @override
+  String get actualHoldingPeriod => 'Actual Holding Period';
+
+  @override
+  String get withdrawalResult => 'Withdrawal Result';
+
+  @override
+  String get amountReceived => 'Amount Received';
+
+  @override
+  String get actualInterestReceived => 'Interest Received';
+
+  @override
+  String get interestLost => 'Interest Lost';
+
+  @override
+  String get lossPercentage => 'Loss Percentage';
+
+  @override
+  String get ifHeldToMaturity => 'If held to maturity';
+
+  @override
+  String get youWillLose => 'You will lose';
+
+  @override
+  String get earlyWithdrawalWarning => 'Early Withdrawal Warning';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      'Withdrawing before maturity will result in significantly lower interest. Consider waiting until the term ends.';
 }

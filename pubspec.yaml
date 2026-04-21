@@ -2,7 +2,7 @@ name: money
 description: "MoneyMate - Financial Calculator"
 publish_to: 'none'
 
-version: 1.0.1+5
+version: 1.0.1+6
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -68,6 +68,9 @@ dependencies:
   saver_gallery: ^4.1.0
   image_picker: ^1.1.2
 
+  # Animation
+  lottie: ^3.3.1
+
   # Utils
   intl: ^0.20.2
   uuid: ^4.5.1
@@ -97,6 +100,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svg/
+    - assets/lottie/
     - shorebird.yaml
 
 flutter_gen:

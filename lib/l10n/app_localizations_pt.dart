@@ -1237,4 +1237,53 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'Envie-nos seu feedback';
+
+  @override
+  String get earlyWithdrawal => 'Resgate Antecipado';
+
+  @override
+  String get earlyWithdrawalSubtitle => 'Calcular perda por resgate';
+
+  @override
+  String get depositAmount => 'Valor do depósito';
+
+  @override
+  String get termDepositRate => 'Taxa de depósito a prazo';
+
+  @override
+  String get demandDepositRate => 'Taxa de depósito à vista';
+
+  @override
+  String get originalTerm => 'Prazo original';
+
+  @override
+  String get actualHoldingPeriod => 'Período real de manutenção';
+
+  @override
+  String get withdrawalResult => 'Resultado do resgate';
+
+  @override
+  String get amountReceived => 'Valor recebido';
+
+  @override
+  String get actualInterestReceived => 'Juros reais recebidos';
+
+  @override
+  String get interestLost => 'Juros perdidos';
+
+  @override
+  String get lossPercentage => 'Percentual de perda';
+
+  @override
+  String get ifHeldToMaturity => 'Se mantido até o vencimento';
+
+  @override
+  String get youWillLose => 'Você perderá';
+
+  @override
+  String get earlyWithdrawalWarning => 'Aviso de resgate antecipado';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      'O resgate antecipado aplica a taxa à vista em vez da taxa a prazo.';
 }

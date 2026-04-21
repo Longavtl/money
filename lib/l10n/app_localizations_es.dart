@@ -1236,4 +1236,53 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'Envíanos comentarios';
+
+  @override
+  String get earlyWithdrawal => 'Retiro Anticipado';
+
+  @override
+  String get earlyWithdrawalSubtitle => 'Calcular pérdida por retiro';
+
+  @override
+  String get depositAmount => 'Monto del depósito';
+
+  @override
+  String get termDepositRate => 'Tasa de depósito a plazo';
+
+  @override
+  String get demandDepositRate => 'Tasa de depósito a la vista';
+
+  @override
+  String get originalTerm => 'Plazo original';
+
+  @override
+  String get actualHoldingPeriod => 'Período real de tenencia';
+
+  @override
+  String get withdrawalResult => 'Resultado del retiro';
+
+  @override
+  String get amountReceived => 'Monto recibido';
+
+  @override
+  String get actualInterestReceived => 'Intereses reales recibidos';
+
+  @override
+  String get interestLost => 'Intereses perdidos';
+
+  @override
+  String get lossPercentage => 'Porcentaje de pérdida';
+
+  @override
+  String get ifHeldToMaturity => 'Si se mantiene hasta el vencimiento';
+
+  @override
+  String get youWillLose => 'Perderás';
+
+  @override
+  String get earlyWithdrawalWarning => 'Advertencia de retiro anticipado';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      'El retiro anticipado aplica la tasa de depósito a la vista en lugar de la tasa a plazo.';
 }

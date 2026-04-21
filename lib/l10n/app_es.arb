@@ -516,5 +516,22 @@
   "plainTextContent": "Contenido de texto plano",
 
   "reportIssue": "Reportar problema",
-  "reportIssueSubtitle": "Envíanos comentarios"
+  "reportIssueSubtitle": "Envíanos comentarios",
+
+  "earlyWithdrawal": "Retiro Anticipado",
+  "earlyWithdrawalSubtitle": "Calcular pérdida por retiro",
+  "depositAmount": "Monto del depósito",
+  "termDepositRate": "Tasa de depósito a plazo",
+  "demandDepositRate": "Tasa de depósito a la vista",
+  "originalTerm": "Plazo original",
+  "actualHoldingPeriod": "Período real de tenencia",
+  "withdrawalResult": "Resultado del retiro",
+  "amountReceived": "Monto recibido",
+  "actualInterestReceived": "Intereses reales recibidos",
+  "interestLost": "Intereses perdidos",
+  "lossPercentage": "Porcentaje de pérdida",
+  "ifHeldToMaturity": "Si se mantiene hasta el vencimiento",
+  "youWillLose": "Perderás",
+  "earlyWithdrawalWarning": "Advertencia de retiro anticipado",
+  "earlyWithdrawalWarningDesc": "El retiro anticipado aplica la tasa de depósito a la vista en lugar de la tasa a plazo."
 }

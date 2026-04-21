@@ -516,5 +516,22 @@
   "plainTextContent": "เนื้อหาข้อความธรรมดา",
 
   "reportIssue": "รายงานปัญหา",
-  "reportIssueSubtitle": "ส่งความคิดเห็นถึงเรา"
+  "reportIssueSubtitle": "ส่งความคิดเห็นถึงเรา",
+
+  "earlyWithdrawal": "ถอนก่อนกำหนด",
+  "earlyWithdrawalSubtitle": "คำนวณดอกเบี้ยที่สูญเสีย",
+  "depositAmount": "จำนวนเงินฝาก",
+  "termDepositRate": "อัตราดอกเบี้ยฝากประจำ",
+  "demandDepositRate": "อัตราดอกเบี้ยออมทรัพย์",
+  "originalTerm": "ระยะเวลาเดิม",
+  "actualHoldingPeriod": "ระยะเวลาฝากจริง",
+  "withdrawalResult": "ผลการถอน",
+  "amountReceived": "จำนวนที่รับ",
+  "actualInterestReceived": "ดอกเบี้ยที่ได้รับจริง",
+  "interestLost": "ดอกเบี้ยที่สูญเสีย",
+  "lossPercentage": "ร้อยละการสูญเสีย",
+  "ifHeldToMaturity": "หากถือครบกำหนด",
+  "youWillLose": "คุณจะสูญเสีย",
+  "earlyWithdrawalWarning": "คำเตือนการถอนก่อนกำหนด",
+  "earlyWithdrawalWarningDesc": "การถอนก่อนกำหนดจะได้รับอัตราดอกเบี้ยออมทรัพย์แทนอัตราดอกเบี้ยฝากประจำ"
 }

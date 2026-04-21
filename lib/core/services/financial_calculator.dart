@@ -419,6 +419,45 @@ class FinancialCalculator {
   }
 
   // ============================================================================
+  // EARLY WITHDRAWAL - Savings withdrawn before maturity
+  // When withdrawn early, interest is calculated at demand deposit rate
+  // ============================================================================
+
+  static EarlyWithdrawalResult calculateEarlyWithdrawal({
+    required double principal,
+    required double originalRate, // Original term deposit rate (e.g., 6%)
+    required double earlyRate, // Demand deposit rate (e.g., 0.5%)
+    required int originalTermMonths, // Original term
+    required int actualHoldingMonths, // How long actually held
+  }) {
+    // Expected interest if held to maturity (simple interest)
+    final expectedInterest =
+        principal * (originalRate / 100) * (originalTermMonths / 12);
+
+    // Actual interest with early withdrawal (at demand deposit rate)
+    final actualInterest =
+        principal * (earlyRate / 100) * (actualHoldingMonths / 12);
+
+    // Interest lost due to early withdrawal
+    final interestLoss = expectedInterest - actualInterest;
+
+    // Final amount received
+    final finalAmount = principal + actualInterest;
+
+    return EarlyWithdrawalResult(
+      principal: principal,
+      originalRate: originalRate,
+      earlyRate: earlyRate,
+      originalTermMonths: originalTermMonths,
+      actualHoldingMonths: actualHoldingMonths,
+      expectedInterest: expectedInterest,
+      actualInterest: actualInterest,
+      interestLoss: interestLoss,
+      finalAmount: finalAmount,
+    );
+  }
+
+  // ============================================================================
   // HELPER METHODS
   // ============================================================================
 

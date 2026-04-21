@@ -550,7 +550,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get scenarioB => '方案 B';
 
   @override
-  String get comparison => '比较';
+  String get comparison => '对比';
 
   @override
   String scenarioSaves(String scenario, String amount) {
@@ -1221,4 +1221,52 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => '发送反馈';
+
+  @override
+  String get earlyWithdrawal => '提前取款';
+
+  @override
+  String get earlyWithdrawalSubtitle => '计算提前取款的利息损失';
+
+  @override
+  String get depositAmount => '存款金额';
+
+  @override
+  String get termDepositRate => '定期利率';
+
+  @override
+  String get demandDepositRate => '活期利率';
+
+  @override
+  String get originalTerm => '原始期限';
+
+  @override
+  String get actualHoldingPeriod => '实际持有期';
+
+  @override
+  String get withdrawalResult => '取款结果';
+
+  @override
+  String get amountReceived => '到账金额';
+
+  @override
+  String get actualInterestReceived => '实际利息';
+
+  @override
+  String get interestLost => '损失利息';
+
+  @override
+  String get lossPercentage => '损失比例';
+
+  @override
+  String get ifHeldToMaturity => '如持有至到期';
+
+  @override
+  String get youWillLose => '您将损失';
+
+  @override
+  String get earlyWithdrawalWarning => '提前取款警告';
+
+  @override
+  String get earlyWithdrawalWarningDesc => '提前取款将只能获得活期利率。建议等待到期再取款。';
 }

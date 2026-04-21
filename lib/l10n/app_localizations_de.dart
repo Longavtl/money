@@ -1238,4 +1238,53 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'Feedback senden';
+
+  @override
+  String get earlyWithdrawal => 'Vorzeitige Abhebung';
+
+  @override
+  String get earlyWithdrawalSubtitle => 'Verlust bei vorzeitiger Kündigung';
+
+  @override
+  String get depositAmount => 'Einlagebetrag';
+
+  @override
+  String get termDepositRate => 'Festgeldzins';
+
+  @override
+  String get demandDepositRate => 'Sichtzins';
+
+  @override
+  String get originalTerm => 'Ursprüngliche Laufzeit';
+
+  @override
+  String get actualHoldingPeriod => 'Tatsächliche Haltedauer';
+
+  @override
+  String get withdrawalResult => 'Abhebungsergebnis';
+
+  @override
+  String get amountReceived => 'Erhaltener Betrag';
+
+  @override
+  String get actualInterestReceived => 'Tatsächlich erhaltene Zinsen';
+
+  @override
+  String get interestLost => 'Verlorene Zinsen';
+
+  @override
+  String get lossPercentage => 'Verlustprozentsatz';
+
+  @override
+  String get ifHeldToMaturity => 'Bei Halten bis Fälligkeit';
+
+  @override
+  String get youWillLose => 'Sie verlieren';
+
+  @override
+  String get earlyWithdrawalWarning => 'Warnung vor vorzeitiger Abhebung';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      'Bei vorzeitiger Abhebung gilt der Sichtzins statt des Festgeldzinses.';
 }

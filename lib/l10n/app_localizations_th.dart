@@ -1229,4 +1229,53 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'ส่งความคิดเห็นถึงเรา';
+
+  @override
+  String get earlyWithdrawal => 'ถอนก่อนกำหนด';
+
+  @override
+  String get earlyWithdrawalSubtitle => 'คำนวณดอกเบี้ยที่สูญเสีย';
+
+  @override
+  String get depositAmount => 'จำนวนเงินฝาก';
+
+  @override
+  String get termDepositRate => 'อัตราดอกเบี้ยฝากประจำ';
+
+  @override
+  String get demandDepositRate => 'อัตราดอกเบี้ยออมทรัพย์';
+
+  @override
+  String get originalTerm => 'ระยะเวลาเดิม';
+
+  @override
+  String get actualHoldingPeriod => 'ระยะเวลาฝากจริง';
+
+  @override
+  String get withdrawalResult => 'ผลการถอน';
+
+  @override
+  String get amountReceived => 'จำนวนที่รับ';
+
+  @override
+  String get actualInterestReceived => 'ดอกเบี้ยที่ได้รับจริง';
+
+  @override
+  String get interestLost => 'ดอกเบี้ยที่สูญเสีย';
+
+  @override
+  String get lossPercentage => 'ร้อยละการสูญเสีย';
+
+  @override
+  String get ifHeldToMaturity => 'หากถือครบกำหนด';
+
+  @override
+  String get youWillLose => 'คุณจะสูญเสีย';
+
+  @override
+  String get earlyWithdrawalWarning => 'คำเตือนการถอนก่อนกำหนด';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      'การถอนก่อนกำหนดจะได้รับอัตราดอกเบี้ยออมทรัพย์แทนอัตราดอกเบี้ยฝากประจำ';
 }

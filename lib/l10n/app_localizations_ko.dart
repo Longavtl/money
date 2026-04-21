@@ -1221,4 +1221,53 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => '피드백 보내기';
+
+  @override
+  String get earlyWithdrawal => '조기 출금';
+
+  @override
+  String get earlyWithdrawalSubtitle => '조기 출금 시 손실 계산';
+
+  @override
+  String get depositAmount => '예금 금액';
+
+  @override
+  String get termDepositRate => '정기 예금 금리';
+
+  @override
+  String get demandDepositRate => '보통 예금 금리';
+
+  @override
+  String get originalTerm => '원래 기간';
+
+  @override
+  String get actualHoldingPeriod => '실제 보유 기간';
+
+  @override
+  String get withdrawalResult => '출금 결과';
+
+  @override
+  String get amountReceived => '수령 금액';
+
+  @override
+  String get actualInterestReceived => '실제 이자 수령';
+
+  @override
+  String get interestLost => '손실 이자';
+
+  @override
+  String get lossPercentage => '손실 비율';
+
+  @override
+  String get ifHeldToMaturity => '만기까지 보유 시';
+
+  @override
+  String get youWillLose => '손실 금액';
+
+  @override
+  String get earlyWithdrawalWarning => '조기 출금 경고';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      '조기 출금 시 정기 예금 이자가 아닌 보통 예금 이자율로 계산됩니다.';
 }

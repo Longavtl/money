@@ -6,6 +6,7 @@ import 'package:money/presentation/calculators/simple_interest/simple_interest_p
 import 'package:money/presentation/calculators/compound_interest/compound_interest_page.dart';
 import 'package:money/presentation/calculators/loan/loan_calculator_page.dart';
 import 'package:money/presentation/calculators/savings/savings_calculator_page.dart';
+import 'package:money/presentation/calculators/early_withdrawal/early_withdrawal_page.dart';
 import 'package:money/presentation/premium/premium_page.dart';
 import 'package:money/presentation/comparison/comparison_page.dart';
 import 'package:money/presentation/app/pages/app_shell.dart';
@@ -55,6 +56,11 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutes.savings,
       name: 'savings',
       builder: (context, state) => const SavingsCalculatorPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.earlyWithdrawal,
+      name: 'early-withdrawal',
+      builder: (context, state) => const EarlyWithdrawalPage(),
     ),
 
     // Premium route

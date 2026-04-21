@@ -34,8 +34,10 @@ class _HomePageState extends ConsumerState<HomePage> {
     final premiumStatus = ref.watch(premiumStatusProvider);
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -76,7 +78,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ],
-              ).animate().fadeIn(delay: 100.ms, duration: 400.ms).slideX(begin: -0.05, end: 0),
+              )
+                  .animate()
+                  .fadeIn(delay: 100.ms, duration: 400.ms)
+                  .slideX(begin: -0.05, end: 0),
 
               SizedBox(height: 16.h),
 
@@ -103,7 +108,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ],
-              ).animate().fadeIn(delay: 150.ms, duration: 400.ms).slideY(begin: 0.1, end: 0),
+              )
+                  .animate()
+                  .fadeIn(delay: 150.ms, duration: 400.ms)
+                  .slideY(begin: 0.1, end: 0),
 
               SizedBox(height: 12.h),
 
@@ -122,15 +130,18 @@ class _HomePageState extends ConsumerState<HomePage> {
                   SizedBox(width: 12.w),
                   Expanded(
                     child: _ToolCard(
-                      title: l10n.history,
-                      subtitle: l10n.historySubtitle,
-                      icon: CupertinoIcons.clock,
-                      iconColor: textPrimary,
-                      onTap: () {},  // History page handled by bottom nav
+                      title: l10n.earlyWithdrawal,
+                      subtitle: l10n.earlyWithdrawalSubtitle,
+                      icon: CupertinoIcons.arrow_down_circle_fill,
+                      iconColor: AppColors.warning,
+                      onTap: () => context.push(AppRoutes.earlyWithdrawal),
                     ),
                   ),
                 ],
-              ).animate().fadeIn(delay: 200.ms, duration: 400.ms).slideY(begin: 0.1, end: 0),
+              )
+                  .animate()
+                  .fadeIn(delay: 200.ms, duration: 400.ms)
+                  .slideY(begin: 0.1, end: 0),
 
               SizedBox(height: 24.h),
 
@@ -147,7 +158,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ],
-              ).animate().fadeIn(delay: 250.ms, duration: 400.ms).slideX(begin: -0.05, end: 0),
+              )
+                  .animate()
+                  .fadeIn(delay: 250.ms, duration: 400.ms)
+                  .slideX(begin: -0.05, end: 0),
 
               SizedBox(height: 16.h),
 
@@ -175,7 +189,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ],
-              ).animate().fadeIn(delay: 300.ms, duration: 400.ms).slideY(begin: 0.1, end: 0),
+              )
+                  .animate()
+                  .fadeIn(delay: 300.ms, duration: 400.ms)
+                  .slideY(begin: 0.1, end: 0),
 
               SizedBox(height: 12.h),
 
@@ -204,7 +221,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ],
-              ).animate().fadeIn(delay: 350.ms, duration: 400.ms).slideY(begin: 0.1, end: 0),
+              )
+                  .animate()
+                  .fadeIn(delay: 350.ms, duration: 400.ms)
+                  .slideY(begin: 0.1, end: 0),
 
               SizedBox(height: 24.h),
 
@@ -221,7 +241,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ],
-              ).animate().fadeIn(delay: 400.ms, duration: 400.ms).slideX(begin: -0.05, end: 0),
+              )
+                  .animate()
+                  .fadeIn(delay: 400.ms, duration: 400.ms)
+                  .slideX(begin: -0.05, end: 0),
 
               SizedBox(height: 16.h),
 
@@ -248,7 +271,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                   ),
                 ],
-              ).animate().fadeIn(delay: 450.ms, duration: 400.ms).slideY(begin: 0.1, end: 0),
+              )
+                  .animate()
+                  .fadeIn(delay: 450.ms, duration: 400.ms)
+                  .slideY(begin: 0.1, end: 0),
 
               SizedBox(height: 24.h),
 
@@ -407,7 +433,8 @@ class _PremiumBanner extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [Color(0xFFFFD700), Color(0xFFFFA500)],
@@ -517,8 +544,10 @@ class _ToolCard extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final cardColor = isDark ? AppColors.darkSurface : AppColors.lightSurface;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return GestureDetector(
       onTap: isLocked ? () => context.push(AppRoutes.premium) : onTap,
@@ -558,7 +587,8 @@ class _ToolCard extends StatelessWidget {
                 ),
                 if (isPremiumFeature || isLocked)
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
                     decoration: BoxDecoration(
                       gradient: isLocked
                           ? null
@@ -595,17 +625,23 @@ class _ToolCard extends StatelessWidget {
             Text(
               title,
               style: TextStyle(
-                fontSize: 16.sp,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: isLocked ? textSecondary : textPrimary,
               ),
             ),
             SizedBox(height: 2.h),
-            Text(
-              subtitle,
-              style: TextStyle(
-                fontSize: 12.sp,
-                color: textSecondary,
+            SizedBox(
+              height: 32.h, // Fixed height for 2 lines
+              child: Text(
+                subtitle,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  color: textSecondary,
+                  height: 1.3,
+                ),
               ),
             ),
           ],
@@ -621,9 +657,12 @@ class _CurrentRatesCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final cardColor = isDark ? const Color(0xFF1A2A3A) : const Color(0xFFE8F4FC);
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final chartBgColor = isDark ? Colors.white.withOpacity(0.1) : Colors.white.withOpacity(0.5);
+    final cardColor =
+        isDark ? const Color(0xFF1A2A3A) : const Color(0xFFE8F4FC);
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final chartBgColor =
+        isDark ? Colors.white.withOpacity(0.1) : Colors.white.withOpacity(0.5);
 
     // Get market rates based on current locale
     final locale = Localizations.localeOf(context);
@@ -716,8 +755,10 @@ class _RateItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
-    final textPrimary = isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
-    final textSecondary = isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
+    final textPrimary =
+        isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
+    final textSecondary =
+        isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
     return Row(
       children: [

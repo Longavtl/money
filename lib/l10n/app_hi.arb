@@ -515,5 +515,22 @@
   "plainTextContent": "सादा टेक्स्ट सामग्री",
 
   "reportIssue": "समस्या रिपोर्ट करें",
-  "reportIssueSubtitle": "हमें प्रतिक्रिया भेजें"
+  "reportIssueSubtitle": "हमें प्रतिक्रिया भेजें",
+
+  "earlyWithdrawal": "समय पूर्व निकासी",
+  "earlyWithdrawalSubtitle": "समय पूर्व निकासी की हानि गणना",
+  "depositAmount": "जमा राशि",
+  "termDepositRate": "सावधि जमा दर",
+  "demandDepositRate": "बचत खाता दर",
+  "originalTerm": "मूल अवधि",
+  "actualHoldingPeriod": "वास्तविक रखने की अवधि",
+  "withdrawalResult": "निकासी परिणाम",
+  "amountReceived": "प्राप्त राशि",
+  "actualInterestReceived": "वास्तविक प्राप्त ब्याज",
+  "interestLost": "खोया ब्याज",
+  "lossPercentage": "हानि प्रतिशत",
+  "ifHeldToMaturity": "परिपक्वता तक रखने पर",
+  "youWillLose": "आप खो देंगे",
+  "earlyWithdrawalWarning": "समय पूर्व निकासी चेतावनी",
+  "earlyWithdrawalWarningDesc": "समय पूर्व निकासी पर सावधि जमा दर के बजाय बचत खाता दर लागू होती है।"
 }

@@ -516,5 +516,22 @@
   "plainTextContent": "Contenu texte brut",
 
   "reportIssue": "Signaler un problème",
-  "reportIssueSubtitle": "Envoyez-nous vos commentaires"
+  "reportIssueSubtitle": "Envoyez-nous vos commentaires",
+
+  "earlyWithdrawal": "Retrait Anticipé",
+  "earlyWithdrawalSubtitle": "Calculer la perte de retrait",
+  "depositAmount": "Montant du dépôt",
+  "termDepositRate": "Taux de dépôt à terme",
+  "demandDepositRate": "Taux de dépôt à vue",
+  "originalTerm": "Durée initiale",
+  "actualHoldingPeriod": "Période de détention réelle",
+  "withdrawalResult": "Résultat du retrait",
+  "amountReceived": "Montant reçu",
+  "actualInterestReceived": "Intérêts réels reçus",
+  "interestLost": "Intérêts perdus",
+  "lossPercentage": "Pourcentage de perte",
+  "ifHeldToMaturity": "Si maintenu jusqu'à l'échéance",
+  "youWillLose": "Vous perdrez",
+  "earlyWithdrawalWarning": "Avertissement de retrait anticipé",
+  "earlyWithdrawalWarningDesc": "Le retrait anticipé applique le taux à vue au lieu du taux à terme."
 }

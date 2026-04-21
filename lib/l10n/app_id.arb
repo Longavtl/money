@@ -516,5 +516,22 @@
   "plainTextContent": "Konten teks biasa",
 
   "reportIssue": "Laporkan Masalah",
-  "reportIssueSubtitle": "Kirim umpan balik"
+  "reportIssueSubtitle": "Kirim umpan balik",
+
+  "earlyWithdrawal": "Penarikan Dini",
+  "earlyWithdrawalSubtitle": "Hitung kerugian penarikan dini",
+  "depositAmount": "Jumlah Deposito",
+  "termDepositRate": "Suku Bunga Deposito",
+  "demandDepositRate": "Suku Bunga Tabungan",
+  "originalTerm": "Jangka Waktu Asli",
+  "actualHoldingPeriod": "Periode Kepemilikan Aktual",
+  "withdrawalResult": "Hasil Penarikan",
+  "amountReceived": "Jumlah Diterima",
+  "actualInterestReceived": "Bunga Aktual Diterima",
+  "interestLost": "Bunga Hilang",
+  "lossPercentage": "Persentase Kerugian",
+  "ifHeldToMaturity": "Jika Ditahan Sampai Jatuh Tempo",
+  "youWillLose": "Anda akan kehilangan",
+  "earlyWithdrawalWarning": "Peringatan Penarikan Dini",
+  "earlyWithdrawalWarningDesc": "Penarikan dini menerapkan suku bunga tabungan bukan suku bunga deposito."
 }

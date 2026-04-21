@@ -517,5 +517,23 @@
   "plainTextContent": "Plain text content",
 
   "reportIssue": "Report Issue",
-  "reportIssueSubtitle": "Send us feedback"
+  "reportIssueSubtitle": "Send us feedback",
+
+  "earlyWithdrawal": "Early Withdrawal",
+  "earlyWithdrawalSubtitle": "Calculate penalty for early withdrawal",
+  "depositAmount": "Deposit Amount",
+  "termDepositRate": "Term Deposit Rate",
+  "demandDepositRate": "Demand Deposit Rate",
+  "originalTerm": "Original Term",
+  "actualHoldingPeriod": "Actual Holding Period",
+  "withdrawalResult": "Withdrawal Result",
+  "amountReceived": "Amount Received",
+  "actualInterestReceived": "Interest Received",
+  "interestLost": "Interest Lost",
+  "lossPercentage": "Loss Percentage",
+  "comparison": "Comparison",
+  "ifHeldToMaturity": "If held to maturity",
+  "youWillLose": "You will lose",
+  "earlyWithdrawalWarning": "Early Withdrawal Warning",
+  "earlyWithdrawalWarningDesc": "Withdrawing before maturity will result in significantly lower interest. Consider waiting until the term ends."
 }

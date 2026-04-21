@@ -262,6 +262,54 @@ class SavingsResult extends Equatable {
       ];
 }
 
+/// Early Withdrawal Result - when withdrawing savings before maturity
+class EarlyWithdrawalResult extends Equatable {
+  final double principal;
+  final double originalRate; // Original term deposit rate
+  final double earlyRate; // Demand deposit rate (usually 0.1-0.5%)
+  final int originalTermMonths; // Original term
+  final int actualHoldingMonths; // How long actually held
+  final double expectedInterest; // If held to maturity
+  final double actualInterest; // With early withdrawal rate
+  final double interestLoss; // Difference
+  final double finalAmount; // Principal + actual interest
+
+  const EarlyWithdrawalResult({
+    required this.principal,
+    required this.originalRate,
+    required this.earlyRate,
+    required this.originalTermMonths,
+    required this.actualHoldingMonths,
+    required this.expectedInterest,
+    required this.actualInterest,
+    required this.interestLoss,
+    required this.finalAmount,
+  });
+
+  /// Percentage of interest lost
+  double get lossPercentage =>
+      expectedInterest > 0 ? (interestLoss / expectedInterest) * 100 : 0;
+
+  /// Days held
+  int get daysHeld => (actualHoldingMonths * 30.44).round();
+
+  /// Days remaining
+  int get daysRemaining => ((originalTermMonths - actualHoldingMonths) * 30.44).round();
+
+  @override
+  List<Object?> get props => [
+        principal,
+        originalRate,
+        earlyRate,
+        originalTermMonths,
+        actualHoldingMonths,
+        expectedInterest,
+        actualInterest,
+        interestLoss,
+        finalAmount,
+      ];
+}
+
 /// Yearly summary for aggregated charts
 class YearlySummary extends Equatable {
   final int year;

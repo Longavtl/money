@@ -515,5 +515,22 @@
   "plainTextContent": "Conteúdo de texto simples",
 
   "reportIssue": "Relatar Problema",
-  "reportIssueSubtitle": "Envie-nos seu feedback"
+  "reportIssueSubtitle": "Envie-nos seu feedback",
+
+  "earlyWithdrawal": "Resgate Antecipado",
+  "earlyWithdrawalSubtitle": "Calcular perda por resgate",
+  "depositAmount": "Valor do depósito",
+  "termDepositRate": "Taxa de depósito a prazo",
+  "demandDepositRate": "Taxa de depósito à vista",
+  "originalTerm": "Prazo original",
+  "actualHoldingPeriod": "Período real de manutenção",
+  "withdrawalResult": "Resultado do resgate",
+  "amountReceived": "Valor recebido",
+  "actualInterestReceived": "Juros reais recebidos",
+  "interestLost": "Juros perdidos",
+  "lossPercentage": "Percentual de perda",
+  "ifHeldToMaturity": "Se mantido até o vencimento",
+  "youWillLose": "Você perderá",
+  "earlyWithdrawalWarning": "Aviso de resgate antecipado",
+  "earlyWithdrawalWarningDesc": "O resgate antecipado aplica a taxa à vista em vez da taxa a prazo."
 }

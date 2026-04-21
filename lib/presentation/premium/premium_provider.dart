@@ -32,12 +32,14 @@ class PremiumStatus {
   final bool isLoading;
   final String? error;
   final DateTime? purchaseDate;
+  final bool justPurchased; // Flag to show success dialog
 
   const PremiumStatus({
     this.isPremium = false,
     this.isLoading = false,
     this.error,
     this.purchaseDate,
+    this.justPurchased = false,
   });
 
   PremiumStatus copyWith({
@@ -45,12 +47,14 @@ class PremiumStatus {
     bool? isLoading,
     String? error,
     DateTime? purchaseDate,
+    bool? justPurchased,
   }) {
     return PremiumStatus(
       isPremium: isPremium ?? this.isPremium,
       isLoading: isLoading ?? this.isLoading,
       error: error,
       purchaseDate: purchaseDate ?? this.purchaseDate,
+      justPurchased: justPurchased ?? false,
     );
   }
 }
@@ -82,6 +86,7 @@ class PremiumStatusNotifier extends StateNotifier<PremiumStatus> {
         isPremium: true,
         isLoading: false,
         purchaseDate: DateTime.now(),
+        justPurchased: true,
       );
     };
 
@@ -119,6 +124,7 @@ class PremiumStatusNotifier extends StateNotifier<PremiumStatus> {
         isPremium: true,
         isLoading: false,
         purchaseDate: DateTime.now(),
+        justPurchased: true,
       );
       return;
     }
@@ -167,6 +173,13 @@ class PremiumStatusNotifier extends StateNotifier<PremiumStatus> {
       isPremium: _service.isPremium,
       purchaseDate: _service.purchaseDate,
     );
+  }
+
+  /// Clear justPurchased flag (after showing success dialog)
+  void clearJustPurchased() {
+    if (state.justPurchased) {
+      state = state.copyWith(justPurchased: false);
+    }
   }
 
   /// Clear premium for testing

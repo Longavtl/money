@@ -11,6 +11,7 @@ class AppRoutes {
   static const String loan = '/calculator/loan';
   static const String loanAmortization = '/calculator/loan/amortization';
   static const String savings = '/calculator/savings';
+  static const String earlyWithdrawal = '/calculator/early-withdrawal';
 
   // Comparison (Premium)
   static const String comparison = '/comparison';

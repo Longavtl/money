@@ -516,5 +516,23 @@
   "plainTextContent": "纯文本内容",
 
   "reportIssue": "报告问题",
-  "reportIssueSubtitle": "发送反馈"
+  "reportIssueSubtitle": "发送反馈",
+
+  "earlyWithdrawal": "提前取款",
+  "earlyWithdrawalSubtitle": "计算提前取款的利息损失",
+  "depositAmount": "存款金额",
+  "termDepositRate": "定期利率",
+  "demandDepositRate": "活期利率",
+  "originalTerm": "原始期限",
+  "actualHoldingPeriod": "实际持有期",
+  "withdrawalResult": "取款结果",
+  "amountReceived": "到账金额",
+  "actualInterestReceived": "实际利息",
+  "interestLost": "损失利息",
+  "lossPercentage": "损失比例",
+  "comparison": "对比",
+  "ifHeldToMaturity": "如持有至到期",
+  "youWillLose": "您将损失",
+  "earlyWithdrawalWarning": "提前取款警告",
+  "earlyWithdrawalWarningDesc": "提前取款将只能获得活期利率。建议等待到期再取款。"
 }

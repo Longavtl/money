@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:money/common/widgets/app_card.dart';
+import 'package:money/common/widgets/success_dialog.dart';
 import 'package:money/core/configs/theme/app_colors.dart';
 import 'package:money/core/constants/app_constants.dart';
 import 'package:money/core/services/premium_service.dart';
@@ -28,6 +29,23 @@ class PremiumPage extends ConsumerWidget {
     final selectedType = ref.watch(selectedSubscriptionProvider);
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final l10n = AppLocalizations.of(context)!;
+
+    // Listen for purchase success to show dialog
+    ref.listen<PremiumStatus>(premiumStatusProvider, (previous, next) {
+      if (next.justPurchased && !(previous?.justPurchased ?? false)) {
+        // Show success dialog
+        SuccessDialog.show(
+          context,
+          title: l10n.premiumActivated,
+          message: l10n.premiumThanks,
+          buttonText: l10n.ok,
+          lottieAsset: 'assets/lottie/premium_success.json',
+          onDismiss: () {
+            notifier.clearJustPurchased();
+          },
+        );
+      }
+    });
 
     return Scaffold(
       backgroundColor: AppColors.lightBackground,

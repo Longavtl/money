@@ -1236,4 +1236,53 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'Envoyez-nous vos commentaires';
+
+  @override
+  String get earlyWithdrawal => 'Retrait Anticipé';
+
+  @override
+  String get earlyWithdrawalSubtitle => 'Calculer la perte de retrait';
+
+  @override
+  String get depositAmount => 'Montant du dépôt';
+
+  @override
+  String get termDepositRate => 'Taux de dépôt à terme';
+
+  @override
+  String get demandDepositRate => 'Taux de dépôt à vue';
+
+  @override
+  String get originalTerm => 'Durée initiale';
+
+  @override
+  String get actualHoldingPeriod => 'Période de détention réelle';
+
+  @override
+  String get withdrawalResult => 'Résultat du retrait';
+
+  @override
+  String get amountReceived => 'Montant reçu';
+
+  @override
+  String get actualInterestReceived => 'Intérêts réels reçus';
+
+  @override
+  String get interestLost => 'Intérêts perdus';
+
+  @override
+  String get lossPercentage => 'Pourcentage de perte';
+
+  @override
+  String get ifHeldToMaturity => 'Si maintenu jusqu\'à l\'échéance';
+
+  @override
+  String get youWillLose => 'Vous perdrez';
+
+  @override
+  String get earlyWithdrawalWarning => 'Avertissement de retrait anticipé';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      'Le retrait anticipé applique le taux à vue au lieu du taux à terme.';
 }

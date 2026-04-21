@@ -2469,6 +2469,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Send us feedback'**
   String get reportIssueSubtitle;
+
+  /// No description provided for @earlyWithdrawal.
+  ///
+  /// In en, this message translates to:
+  /// **'Early Withdrawal'**
+  String get earlyWithdrawal;
+
+  /// No description provided for @earlyWithdrawalSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate penalty for early withdrawal'**
+  String get earlyWithdrawalSubtitle;
+
+  /// No description provided for @depositAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Deposit Amount'**
+  String get depositAmount;
+
+  /// No description provided for @termDepositRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Term Deposit Rate'**
+  String get termDepositRate;
+
+  /// No description provided for @demandDepositRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Demand Deposit Rate'**
+  String get demandDepositRate;
+
+  /// No description provided for @originalTerm.
+  ///
+  /// In en, this message translates to:
+  /// **'Original Term'**
+  String get originalTerm;
+
+  /// No description provided for @actualHoldingPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Actual Holding Period'**
+  String get actualHoldingPeriod;
+
+  /// No description provided for @withdrawalResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawal Result'**
+  String get withdrawalResult;
+
+  /// No description provided for @amountReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount Received'**
+  String get amountReceived;
+
+  /// No description provided for @actualInterestReceived.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest Received'**
+  String get actualInterestReceived;
+
+  /// No description provided for @interestLost.
+  ///
+  /// In en, this message translates to:
+  /// **'Interest Lost'**
+  String get interestLost;
+
+  /// No description provided for @lossPercentage.
+  ///
+  /// In en, this message translates to:
+  /// **'Loss Percentage'**
+  String get lossPercentage;
+
+  /// No description provided for @ifHeldToMaturity.
+  ///
+  /// In en, this message translates to:
+  /// **'If held to maturity'**
+  String get ifHeldToMaturity;
+
+  /// No description provided for @youWillLose.
+  ///
+  /// In en, this message translates to:
+  /// **'You will lose'**
+  String get youWillLose;
+
+  /// No description provided for @earlyWithdrawalWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Early Withdrawal Warning'**
+  String get earlyWithdrawalWarning;
+
+  /// No description provided for @earlyWithdrawalWarningDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawing before maturity will result in significantly lower interest. Consider waiting until the term ends.'**
+  String get earlyWithdrawalWarningDesc;
 }
 
 class _AppLocalizationsDelegate

@@ -1221,4 +1221,53 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get reportIssueSubtitle => 'フィードバックを送信';
+
+  @override
+  String get earlyWithdrawal => '中途解約';
+
+  @override
+  String get earlyWithdrawalSubtitle => '中途解約時の利息計算';
+
+  @override
+  String get depositAmount => '預金額';
+
+  @override
+  String get termDepositRate => '定期預金金利';
+
+  @override
+  String get demandDepositRate => '普通預金金利';
+
+  @override
+  String get originalTerm => '当初期間';
+
+  @override
+  String get actualHoldingPeriod => '実際の保有期間';
+
+  @override
+  String get withdrawalResult => '解約結果';
+
+  @override
+  String get amountReceived => '受取金額';
+
+  @override
+  String get actualInterestReceived => '実際の利息';
+
+  @override
+  String get interestLost => '失った利息';
+
+  @override
+  String get lossPercentage => '損失率';
+
+  @override
+  String get ifHeldToMaturity => '満期まで保有した場合';
+
+  @override
+  String get youWillLose => '損失額';
+
+  @override
+  String get earlyWithdrawalWarning => '中途解約の警告';
+
+  @override
+  String get earlyWithdrawalWarningDesc =>
+      '中途解約すると普通預金金利のみ適用されます。満期まで待つことをお勧めします。';
 }

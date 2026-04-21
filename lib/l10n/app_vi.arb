@@ -517,5 +517,23 @@
   "plainTextContent": "Nội dung văn bản thuần",
 
   "reportIssue": "Báo lỗi",
-  "reportIssueSubtitle": "Gửi phản hồi cho chúng tôi"
+  "reportIssueSubtitle": "Gửi phản hồi cho chúng tôi",
+
+  "earlyWithdrawal": "Rút trước hạn",
+  "earlyWithdrawalSubtitle": "Tính lãi khi rút tiền gửi trước hạn",
+  "depositAmount": "Số tiền gửi",
+  "termDepositRate": "Lãi suất kỳ hạn",
+  "demandDepositRate": "Lãi suất không kỳ hạn",
+  "originalTerm": "Kỳ hạn gốc",
+  "actualHoldingPeriod": "Thời gian gửi thực tế",
+  "withdrawalResult": "Kết quả rút tiền",
+  "amountReceived": "Số tiền nhận về",
+  "actualInterestReceived": "Lãi thực nhận",
+  "interestLost": "Lãi bị mất",
+  "lossPercentage": "Tỷ lệ mất lãi",
+  "comparison": "So sánh",
+  "ifHeldToMaturity": "Nếu gửi đủ kỳ hạn",
+  "youWillLose": "Bạn sẽ mất",
+  "earlyWithdrawalWarning": "Cảnh báo rút trước hạn",
+  "earlyWithdrawalWarningDesc": "Rút tiền trước hạn sẽ chỉ được hưởng lãi suất không kỳ hạn. Hãy cân nhắc chờ đến khi đủ kỳ hạn."
 }

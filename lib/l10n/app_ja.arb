@@ -516,5 +516,23 @@
   "plainTextContent": "プレーンテキスト",
 
   "reportIssue": "問題を報告",
-  "reportIssueSubtitle": "フィードバックを送信"
+  "reportIssueSubtitle": "フィードバックを送信",
+
+  "earlyWithdrawal": "中途解約",
+  "earlyWithdrawalSubtitle": "中途解約時の利息計算",
+  "depositAmount": "預金額",
+  "termDepositRate": "定期預金金利",
+  "demandDepositRate": "普通預金金利",
+  "originalTerm": "当初期間",
+  "actualHoldingPeriod": "実際の保有期間",
+  "withdrawalResult": "解約結果",
+  "amountReceived": "受取金額",
+  "actualInterestReceived": "実際の利息",
+  "interestLost": "失った利息",
+  "lossPercentage": "損失率",
+  "comparison": "比較",
+  "ifHeldToMaturity": "満期まで保有した場合",
+  "youWillLose": "損失額",
+  "earlyWithdrawalWarning": "中途解約の警告",
+  "earlyWithdrawalWarningDesc": "中途解約すると普通預金金利のみ適用されます。満期まで待つことをお勧めします。"
 }
