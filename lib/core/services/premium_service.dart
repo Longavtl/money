@@ -55,6 +55,7 @@ class PremiumService {
   void Function(PurchaseDetails purchase)? onPurchaseRestored;
   void Function(String error)? onPurchaseError;
   void Function()? onPurchasePending;
+  void Function()? onPurchaseCanceled;
 
   PremiumService(this._prefs);
 
@@ -135,6 +136,10 @@ class PremiumService {
         await _deliverPremium();
         onPurchaseRestored?.call(purchase);
       }
+    } else if (purchase.status == PurchaseStatus.canceled) {
+      // User canceled the purchase
+      debugPrint('Purchase canceled: ${purchase.productID}');
+      onPurchaseCanceled?.call();
     }
 
     // Complete purchase if needed

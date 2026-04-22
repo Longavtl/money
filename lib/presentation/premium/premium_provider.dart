@@ -109,6 +109,10 @@ class PremiumStatusNotifier extends StateNotifier<PremiumStatus> {
       state = state.copyWith(isLoading: true);
     };
 
+    _service.onPurchaseCanceled = () {
+      state = state.copyWith(isLoading: false);
+    };
+
     await _service.initialize();
   }
 

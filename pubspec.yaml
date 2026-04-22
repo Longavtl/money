@@ -1,8 +1,8 @@
 name: money
-description: "MoneyMate - Financial Calculator"
+description: "MoneyWave - Financial Calculator"
 publish_to: 'none'
 
-version: 1.0.1+6
+version: 1.0.2+1
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
