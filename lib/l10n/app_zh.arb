@@ -230,6 +230,7 @@
   },
   "termsOfService": "服务条款",
   "privacyPolicy": "隐私政策",
+  "termsOfUse": "使用许可协议 (EULA)",
 
   "error": "错误",
   "errorGeneric": "出错了",

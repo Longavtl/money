@@ -1084,6 +1084,12 @@ abstract class AppLocalizations {
   /// **'Privacy Policy'**
   String get privacyPolicy;
 
+  /// No description provided for @termsOfUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use (EULA)'**
+  String get termsOfUse;
+
   /// No description provided for @error.
   ///
   /// In en, this message translates to:

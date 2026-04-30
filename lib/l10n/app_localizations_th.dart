@@ -514,6 +514,9 @@ class AppLocalizationsTh extends AppLocalizations {
   String get privacyPolicy => 'นโยบายความเป็นส่วนตัว';
 
   @override
+  String get termsOfUse => 'ข้อตกลงการใช้งาน (EULA)';
+
+  @override
   String get error => 'ข้อผิดพลาด';
 
   @override

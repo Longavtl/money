@@ -514,6 +514,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get privacyPolicy => '개인정보 처리방침';
 
   @override
+  String get termsOfUse => '사용권 계약 (EULA)';
+
+  @override
   String get error => '오류';
 
   @override

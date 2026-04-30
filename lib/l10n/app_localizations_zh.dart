@@ -514,6 +514,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get privacyPolicy => '隐私政策';
 
   @override
+  String get termsOfUse => '使用许可协议 (EULA)';
+
+  @override
   String get error => '错误';
 
   @override

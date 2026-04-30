@@ -31,6 +31,7 @@ class AppConstants {
   // URLs
   static const String termsOfServiceUrl = 'https://sites.google.com/view/moneynest1/trang-ch%E1%BB%A7';
   static const String privacyPolicyUrl = 'https://sites.google.com/view/moneynest1/trang-ch%E1%BB%A7';
+  static const String eulaUrl = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
   static const String supportEmail = 'longavtl@gmail.com';
 
   // Debounce

@@ -230,6 +230,7 @@
   },
   "termsOfService": "이용약관",
   "privacyPolicy": "개인정보 처리방침",
+  "termsOfUse": "사용권 계약 (EULA)",
 
   "error": "오류",
   "errorGeneric": "문제가 발생했습니다",

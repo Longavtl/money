@@ -515,6 +515,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get privacyPolicy => 'Chính sách bảo mật';
 
   @override
+  String get termsOfUse => 'Điều khoản sử dụng (EULA)';
+
+  @override
   String get error => 'Lỗi';
 
   @override

@@ -518,6 +518,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get privacyPolicy => 'Kebijakan Privasi';
 
   @override
+  String get termsOfUse => 'Syarat Penggunaan (EULA)';
+
+  @override
   String get error => 'Kesalahan';
 
   @override

@@ -521,6 +521,9 @@ class AppLocalizationsPt extends AppLocalizations {
   String get privacyPolicy => 'Política de Privacidade';
 
   @override
+  String get termsOfUse => 'Termos de Uso (EULA)';
+
+  @override
   String get error => 'Erro';
 
   @override

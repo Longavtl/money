@@ -704,10 +704,34 @@ class PremiumPage extends ConsumerWidget {
             ),
           ),
           SizedBox(height: 16.h),
-          // Terms and Privacy links - bigger and clearer
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          // Terms of Use (EULA), Terms of Service, and Privacy Policy links
+          Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
+              TextButton(
+                onPressed: () => _openUrl(AppConstants.eulaUrl),
+                child: Text(
+                  l10n.termsOfUse,
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    color: AppColors.primary,
+                    decoration: TextDecoration.underline,
+                    decorationColor: AppColors.primary,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                child: Text(
+                  '•',
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    color: isDark ? Colors.white54 : Colors.black54,
+                  ),
+                ),
+              ),
               TextButton(
                 onPressed: () => _openUrl(AppConstants.termsOfServiceUrl),
                 child: Text(

@@ -521,6 +521,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get privacyPolicy => 'Datenschutzrichtlinie';
 
   @override
+  String get termsOfUse => 'Lizenzvereinbarung (EULA)';
+
+  @override
   String get error => 'Fehler';
 
   @override

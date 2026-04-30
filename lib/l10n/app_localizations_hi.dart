@@ -519,6 +519,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get privacyPolicy => 'गोपनीयता नीति';
 
   @override
+  String get termsOfUse => 'उपयोग की शर्तें (EULA)';
+
+  @override
   String get error => 'त्रुटि';
 
   @override

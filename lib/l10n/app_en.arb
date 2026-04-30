@@ -230,6 +230,7 @@
   },
   "termsOfService": "Terms of Service",
   "privacyPolicy": "Privacy Policy",
+  "termsOfUse": "Terms of Use (EULA)",
 
   "error": "Error",
   "errorGeneric": "Something went wrong",

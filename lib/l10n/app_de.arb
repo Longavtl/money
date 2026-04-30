@@ -230,6 +230,7 @@
   },
   "termsOfService": "Nutzungsbedingungen",
   "privacyPolicy": "Datenschutzrichtlinie",
+  "termsOfUse": "Lizenzvereinbarung (EULA)",
 
   "error": "Fehler",
   "errorGeneric": "Etwas ist schiefgelaufen",
